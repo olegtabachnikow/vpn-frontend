@@ -1,5 +1,12 @@
 .app {
-  width: 375px;
-  height: 708px;
-  margin-top: 104px;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
+  background-color: transparent;
+  position: relative;
+  transition: background-color 0.5s ease;
+}
+.app-gift {
+  background-color: #ffbe30;
 }

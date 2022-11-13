@@ -8,10 +8,9 @@
   margin-top: 14px;
   font-size: 20px;
   line-height: 25px;
+  padding: 0;
+  font-weight: 700;
 }
-.app-button:nth-child(0) {
+.app-button:first-of-type {
   margin-top: 0;
-}
-.app-button:nth-last-child(1) {
-  margin-bottom: 61px;
 }

@@ -1,14 +1,11 @@
 import React from 'react';
 import './AppButton.css';
 
-function AppButton({ background, color, text, border, value, handler }) {
-  function handleClick() {
-    value >= 4 ? handler(4) : handler(++value);
-  }
+function AppButton({ background, color, text, border, handler }) {
   return (
     <button
       className='app-button'
-      onClick={handleClick}
+      onClick={handler}
       style={{
         backgroundColor: `${background}`,
         color: `${color}`,

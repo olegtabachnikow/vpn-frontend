@@ -1,5 +1,7 @@
 import React from 'react';
 import './Intro.css';
+import { useNavigate } from 'react-router-dom';
+import { sendPage } from '../../utils/roboApi';
 import introImg0 from '../../images/intro_smile_0.svg';
 import introImg1 from '../../images/intro_smile_1.svg';
 import introImg2 from '../../images/intro_smile_2.svg';
@@ -9,7 +11,16 @@ import AppButton from '../AppButton/AppButton';
 
 function Intro() {
   const [progress, setProgress] = React.useState(0);
+  const navigate = useNavigate();
+  function handleButtonClick() {
+    progress >= 4 ? navigate('/') : setProgress((state) => ++state);
+  }
 
+  function sendCurrentPage(page) {
+    sendPage(page)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  }
   return (
     <section className='intro'>
       <div className='intro__progress'>
@@ -29,8 +40,15 @@ function Intro() {
           className={`intro__progress-item ${progress === 4 && 'active'}`}
         ></span>
       </div>
-      <figure className='intro__image-container'>
+      <div className='intro__image-container'>
         <img
+          className={`${
+            (progress === 0 && 'intro__image-zero') ||
+            (progress === 1 && 'intro__image-one') ||
+            (progress === 2 && 'intro__image-two') ||
+            (progress === 3 && 'intro__image-three') ||
+            (progress === 4 && 'intro__image-four')
+          }`}
           src={
             (progress === 0 && introImg0) ||
             (progress === 1 && introImg1) ||
@@ -40,12 +58,12 @@ function Intro() {
           }
           alt='happy face'
         />
-      </figure>
+      </div>
       <div className='intro__text-container'>
         {(progress === 0 && (
           <>
             <h1 className='intro__title'>
-              Одна установка —
+              Одна установка — <br />
               <span className='intro__title_colored'>
                 {' '}
                 про VPN можно забыть
@@ -61,7 +79,8 @@ function Intro() {
           (progress === 1 && (
             <>
               <h1 className='intro__title'>
-                Безопасность от
+                Безопасность <br />
+                от
                 <span className='intro__title_colored'> Google</span>
               </h1>
               <p className='intro__text'>
@@ -74,7 +93,8 @@ function Intro() {
           (progress === 2 && (
             <>
               <h1 className='intro__title'>
-                Вcтроенное приложение
+                Вcтроенное <br />
+                приложение <br />
                 <span className='intro__title_colored'> прямо в Telegram</span>
               </h1>
               <p className='intro__text'>
@@ -87,7 +107,7 @@ function Intro() {
           (progress === 3 && (
             <>
               <h1 className='intro__title'>
-                100% гарантия
+                100% гарантия <br />
                 <span className='intro__title_colored'> возврата </span> всегда
               </h1>
               <p className='intro__text'>
@@ -100,7 +120,7 @@ function Intro() {
           (progress === 4 && (
             <>
               <h1 className='intro__title'>
-                Бесплатно
+                Бесплатно <br />
                 <span className='intro__title_colored'> каждый месяц</span>
               </h1>
               <p className='intro__text'>
@@ -115,15 +135,13 @@ function Intro() {
         color='#348FF3'
         text='Далее'
         border='#348FF3'
-        value={progress}
-        handler={setProgress}
+        handler={handleButtonClick}
       />
       <AppButton
         background={'#348FF3'}
         color='#FFF'
         text='Попробовать VPN'
         border='#348FF3'
-        value={progress}
         handler={null}
       />
     </section>

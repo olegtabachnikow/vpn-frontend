@@ -4,9 +4,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 18px 35px 61px 35px;
+  box-sizing: border-box;
 }
 .intro__progress {
-  margin-top: 18px;
   width: 304.5px;
   gap: 5.25px;
   display: flex;
@@ -23,19 +24,33 @@
   background-color: #348ff3;
 }
 .intro__image-container {
-  width: 187px;
+  min-width: 187px;
   box-sizing: border-box;
-  height: 187px;
+  min-height: 187px;
   margin: 71px auto 59px auto;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+.intro__image-zero {
+  margin: 16px;
+}
+.intro__image-one {
+  margin: 0 16px 16px 0;
+}
+.intro__image-two {
+  margin: 0 16px 16px 0;
+}
+.intro__image-three {
+  margin: 0 16px 0 0;
+}
+.intro__image-four {
+  margin: 0px;
+}
 .intro__text-container {
   display: flex;
   flex-direction: column;
   height: 100%;
-  justify-content: center;
   max-width: 287px;
   color: #348ff3;
   text-align: center;

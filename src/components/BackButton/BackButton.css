@@ -1,0 +1,29 @@
+.back-button {
+  height: 56px;
+  width: 90%;
+  text-decoration: none;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 500;
+}
+.back-button__corner {
+  width: 15px;
+  height: 15px;
+  transform: rotate(-45deg);
+  background-color: transparent;
+  border-top: 3px solid #fff;
+  border-left: 3px solid #fff;
+  position: absolute;
+  left: 0;
+  transition: all 0.3s linear;
+}
+.back-button:hover .back-button__corner {
+  left: -10px;
+}

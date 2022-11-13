@@ -1,0 +1,14 @@
+.main {
+  width: 100%;
+  height: 100%;
+  padding: 18px 16px 61px 16px;
+  box-sizing: border-box;
+}
+.main__button-container {
+  height: 75%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 5%;
+}

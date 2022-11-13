@@ -1,0 +1,224 @@
+.instruction {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  align-items: center;
+  padding: 18px 35px 61px 35px;
+  box-sizing: border-box;
+}
+.instruction__text {
+  color: #348ff3;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: -0.4099999964237213px;
+  text-align: left;
+  margin: 0;
+  width: 287px;
+}
+.instruction__text_colored {
+  color: #ffbe30;
+}
+.instruction__key-generator {
+  width: 287px;
+  height: 99px;
+  border: 1.5px solid #348ff3;
+  border-radius: 13px;
+  padding: 8px 17px;
+  color: #348ff3;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: -0.4099999964237213px;
+  text-align: left;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  text-decoration: underline;
+  margin: 10px auto 36px auto;
+}
+.instruction__text-tip {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  width: 287px;
+  color: #348ff3;
+}
+.instruction__link-box {
+  display: flex;
+  flex-direction: column;
+  margin: 34px auto;
+}
+.instruction__gallery {
+  margin: 53px 0 48px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.instruction__step-image {
+  z-index: 1;
+}
+.instruction__gallery-row {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+}
+.instruction__gallery-row.first {
+  height: 174px;
+}
+.instruction__gallery-row.second {
+  height: 176px;
+}
+.instruction__step-tooltip {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+  color: #348ff3;
+  position: absolute;
+}
+.instruction__step-rectangle {
+  border: 1px solid #ffbe30;
+  border-radius: 2.12811px;
+  z-index: 2;
+  position: absolute;
+}
+.instruction__step-rectangle.one {
+  width: 17px;
+  height: 10px;
+  bottom: 14%;
+  left: 30%;
+}
+.instruction__step-rectangle.one::before {
+  content: '';
+  position: absolute;
+  width: 118px;
+  height: 1px;
+  background-color: #ffbe30;
+  bottom: 5%;
+  right: 100%;
+  z-index: 2;
+}
+.instruction__step-rectangle.one::after {
+  z-index: 2;
+  content: '';
+  width: 3px;
+  height: 3px;
+  position: absolute;
+  background-color: #ffbe30;
+  border-radius: 50%;
+  right: 135px;
+  top: 7px;
+}
+.instruction__step-tooltip.one {
+  bottom: 15%;
+  left: -33%;
+}
+.instruction__step-rectangle.two {
+  width: 34px;
+  height: 13px;
+  bottom: 37.5%;
+  left: 65.5%;
+}
+.instruction__step-rectangle.two::before {
+  content: '';
+  position: absolute;
+  width: 94px;
+  height: 1px;
+  background-color: #ffbe30;
+  bottom: 45%;
+  left: 100%;
+  z-index: 2;
+}
+.instruction__step-rectangle.two::after {
+  z-index: 2;
+  content: '';
+  width: 3px;
+  height: 3px;
+  position: absolute;
+  background-color: #ffbe30;
+  border-radius: 50%;
+  left: 127px;
+  top: 5px;
+}
+.instruction__step-tooltip.two {
+  bottom: 41%;
+  right: -33%;
+}
+.instruction__step-rectangle.three {
+  width: 72px;
+  height: 10px;
+  bottom: 13%;
+  left: 5%;
+}
+.instruction__step-rectangle.three::before {
+  content: '';
+  position: absolute;
+  width: 71px;
+  height: 1px;
+  background-color: #ffbe30;
+  bottom: 45%;
+  right: 100%;
+  z-index: 2;
+}
+.instruction__step-rectangle.three::after {
+  z-index: 2;
+  content: '';
+  width: 3px;
+  height: 3px;
+  position: absolute;
+  background-color: #ffbe30;
+  border-radius: 50%;
+  right: 142px;
+  top: 4px;
+}
+.instruction__step-tooltip.three {
+  bottom: 16%;
+  left: -33%;
+}
+.instruction__step-rectangle.four {
+  width: 23px;
+  height: 10px;
+  bottom: 44.5%;
+  right: 4.5%;
+}
+.instruction__step-rectangle.four::before {
+  content: '';
+  position: absolute;
+  width: 73px;
+  height: 1px;
+  background-color: #ffbe30;
+  bottom: 45%;
+  left: 100%;
+  z-index: 2;
+}
+.instruction__step-rectangle.four::after {
+  z-index: 2;
+  content: '';
+  width: 3px;
+  height: 3px;
+  position: absolute;
+  background-color: #ffbe30;
+  border-radius: 50%;
+  left: 95px;
+  top: 3px;
+}
+.instruction__step-tooltip.four {
+  bottom: 48%;
+  right: -33%;
+}
+.instruction__button-container {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.instruction__title {
+  color: #348ff3;
+  text-align: left;
+  width: 287px;
+  margin: 20% 0 18px 0;
+  font-size: 32px;
+  line-height: 34px;
+  font-weight: 700;
+}

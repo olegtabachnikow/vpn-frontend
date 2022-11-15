@@ -21,7 +21,7 @@ function Main() {
           addText={'Активен до 20.12.22'}
         />
         <MenuLink
-          path='/'
+          path='/help'
           image={weirdSmileIcon}
           currentClass='btn-not-understand'
           title='Мне не

@@ -50,18 +50,80 @@
 
 .menu-button.btn-balance {
   background-color: #ff824b;
+  width: 49%;
+  height: 49%;
 }
 .menu-button.btn-referrals {
-  height: 48%;
+  height: 49%;
   background-color: #7472eb;
 }
 .menu-button.btn-traffic {
+  width: 49%;
+  height: 49%;
   background-color: #f95273;
 }
 .menu-button.btn-support {
+  width: 49%;
+  height: 49%;
   background-color: #348ff3;
 }
 .menu-button.btn-options .menu-button__icon {
   width: 32px;
   height: 32px;
+}
+.menu-button.btn-our-values {
+  height: 23%;
+  margin-bottom: 2%;
+  width: 100%;
+  background-color: #ff824b;
+}
+.menu-button.btn-our-values .menu-button__icon {
+  height: 40px;
+}
+.menu-button.btn-our-values .menu-button__title {
+  font-size: 24px;
+}
+.menu-button.btn-our-possibilities {
+  height: 23%;
+  margin-bottom: 2%;
+  width: 100%;
+  background-color: #f95273;
+}
+.menu-button.btn-our-possibilities .menu-button__title {
+  font-size: 24px;
+}
+.menu-button.btn-our-possibilities .menu-button__icon {
+  height: 40px;
+}
+
+.menu-button.btn-news {
+  height: 100%;
+  width: 49%;
+  background-color: #348ff3;
+}
+.menu-button.btn-news .menu-button__title {
+  font-size: 24px;
+}
+
+.menu-button.btn-news {
+  height: 100%;
+  width: 49%;
+  background-color: #348ff3;
+}
+.menu-button.btn-faq {
+  height: 49%;
+  width: 49%;
+  background-color: #7472eb;
+  margin-bottom: 2%;
+}
+.menu-button.btn-faq .menu-button__icon {
+  height: 40px;
+}
+.menu-button.btn-no-responce {
+  height: 48%;
+  width: 49%;
+  background-color: #ffbe30;
+}
+.menu-button.btn-no-responce .menu-button__icon {
+  height: 40px;
 }

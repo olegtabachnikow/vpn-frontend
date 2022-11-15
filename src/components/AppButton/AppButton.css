@@ -44,3 +44,30 @@
   background-color: #fff;
   border: 1px solid transparent;
 }
+.app-button-traffic-primary {
+  width: 100%;
+  border-color: transparent;
+  color: #f95273;
+  margin-bottom: 15px;
+}
+.app-button-traffic {
+  border: 1.5px solid #ffffff;
+  background-color: transparent;
+  color: #fff;
+  font-size: 14px;
+  margin: 0;
+  width: 48%;
+}
+.app-button.app-button-support {
+  width: 100%;
+  color: #348ff3;
+  border-color: transparent;
+  margin: 107px 0 0 0;
+}
+.app-button-values {
+  color: #ff824b;
+  border-color: transparent;
+  font-size: 14px;
+  width: 80%;
+  margin: 0 auto;
+}

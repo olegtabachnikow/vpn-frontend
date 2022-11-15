@@ -9,7 +9,7 @@ function Referral() {
     <section className='referral'>
       <BackButton
         text='Реферальная программа'
-        path='/'
+        path={-1}
         currentClass='back-button-referral'
       />
       <div className='referral__content'>

@@ -91,7 +91,8 @@
   line-height: 32px;
 }
 .menu-link.btn-referrals {
-  height: 48%;
+  height: 49%;
+  width: 49%;
   background-color: #7472eb;
 }
 .menu-link__title.btn-referrals {

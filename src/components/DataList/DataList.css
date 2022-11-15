@@ -1,0 +1,13 @@
+.data-list {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding: 0;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 17px;
+  height: 80%;
+  position: relative;
+  z-index: 1;
+}

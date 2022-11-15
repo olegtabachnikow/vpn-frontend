@@ -9,6 +9,7 @@ import stepThree from '../../images/instruction3-min.png';
 import stepFour from '../../images/instruction4-min.png';
 import copyIcon from '../../images/copy.png';
 import copiedIcon from '../../images/check.png';
+import BackButton from '../BackButton/BackButton';
 
 function Instruction() {
   const [progress, setProgress] = React.useState(0);
@@ -25,6 +26,11 @@ function Instruction() {
   }
   return (
     <section className='instruction'>
+      <BackButton
+        path='/'
+        text='Ключ доступа к Outline'
+        currentClass='btn-my-vpn'
+      />
       {progress === 0 && (
         <>
           <p className='instruction__text'>

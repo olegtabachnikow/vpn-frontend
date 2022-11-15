@@ -2,7 +2,7 @@ import React from 'react';
 import './Popup.css';
 import ReactSwipeEvents from 'react-swipe-events';
 
-function Popup({ title, currentClass, children, isCurrentHidden, handler }) {
+function Popup({ title, currentClass, children, isCurrentHidden, onClose }) {
   const tg = window.Telegram.WebApp;
   const [isHidden, setIsHidden] = React.useState(true);
   React.useEffect(() => {
@@ -12,7 +12,7 @@ function Popup({ title, currentClass, children, isCurrentHidden, handler }) {
   }, [isCurrentHidden]);
 
   function swipeDown() {
-    handler && handler();
+    onClose && onClose();
     !tg.isExpanded && tg.expand();
     !isHidden && setIsHidden(true);
   }
@@ -22,14 +22,21 @@ function Popup({ title, currentClass, children, isCurrentHidden, handler }) {
       onSwipedUp={() => isHidden && setIsHidden(false)}
     >
       <>
-        <div className={`popup__overlay ${!isHidden && 'active'}`}></div>
+        <div
+          onClick={(e) => e.stopPropagation()}
+          className={`popup__overlay ${!isHidden && 'active'}`}
+        ></div>
         <section
           onClick={() => setIsHidden(false)}
           className={`popup ${!isHidden && 'active'} ${currentClass}`}
         >
           <span className='popup__line'></span>
           <p className={`popup__title ${!isHidden && 'active'}`}>{title}</p>
-          <div className={`${isHidden && 'popup__text-container_hidden'}`}>
+          <div
+            className={`popup__content ${
+              isHidden && 'popup__text-container_hidden'
+            }`}
+          >
             {children}
           </div>
         </section>

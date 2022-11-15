@@ -14,12 +14,12 @@
   font-weight: 500;
 }
 .back-button__corner {
-  width: 15px;
-  height: 15px;
+  width: 10px;
+  height: 10px;
   transform: rotate(-45deg);
   background-color: transparent;
-  border-top: 3px solid #fff;
-  border-left: 3px solid #fff;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
   position: absolute;
   left: 0;
   transition: all 0.3s linear;
@@ -32,5 +32,11 @@
   height: 10%;
 }
 .back-button.btn-my-vpn .back-button__corner {
+  border-color: #006ffd;
+}
+.back-button-help {
+  color: #006ffd;
+}
+.back-button.back-button-help .back-button__corner {
   border-color: #006ffd;
 }

@@ -1,5 +1,7 @@
 .app {
   width: 100vw;
+  min-width: 375px;
+  min-height: 708px;
   height: 100vh;
   box-sizing: border-box;
   overflow: hidden;
@@ -12,4 +14,11 @@
 }
 .app-referral {
   background-color: #7472eb;
+}
+@media screen and (orientation: landscape) {
+  .app {
+    width: 375px;
+    height: 708px;
+    overflow-y: scroll;
+  }
 }

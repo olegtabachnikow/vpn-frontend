@@ -7,6 +7,8 @@ import Main from '../Main/Main';
 import Gift from '../Gift/Gift';
 import MyVpn from '../MyVpn/MyVpn';
 import Referral from '../Referral/Referral';
+import { getCurrentUser } from '../../utils/roboApi';
+import Help from '../Help/Help';
 
 function App() {
   const tg = window.Telegram.WebApp;
@@ -19,7 +21,10 @@ function App() {
       return parseInt(data.replace('/', ''));
     }
   };
-  console.log(userId());
+  React.useEffect(() => {
+    const id = userId();
+    getCurrentUser(id);
+  }, []);
 
   React.useEffect(() => {
     tg.onEvent('viewportChanged', () => tg.expand());
@@ -42,6 +47,7 @@ function App() {
         <Route path='/gift' element={<Gift />} />
         <Route path='/my-vpn' element={<MyVpn />} />
         <Route path='/referral' element={<Referral />} />
+        <Route path='/help' element={<Help />} />
       </Routes>
     </div>
   );

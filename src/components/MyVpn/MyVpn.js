@@ -10,11 +10,18 @@ import supportIcon from '../../images/support.png';
 import opetionsIcon from '../../images/options.png';
 import Popup from '../Popup/Popup';
 import Balance from '../Balance/Balance';
+import Traffic from '../Traffic/Traffic';
+import Support from '../Support/Support';
 
 function MyVpn() {
   const [isBalansePopupHidden, setIsBalansePopupHidden] = React.useState(true);
+  const [isTrafficPopupHidden, setIsTrafficPopupHidden] = React.useState(true);
+  const [isSupportPopupHidden, setIsSupportPopupHidden] = React.useState(true);
+
   function closeAllPopups() {
     setIsBalansePopupHidden(true);
+    setIsTrafficPopupHidden(true);
+    setIsSupportPopupHidden(true);
   }
   React.useEffect(() => {
     closeAllPopups();
@@ -42,6 +49,7 @@ function MyVpn() {
         />
         <MenuButton
           image={trafficIcon}
+          handler={() => setIsTrafficPopupHidden(false)}
           currentClass='btn-traffic'
           title='Трафик'
           text={'Оставшиеся Гб'}
@@ -49,6 +57,7 @@ function MyVpn() {
         />
         <MenuButton
           image={supportIcon}
+          handler={() => setIsSupportPopupHidden(false)}
           currentClass='btn-support'
           title='Саппорт'
           text={'Напишите нам'}
@@ -66,9 +75,25 @@ function MyVpn() {
         title='Баланс'
         isCurrentHidden={isBalansePopupHidden}
         currentClass='popup-balance'
-        handler={setIsBalansePopupHidden}
+        onClose={closeAllPopups}
       >
         <Balance />
+      </Popup>
+      <Popup
+        title='Трафик'
+        isCurrentHidden={isTrafficPopupHidden}
+        currentClass='popup-traffic'
+        onClose={closeAllPopups}
+      >
+        <Traffic />
+      </Popup>
+      <Popup
+        title=''
+        isCurrentHidden={isSupportPopupHidden}
+        currentClass='popup-support'
+        onClose={closeAllPopups}
+      >
+        <Support />
       </Popup>
     </section>
   );

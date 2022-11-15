@@ -1,16 +1,11 @@
 import React from 'react';
 import './AppButton.css';
 
-function AppButton({ background, color, text, border, handler }) {
+function AppButton({ text, handler, currentClass }) {
   return (
     <button
-      className='app-button'
+      className={`app-button ${currentClass}`}
       onClick={handler}
-      style={{
-        backgroundColor: `${background}`,
-        color: `${color}`,
-        border: `1px solid ${border}`,
-      }}
       type='button'
     >
       {text}

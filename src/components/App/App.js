@@ -5,16 +5,25 @@ import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import Instruction from '../Instruction/Instruction';
 import Main from '../Main/Main';
 import Gift from '../Gift/Gift';
+import MyVpn from '../MyVpn/MyVpn';
+import Referral from '../Referral/Referral';
 
 function App() {
   const navigate = useNavigate();
-  let location = useLocation();
+  const location = useLocation();
+  const queryParams = new URLSearchParams(window.location.search);
+  const userId = () => {
+    const data = queryParams.get('user_id');
+    if (data) {
+      return parseInt(data.replace('/', ''));
+    }
+  };
+  console.log(userId);
   React.useEffect(() => {
     window.Telegram.WebApp && window.Telegram.WebApp.expand();
   }, []);
 
   React.useEffect(() => {
-    console.log(window.location.href);
     navigate('/intro');
   }, []);
 
@@ -25,6 +34,8 @@ function App() {
         <Route path='/intro' element={<Intro />} />
         <Route path='/instruction' element={<Instruction />} />
         <Route path='/gift' element={<Gift />} />
+        <Route path='/my-vpn' element={<MyVpn />} />
+        <Route path='/referral' element={<Referral />} />
       </Routes>
     </div>
   );

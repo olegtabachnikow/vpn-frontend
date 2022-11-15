@@ -7,15 +7,25 @@ import stepOne from '../../images/instruction1-min.png';
 import stepTwo from '../../images/instruction2-min.png';
 import stepThree from '../../images/instruction3-min.png';
 import stepFour from '../../images/instruction4-min.png';
+import copyIcon from '../../images/copy.png';
+import copiedIcon from '../../images/check.png';
 
 function Instruction() {
-  const [progress, setProgress] = React.useState(5);
+  const [progress, setProgress] = React.useState(0);
+  const [isCopied, setIsCopied] = React.useState(false);
   const [value, setValue] = React.useState(
     'ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp6ZVV5RmFEcFg1bzM=@20.224.3.185:25229/?outline=1'
   );
+  function copyToClipboard() {
+    setIsCopied(true);
+    navigator.clipboard.writeText(value);
+    setTimeout(() => {
+      setIsCopied(false);
+    }, 3000);
+  }
   return (
     <section className='instruction'>
-      {progress === 5 && (
+      {progress === 0 && (
         <>
           <p className='instruction__text'>
             1. Скопируй свой <br />
@@ -24,33 +34,50 @@ function Instruction() {
             <br />
             получить доступ <br />к VPN.
           </p>
-          <span className='instruction__key-generator'>{value}</span>
-          <p className='instruction__text'>
-            2. Скачай приложение
-            <span className='instruction__text_colored'> Outline </span>
-            на свое устройство.
-          </p>
-          <p className='instruction__text-tip'>
-            Это безопасно, проверено и разработано при участии Google.
-          </p>
+          <div onClick={copyToClipboard} className='instruction__key-generator'>
+            <span className='instruction__key'>{value}</span>
+            {
+              <img
+                className='instruction__copy-icon'
+                src={!isCopied ? copyIcon : copiedIcon}
+                alt='copy'
+              />
+            }
+          </div>
+          <div>
+            <p className='instruction__text'>
+              2. Скачай приложение
+              <span className='instruction__text_colored'> Outline </span>
+              на свое устройство.
+            </p>
+            <p className='instruction__text-tip'>
+              Это безопасно, проверено и разработано при участии Google.
+            </p>
+          </div>
           <div className='instruction__link-box'>
-            <a href='#' target='_blank' rel='noreferrer'>
+            <a
+              href='https://play.google.com/store/apps/details?id=org.outline.android.client&hl=en_US&gl=US&pli=1'
+              target='_blank'
+              rel='noreferrer'
+            >
               <img src={googlePlay} alt='google play' />
             </a>
-            <a href='#' target='_blank' rel='noreferrer'>
+            <a
+              href='https://apps.apple.com/us/app/outline-app/id1356177741'
+              target='_blank'
+              rel='noreferrer'
+            >
               <img src={appStore} alt='app store' />
             </a>
           </div>
           <AppButton
-            background={'#348FF3'}
-            color='#FFF'
+            currentClass='app-button-instruction-primary'
             text='Далее'
-            border='#348FF3'
             handler={() => setProgress((state) => ++state)}
           />
         </>
       )}
-      {progress === 6 && (
+      {progress === 1 && (
         <>
           <p className='instruction__text'>
             3. Вставь ключ <br />в приложение
@@ -93,15 +120,13 @@ function Instruction() {
             </div>
           </div>
           <AppButton
-            background={'#348FF3'}
-            color='#FFF'
+            currentClass='app-button-instruction-primary'
             text='Далее'
-            border='#348FF3'
             handler={() => setProgress((state) => ++state)}
           />
         </>
       )}
-      {progress === 7 && (
+      {progress === 2 && (
         <>
           <span className='instruction__title'>
             Отлично! <br />
@@ -113,17 +138,13 @@ function Instruction() {
           </p>
           <div className='instruction__button-container'>
             <AppButton
-              background={'#FFF'}
-              color='#348FF3'
+              currentClass='app-button-instruction-secondary'
               text='Перейти в Telegram'
-              border='#348FF3'
               handler={() => setProgress((state) => state)}
             />{' '}
             <AppButton
-              background={'#348FF3'}
-              color='#FFF'
+              currentClass='app-button-instruction-primary'
               text='Возможности robo'
-              border='#348FF3'
               handler={() => setProgress((state) => state)}
             />
           </div>

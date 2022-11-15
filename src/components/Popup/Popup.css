@@ -12,11 +12,11 @@
   position: absolute;
   z-index: 2;
   left: 0;
-  bottom: -80%;
+  bottom: calc(-80%);
   transition: all 0.5s ease-in-out;
 }
 .popup.active {
-  bottom: -41px;
+  bottom: -10px;
 }
 .popup.active .popup__title {
   font-size: 24px;
@@ -64,4 +64,20 @@
 }
 .popup__overlay.active {
   opacity: 1;
+}
+.popup__text-container_hidden {
+  opacity: 0;
+  overflow-y: scroll;
+}
+
+.popup-referral .popup__line {
+  background-color: #7472eb;
+}
+.popup-referral {
+  color: #7472eb;
+  background-color: #fff;
+}
+.popup-referral__text {
+  font-size: 13px;
+  line-height: 17px;
 }

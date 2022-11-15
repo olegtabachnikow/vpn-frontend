@@ -31,21 +31,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
-.intro__image-zero {
-  margin: 16px;
+.intro__image {
+  z-index: 1;
 }
-.intro__image-one {
-  margin: 0 16px 16px 0;
+.intro__image-sector {
+  z-index: 2;
+  opacity: 0;
+  position: absolute;
+  transition: opacity 1.5s ease;
+  top: 0;
+  left: 0;
 }
-.intro__image-two {
-  margin: 0 16px 16px 0;
-}
-.intro__image-three {
-  margin: 0 16px 0 0;
-}
-.intro__image-four {
-  margin: 0px;
+.intro__image-sector.active {
+  opacity: 1;
 }
 .intro__text-container {
   display: flex;

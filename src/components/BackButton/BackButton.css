@@ -27,3 +27,10 @@
 .back-button:hover .back-button__corner {
   left: -10px;
 }
+.back-button.btn-my-vpn {
+  color: #006ffd;
+  height: 10%;
+}
+.back-button.btn-my-vpn .back-button__corner {
+  border-color: #006ffd;
+}

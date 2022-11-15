@@ -1,6 +1,6 @@
 import React from 'react';
 import './Main.css';
-import MainMenuButton from '../MainMenuButton/MainMenuButton';
+import MenuLink from '../MenuLink/MenuLink';
 import glassesIcon from '../../images/smile-min.png';
 import moneyIcon from '../../images/winged-money-min.png';
 import loveSmileIcon from '../../images/love-smile-min.png';
@@ -12,15 +12,15 @@ function Main() {
   return (
     <section className='main'>
       <div className='main__button-container'>
-        <MainMenuButton
-          path='/'
+        <MenuLink
+          path='/my-vpn'
           image={glassesIcon}
           currentClass='btn-my-vpn'
           title='Мой VPM'
           text={'Тариф: NO LIMIT'}
           addText={'Активен до 20.12.22'}
         />
-        <MainMenuButton
+        <MenuLink
           path='/'
           image={weirdSmileIcon}
           currentClass='btn-not-understand'
@@ -29,7 +29,7 @@ function Main() {
           text={'Возможности, FAQ, новости'}
           addText={null}
         />
-        <MainMenuButton
+        <MenuLink
           path='/'
           image={moneyIcon}
           currentClass='btn-tariffes'
@@ -37,8 +37,8 @@ function Main() {
           text={'Цены, акции'}
           addText={null}
         />
-        <MainMenuButton
-          path='/'
+        <MenuLink
+          path='/referral'
           image={loveSmileIcon}
           currentClass='btn-referral'
           title='Реферальная
@@ -46,7 +46,7 @@ function Main() {
           text={'10+10 Гб'}
           addText={null}
         />
-        <MainMenuButton
+        <MenuLink
           path='/gift'
           image={letterIcon}
           currentClass='btn-gift'
@@ -56,7 +56,7 @@ function Main() {
           addText={null}
         />
       </div>
-      <MainMenuButton
+      <MenuLink
         path='/instruction'
         image={robotIcon}
         currentClass='btn-robot'

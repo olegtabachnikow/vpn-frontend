@@ -6,14 +6,13 @@ import AppButton from '../AppButton/AppButton';
 
 function Gift() {
   const [discount, setDiscount] = React.useState(0);
-  const [progress, setProgress] = React.useState(8);
+  const [progress, setProgress] = React.useState(0);
   const [userDiscount, setUserDiscount] = React.useState('1');
 
   function handleClick() {
     setProgress((state) => ++state);
   }
   function handleSubmit(e) {
-    console.log(userDiscount);
     e.preventDefault();
     handleClick();
   }
@@ -24,7 +23,7 @@ function Gift() {
   return (
     <section className='gift'>
       <BackButton path='/' text='Подарить VPN' />
-      {progress === 8 && (
+      {progress === 0 && (
         <>
           <h1 className='gift__title'>
             Подарить <br />
@@ -35,16 +34,14 @@ function Gift() {
             подарок скидка 50%
           </h2>
           <AppButton
-            color='#FF824B'
-            background='#fff'
+            currentClass='app-button-gift'
             text='Выбрать подарок'
-            border='transparent'
             handler={handleClick}
           />
           <span className='gift__explanation'>
             Выбрав подарок — вы принимаете условия сервиса.{' '}
           </span>
-          <Popup title='Подробные условия' className='popup-gift'>
+          <Popup title='Подробные условия' currentClass='popup-gift'>
             {
               <div className='popup-gift__text'>
                 <p>
@@ -75,7 +72,7 @@ function Gift() {
           </Popup>
         </>
       )}
-      {progress === 9 && (
+      {progress === 1 && (
         <>
           <h1 className='gift__title'>
             Выбери
@@ -163,7 +160,7 @@ function Gift() {
           </button>
         </>
       )}
-      {progress === 10 && (
+      {progress === 2 && (
         <>
           <h1 className='gift__title'>
             Подарить <br />
@@ -206,10 +203,8 @@ function Gift() {
             )}
           </span>
           <AppButton
-            color='#FF824B'
-            background='#fff'
+            currentClass='app-button-gift'
             text='Перейти к оплате'
-            border='transparent'
             handler={() => console.log('finito')}
           />
         </>

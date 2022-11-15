@@ -1,6 +1,6 @@
 .app-button {
   box-sizing: border-box;
-  width: 287px;
+  width: 90%;
   min-height: 48px;
   border-radius: 12px;
   cursor: pointer;
@@ -13,4 +13,34 @@
 }
 .app-button:first-of-type {
   margin-top: 0;
+}
+.app-button-intro-primary {
+  background-color: transparent;
+  color: #348ff3;
+  border: 1px solid #348ff3;
+}
+.app-button-intro-secondary {
+  background-color: #348ff3;
+  color: #fff;
+  border: 1px solid #348ff3;
+}
+.app-button-gift {
+  color: #ff824b;
+  background-color: #fff;
+  border-color: transparent;
+}
+.app-button-instruction-primary {
+  background-color: #348ff3;
+  color: #fff;
+  border: 1px solid #348ff3;
+}
+.app-button-instruction-secondary {
+  background-color: #fff;
+  color: #348ff3;
+  border: 1px solid #348ff3;
+}
+.app-button-referral {
+  color: #7472eb;
+  background-color: #fff;
+  border: 1px solid transparent;
 }

@@ -1,0 +1,84 @@
+.referral {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 18px 35px 61px 35px;
+  box-sizing: border-box;
+  color: #fff;
+}
+.referral__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.referral__title {
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 32px;
+  margin: 5px 0;
+}
+.referral__text-box {
+  width: 100%;
+}
+.referral__text {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 18px;
+  margin: 0;
+}
+.referral__stats {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2%;
+}
+.referral__stat {
+  border: 1.5px solid #ffffff;
+  border-radius: 12px;
+  padding: 12px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.referral__stat_small {
+  width: 49%;
+}
+.referral__stat_big {
+  width: 100%;
+  flex-direction: row;
+  margin-top: 2%;
+}
+.referral__stat_big .referral__stat-value {
+  width: 50%;
+}
+.referral__stat_big .referral__stat-text {
+  margin: 0;
+  width: 50%;
+}
+.referral__stat-value {
+  font-size: 36px;
+  font-weight: 700;
+}
+.referral__stat-text {
+  font-size: 10px;
+  line-height: 11px;
+  margin: 10px 0 0 0;
+}
+.referral__button-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.referral__tips {
+  font-size: 11px;
+  line-height: 13px;
+  margin-bottom: 20px;
+  width: 90%;
+  text-align: center;
+}

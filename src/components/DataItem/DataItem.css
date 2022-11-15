@@ -36,7 +36,6 @@
   font-size: 20px;
   width: 100%;
   text-align: start;
-  max-height: 76px;
   height: 100%;
 }
 .data-item__text {
@@ -53,4 +52,7 @@
 }
 .popup-values .data-item_expanded {
   background-color: #ff824b;
+}
+.data-item_expanded .data-item__button {
+  max-height: 80px;
 }

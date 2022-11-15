@@ -9,6 +9,7 @@ import MyVpn from '../MyVpn/MyVpn';
 import Referral from '../Referral/Referral';
 
 function App() {
+  const tg = window.Telegram.WebApp;
   const navigate = useNavigate();
   const location = useLocation();
   const queryParams = new URLSearchParams(window.location.search);
@@ -18,8 +19,13 @@ function App() {
       return parseInt(data.replace('/', ''));
     }
   };
-  console.log(userId);
+  console.log(userId());
+
   React.useEffect(() => {
+    tg.onEvent('viewportChanged', () => tg.expand());
+  });
+  React.useEffect(() => {
+    tg.enableClosingConfirmation();
     window.Telegram.WebApp && window.Telegram.WebApp.expand();
   }, []);
 

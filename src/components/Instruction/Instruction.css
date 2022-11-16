@@ -7,6 +7,7 @@
   align-items: center;
   padding: 18px 35px 61px 35px;
   box-sizing: border-box;
+  font-family: 'Actay', sans-serif;
 }
 .instruction__text {
   color: #348ff3;
@@ -17,6 +18,7 @@
   text-align: left;
   margin: 0;
   width: 287px;
+  font-family: 'Actay Wide', sans-serif;
 }
 .instruction__text_colored {
   color: #ffbe30;
@@ -232,4 +234,5 @@
   font-size: 32px;
   line-height: 34px;
   font-weight: 700;
+  font-family: 'Actay Wide', sans-serif;
 }

@@ -1,0 +1,14 @@
+@font-face {
+  font-family: 'Actay';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./Actay-Regular.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Actay Wide';
+  font-style: bold;
+  font-weight: 700;
+  font-display: swap;
+  src: url('./ActayWide-Bold.otf') format('opentype');
+}

@@ -12,6 +12,7 @@
   font-size: 14px;
   line-height: 17px;
   font-weight: 500;
+  font-family: 'Inter', sans-serif;
 }
 .back-button__corner {
   width: 10px;
@@ -39,4 +40,7 @@
 }
 .back-button.back-button-help .back-button__corner {
   border-color: #006ffd;
+}
+.back-button-referral {
+  width: 100%;
 }

@@ -1,0 +1,10 @@
+.news {
+  margin-top: 30px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.news__button-box {
+  margin-top: auto;
+}

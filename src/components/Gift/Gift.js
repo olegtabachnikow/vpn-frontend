@@ -8,6 +8,7 @@ function Gift() {
   const [discount, setDiscount] = React.useState(0);
   const [progress, setProgress] = React.useState(0);
   const [userDiscount, setUserDiscount] = React.useState('1');
+  const [isGiftPopupHidden, setIsGiftPopupHidden] = React.useState(true);
 
   function handleClick() {
     setProgress((state) => ++state);
@@ -41,7 +42,12 @@ function Gift() {
           <span className='gift__explanation'>
             Выбрав подарок — вы принимаете условия сервиса.{' '}
           </span>
-          <Popup title='Подробные условия' currentClass='popup-gift'>
+          <Popup
+            title='Подробные условия'
+            currentClass='popup-gift'
+            isHidden={isGiftPopupHidden}
+            handleHide={setIsGiftPopupHidden}
+          >
             {
               <div className='popup-gift__text'>
                 <p>
@@ -67,6 +73,11 @@ function Gift() {
                   если вы покупаете и дарите кому-то первый подарок, на каждый
                   второй будет автоматически применятсья скидка 50%.{' '}
                 </p>
+                <AppButton
+                  text='Понятно'
+                  currentClass='app-button-popup-gift'
+                  handler={() => setIsGiftPopupHidden(true)}
+                />
               </div>
             }
           </Popup>

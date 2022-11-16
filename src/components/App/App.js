@@ -27,11 +27,8 @@ function App() {
   }, []);
 
   React.useEffect(() => {
-    tg.onEvent('viewportChanged', () => tg.expand());
-  });
-  React.useEffect(() => {
     tg.enableClosingConfirmation();
-    window.Telegram.WebApp && window.Telegram.WebApp.expand();
+    tg.expand();
   }, []);
 
   React.useEffect(() => {

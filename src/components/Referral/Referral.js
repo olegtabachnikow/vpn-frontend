@@ -5,6 +5,7 @@ import BackButton from '../BackButton/BackButton';
 import AppButton from '../AppButton/AppButton';
 
 function Referral() {
+  const [isReferPopupHidden, setIsReferPopupHidden] = React.useState(true);
   return (
     <section className='referral'>
       <BackButton
@@ -57,27 +58,37 @@ function Referral() {
           </p>
         </div>
       </div>
-      <Popup title='Подробные условия' currentClass='popup-referral'>
+      <Popup
+        title='Подробные условия'
+        currentClass='popup-referral'
+        isHidden={isReferPopupHidden}
+        handleHide={setIsReferPopupHidden}
+      >
         {
           <>
-            <p>
+            <p className='referral__popup-text'>
               1. Чтобы программа действовала — нужно поделиться ссылкой с
               другом, а ему просто перейти по ней в телеграмм.
             </p>{' '}
-            <p>
+            <p className='referral__popup-text'>
               2. При первой оплата от приглашенного человека — вам начисляться
               50% от размера первой покупки. другу же будет применена скидка 50%
               на любую первую покупку.
             </p>{' '}
-            <p>
+            <p className='referral__popup-text'>
               3. Деньги полученные от реферальной программы возможно потратить
               на дальнейшие покупки в робо только для себя.
             </p>{' '}
-            <p>
+            <p className='referral__popup-text'>
               4. Программа действует только, если пользователь ранее не
               регистрировался в нашем сервисе. регистрация — это переход в
               телеграм на robo (запуск бота).
             </p>
+            <AppButton
+              text='Понятно'
+              currentClass='app-button-popup-referral'
+              handler={() => setIsReferPopupHidden(true)}
+            />
           </>
         }
       </Popup>

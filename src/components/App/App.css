@@ -19,6 +19,7 @@
   .app {
     width: 375px;
     height: 708px;
+    margin: 0 auto;
     overflow-y: scroll;
   }
 }

@@ -22,6 +22,7 @@
 }
 .referral__text-box {
   width: 100%;
+  font-family: 'Actay Wide', sans-serif;
 }
 .referral__text {
   font-weight: 700;
@@ -63,11 +64,13 @@
 .referral__stat-value {
   font-size: 36px;
   font-weight: 700;
+  font-family: 'Actay Wide', sans-serif;
 }
 .referral__stat-text {
   font-size: 10px;
   line-height: 11px;
   margin: 10px 0 0 0;
+  font-family: 'Inter', sans-serif;
 }
 .referral__button-container {
   width: 100%;
@@ -81,4 +84,8 @@
   margin-bottom: 20px;
   width: 90%;
   text-align: center;
+  font-family: 'Inter', sans-serif;
+}
+.referral__popup-text {
+  margin: 10px;
 }

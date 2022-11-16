@@ -12,6 +12,7 @@
   text-decoration: none;
   padding: 12px;
   box-sizing: border-box;
+  font-family: 'Actay', sans-serif;
 }
 .menu-link__icon {
   position: absolute;
@@ -23,6 +24,7 @@
 .menu-link__title {
   font-weight: 700;
   margin: 0 0 3px 0;
+  font-family: 'Actay Wide', sans-serif;
 }
 
 .menu-link__text {
@@ -91,8 +93,8 @@
   line-height: 32px;
 }
 .menu-link.btn-referrals {
-  height: 49%;
-  width: 49%;
+  height: 48%;
+  width: 48%;
   background-color: #7472eb;
 }
 .menu-link__title.btn-referrals {

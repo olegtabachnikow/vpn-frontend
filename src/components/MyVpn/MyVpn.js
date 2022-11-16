@@ -23,9 +23,11 @@ function MyVpn() {
     setIsTrafficPopupHidden(true);
     setIsSupportPopupHidden(true);
   }
+
   React.useEffect(() => {
     closeAllPopups();
   }, []);
+
   return (
     <section className='my-vpn'>
       <BackButton path='/' text='Мой VPN' currentClass='btn-my-vpn' />
@@ -73,25 +75,25 @@ function MyVpn() {
       />
       <Popup
         title='Баланс'
-        isCurrentHidden={isBalansePopupHidden}
+        isHidden={isBalansePopupHidden}
         currentClass='popup-balance'
-        onClose={closeAllPopups}
+        handleHide={setIsBalansePopupHidden}
       >
         <Balance />
       </Popup>
       <Popup
         title='Трафик'
-        isCurrentHidden={isTrafficPopupHidden}
+        isHidden={isTrafficPopupHidden}
         currentClass='popup-traffic'
-        onClose={closeAllPopups}
+        handleHide={setIsTrafficPopupHidden}
       >
         <Traffic />
       </Popup>
       <Popup
-        title=''
-        isCurrentHidden={isSupportPopupHidden}
+        title='Саппорт'
+        isHidden={isSupportPopupHidden}
         currentClass='popup-support'
-        onClose={closeAllPopups}
+        handleHide={setIsSupportPopupHidden}
       >
         <Support />
       </Popup>

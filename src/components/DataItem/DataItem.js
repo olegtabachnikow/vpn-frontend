@@ -9,8 +9,12 @@ function DataItem({ title, children }) {
   return (
     <li className={`data-item ${isExpanded && 'data-item_expanded'}`}>
       <div className='data-item__content'>
-        <button onClick={handleClick} className='data-item__button'>
-          {title}{' '}
+        <button
+          type='button'
+          onClick={handleClick}
+          className='data-item__button'
+        >
+          <span className='data-item__button-text'>{title}</span>
           <span
             className={`data-item__arrow ${
               isExpanded && 'data-item__arrow_rotated'

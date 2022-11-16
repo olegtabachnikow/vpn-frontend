@@ -16,6 +16,7 @@
   outline: none;
   border: 1px solid transparent;
   text-align: start;
+  font-family: 'Actay', sans-serif;
 }
 
 .menu-button__icon {
@@ -24,12 +25,13 @@
   left: 12px;
   width: 25%;
   height: 25%;
-  max-width: 40px;
-  max-height: 40px;
+  max-width: 35px;
+  max-height: 35px;
 }
 .menu-button__title {
   font-weight: 700;
   margin: 0 0 3px 0;
+  font-family: 'Actay Wide', sans-serif;
 }
 
 .menu-button__text {
@@ -50,30 +52,32 @@
 
 .menu-button.btn-balance {
   background-color: #ff824b;
-  width: 49%;
-  height: 49%;
+  width: 48%;
+  height: 48%;
 }
 .menu-button.btn-referrals {
-  height: 49%;
+  height: 48%;
   background-color: #7472eb;
 }
 .menu-button.btn-traffic {
-  width: 49%;
-  height: 49%;
+  width: 48%;
+  height: 48%;
   background-color: #f95273;
+  margin-left: auto;
 }
 .menu-button.btn-support {
-  width: 49%;
-  height: 49%;
+  width: 48%;
+  height: 48%;
   background-color: #348ff3;
+  margin-left: auto;
 }
 .menu-button.btn-options .menu-button__icon {
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
 }
 .menu-button.btn-our-values {
-  height: 23%;
-  margin-bottom: 2%;
+  height: 22%;
+  margin-bottom: 4%;
   width: 100%;
   background-color: #ff824b;
 }
@@ -84,8 +88,8 @@
   font-size: 24px;
 }
 .menu-button.btn-our-possibilities {
-  height: 23%;
-  margin-bottom: 2%;
+  height: 22%;
+  margin-bottom: 4%;
   width: 100%;
   background-color: #f95273;
 }
@@ -98,7 +102,7 @@
 
 .menu-button.btn-news {
   height: 100%;
-  width: 49%;
+  width: 48%;
   background-color: #348ff3;
 }
 .menu-button.btn-news .menu-button__title {
@@ -107,23 +111,42 @@
 
 .menu-button.btn-news {
   height: 100%;
-  width: 49%;
+  width: 48%;
   background-color: #348ff3;
 }
+.menu-button__title.btn-news {
+  font-size: 26px;
+  line-height: 20px;
+}
 .menu-button.btn-faq {
-  height: 49%;
-  width: 49%;
+  height: 48%;
+  width: 48%;
   background-color: #7472eb;
-  margin-bottom: 2%;
+  margin-bottom: 4%;
+  margin-left: auto;
 }
 .menu-button.btn-faq .menu-button__icon {
   height: 40px;
 }
 .menu-button.btn-no-responce {
-  height: 48%;
-  width: 49%;
+  height: 46%;
+  width: 48%;
   background-color: #ffbe30;
+  margin-left: auto;
+}
+.menu-button__title.btn-no-responce {
+  font-size: 16px;
+  line-height: 20px;
 }
 .menu-button.btn-no-responce .menu-button__icon {
   height: 40px;
+}
+.btn-our-values .menu-button__text {
+  font-size: 14px;
+}
+.btn-our-possibilities .menu-button__text {
+  font-size: 14px;
+}
+.btn-faq .menu-button__text {
+  font-size: 12px;
 }

@@ -48,6 +48,7 @@
   opacity: 1;
 }
 .intro__text-container {
+  font-family: 'Actay', sans-serif;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -62,6 +63,7 @@
   font-weight: 700;
   line-height: 23px;
   margin: 0;
+  font-family: 'Actay Wide', sans-serif;
 }
 .intro__title_colored {
   color: #ffbe30;

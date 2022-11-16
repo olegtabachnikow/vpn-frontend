@@ -1,3 +1,14 @@
+.data-list-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: scroll;
+  position: relative;
+  margin-bottom: 16px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  z-index: 5;
+}
 .data-list {
   display: flex;
   flex-direction: column;
@@ -7,7 +18,54 @@
   font-size: 14px;
   font-weight: 700;
   line-height: 17px;
-  height: 80%;
+  height: 100%;
   position: relative;
   z-index: 1;
+  overflow-y: scroll;
+  margin: 0;
+}
+.data-list-overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+.data-list-faq-overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+.data-list-values-overlay {
+  background: linear-gradient(
+    to top,
+    #ff824b 0%,
+    transparent 4%,
+    transparent 96%,
+    #ff824b 100%
+  );
+}
+.data-list-possibilities-overlay {
+  background: linear-gradient(
+    to top,
+    #f95273 0%,
+    transparent 4%,
+    transparent 96%,
+    #f95273 100%
+  );
+}
+.data-list-faq-overlay {
+  background: linear-gradient(
+    to top,
+    #7472eb 0%,
+    transparent 4%,
+    transparent 96%,
+    #7472eb 100%
+  );
 }

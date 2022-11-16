@@ -10,9 +10,7 @@
   line-height: 25px;
   padding: 0;
   font-weight: 700;
-}
-.app-button:first-of-type {
-  margin-top: 0;
+  font-family: 'Actay Wide', sans-serif;
 }
 .app-button-intro-primary {
   background-color: transparent;
@@ -27,6 +25,13 @@
 .app-button-gift {
   color: #ff824b;
   background-color: #fff;
+  border-color: transparent;
+}
+.app-button-popup-gift {
+  background-color: #ff824b;
+  color: #fff;
+  width: 90%;
+  margin: 20px auto 0 auto;
   border-color: transparent;
 }
 .app-button-instruction-primary {
@@ -70,4 +75,29 @@
   font-size: 14px;
   width: 80%;
   margin: 0 auto;
+}
+.app-button-possibilities {
+  color: #f95273;
+  border-color: transparent;
+  font-size: 14px;
+  width: 80%;
+  margin: 0 auto;
+}
+.app-button-faq {
+  color: #7472eb;
+  border-color: transparent;
+  font-size: 14px;
+  width: 80%;
+  margin: 0 auto;
+}
+.app-button-news {
+  color: #348ff3;
+  border-color: transparent;
+  width: 100%;
+}
+.app-button-popup-referral {
+  color: #fff;
+  background-color: #7472eb;
+  border-color: transparent;
+  margin: 20px auto 0 auto;
 }

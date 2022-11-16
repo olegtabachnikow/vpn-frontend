@@ -6,6 +6,7 @@
   align-items: center;
   padding: 18px 16px 61px 16px;
   box-sizing: border-box;
+  font-family: 'Actay Wide', sans-serif;
 }
 .gift__explanation {
   color: #fff;
@@ -17,7 +18,7 @@
 .gift__title {
   max-width: 285px;
   align-self: flex-start;
-  margin: 60px 0 20px 10%;
+  margin: 60px auto 20px 10%;
   font-size: 38px;
   line-height: 43px;
   color: #fff;
@@ -25,7 +26,7 @@
 .gift__subtitle {
   font-size: 24px;
   line-height: 30px;
-  margin: 0 0 auto 10%;
+  margin: 0 auto auto auto;
   align-self: flex-start;
   color: #fff;
 }
@@ -66,7 +67,7 @@
   margin-left: 28px;
   font-family: 'Inter', sans-serif;
   font-size: 14px;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 17px;
   color: #fff;
   width: 100%;
@@ -96,6 +97,8 @@
 .gift__radio-placeholder-value {
   display: flex;
   flex-direction: column;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
 }
 .gift__radio-placeholder-value .discounted {
   text-decoration: line-through;

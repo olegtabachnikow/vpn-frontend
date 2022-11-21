@@ -177,6 +177,7 @@
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
+  position: relative;
 }
 .popup-possibilities {
   background-color: #f95273;
@@ -207,4 +208,19 @@
   font-size: 19px;
   font-weight: 700;
   font-family: 'Actay Wide', sans-serif;
+}
+.popup-tariff {
+  color: #348ff3;
+  background-color: #fff;
+}
+.popup-tariff .popup__title {
+  color: #348ff3;
+}
+.popup-tariff .popup__top-button::after {
+  background-color: #348ff3;
+}
+.popup-tariff {
+  box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  left: 0;
 }

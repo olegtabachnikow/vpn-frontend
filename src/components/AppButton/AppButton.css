@@ -101,3 +101,21 @@
   border-color: transparent;
   margin: 20px auto 0 auto;
 }
+.app-button-popup-tariff {
+  color: #fff;
+  background-color: #348ff3;
+  border-color: transparent;
+  margin: 20px auto 0 auto;
+}
+.app-button-tariff-gift {
+  width: 48%;
+  border: 2px solid #348ff3;
+  color: #348ff3;
+  background-color: transparent;
+}
+.app-button-tariff-choose {
+  width: 48%;
+  border: 2px solid #348ff3;
+  color: #fff;
+  background-color: #348ff3;
+}

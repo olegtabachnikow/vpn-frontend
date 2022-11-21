@@ -4,16 +4,26 @@ import Popup from '../Popup/Popup';
 import BackButton from '../BackButton/BackButton';
 import AppButton from '../AppButton/AppButton';
 import { useSwipeable } from 'react-swipeable';
+import { useSelector } from 'react-redux';
+import FormLabel from '../FormLabel/FormLabel';
 
 function Gift() {
-  const [discount, setDiscount] = React.useState(0);
   const [progress, setProgress] = React.useState(0);
-  const [userDiscount, setUserDiscount] = React.useState('1');
+  const [value, setValue] = React.useState('0');
+  const [userDiscount, setUserDiscount] = React.useState(0);
   const [isGiftPopupHidden, setIsGiftPopupHidden] = React.useState(true);
+  const currentUser = useSelector((state) => state.currentUser);
   const handlers = useSwipeable({
     onSwipedLeft: handleSwipeLeft,
     onSwipedRight: handleSwipeRight,
   });
+  React.useEffect(() => {
+    console.log(value);
+  });
+  React.useEffect(() => {
+    setUserDiscount(currentUser.discount);
+    //setUserDiscount(0);
+  }, []);
 
   function handleSwipeLeft() {
     progress >= 2 ? setProgress(2) : setProgress((state) => ++state);
@@ -29,13 +39,10 @@ function Gift() {
     e.preventDefault();
     handleClick();
   }
-  React.useEffect(() => {
-    setUserDiscount('1');
-  }, []);
 
   return (
     <section {...handlers} className='gift'>
-      <BackButton path='/' text='Мой VPN' />
+      <BackButton path='/' text='Мой VPN' currentClass='back-button-gift' />
       {progress === 0 && (
         <>
           <h1 className='gift__title'>
@@ -107,71 +114,49 @@ function Gift() {
             id='tariff-form'
             className='gift__form'
           >
-            <label
-              className={`gift__radio-label ${
-                discount && 'gift__radio_discounted'
+            <FormLabel
+              elementValue='0'
+              name='gift'
+              handler={(data) => setValue(data)}
+              currentClass={`form-label-item-gift ${
+                userDiscount && 'form-label-item-gift_discounted'
               }`}
-            >
-              <input
-                onChange={(e) => setUserDiscount(e.target.value)}
-                className='gift__radio-input'
-                type='radio'
-                name='tariff'
-                value='1'
-                defaultChecked
-              />
-              <span className='gift__radio-placeholder'>
-                Месяц NO LIMIT
-                <div className='gift__radio-placeholder-value'>
-                  <span className={`${discount && 'discounted'}`}>449 ₽</span>
-                  {discount ? <span>224 ₽</span> : null}
-                </div>
-              </span>
-            </label>
-            <label
-              className={`gift__radio-label ${
-                discount && 'gift__radio_discounted'
+              title='Mесяц NO LIMIT'
+              text={null}
+              valueMain='449 ₽'
+              valueSecondary={`${userDiscount ? '224 ₽' : '449 ₽'}`}
+              isDiscounted={userDiscount}
+              discountValue={'50%'}
+              defaultChecked={true}
+            />
+            <FormLabel
+              elementValue='1'
+              name='gift'
+              handler={(data) => setValue(data)}
+              currentClass={`form-label-item-gift ${
+                userDiscount && 'form-label-item-gift_discounted'
               }`}
-            >
-              <input
-                onChange={(e) => setUserDiscount(e.target.value)}
-                className='gift__radio-input'
-                type='radio'
-                name='tariff'
-                value='2'
-              />
-              <span className='gift__radio-placeholder'>
-                3 месяца NO LIMIT
-                <div className='gift__radio-placeholder-value'>
-                  <span className={`${discount && 'discounted'}`}>
-                    419 ₽/мес
-                  </span>
-                  {discount ? <span>209 ₽/мес</span> : null}
-                </div>
-              </span>
-            </label>
-            <label
-              className={`gift__radio-label ${
-                discount && 'gift__radio_discounted'
+              title='3 месяца NO LIMIT'
+              text={null}
+              valueMain={`${userDiscount ? '419 ₽/мес' : '209 ₽/мес'}`}
+              valueSecondary={`${userDiscount ? '209 ₽/мес' : null}`}
+              isDiscounted={userDiscount}
+              discountValue={'50%'}
+            />
+            <FormLabel
+              elementValue='2'
+              name='gift'
+              handler={(data) => setValue(data)}
+              currentClass={`form-label-item-gift ${
+                userDiscount && 'form-label-item-gift_discounted'
               }`}
-            >
-              <input
-                onChange={(e) => setUserDiscount(e.target.value)}
-                className='gift__radio-input'
-                type='radio'
-                name='tariff'
-                value='3'
-              />
-              <span className='gift__radio-placeholder'>
-                12 месяцев NO LIMIT
-                <div className='gift__radio-placeholder-value'>
-                  <span className={`${discount && 'discounted'}`}>
-                    389 ₽/мес
-                  </span>
-                  {discount ? <span>194 ₽/мес</span> : null}
-                </div>
-              </span>
-            </label>
+              title='12 месяцев NO LIMIT'
+              text={null}
+              valueMain={`${userDiscount ? '389 ₽/мес' : '194 ₽/мес'}`}
+              valueSecondary={`${userDiscount ? '194 ₽/мес' : null}`}
+              isDiscounted={userDiscount}
+              discountValue={'50%'}
+            />
           </form>
           <button
             className='gift__submit-button'
@@ -200,27 +185,35 @@ function Gift() {
             от robo.
           </h2>
           <span className='gift__user-selection'>
-            {userDiscount === '1' && (
-              <span className='gift__radio-placeholder'>
+            {value === '0' && (
+              <span className='gift__user-selection-placeholder'>
                 Месяц NO LIMIT
-                <div className='gift__radio-placeholder-value'>
-                  {discount ? <span>224 ₽</span> : <span>449 ₽</span>}
+                <div className='gift__user-selection-placeholder-value'>
+                  {userDiscount ? <span>224 ₽</span> : <span>449 ₽</span>}
                 </div>
               </span>
             )}
-            {userDiscount === '2' && (
-              <span className='gift__radio-placeholder'>
+            {value === '1' && (
+              <span className='gift__user-selection-placeholder'>
                 3 месяца NO LIMIT
-                <div className='gift__radio-placeholder-value'>
-                  {discount ? <span>209 ₽/мес</span> : <span>419 ₽/мес</span>}
+                <div className='gift__user-selection-placeholder-value'>
+                  {userDiscount ? (
+                    <span>209 ₽/мес</span>
+                  ) : (
+                    <span>419 ₽/мес</span>
+                  )}
                 </div>
               </span>
             )}
-            {userDiscount === '3' && (
-              <span className='gift__radio-placeholder'>
+            {value === '2' && (
+              <span className='gift__user-selection-placeholder'>
                 12 месяцев NO LIMIT
-                <div className='gift__radio-placeholder-value'>
-                  {discount ? <span>194 ₽/мес</span> : <span>389 ₽/мес</span>}
+                <div className='gift__user-selection-placeholder-value'>
+                  {userDiscount ? (
+                    <span>194 ₽/мес</span>
+                  ) : (
+                    <span>389 ₽/мес</span>
+                  )}
                 </div>
               </span>
             )}

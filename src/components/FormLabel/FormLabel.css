@@ -1,0 +1,108 @@
+.form-label {
+  width: 100%;
+  display: flex;
+  padding: 16px;
+  background-color: gray;
+  position: relative;
+  color: #fff;
+  border-radius: 16px;
+  box-sizing: border-box;
+}
+.form-label__content {
+  margin-left: 25px;
+  display: flex;
+}
+.form-label__title {
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  margin: 0;
+}
+.form-label__title_moved {
+  margin-bottom: 6px;
+}
+.form-label__text-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 75%;
+  font-size: 10px;
+  line-height: 14px;
+}
+.form-label__radio-input {
+  appearance: none;
+}
+.form-label__radio-input::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50px;
+  width: 16px;
+  height: 16px;
+  background-color: transparent;
+  border: 2px solid #fff;
+  box-sizing: border-box;
+}
+.form-label__radio-input:checked::before {
+  background-color: #fff;
+  border: 5px solid #348ff3;
+}
+.form-label__value {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.form-label__value-main {
+  font-size: 16px;
+  font-weight: 700;
+}
+.tariff-item-free {
+  background-color: #7472eb;
+  margin-bottom: 12px;
+}
+.tariff-item-fit {
+  background-color: #ff824b;
+  margin-bottom: 12px;
+}
+.tariff-item-nolimit {
+  background-color: #f95273;
+  margin-bottom: 12px;
+}
+.form-label-item-gift {
+  background-color: #ff824b;
+  margin-top: 15px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.form-label-item-gift .form-label__content {
+  width: 100%;
+}
+.form-label-item-gift .form-label__value {
+  width: 40%;
+  text-align: end;
+}
+.form-label__value-secondary {
+  display: none;
+}
+.form-label-item-gift_discounted .form-label__value-main {
+  text-decoration: line-through;
+}
+.form-label-item-gift_discounted .form-label__value-secondary {
+  display: block;
+}
+.form-label__discount-box {
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: 10px;
+  line-height: 12px;
+  padding: 6px 12px;
+  top: -12px;
+  right: 11px;
+}
+.form-label-item-gift_discounted .form-label__discount-box {
+  color: #ff824b;
+}

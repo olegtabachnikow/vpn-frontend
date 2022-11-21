@@ -15,7 +15,7 @@ function Main() {
     <section className='main'>
       <div className='main__button-container'>
         <MenuButton
-          path='/my-vpn'
+          handler={() => navigate('/my-vpn')}
           image={glassesIcon}
           currentClass='btn-my-vpn'
           title='Мой VPM'
@@ -31,7 +31,7 @@ function Main() {
           addText={null}
         />
         <MenuButton
-          handler={() => navigate('/')}
+          handler={() => navigate('/tariffes')}
           image={moneyIcon}
           currentClass='btn-tariffes'
           title='Тарифы'

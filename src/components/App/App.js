@@ -17,6 +17,7 @@ import Values from '../Values/Values';
 import News from '../News/News';
 import Possibilities from '../Possibilities/Possibilities';
 import Faq from '../Faq/Faq';
+import Tariffes from '../Tariffes/Tariffes';
 
 function App() {
   const tg = window.Telegram.WebApp;
@@ -64,6 +65,7 @@ function App() {
         <Route path='/possibilities' element={<Possibilities />} />
         <Route path='/news' element={<News />} />
         <Route path='/faq' element={<Faq />} />
+        <Route path='/tariffes/*' element={<Tariffes />} />
       </Routes>
     </div>
   );

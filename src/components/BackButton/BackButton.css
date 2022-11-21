@@ -39,7 +39,16 @@
 .back-button-help {
   color: #006ffd;
 }
+.back-button-gift {
+  width: 90%;
+}
 .back-button.back-button-help .back-button__corner {
+  border-color: #006ffd;
+}
+.back-button-tariffes {
+  color: #006ffd;
+}
+.back-button-tariffes .back-button__corner {
   border-color: #006ffd;
 }
 .back-button-referral {

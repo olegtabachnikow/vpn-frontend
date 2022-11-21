@@ -32,6 +32,7 @@ function App() {
   };
   React.useEffect(() => {
     const id = userId();
+    console.log(id);
     getUser(id);
   }, []);
 

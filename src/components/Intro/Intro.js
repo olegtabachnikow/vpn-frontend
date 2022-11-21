@@ -1,37 +1,35 @@
 import React from 'react';
 import './Intro.css';
 import { useNavigate } from 'react-router-dom';
-import { sendPage } from '../../utils/roboApi';
 import introImg from '../../images/intro_smile_0.svg';
 import sector1 from '../../images/sector1.svg';
 import sector2 from '../../images/sector2.svg';
 import sector3 from '../../images/sector3.svg';
 import sector4 from '../../images/sector4.svg';
 import AppButton from '../AppButton/AppButton';
+import { useSwipeable } from 'react-swipeable';
 
 function Intro() {
   const [progress, setProgress] = React.useState(0);
   const navigate = useNavigate();
+  const handlers = useSwipeable({
+    onSwipedLeft: handleSwipeLeft,
+    onSwipedRight: handleSwipeRight,
+  });
   const progressBarItems = [...Array(5).keys()];
+
   function handleButtonClick() {
     progress >= 4 ? navigate('/') : setProgress((state) => ++state);
   }
-
-  function sendCurrentPage(page) {
-    sendPage(page)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+  function handleSwipeLeft() {
+    progress >= 4 ? setProgress(4) : setProgress((state) => ++state);
   }
+  function handleSwipeRight() {
+    progress <= 0 ? setProgress(0) : setProgress((state) => --state);
+  }
+
   return (
-    <section className='intro'>
-      <div className='intro__progress'>
-        {progressBarItems.map((el) => (
-          <span
-            key={el}
-            className={`intro__progress-item ${progress >= el && 'active'}`}
-          ></span>
-        ))}
-      </div>
+    <section {...handlers} className='intro'>
       <div className='intro__image-container'>
         <img className='intro__image' src={introImg} alt='happy face' />
         <img
@@ -68,7 +66,8 @@ function Intro() {
             <p className='intro__text'>
               Можно забыть о выключении и включении VPN по 10 раз на дню.
               Instagram, Netflix и YouTube. Авито, Сбер и Госуслуги. Robo
-              работает везде — и на рф, и на зарубежных сайтах.
+              работает везде — и на рф, и на зарубежных сайтах, вне зависимости
+              от того где вы находитесь.
             </p>
           </>
         )) ||
@@ -109,7 +108,7 @@ function Intro() {
               <p className='intro__text'>
                 А не первые 7 или 30 дней как у ... но, вероятно, возврат не
                 потребуется. Наши технологии не заблокировали даже в Китае. А мы
-                придумали даже кое-что еще.
+                пошли еще дальше.
               </p>
             </>
           )) ||
@@ -120,11 +119,19 @@ function Intro() {
                 <span className='intro__title_colored'> каждый месяц</span>
               </h1>
               <p className='intro__text'>
-                10 Гб каждый месяц всем пользователям. Без ограничений. Если не
-                хватит — тарифы доступны от 69 рублей.
+                До 10 Гб каждый месяц всем пользователям. Без ограничений. Если
+                не хватит — тарифы доступны от 69 рублей.
               </p>
             </>
           ))}
+      </div>
+      <div className='intro__progress'>
+        {progressBarItems.map((el) => (
+          <span
+            key={el}
+            className={`intro__progress-item ${progress >= el && 'active'}`}
+          ></span>
+        ))}
       </div>
       <AppButton
         text='Далее'

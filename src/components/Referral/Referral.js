@@ -3,13 +3,16 @@ import './Referral.css';
 import Popup from '../Popup/Popup';
 import BackButton from '../BackButton/BackButton';
 import AppButton from '../AppButton/AppButton';
+import CopyToClipboardField from '../CopyToClipboardField/CopyToClipboardField';
+import { useSelector } from 'react-redux';
 
 function Referral() {
   const [isReferPopupHidden, setIsReferPopupHidden] = React.useState(true);
+  const currentUser = useSelector((state) => state.currentUser);
   return (
     <section className='referral'>
       <BackButton
-        text='Реферальная программа'
+        text='Мой VPN'
         path={-1}
         currentClass='back-button-referral'
       />
@@ -35,7 +38,9 @@ function Referral() {
             </p>
           </div>
           <div className='referral__stat referral__stat_small'>
-            <span className='referral__stat-value'>20 Гб</span>
+            <span className='referral__stat-value'>
+              {currentUser.refBalance} Гб
+            </span>
             <p className='referral__stat-text'>
               кол-во заработанных Гб на реферальной программе
             </p>
@@ -49,9 +54,12 @@ function Referral() {
           </div>
         </div>
         <div className='referral__button-container'>
-          <AppButton
-            text='Пригласить друга'
-            currentClass='app-button-referral'
+          <p className='referral__tips'>
+            Скопируйте ссылку и поделитесь в другом:
+          </p>
+          <CopyToClipboardField
+            currentClass='refferal__copy-to-clipboard'
+            data={'kawdhlakwdgawudhlaiudwawdawdwaddawhliuawdliuawhdliuahdw'}
           />
           <p className='referral__tips'>
             Участвуя в реферальной программе, вы принимаете ее условия.
@@ -71,13 +79,15 @@ function Referral() {
               другом, а ему просто перейти по ней в телеграмм.
             </p>{' '}
             <p className='referral__popup-text'>
-              2. При первой оплата от приглашенного человека — вам начисляться
-              50% от размера первой покупки. другу же будет применена скидка 50%
-              на любую первую покупку.
+              2. Как только приглашенный сделает первую любую покупку (от 69 р.)
+              — будет начислено 20 гб, 10 вам и 10 приглашенному.
             </p>{' '}
             <p className='referral__popup-text'>
-              3. Деньги полученные от реферальной программы возможно потратить
-              на дальнейшие покупки в робо только для себя.
+              3. Трафик за реферальную программу будет отображаться в разделях
+              "Трафик" и "Реферальная программа". В разделе "Трафик" вы можете
+              активировать использование бонусных гигабайтов в любой момент
+              времени. Они начнут ипользоваться сразу после того, как закончится
+              ваш текущий тариф.
             </p>{' '}
             <p className='referral__popup-text'>
               4. Программа действует только, если пользователь ранее не

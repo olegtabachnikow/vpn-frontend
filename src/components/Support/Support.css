@@ -1,3 +1,7 @@
+.support {
+  padding: 40px 45px 90px 45px;
+  color: #fff;
+}
 .support__text {
   font-size: 20px;
   font-weight: 700;

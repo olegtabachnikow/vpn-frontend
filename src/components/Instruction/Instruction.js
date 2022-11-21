@@ -7,29 +7,31 @@ import stepOne from '../../images/instruction1-min.png';
 import stepTwo from '../../images/instruction2-min.png';
 import stepThree from '../../images/instruction3-min.png';
 import stepFour from '../../images/instruction4-min.png';
-import copyIcon from '../../images/copy.png';
-import copiedIcon from '../../images/check.png';
 import BackButton from '../BackButton/BackButton';
+import { useSwipeable } from 'react-swipeable';
+import { useSelector } from 'react-redux';
+import CopyToClipboardField from '../CopyToClipboardField/CopyToClipboardField';
 
 function Instruction() {
   const [progress, setProgress] = React.useState(0);
-  const [isCopied, setIsCopied] = React.useState(false);
-  const [value, setValue] = React.useState(
-    'ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp6ZVV5RmFEcFg1bzM=@20.224.3.185:25229/?outline=1'
-  );
-  function copyToClipboard() {
-    setIsCopied(true);
-    navigator.clipboard.writeText(value);
-    setTimeout(() => {
-      setIsCopied(false);
-    }, 3000);
+  const currentUser = useSelector((state) => state.currentUser);
+  const handlers = useSwipeable({
+    onSwipedLeft: handleSwipeLeft,
+    onSwipedRight: handleSwipeRight,
+  });
+
+  function handleSwipeLeft() {
+    progress >= 2 ? setProgress(2) : setProgress((state) => ++state);
+  }
+  function handleSwipeRight() {
+    progress <= 0 ? setProgress(0) : setProgress((state) => --state);
   }
   return (
-    <section className='instruction'>
+    <section {...handlers} className='instruction'>
       <BackButton
         path='/'
-        text='Ключ доступа к Outline'
-        currentClass='btn-my-vpn'
+        text='Мой VPN'
+        currentClass='btn-my-vpn back-button-instruction'
       />
       {progress === 0 && (
         <>
@@ -40,16 +42,10 @@ function Instruction() {
             <br />
             получить доступ <br />к VPN.
           </p>
-          <div onClick={copyToClipboard} className='instruction__key-generator'>
-            <span className='instruction__key'>{value}</span>
-            {
-              <img
-                className='instruction__copy-icon'
-                src={!isCopied ? copyIcon : copiedIcon}
-                alt='copy'
-              />
-            }
-          </div>
+          <CopyToClipboardField
+            currentClass='instruction__copy-to-clipboard'
+            data={currentUser.link}
+          />
           <div>
             <p className='instruction__text'>
               2. Скачай приложение
@@ -87,9 +83,7 @@ function Instruction() {
         <>
           <p className='instruction__text'>
             3. Вставь ключ <br />в приложение
-            <span className='instruction__text_colored'> Outline </span>
-            <br />
-            по инструкции.
+            <span className='instruction__text_colored'> Outline </span>.
           </p>
           <div className='instruction__gallery'>
             <div className='instruction__gallery-row first'>

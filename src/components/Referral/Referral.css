@@ -82,10 +82,13 @@
   font-size: 11px;
   line-height: 13px;
   margin-bottom: 20px;
-  width: 90%;
-  text-align: center;
+  width: 100%;
   font-family: 'Inter', sans-serif;
+}
+.referral__tips:first-of-type {
+  margin: 22px 0 8px 0;
 }
 .referral__popup-text {
   margin: 10px;
+  font-size: 13px;
 }

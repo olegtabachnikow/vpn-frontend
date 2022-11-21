@@ -74,21 +74,21 @@
   border-color: transparent;
   font-size: 14px;
   width: 80%;
-  margin: 0 auto;
+  margin: auto auto 45px auto;
 }
 .app-button-possibilities {
   color: #f95273;
   border-color: transparent;
   font-size: 14px;
   width: 80%;
-  margin: 0 auto;
+  margin: auto auto 45px auto;
 }
 .app-button-faq {
   color: #7472eb;
   border-color: transparent;
   font-size: 14px;
   width: 80%;
-  margin: 0 auto;
+  margin: auto auto 45px auto;
 }
 .app-button-news {
   color: #348ff3;

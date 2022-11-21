@@ -59,6 +59,7 @@
   height: 48%;
   background-color: #7472eb;
 }
+
 .menu-button.btn-traffic {
   width: 48%;
   height: 48%;
@@ -149,4 +150,7 @@
 }
 .btn-faq .menu-button__text {
   font-size: 12px;
+}
+.menu-button__title.btn-referrals {
+  font-size: 17px;
 }

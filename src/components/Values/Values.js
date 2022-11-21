@@ -1,17 +1,18 @@
 import React from 'react';
-import Popup from '../Popup/Popup';
 import DataItem from '../DataItem/DataItem';
 import DataList from '../DataList/DataList';
 import AppButton from '../AppButton/AppButton';
+import BackButton from '../BackButton/BackButton';
+import './Values.css';
 
-function OurValues({ isHidden, handleHide }) {
+function Values() {
   return (
-    <Popup
-      title='Наши ценности'
-      isHidden={isHidden}
-      currentClass='popup-values'
-      handleHide={handleHide}
-    >
+    <section className='values'>
+      <BackButton
+        text='Мне не понятно'
+        path='/help'
+        currentClass='back-button-values'
+      />
       <DataList
         currentClass='data-list-values'
         component={
@@ -73,8 +74,9 @@ function OurValues({ isHidden, handleHide }) {
           </p>
         </DataItem>
       </DataList>
-    </Popup>
+      <AppButton text='Хочу попробовать' currentClass='app-button-values' />
+    </section>
   );
 }
 
-export default OurValues;
+export default Values;

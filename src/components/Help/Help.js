@@ -7,47 +7,20 @@ import possibilitiesIcon from '../../images/possibilities.png';
 import newsIcon from '../../images/news.png';
 import faqIcon from '../../images/faq.png';
 import noResponceIcon from '../../images/noresponce.png';
-import OurValues from '../OurValues/OurValues';
-import OurPossibilities from '../OurPossibilities/OurPossibilities';
-import OurFaq from '../OurFaq/OurFaq';
-import NewsPopup from '../NewsPopup/NewsPopup';
+import { useNavigate } from 'react-router-dom';
 
 function Help() {
-  const [isValuesPopupHidden, setIsValuesPopupHidden] = React.useState(true);
-  const [isPossibilitiesPopupHidden, setIsPossibilitiesPopupHidden] =
-    React.useState(true);
-  const [isNewsPopupHidden, setIsNewsPopupHidden] = React.useState(true);
-  const [isFaqPopupHidden, setIsFaqPopupHidden] = React.useState(true);
-
-  React.useEffect(() => {
-    closeAllPopups();
-  }, []);
-
-  function closeAllPopups() {
-    setIsValuesPopupHidden(true);
-    setIsPossibilitiesPopupHidden(true);
-    setIsNewsPopupHidden(true);
-    setIsFaqPopupHidden(true);
-  }
-  function relocateToPossibilities() {
-    closeAllPopups();
-    setTimeout(() => setIsPossibilitiesPopupHidden(false), 1000);
-  }
-  function relocateToValues() {
-    closeAllPopups();
-    setTimeout(() => setIsValuesPopupHidden(false), 1000);
-  }
-
+  const navigate = useNavigate();
   return (
     <section className='help'>
       <BackButton
-        path='/my-vpn'
-        text='Мне не понятно'
+        path='/'
+        text='Главное меню'
         currentClass='back-button-help'
       />
       <div className='help__content'>
         <MenuButton
-          handler={() => setIsValuesPopupHidden(false)}
+          handler={() => navigate('/values')}
           image={valuesIcon}
           currentClass='btn-our-values'
           title='Наши ценности'
@@ -55,7 +28,7 @@ function Help() {
           addText={null}
         />
         <MenuButton
-          handler={() => setIsPossibilitiesPopupHidden(false)}
+          handler={() => navigate('/possibilities')}
           image={possibilitiesIcon}
           currentClass='btn-our-possibilities'
           title='Возможности'
@@ -63,7 +36,7 @@ function Help() {
         />
         <div className='help__button-box'>
           <MenuButton
-            handler={() => setIsNewsPopupHidden(false)}
+            handler={() => navigate('/news')}
             image={newsIcon}
             currentClass='btn-news'
             title='Новости'
@@ -71,7 +44,7 @@ function Help() {
           />
           <div className='help__button-news'></div>
           <MenuButton
-            handler={() => setIsFaqPopupHidden(false)}
+            handler={() => navigate('/faq')}
             image={faqIcon}
             currentClass='btn-faq'
             title='FAQ'
@@ -86,25 +59,6 @@ function Help() {
           />
         </div>
       </div>
-      <OurValues
-        isHidden={isValuesPopupHidden}
-        handleHide={setIsValuesPopupHidden}
-      />
-      <OurPossibilities
-        isHidden={isPossibilitiesPopupHidden}
-        handleHide={setIsPossibilitiesPopupHidden}
-      />
-      <OurFaq
-        isHidden={isFaqPopupHidden}
-        handleHide={setIsFaqPopupHidden}
-        handler={relocateToPossibilities}
-      />
-      <NewsPopup
-        isHidden={isNewsPopupHidden}
-        handleValuesPopup={relocateToValues}
-        handlePossibilitiesPopup={relocateToPossibilities}
-        handleHide={setIsNewsPopupHidden}
-      />
     </section>
   );
 }

@@ -9,6 +9,14 @@ import MyVpn from '../MyVpn/MyVpn';
 import Referral from '../Referral/Referral';
 import { getCurrentUser } from '../../utils/roboApi';
 import Help from '../Help/Help';
+import { setCurrentUser } from '../actions/actions';
+import Balance from '../Balance/Balance';
+import Traffic from '../Traffic/Traffic';
+import Support from '../Support/Support';
+import Values from '../Values/Values';
+import News from '../News/News';
+import Possibilities from '../Possibilities/Possibilities';
+import Faq from '../Faq/Faq';
 
 function App() {
   const tg = window.Telegram.WebApp;
@@ -23,7 +31,7 @@ function App() {
   };
   React.useEffect(() => {
     const id = userId();
-    getCurrentUser(id);
+    getUser(id);
   }, []);
 
   React.useEffect(() => {
@@ -34,7 +42,11 @@ function App() {
   React.useEffect(() => {
     navigate('/intro');
   }, []);
-
+  function getUser(id) {
+    getCurrentUser(id)
+      .then((res) => setCurrentUser(res))
+      .catch((err) => console.log(err));
+  }
   return (
     <div className={`app app-${location.pathname.replace('/', '')}`}>
       <Routes>
@@ -45,6 +57,13 @@ function App() {
         <Route path='/my-vpn' element={<MyVpn />} />
         <Route path='/referral' element={<Referral />} />
         <Route path='/help' element={<Help />} />
+        <Route path='/balance' element={<Balance />} />
+        <Route path='/traffic' element={<Traffic />} />
+        <Route path='/support' element={<Support />} />
+        <Route path='/values' element={<Values />} />
+        <Route path='/possibilities' element={<Possibilities />} />
+        <Route path='/news' element={<News />} />
+        <Route path='/faq' element={<Faq />} />
       </Routes>
     </div>
   );

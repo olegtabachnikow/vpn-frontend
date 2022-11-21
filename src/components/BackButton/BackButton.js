@@ -1,13 +1,18 @@
 import React from 'react';
 import './BackButton.css';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function BackButton({ text, path, currentClass }) {
+  const navigate = useNavigate();
   return (
-    <Link className={`back-button ${currentClass && currentClass}`} to={path}>
+    <button
+      onClick={() => navigate(path)}
+      className={`back-button ${currentClass && currentClass}`}
+      to={path}
+    >
       <span className='back-button__corner' />
       {text}
-    </Link>
+    </button>
   );
 }
 

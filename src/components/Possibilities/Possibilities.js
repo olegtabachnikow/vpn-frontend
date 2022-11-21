@@ -1,23 +1,27 @@
 import React from 'react';
-import Popup from '../Popup/Popup';
 import DataItem from '../DataItem/DataItem';
 import DataList from '../DataList/DataList';
 import AppButton from '../AppButton/AppButton';
+import { useNavigate } from 'react-router-dom';
+import BackButton from '../BackButton/BackButton';
+import './Possibilities.css';
 
-function OurPossibilities({ isHidden, handleHide }) {
+function Possibilities() {
+  const navigate = useNavigate();
   return (
-    <Popup
-      title='Возможности'
-      isHidden={isHidden}
-      currentClass='popup-possibilities'
-      handleHide={handleHide}
-    >
+    <section className='possibilities'>
+      <BackButton
+        text='Мне не понятно'
+        path='/help'
+        currentClass='back-button-possibilities'
+      />
       <DataList
         currentClass='data-list-possibilities'
         component={
           <AppButton
             text='Выбрать тариф'
             currentClass='app-button-possibilities'
+            handler={() => navigate('/tariffes')}
           />
         }
       >
@@ -60,8 +64,9 @@ function OurPossibilities({ isHidden, handleHide }) {
           </p>
         </DataItem>
       </DataList>
-    </Popup>
+      <AppButton text='Выбрать тариф' currentClass='app-button-possibilities' />
+    </section>
   );
 }
 
-export default OurPossibilities;
+export default Possibilities;

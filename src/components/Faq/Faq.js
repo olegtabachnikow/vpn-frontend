@@ -1,23 +1,21 @@
 import React from 'react';
-import Popup from '../Popup/Popup';
 import DataItem from '../DataItem/DataItem';
 import DataList from '../DataList/DataList';
 import AppButton from '../AppButton/AppButton';
+import { useNavigate } from 'react-router-dom';
+import './Faq.css';
+import BackButton from '../BackButton/BackButton';
 
-function OurFaq({ isHidden, handler, handleHide }) {
+function Faq() {
+  const navigate = useNavigate();
   return (
-    <Popup
-      title='FAQ'
-      isHidden={isHidden}
-      currentClass='popup-faq'
-      handleHide={handleHide}
-    >
-      <DataList
-        currentClass='data-list-faq'
-        component={
-          <AppButton text='Хочу попробовать' currentClass='app-button-faq' />
-        }
-      >
+    <section className='faq'>
+      <BackButton
+        text='Мне не понятно'
+        path='/help'
+        currentClass='back-button-faq'
+      />
+      <DataList currentClass='data-list-faq'>
         <DataItem title='А вы кто?'>
           <p className='data-item__text'>
             Мы команда it специалистов с <b>опытом более 30 лет работы</b> в
@@ -86,7 +84,10 @@ function OurFaq({ isHidden, handler, handleHide }) {
           <p className='data-item__text'>
             Отличий много, но основных 5. Про них мы написали в разделе — мне не
             понятно, возможности (
-            <span onClick={handler} className='data-item__link'>
+            <span
+              onClick={() => navigate('/possibilities')}
+              className='data-item__link'
+            >
               линк
             </span>
             ).
@@ -137,8 +138,9 @@ function OurFaq({ isHidden, handler, handleHide }) {
           </p>
         </DataItem>
       </DataList>
-    </Popup>
+      <AppButton text='Хочу попробовать' currentClass='app-button-faq' />
+    </section>
   );
 }
 
-export default OurFaq;
+export default Faq;

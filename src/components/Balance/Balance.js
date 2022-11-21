@@ -3,15 +3,24 @@ import './Balance.css';
 import checboxTrue from '../../images/checkbox-checked.svg';
 import checkboxFalse from '../../images/checkbox-not-checked.svg';
 import AppButton from '../AppButton/AppButton';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import BackButton from '../BackButton/BackButton';
 
 function Balance() {
   const [value, setValue] = React.useState(0);
-  const [numValue, setNumValue] = React.useState(200);
+  const navigate = useNavigate();
+  const [numValue, setNumValue] = React.useState('200');
   function handleValue(val) {
     value === val ? setValue(0) : setValue(val);
   }
   return (
     <section className='balance'>
+      <BackButton
+        text='Мой VPN'
+        path='/my-vpn'
+        currentClass='back-button-balance'
+      />
       <div className='balance__row'>
         <h2 className='balance__title'>
           Cписывать с баланса (выберите с валюты или с Гб), когда закончится
@@ -63,8 +72,9 @@ function Balance() {
           onChange={(e) => setNumValue(e.target.value)}
           type='number'
           value={numValue}
-          placeholder='200 ₽'
+          placeholder='200'
         />
+        <span className='balance__sum-cash-value'>₽</span>
         <div className='balance__button-box'>
           <AppButton
             text='Заработать'
@@ -74,7 +84,14 @@ function Balance() {
         </div>
         <p className='balance__tips'>
           Вы можете пополнить баланс и увеличить трафик или заработать Гб с
-          помощью реферальной программы.
+          помощью{' '}
+          <span
+            onClick={() => navigate('/referral')}
+            className='balance__tips-link'
+          >
+            реферальной программы
+          </span>
+          .
         </p>
       </div>
     </section>

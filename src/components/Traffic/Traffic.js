@@ -1,16 +1,27 @@
 import React from 'react';
 import './Traffic.css';
 import AppButton from '../AppButton/AppButton';
+import BackButton from '../BackButton/BackButton';
+import { useSelector } from 'react-redux';
 
 function Traffic() {
+  const currentUser = useSelector((state) => state.currentUser);
   return (
     <section className='traffic'>
+      <BackButton
+        text='Мой VPN'
+        path='/my-vpn'
+        currentClass='back-button-traffic'
+      />
       <div className='traffic__main'>
         <div className='traffic__main-content'>
-          <span className='traffic__main_text'>Осталось до 30.09.2022</span>
-          <span className='traffic__main_value'>6,5 гБ</span>
           <span className='traffic__main_text'>
-            Кажестся, вам не хватит трафика до конца месяца
+            Осталось до {currentUser.endDate}
+          </span>
+          <span className='traffic__main_value'>{currentUser.traffic}</span>
+          <span className='traffic__main_text'>
+            Кажестся, вам {!currentUser.trafficMonth && 'не'} хватит трафика до
+            конца месяца
           </span>
         </div>
         <div className='traffic__outlook'>
@@ -24,7 +35,9 @@ function Traffic() {
             <span className='traffic__outlook-element-text'>
               Ваше прогнозное потребление трафика в месяц
             </span>
-            <span className='traffic__outlook-element-value'>15 гБ</span>
+            <span className='traffic__outlook-element-value'>
+              {currentUser.trafficForecast}
+            </span>
           </div>
         </div>
         <div className='traffic__secondary-content'>

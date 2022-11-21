@@ -4,18 +4,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 18px 35px 61px 35px;
+  padding: 0 35px 61px 35px;
   box-sizing: border-box;
 }
 .intro__progress {
   width: 304.5px;
   gap: 5.25px;
   display: flex;
+  justify-content: center;
+  margin: 20px 0 20px 0;
 }
 .intro__progress-item {
   display: block;
-  width: 56.7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
   background-color: #e8e9f1;
   border-radius: 7px;
   transition: background-color 0.5s ease;
@@ -27,7 +29,7 @@
   min-width: 187px;
   box-sizing: border-box;
   min-height: 187px;
-  margin: 71px auto 59px auto;
+  margin: 82px auto 55px auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -53,6 +55,7 @@
   flex-direction: column;
   height: 100%;
   max-width: 287px;
+  min-height: 161px;
   color: #348ff3;
   text-align: center;
   letter-spacing: -0.4099999964237213px;

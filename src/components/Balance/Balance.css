@@ -1,14 +1,16 @@
 .balance {
   display: flex;
   flex-direction: column;
+  color: #fff;
+  padding: 40px 45px 90px 45px;
 }
 .balance__row {
   height: 45%;
 }
 .balance__title {
   font-weight: 700;
-  font-size: 14px;
-  line-height: 17px;
+  font-size: 20px;
+  line-height: 22px;
   font-family: 'Actay Wide', sans-serif;
 }
 .balance__current {
@@ -75,7 +77,26 @@
   padding: 12px 16px;
   box-sizing: border-box;
   color: #fff;
+  font-weight: 700;
+  font-size: 20px;
   outline: none;
+  position: relative;
+}
+.balance__sum-input::placeholder {
+  opacity: 0.4;
+}
+.balance__row:last-of-type {
+  position: relative;
+}
+.balance__sum-cash-value {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  font-weight: 700;
+  font-size: 20px;
+  right: 10px;
+  top: 34%;
+  color: #fff;
 }
 .balance__sum-input::placeholder {
   color: #fff;
@@ -107,4 +128,7 @@
 .balance__tips {
   font-size: 12px;
   line-height: 16px;
+}
+.balance__tips-link {
+  text-decoration: underline;
 }

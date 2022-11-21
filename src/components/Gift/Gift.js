@@ -3,12 +3,24 @@ import './Gift.css';
 import Popup from '../Popup/Popup';
 import BackButton from '../BackButton/BackButton';
 import AppButton from '../AppButton/AppButton';
+import { useSwipeable } from 'react-swipeable';
 
 function Gift() {
   const [discount, setDiscount] = React.useState(0);
   const [progress, setProgress] = React.useState(0);
   const [userDiscount, setUserDiscount] = React.useState('1');
   const [isGiftPopupHidden, setIsGiftPopupHidden] = React.useState(true);
+  const handlers = useSwipeable({
+    onSwipedLeft: handleSwipeLeft,
+    onSwipedRight: handleSwipeRight,
+  });
+
+  function handleSwipeLeft() {
+    progress >= 2 ? setProgress(2) : setProgress((state) => ++state);
+  }
+  function handleSwipeRight() {
+    progress <= 0 ? setProgress(0) : setProgress((state) => --state);
+  }
 
   function handleClick() {
     setProgress((state) => ++state);
@@ -22,8 +34,8 @@ function Gift() {
   }, []);
 
   return (
-    <section className='gift'>
-      <BackButton path='/' text='Подарить VPN' />
+    <section {...handlers} className='gift'>
+      <BackButton path='/' text='Мой VPN' />
       {progress === 0 && (
         <>
           <h1 className='gift__title'>

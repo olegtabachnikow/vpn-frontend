@@ -1,3 +1,13 @@
+.traffic {
+  padding: 40px 45px 90px 45px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  box-sizing: border-box;
+  justify-content: space-between;
+}
 .traffic__main {
   display: flex;
   flex-direction: column;

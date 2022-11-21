@@ -1,6 +1,6 @@
 .back-button {
   height: 56px;
-  width: 90%;
+  width: 100%;
   text-decoration: none;
   color: #fff;
   display: flex;
@@ -8,6 +8,9 @@
   justify-content: center;
   align-items: center;
   position: relative;
+  outline: none;
+  border: 1px solid transparent;
+  background-color: transparent;
   cursor: pointer;
   font-size: 14px;
   line-height: 17px;
@@ -25,9 +28,7 @@
   left: 0;
   transition: all 0.3s linear;
 }
-.back-button:hover .back-button__corner {
-  left: -10px;
-}
+
 .back-button.btn-my-vpn {
   color: #006ffd;
   height: 10%;
@@ -43,4 +44,18 @@
 }
 .back-button-referral {
   width: 100%;
+}
+.back-button-instruction {
+  margin-bottom: 20px;
+  padding: 20px 0;
+}
+.back-button-faq,
+.back-button-values,
+.back-button-possibilities {
+  width: 80%;
+  height: 10%;
+  margin: 0 auto;
+}
+.back-button-news {
+  height: 10%;
 }

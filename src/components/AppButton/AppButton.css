@@ -119,3 +119,18 @@
   color: #fff;
   background-color: #348ff3;
 }
+.app-button-subscription_main {
+  font-size: 14px;
+  color: #064b72;
+  width: 100%;
+  border-color: transparent;
+  box-shadow: none;
+}
+.app-button-subscription_secondary {
+  font-size: 14px;
+  width: 100%;
+  color: #fff;
+  border: 1.5px solid #fff;
+  background-color: transparent;
+  box-shadow: none;
+}

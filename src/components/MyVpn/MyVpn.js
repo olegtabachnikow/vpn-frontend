@@ -59,6 +59,7 @@ function MyVpn() {
         title='Настройки подписки'
         text={`Тариф: ${currentUser.tariff}`}
         addText={`Активен до ${currentUser.endDate}`}
+        handler={() => navigate('/subscription')}
       />
     </section>
   );

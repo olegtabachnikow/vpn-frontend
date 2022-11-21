@@ -141,7 +141,7 @@ function Intro() {
       <AppButton
         currentClass='app-button-intro-secondary'
         text='Попробовать VPN'
-        handler={null}
+        handler={() => navigate('/instruction')}
       />
     </section>
   );

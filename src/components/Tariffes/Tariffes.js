@@ -16,7 +16,7 @@ function Tariffes() {
     value.length ? navigate(`/tariffes/${value}`) : handleError();
   }
   function handleGiftClick() {
-    value.length && navigate(`/tariffes`);
+    navigate(`/gift`);
   }
   function handleError() {
     setError('Выберите тариф!');

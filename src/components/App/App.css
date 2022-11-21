@@ -1,7 +1,8 @@
 .app {
   width: 100vw;
   min-width: 375px;
-  min-height: 708px;
+  /*min-height: 708px;*/
+  min-height: 600px;
   height: 100vh;
   box-sizing: border-box;
   overflow: hidden;
@@ -35,6 +36,9 @@
 }
 .app-values {
   background-color: #ff824b;
+}
+.app-subscription {
+  background-color: #064b72;
 }
 @media screen and (orientation: landscape) {
   .app {

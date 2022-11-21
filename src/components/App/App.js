@@ -18,6 +18,7 @@ import News from '../News/News';
 import Possibilities from '../Possibilities/Possibilities';
 import Faq from '../Faq/Faq';
 import Tariffes from '../Tariffes/Tariffes';
+import Subscription from '../Subscription/Subscription';
 
 function App() {
   const tg = window.Telegram.WebApp;
@@ -32,7 +33,6 @@ function App() {
   };
   React.useEffect(() => {
     const id = userId();
-    console.log(id);
     getUser(id);
   }, []);
 
@@ -44,7 +44,8 @@ function App() {
   React.useEffect(() => {
     navigate('/intro');
   }, []);
-  function getUser(id) {
+
+  function getUser(id = 12345678) {
     getCurrentUser(id)
       .then((res) => setCurrentUser(res))
       .catch((err) => console.log(err));
@@ -58,6 +59,7 @@ function App() {
         <Route path='/gift' element={<Gift />} />
         <Route path='/my-vpn' element={<MyVpn />} />
         <Route path='/referral' element={<Referral />} />
+        <Route path='/subscription' element={<Subscription />} />
         <Route path='/help' element={<Help />} />
         <Route path='/balance' element={<Balance />} />
         <Route path='/traffic' element={<Traffic />} />

@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/vpn-frontend/static/css/main.2c21f1f8.css",
-    "main.js": "/vpn-frontend/static/js/main.1262aa07.js",
+    "main.css": "/vpn-frontend/static/css/main.3f38691d.css",
+    "main.js": "/vpn-frontend/static/js/main.248979af.js",
     "static/js/787.0aaa55be.chunk.js": "/vpn-frontend/static/js/787.0aaa55be.chunk.js",
     "static/media/ActayWide-Bold.otf": "/vpn-frontend/static/media/ActayWide-Bold.caa5b9cf6208eb686929.otf",
     "static/media/Actay-Regular.otf": "/vpn-frontend/static/media/Actay-Regular.5d1905c4a1e4369e5c0a.otf",
@@ -15,12 +15,12 @@
     "static/media/sector3.svg": "/vpn-frontend/static/media/sector3.7577a45d1aceb134f9391cafb6ac8c75.svg",
     "static/media/sector4.svg": "/vpn-frontend/static/media/sector4.b138dd1b9cafa685eef4734a09144640.svg",
     "static/media/checkbox-not-checked.svg": "/vpn-frontend/static/media/checkbox-not-checked.7e1d1e16f2c5fae7a4c04580c7e90a62.svg",
-    "main.2c21f1f8.css.map": "/vpn-frontend/static/css/main.2c21f1f8.css.map",
-    "main.1262aa07.js.map": "/vpn-frontend/static/js/main.1262aa07.js.map",
+    "main.3f38691d.css.map": "/vpn-frontend/static/css/main.3f38691d.css.map",
+    "main.248979af.js.map": "/vpn-frontend/static/js/main.248979af.js.map",
     "787.0aaa55be.chunk.js.map": "/vpn-frontend/static/js/787.0aaa55be.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2c21f1f8.css",
-    "static/js/main.1262aa07.js"
+    "static/css/main.3f38691d.css",
+    "static/js/main.248979af.js"
   ]
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import './CopyToClipboardField.css';
-import copyIcon from '../../images/copy.png';
-import copiedIcon from '../../images/check.png';
+import copyIcon from '../../images/copy.svg';
+import copiedIcon from '../../images/check.svg';
 
 function CopyToClipboardField({ currentClass, data }) {
   const [isCopied, setIsCopied] = React.useState(false);

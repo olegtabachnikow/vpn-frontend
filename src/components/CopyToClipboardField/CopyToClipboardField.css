@@ -25,7 +25,9 @@
   position: absolute;
   right: 5px;
   top: 5px;
+  filter: invert(0.35) sepia(1) saturate(5) hue-rotate(175deg);
 }
+
 .refferal__copy-to-clipboard {
   height: auto;
   color: #fff;
@@ -40,12 +42,15 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 14px;
+  font-family: 'Actay Wide', sans-serif;
+  text-align: start;
 }
 .refferal__copy-to-clipboard .copy-to-clipboard__copy-icon {
-  background-color: #fff;
   width: 18px;
   height: 18px;
   top: 50%;
   transform: translateY(-50%);
   right: 10px;
+  filter: invert(1);
 }

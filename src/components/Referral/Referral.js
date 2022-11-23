@@ -59,7 +59,7 @@ function Referral() {
           </p>
           <CopyToClipboardField
             currentClass='refferal__copy-to-clipboard'
-            data={'kawdhlakwdgawudhlaiudwawdawdwaddawhliuawdliuawhdliuahdw'}
+            data={currentUser.referralLink}
           />
           <p className='referral__tips'>
             Участвуя в реферальной программе, вы принимаете ее условия.

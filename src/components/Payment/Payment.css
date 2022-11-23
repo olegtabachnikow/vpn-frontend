@@ -1,0 +1,9 @@
+.payment {
+  padding: 0 30px 64px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #064b72;
+  height: 100%;
+  box-sizing: border-box;
+}

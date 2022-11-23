@@ -68,3 +68,10 @@
 .back-button-news {
   height: 10%;
 }
+.back-button-payment {
+  color: #006ffd;
+  width: 90%;
+}
+.back-button-payment .back-button__corner {
+  border-color: #006ffd;
+}

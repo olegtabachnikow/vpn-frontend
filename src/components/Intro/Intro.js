@@ -11,6 +11,7 @@ import { useSwipeable } from 'react-swipeable';
 
 function Intro() {
   const [progress, setProgress] = React.useState(0);
+  const [isFaded, setIsFaded] = React.useState(false);
   const navigate = useNavigate();
   const handlers = useSwipeable({
     onSwipedLeft: handleSwipeLeft,
@@ -18,14 +19,33 @@ function Intro() {
   });
   const progressBarItems = [...Array(5).keys()];
 
+  React.useEffect(() => {
+    isFaded && setTimeout(setIsFaded, 400, false);
+  }, [isFaded]);
+
   function handleButtonClick() {
-    progress >= 4 ? navigate('/') : setProgress((state) => ++state);
-  }
-  function handleSwipeLeft() {
-    progress >= 4 ? setProgress(4) : setProgress((state) => ++state);
+    setIsFaded(true);
+    if (progress >= 4) {
+      navigate('/');
+    } else {
+      setTimeout(setProgress, 300, (state) => ++state);
+    }
   }
   function handleSwipeRight() {
-    progress <= 0 ? setProgress(0) : setProgress((state) => --state);
+    if (progress === 0) {
+      return;
+    } else {
+      setIsFaded(true);
+      setTimeout(setProgress, 300, (state) => --state);
+    }
+  }
+  function handleSwipeLeft() {
+    if (progress > 3) {
+      return;
+    } else {
+      setIsFaded(true);
+      setTimeout(setProgress, 300, (state) => ++state);
+    }
   }
 
   return (
@@ -53,7 +73,7 @@ function Intro() {
           alt='sector'
         />
       </div>
-      <div className='intro__text-container'>
+      <div className={`intro__text-container ${isFaded && 'faded'}`}>
         {(progress === 0 && (
           <>
             <h1 className='intro__title'>

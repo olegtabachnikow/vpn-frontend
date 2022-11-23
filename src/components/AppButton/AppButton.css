@@ -38,11 +38,16 @@
   background-color: #348ff3;
   color: #fff;
   border: 1px solid #348ff3;
+  position: relative;
+  z-index: 3;
 }
 .app-button-instruction-secondary {
   background-color: transparent;
   color: #348ff3;
   border: 1px solid #348ff3;
+  position: relative;
+  z-index: 1;
+  animation: buttonMove 0.3s linear;
 }
 .app-button-referral {
   color: #7472eb;
@@ -133,4 +138,13 @@
   border: 1.5px solid #fff;
   background-color: transparent;
   box-shadow: none;
+}
+
+@keyframes buttonMove {
+  from {
+    transform: translateY(64px);
+  }
+  to {
+    transform: translate(0);
+  }
 }

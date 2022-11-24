@@ -64,7 +64,11 @@ function Possibilities() {
           </p>
         </DataItem>
       </DataList>
-      <AppButton text='Выбрать тариф' currentClass='app-button-possibilities' />
+      <AppButton
+        text='Выбрать тариф'
+        currentClass='app-button-possibilities'
+        handler={() => navigate('/tariffes')}
+      />
     </section>
   );
 }

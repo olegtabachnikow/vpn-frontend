@@ -1,0 +1,51 @@
+.tariffes-template {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.tariffes-template__info {
+  font-size: 12px;
+  line-height: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  background: #f8f9fe;
+  border-radius: 16px;
+  margin-bottom: 30px;
+}
+.tariffes-template__content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.tariffes-template__info-title {
+  margin: 0;
+  font-family: 'Actay Wide', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+}
+.tariffes-template__info-subtitle {
+  margin: 10px 0 0 0;
+  font-family: 'Actay Wide';
+  font-weight: 700;
+}
+.tariffes-template__info-text {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+}
+.tariffes-template.free {
+  color: #7472eb;
+}
+.tariffes-template__info.fit {
+  color: #ff824b;
+  margin: 0;
+}
+.tariffes-template__info.nolimit {
+  color: #f95273;
+  margin-bottom: 0;
+}

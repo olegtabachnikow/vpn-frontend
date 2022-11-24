@@ -7,9 +7,9 @@ import Main from '../Main/Main';
 import Gift from '../Gift/Gift';
 import MyVpn from '../MyVpn/MyVpn';
 import Referral from '../Referral/Referral';
-import { getCurrentUser } from '../../utils/roboApi';
+import { getCurrentUser, getPrices } from '../../utils/roboApi';
 import Help from '../Help/Help';
-import { setCurrentUser } from '../actions/actions';
+import { setCurrentUser, setPrices } from '../actions/actions';
 import Balance from '../Balance/Balance';
 import Traffic from '../Traffic/Traffic';
 import Support from '../Support/Support';
@@ -35,6 +35,12 @@ function App() {
   React.useEffect(() => {
     const id = userId();
     getUser(id);
+  }, []);
+
+  React.useEffect(() => {
+    getPrices()
+      .then((res) => setPrices(res))
+      .catch((err) => console.log(err));
   }, []);
 
   React.useEffect(() => {

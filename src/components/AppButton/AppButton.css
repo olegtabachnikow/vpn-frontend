@@ -47,7 +47,18 @@
   border: 1px solid #348ff3;
   position: relative;
   z-index: 1;
-  animation: buttonMove 0.3s linear;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(64px);
+  transition: all 0.3s ease;
+  position: absolute;
+  bottom: 64px;
+}
+.app-button-instruction-secondary.active {
+  position: absolute;
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
 }
 .app-button-referral {
   color: #7472eb;
@@ -139,12 +150,20 @@
   background-color: transparent;
   box-shadow: none;
 }
-
-@keyframes buttonMove {
-  from {
-    transform: translateY(64px);
-  }
-  to {
-    transform: translate(0);
-  }
+.app-button.free {
+  border-color: transparent;
+  background-color: #7472eb;
+  color: #fff;
+}
+.app-button.fit {
+  margin-top: 0;
+  color: #fff;
+  background-color: #ff824b;
+  border-color: transparent;
+}
+.app-button.nolimit {
+  margin-top: 0;
+  color: #fff;
+  background-color: #f95273;
+  border-color: transparent;
 }

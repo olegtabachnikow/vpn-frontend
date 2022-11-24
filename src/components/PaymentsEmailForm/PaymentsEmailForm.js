@@ -38,16 +38,17 @@ function PaymentsEmailForm() {
     const emailIsValid = str.match(regex);
     emailIsValid ? handler(emailIsValid[0]) : handler('');
   }
-  function handleSubmit() {
+  function handleSubmit(e) {
+    e.preventDefault();
     console.log('submitted');
   }
   return (
-    <form onSubmit={handleSubmit} className='payment__form'>
-      <div className='payment__input-container'>
-        <span className='payment__input-title'>Ваш e-mail</span>
+    <form onSubmit={handleSubmit} className='payments-email-form'>
+      <div className='payments-email-form__input-container'>
+        <span className='payments-email-form__input-title'>Ваш e-mail</span>
         <input
           onKeyUp={debouncedHandlerMain}
-          className='payment__input'
+          className='payments-email-form__input'
           type='email'
           onCopy={(e) => e.preventDefault()}
           onPaste={(e) => e.preventDefault()}
@@ -56,14 +57,16 @@ function PaymentsEmailForm() {
         <img
           src={paymentCheckbox}
           alt='checked'
-          className={`payment__icon ${email && 'enabled'}`}
+          className={`payments-email-form__icon ${email && 'enabled'}`}
         />
       </div>
-      <div className='payment__input-container'>
-        <span className='payment__input-title'>Подтвердите e-mail</span>
+      <div className='payments-email-form__input-container'>
+        <span className='payments-email-form__input-title'>
+          Подтвердите e-mail
+        </span>
         <input
           onKeyUp={debouncedHandlerSecond}
-          className='payment__input'
+          className='payments-email-form__input'
           type='email'
           onCopy={(e) => e.preventDefault()}
           onPaste={(e) => e.preventDefault()}
@@ -72,17 +75,17 @@ function PaymentsEmailForm() {
         <img
           src={paymentCheckbox}
           alt='checked'
-          className={`payment__icon ${
+          className={`payments-email-form__icon ${
             comparedEmail && isEmailEqual && 'enabled'
           }`}
         />
       </div>
-      <p className='payment__form-text'>
+      <p className='payments-email-form-text'>
         Не (!) для спама, а для технических моментов, если телеграмму, например,
         будет плохо — чтобы связаться с вами, такое бывает редко, но бывает.
       </p>
       <button
-        className={`payment__form-button ${!isEmailEqual && 'disabled'}`}
+        className={`payments-email-form-button ${!isEmailEqual && 'disabled'}`}
         type='submit'
         disabled={isEmailEqual ? false : true}
       >

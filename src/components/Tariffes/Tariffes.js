@@ -1,37 +1,52 @@
 import React from 'react';
 import './Tariffes.css';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import FormLabel from '../FormLabel/FormLabel';
 import BackButton from '../BackButton/BackButton';
 import Popup from '../Popup/Popup';
 import AppButton from '../AppButton/AppButton';
+import TariffesTemplate from '../TariffesTemplate/TariffesTemplate';
+import { useSelector } from 'react-redux';
+import { setPayment } from '../actions/actions';
 
 function Tariffes() {
   const [value, setValue] = React.useState('');
   const [error, setError] = React.useState('');
   const [isTariffPopupHidden, setIsTariffPopupHidden] = React.useState(true);
   const navigate = useNavigate();
+  const location = useLocation();
+  const prices = useSelector((state) => state.prices);
 
   function handleChooseClick() {
-    value.length ? navigate(`/tariffes/${value}`) : handleError();
+    value.length
+      ? navigate(`/tariffes/${value}`)
+      : handleError('Выберите тариф!');
   }
   function handleGiftClick() {
     navigate(`/gift`);
   }
-  function handleError() {
-    setError('Выберите тариф!');
+  function handleError(text) {
+    setError(text);
     setTimeout(() => setError(''), 5000);
   }
-  React.useEffect(() => {
-    console.log(value);
-  });
+  function handleRedirectAndPayment() {
+    if (value === 'fit' || value === 'free' || value === 'nolimit') {
+      handleError('Выберите пакет!');
+      return;
+    } else {
+      setPayment(parseInt(value));
+      navigate('/payment');
+    }
+  }
   return (
     <section className='tariffes'>
-      <BackButton
-        path='/'
-        text='Главное меню'
-        currentClass='back-button-tariffes'
-      />
+      {location.pathname === '/tariffes' && (
+        <BackButton
+          path='/'
+          text='Главное меню'
+          currentClass='back-button-tariffes'
+        />
+      )}
       <Routes>
         <Route
           exact
@@ -57,7 +72,7 @@ function Tariffes() {
                   currentClass='tariff-item-fit'
                   title='FIT'
                   text='Не хватает бесплатных Гб в этом месяце? Рассчитайте и докупите, сколько нужно по доступным ценам.'
-                  valueMain='от 69 ₽'
+                  valueMain={`от ${prices.Fix_5} ₽`}
                   isDiscounted={false}
                 />
                 <FormLabel
@@ -67,7 +82,7 @@ function Tariffes() {
                   currentClass='tariff-item-nolimit'
                   title='NO LIMIT'
                   text='Забудьте про ограничения. безлимитное потребление, сколько нужно устройств, доступ везде. '
-                  valueMain='от 389 ₽'
+                  valueMain={`от ${prices.Nolimit_12} ₽`}
                   isDiscounted={false}
                 />
                 <Popup
@@ -160,13 +175,117 @@ function Tariffes() {
           }
         />
         <Route
-          path='/tariffes/free'
-          element={<div className='tariffes-free'></div>}
+          path='/free'
+          element={
+            <TariffesTemplate
+              currentClass='free'
+              buttonText='Пригласить друга'
+              handler={() => navigate('/referral')}
+            >
+              <p className='tariffes__free-text'>
+                Дарим до 10 Гб на тарифах FREE и FIX каждый месяц, так же можно{' '}
+                <u>заработать</u> 20 гб просто за приглашение — 10 Гб вам и 10
+                Гб другу.
+              </p>
+            </TariffesTemplate>
+          }
         />
-        <Route path='/fix' element={<div className='tariffes-fix'></div>} />
+        <Route
+          path='/fit'
+          element={
+            <TariffesTemplate
+              currentClass='fit'
+              buttonText='Оплата'
+              handler={handleRedirectAndPayment}
+              error={error}
+            >
+              <div className='tariffes__content-fit'>
+                <FormLabel
+                  elementValue={prices.Fix_5}
+                  name='package'
+                  handler={(data) => setValue(data)}
+                  currentClass='tariff-item-fit'
+                  title='5 ГБ'
+                  text={null}
+                  valueMain={`от ${prices.Fix_5} ₽`}
+                  valueSecondary='разовый платеж'
+                  isDiscounted={false}
+                />
+                <FormLabel
+                  elementValue={prices.Fix_10}
+                  name='package'
+                  handler={(data) => setValue(data)}
+                  currentClass='tariff-item-fit'
+                  title='10 ГБ'
+                  text={null}
+                  valueMain={`от ${prices.Fix_10} ₽`}
+                  valueSecondary='разовый платеж'
+                  isDiscounted={true}
+                  discountValue='Выгоднее на 16%'
+                />
+                <FormLabel
+                  elementValue={prices.Fix_20}
+                  name='package'
+                  handler={(data) => setValue(data)}
+                  currentClass='tariff-item-fit'
+                  title='20 ГБ'
+                  text={null}
+                  valueMain={`от ${prices.Fix_20} ₽`}
+                  valueSecondary='разовый платеж'
+                  isDiscounted={true}
+                  discountValue='Выгоднее на 54%'
+                />
+              </div>
+            </TariffesTemplate>
+          }
+        />
         <Route
           path='/nolimit'
-          element={<div className='tariffes-nolimit'></div>}
+          element={
+            <TariffesTemplate
+              currentClass='nolimit'
+              buttonText='Оплата'
+              handler={handleRedirectAndPayment}
+              error={error}
+            >
+              <div className='tariffes__content-nolimit'>
+                <FormLabel
+                  elementValue={prices.Nolimit_1}
+                  name='package'
+                  handler={(data) => setValue(data)}
+                  currentClass='tariff-item-nolimit'
+                  title='Месяц'
+                  text={null}
+                  valueMain={`от ${prices.Nolimit_1} ₽/мес`}
+                  isDiscounted={false}
+                />
+                <FormLabel
+                  elementValue={prices.Nolimit_3}
+                  name='package'
+                  handler={(data) => setValue((data * 3).toString())}
+                  currentClass='tariff-item-nolimit'
+                  title='3 месяца'
+                  text={null}
+                  valueMain={`от ${prices.Nolimit_3} ₽/мес`}
+                  valueSecondary={`${prices.Nolimit_3 * 3}₽ всего`}
+                  isDiscounted={true}
+                  discountValue='Выгода 90₽'
+                />
+                <FormLabel
+                  elementValue={prices.Nolimit_12}
+                  name='package'
+                  handler={(data) => setValue((data * 12).toString())}
+                  currentClass='tariff-item-nolimit'
+                  title='12 месяцев'
+                  text={null}
+                  valueMain={`от ${prices.Nolimit_12} ₽/мес`}
+                  valueSecondary={`${prices.Nolimit_12 * 12}₽ всего`}
+                  isDiscounted={true}
+                  discountValue='Выгода 720₽'
+                />
+              </div>
+            </TariffesTemplate>
+          }
         />
       </Routes>
     </section>

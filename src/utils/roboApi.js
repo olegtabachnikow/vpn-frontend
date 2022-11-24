@@ -10,3 +10,13 @@ export function getCurrentUser(user_id) {
     },
   }).then((res) => res.json());
 }
+
+export function getPrices() {
+  return fetch(`${API_URL}/prices`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ZGtvKJDPYAys8TEBGd33',
+    },
+  }).then((res) => res.json());
+}

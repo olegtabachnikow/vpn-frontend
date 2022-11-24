@@ -12,6 +12,8 @@ import { useSwipeable } from 'react-swipeable';
 function Intro() {
   const [progress, setProgress] = React.useState(0);
   const [isFaded, setIsFaded] = React.useState(false);
+  const [isMoved, setIsMoved] = React.useState(false);
+
   const navigate = useNavigate();
   const handlers = useSwipeable({
     onSwipedLeft: handleSwipeLeft,
@@ -21,13 +23,19 @@ function Intro() {
 
   React.useEffect(() => {
     isFaded && setTimeout(setIsFaded, 400, false);
-  }, [isFaded]);
-
+    isMoved && setTimeout(setIsMoved, 600, false);
+    progress > 4 && setProgress(4);
+  }, [isFaded, isMoved, progress]);
+  function handleSkip() {
+    setIsMoved(true);
+    setTimeout(navigate, 500, '/instruction');
+  }
   function handleButtonClick() {
-    setIsFaded(true);
     if (progress >= 4) {
-      navigate('/');
+      setIsMoved(true);
+      setTimeout(navigate, 500, '/instruction');
     } else {
+      setIsFaded(true);
       setTimeout(setProgress, 300, (state) => ++state);
     }
   }
@@ -49,7 +57,7 @@ function Intro() {
   }
 
   return (
-    <section {...handlers} className='intro'>
+    <section {...handlers} className={`intro ${isMoved && 'moved'}`}>
       <div className='intro__image-container'>
         <img className='intro__image' src={introImg} alt='happy face' />
         <img
@@ -161,7 +169,7 @@ function Intro() {
       <AppButton
         currentClass='app-button-intro-secondary'
         text='Попробовать VPN'
-        handler={() => navigate('/instruction')}
+        handler={handleSkip}
       />
     </section>
   );

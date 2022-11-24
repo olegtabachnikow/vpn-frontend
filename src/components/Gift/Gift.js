@@ -1,29 +1,24 @@
 import React from 'react';
 import './Gift.css';
 import Popup from '../Popup/Popup';
-import BackButton from '../BackButton/BackButton';
 import AppButton from '../AppButton/AppButton';
 import { useSwipeable } from 'react-swipeable';
 import { useSelector } from 'react-redux';
 import FormLabel from '../FormLabel/FormLabel';
+import { useNavigate } from 'react-router-dom';
+import { setPayment } from '../actions/actions';
 
 function Gift() {
   const [progress, setProgress] = React.useState(0);
   const [value, setValue] = React.useState('0');
-  const [userDiscount, setUserDiscount] = React.useState(0);
   const [isGiftPopupHidden, setIsGiftPopupHidden] = React.useState(true);
   const currentUser = useSelector((state) => state.currentUser);
+  const prices = useSelector((state) => state.prices);
+  const navigate = useNavigate();
   const handlers = useSwipeable({
     onSwipedLeft: handleSwipeLeft,
     onSwipedRight: handleSwipeRight,
   });
-  React.useEffect(() => {
-    console.log(value);
-  });
-  React.useEffect(() => {
-    setUserDiscount(currentUser.discount);
-    //setUserDiscount(0);
-  }, []);
 
   function handleSwipeLeft() {
     progress >= 2 ? setProgress(2) : setProgress((state) => ++state);
@@ -39,10 +34,33 @@ function Gift() {
     e.preventDefault();
     handleClick();
   }
-
+  function handlePaymentSubmit() {
+    if (value === '2') {
+      currentUser.giftDiscount > 0
+        ? setPayment(
+            ((prices.Nolimit_12 * 12) / 100) * currentUser.giftDiscount
+          )
+        : setPayment(prices.Nolimit_12 * 12);
+    } else if (value === '1') {
+      currentUser.giftDiscount > 0
+        ? setPayment(((prices.Nolimit_3 * 3) / 100) * currentUser.giftDiscount)
+        : setPayment(prices.Nolimit_3 * 3);
+    } else {
+      currentUser.giftDiscount > 0
+        ? setPayment((prices.Nolimit_1 / 100) * currentUser.giftDiscount)
+        : setPayment(prices.Nolimit_1);
+    }
+    navigate('/payment');
+  }
+  function handleBackButtonClick() {
+    progress > 0 ? setProgress((state) => --state) : navigate('/');
+  }
   return (
     <section {...handlers} className='gift'>
-      <BackButton path='/' text='Мой VPN' currentClass='back-button-gift' />
+      <button onClick={handleBackButtonClick} className='gift__back-button'>
+        {progress > 0 ? 'Назад' : 'Главное меню'}
+        <span className='gift__back-button-corner' />
+      </button>
       {progress === 0 && (
         <>
           <h1 className='gift__title'>
@@ -119,14 +137,21 @@ function Gift() {
               name='gift'
               handler={(data) => setValue(data)}
               currentClass={`form-label-item-gift ${
-                userDiscount && 'form-label-item-gift_discounted'
+                currentUser.giftDiscount > 0 &&
+                'form-label-item-gift_discounted'
               }`}
               title='Mесяц NO LIMIT'
               text={null}
-              valueMain='449 ₽'
-              valueSecondary={`${userDiscount ? '224 ₽' : '449 ₽'}`}
-              isDiscounted={userDiscount}
-              discountValue={'50%'}
+              valueMain={`${prices.Nolimit_1} ₽`}
+              valueSecondary={`${
+                currentUser.giftDiscount > 0
+                  ? Math.floor(
+                      (prices.Nolimit_1 / 100) * currentUser.giftDiscount
+                    ).toString()
+                  : prices.Nolimit_1
+              } ₽`}
+              isDiscounted={currentUser.giftDiscount > 0}
+              discountValue={`${currentUser.giftDiscount}%`}
               defaultChecked={true}
             />
             <FormLabel
@@ -134,28 +159,42 @@ function Gift() {
               name='gift'
               handler={(data) => setValue(data)}
               currentClass={`form-label-item-gift ${
-                userDiscount && 'form-label-item-gift_discounted'
+                currentUser.giftDiscount > 0 &&
+                'form-label-item-gift_discounted'
               }`}
               title='3 месяца NO LIMIT'
               text={null}
-              valueMain={`${userDiscount ? '419 ₽/мес' : '209 ₽/мес'}`}
-              valueSecondary={`${userDiscount ? '209 ₽/мес' : null}`}
-              isDiscounted={userDiscount}
-              discountValue={'50%'}
+              valueMain={`${prices.Nolimit_3}/мес ₽`}
+              valueSecondary={`${
+                currentUser.giftDiscount > 0
+                  ? Math.floor(
+                      (prices.Nolimit_3 / 100) * currentUser.giftDiscount
+                    ).toString()
+                  : prices.Nolimit_3
+              }/мес ₽`}
+              isDiscounted={currentUser.giftDiscount > 0}
+              discountValue={`${currentUser.giftDiscount}%`}
             />
             <FormLabel
               elementValue='2'
               name='gift'
               handler={(data) => setValue(data)}
               currentClass={`form-label-item-gift ${
-                userDiscount && 'form-label-item-gift_discounted'
+                currentUser.giftDiscount > 0 &&
+                'form-label-item-gift_discounted'
               }`}
               title='12 месяцев NO LIMIT'
               text={null}
-              valueMain={`${userDiscount ? '389 ₽/мес' : '194 ₽/мес'}`}
-              valueSecondary={`${userDiscount ? '194 ₽/мес' : null}`}
-              isDiscounted={userDiscount}
-              discountValue={'50%'}
+              valueMain={`${prices.Nolimit_12}/мес ₽`}
+              valueSecondary={`${
+                currentUser.giftDiscount > 0
+                  ? Math.floor(
+                      (prices.Nolimit_12 / 100) * currentUser.giftDiscount
+                    ).toString()
+                  : prices.Nolimit_12
+              }/мес ₽`}
+              isDiscounted={currentUser.giftDiscount > 0}
+              discountValue={`${currentUser.giftDiscount}%`}
             />
           </form>
           <button
@@ -189,7 +228,16 @@ function Gift() {
               <span className='gift__user-selection-placeholder'>
                 Месяц NO LIMIT
                 <div className='gift__user-selection-placeholder-value'>
-                  {userDiscount ? <span>224 ₽</span> : <span>449 ₽</span>}
+                  {currentUser.giftDiscount > 0 ? (
+                    <span>
+                      {Math.floor(
+                        (prices.Nolimit_1 / 100) * currentUser.giftDiscount
+                      ).toString()}{' '}
+                      ₽
+                    </span>
+                  ) : (
+                    <span>{prices.Nolimit_1} ₽</span>
+                  )}
                 </div>
               </span>
             )}
@@ -197,10 +245,15 @@ function Gift() {
               <span className='gift__user-selection-placeholder'>
                 3 месяца NO LIMIT
                 <div className='gift__user-selection-placeholder-value'>
-                  {userDiscount ? (
-                    <span>209 ₽/мес</span>
+                  {currentUser.giftDiscount > 0 ? (
+                    <span>
+                      {Math.floor(
+                        (prices.Nolimit_3 / 100) * currentUser.giftDiscount * 3
+                      ).toString()}{' '}
+                      ₽
+                    </span>
                   ) : (
-                    <span>419 ₽/мес</span>
+                    <span>{prices.Nolimit_3} ₽</span>
                   )}
                 </div>
               </span>
@@ -209,10 +262,17 @@ function Gift() {
               <span className='gift__user-selection-placeholder'>
                 12 месяцев NO LIMIT
                 <div className='gift__user-selection-placeholder-value'>
-                  {userDiscount ? (
-                    <span>194 ₽/мес</span>
+                  {currentUser.giftDiscount > 0 ? (
+                    <span>
+                      {Math.floor(
+                        (prices.Nolimit_12 / 100) *
+                          currentUser.giftDiscount *
+                          12
+                      ).toString()}{' '}
+                      ₽
+                    </span>
                   ) : (
-                    <span>389 ₽/мес</span>
+                    <span>{prices.Nolimit_12} ₽</span>
                   )}
                 </div>
               </span>
@@ -221,7 +281,7 @@ function Gift() {
           <AppButton
             currentClass='app-button-gift'
             text='Перейти к оплате'
-            handler={() => console.log('finito')}
+            handler={handlePaymentSubmit}
           />
         </>
       )}

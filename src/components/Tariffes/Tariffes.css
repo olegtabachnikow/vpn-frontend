@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
 }
 .tariffes-list {
   margin: 0 0 130px 0;
@@ -51,4 +52,18 @@
   text-align: center;
   width: 100%;
   height: 20px;
+}
+.tariffes__free-text {
+  font-family: 'Actay Wide', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  width: 90%;
+  margin: 30px auto;
+}
+.tariffes__content-fit {
+  width: 100%;
+}
+.tariffes__content-nolimit {
+  width: 100%;
 }

@@ -1,4 +1,5 @@
 .back-button {
+  min-height: 56px;
   height: 56px;
   width: 100%;
   text-decoration: none;
@@ -54,10 +55,6 @@
 .back-button-referral {
   width: 100%;
 }
-.back-button-instruction {
-  margin-bottom: 20px;
-  padding: 20px 0;
-}
 .back-button-faq,
 .back-button-values,
 .back-button-possibilities {
@@ -73,5 +70,11 @@
   width: 90%;
 }
 .back-button-payment .back-button__corner {
+  border-color: #006ffd;
+}
+.back-button-tariffes-template {
+  color: #006ffd;
+}
+.back-button-tariffes-template .back-button__corner {
   border-color: #006ffd;
 }

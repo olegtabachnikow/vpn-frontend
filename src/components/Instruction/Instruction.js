@@ -7,7 +7,6 @@ import stepOne from '../../images/instruction1-min.png';
 import stepTwo from '../../images/instruction2-min.png';
 import stepThree from '../../images/instruction3-min.png';
 import stepFour from '../../images/instruction4-min.png';
-import BackButton from '../BackButton/BackButton';
 import { useSwipeable } from 'react-swipeable';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -35,7 +34,10 @@ function Instruction() {
       setTimeout(setProgress, 300, (state) => ++state);
     }
   }
-
+  function handleBackClick() {
+    setIsFaded(true);
+    progress >= 1 && setTimeout(setProgress, 300, (state) => --state);
+  }
   function handleSwipeLeft() {
     if (progress > 1) {
       return;
@@ -54,11 +56,13 @@ function Instruction() {
   }
   return (
     <section {...handlers} className='instruction'>
-      <BackButton
-        path='/'
-        text='Мой VPN'
-        currentClass='btn-my-vpn back-button-instruction'
-      />
+      <button
+        onClick={handleBackClick}
+        className={`instruction__button-top ${progress === 0 && 'hidden'}`}
+      >
+        Назад
+        <span className='instruction__button-corner'></span>
+      </button>
       <div className={`instruction__content ${isFaded && 'faded'}`}>
         {progress === 0 && (
           <>
@@ -157,17 +161,17 @@ function Instruction() {
         )}
       </div>
       <div className='instruction__button-container'>
-        {progress === 2 && (
-          <AppButton
-            currentClass='app-button-instruction-secondary app-button_transition'
-            text='Перейти в Telegram'
-            handler={() => setProgress((state) => state)}
-          />
-        )}
+        <AppButton
+          currentClass={`app-button-instruction-secondary ${
+            progress === 2 && 'active'
+          }`}
+          text='Перейти в Telegram'
+          handler={() => setProgress((state) => state)}
+        />
         <AppButton
           currentClass='app-button-instruction-primary'
           text={`${progress < 2 ? 'Далее' : 'Главное меню'}`}
-          handler={() => (progress < 2 ? handleClick() : null)}
+          handler={() => (progress < 2 ? handleClick() : navigate('/'))}
         />
       </div>
     </section>

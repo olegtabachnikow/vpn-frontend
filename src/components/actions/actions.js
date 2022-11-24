@@ -7,10 +7,23 @@ const setCurrentUserAction = (payload) => {
     payload,
   };
 };
-
-export const { setCurrentUser } = bindActionCreators(
+const setPaymentAction = (payload) => {
+  return {
+    type: 'PAYMENT/SET',
+    payload,
+  };
+};
+const setPricesAction = (payload) => {
+  return {
+    type: 'PRICES/SET',
+    payload,
+  };
+};
+export const { setCurrentUser, setPayment, setPrices } = bindActionCreators(
   {
     setCurrentUser: setCurrentUserAction,
+    setPayment: setPaymentAction,
+    setPrices: setPricesAction,
   },
   dispatch
 );

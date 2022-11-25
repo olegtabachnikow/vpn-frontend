@@ -27,8 +27,8 @@ function Subscription() {
   return (
     <section className='subscription'>
       <BackButton
-        text='Мой VPN'
-        path='/my-vpn'
+        text='Назад'
+        path={-1}
         currentClass='back-button-subscription'
       />
       <div className='subscription__content'>

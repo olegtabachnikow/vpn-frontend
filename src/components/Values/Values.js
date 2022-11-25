@@ -4,15 +4,13 @@ import DataList from '../DataList/DataList';
 import AppButton from '../AppButton/AppButton';
 import BackButton from '../BackButton/BackButton';
 import './Values.css';
+import { useNavigate } from 'react-router-dom';
 
 function Values() {
+  const navigate = useNavigate();
   return (
     <section className='values'>
-      <BackButton
-        text='Мне не понятно'
-        path='/help'
-        currentClass='back-button-values'
-      />
+      <BackButton text='Назад' path={-1} currentClass='back-button-values' />
       <DataList
         currentClass='data-list-values'
         component={
@@ -74,7 +72,18 @@ function Values() {
           </p>
         </DataItem>
       </DataList>
-      <AppButton text='Хочу попробовать' currentClass='app-button-values' />
+      <div className='values__button-box'>
+        <AppButton
+          text='Главное меню'
+          currentClass='app-button-values app-button-values-secondary'
+          handler={() => navigate('/')}
+        />
+        <AppButton
+          text='Выбрать тариф'
+          currentClass='app-button-values'
+          handler={() => navigate('/tariffes')}
+        />
+      </div>
     </section>
   );
 }

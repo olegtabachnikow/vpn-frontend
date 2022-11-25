@@ -77,8 +77,8 @@
   height: 30px;
 }
 .menu-button.btn-our-values {
-  height: 22%;
-  margin-bottom: 4%;
+  height: 18%;
+  margin-bottom: 3%;
   width: 100%;
   background-color: #ff824b;
 }
@@ -89,8 +89,8 @@
   font-size: 24px;
 }
 .menu-button.btn-our-possibilities {
-  height: 22%;
-  margin-bottom: 4%;
+  height: 18%;
+  margin-bottom: 3%;
   width: 100%;
   background-color: #f95273;
 }
@@ -120,18 +120,18 @@
   line-height: 20px;
 }
 .menu-button.btn-faq {
-  height: 48%;
-  width: 48%;
+  height: 49%;
+  width: 49%;
   background-color: #7472eb;
-  margin-bottom: 4%;
+  margin-bottom: 2%;
   margin-left: auto;
 }
 .menu-button.btn-faq .menu-button__icon {
   height: 40px;
 }
 .menu-button.btn-no-responce {
-  height: 46%;
-  width: 48%;
+  height: 48%;
+  width: 49%;
   background-color: #ffbe30;
   margin-left: auto;
 }
@@ -180,9 +180,9 @@
 
 .menu-button.btn-tariffes {
   background-color: #ff824b;
-  height: 36%;
+  height: 20%;
   margin-left: auto;
-  width: 48%;
+  width: 100%;
 }
 .menu-button__title.btn-tariffes {
   font-size: 30px;
@@ -211,12 +211,13 @@
 
 .menu-button.btn-robot {
   background-color: #064b72;
-  height: 20%;
-  width: 100%;
+  height: 36%;
+  width: 48%;
+  margin-left: auto;
 }
 .menu-button__title.btn-robot {
-  font-size: 22px;
-  line-height: 32px;
+  font-size: 16px;
+  line-height: 18px;
 }
 .menu-button.btn-referrals {
   height: 48%;

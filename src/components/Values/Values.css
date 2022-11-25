@@ -3,3 +3,12 @@
   flex-direction: column;
   height: 100%;
 }
+.values__button-box {
+  display: flex;
+  flex-direction: column;
+  min-height: 20%;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 10px 0 25px 0;
+}

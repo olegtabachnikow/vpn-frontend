@@ -11,8 +11,8 @@ function Possibilities() {
   return (
     <section className='possibilities'>
       <BackButton
-        text='Мне не понятно'
-        path='/help'
+        text='Назад'
+        path={-1}
         currentClass='back-button-possibilities'
       />
       <DataList
@@ -64,11 +64,18 @@ function Possibilities() {
           </p>
         </DataItem>
       </DataList>
-      <AppButton
-        text='Выбрать тариф'
-        currentClass='app-button-possibilities'
-        handler={() => navigate('/tariffes')}
-      />
+      <div className='faq__button-box'>
+        <AppButton
+          text='Главное меню'
+          currentClass='app-button-possibilities app-button-possibilities-secondary'
+          handler={() => navigate('/')}
+        />
+        <AppButton
+          text='Выбрать тариф'
+          currentClass='app-button-possibilities'
+          handler={() => navigate('/tariffes')}
+        />
+      </div>
     </section>
   );
 }

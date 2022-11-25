@@ -10,11 +10,7 @@ function Faq() {
   const navigate = useNavigate();
   return (
     <section className='faq'>
-      <BackButton
-        text='Мне не понятно'
-        path='/help'
-        currentClass='back-button-faq'
-      />
+      <BackButton text='Назад' path={-1} currentClass='back-button-faq' />
       <DataList currentClass='data-list-faq'>
         <DataItem title='А вы кто?'>
           <p className='data-item__text'>
@@ -138,7 +134,18 @@ function Faq() {
           </p>
         </DataItem>
       </DataList>
-      <AppButton text='Хочу попробовать' currentClass='app-button-faq' />
+      <div className='faq__button-box'>
+        <AppButton
+          text='Главное меню'
+          currentClass='app-button-faq app-button-faq-secondary'
+          handler={() => navigate('/')}
+        />
+        <AppButton
+          text='Выбрать тариф'
+          currentClass='app-button-faq'
+          handler={() => navigate('/tariffes')}
+        />
+      </div>
     </section>
   );
 }

@@ -6,7 +6,7 @@ import balanceIcon from '../../images/balance.png';
 import trafficIcon from '../../images/traffic.png';
 import referralIcon from '../../images/referral.png';
 import supportIcon from '../../images/support.png';
-import opetionsIcon from '../../images/options.png';
+import happySmile from '../../images/values.png';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -54,9 +54,9 @@ function MyVpn() {
         />
       </div>
       <MenuButton
-        image={opetionsIcon}
+        image={happySmile}
         currentClass='btn-options'
-        title='Настройки подписки'
+        title='Мой тариф'
         text={`Тариф: ${currentUser.tariff}`}
         addText={`Активен до ${currentUser.endDate}`}
         handler={() => navigate('/subscription')}

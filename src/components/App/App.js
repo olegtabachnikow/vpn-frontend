@@ -9,7 +9,7 @@ import MyVpn from '../MyVpn/MyVpn';
 import Referral from '../Referral/Referral';
 import { getCurrentUser, getPrices } from '../../utils/roboApi';
 import Help from '../Help/Help';
-import { setCurrentUser, setPrices } from '../actions/actions';
+import { setCurrentUser, setPrices } from '../../redux/actions/actions';
 import Balance from '../Balance/Balance';
 import Traffic from '../Traffic/Traffic';
 import Support from '../Support/Support';
@@ -20,6 +20,7 @@ import Faq from '../Faq/Faq';
 import Tariffes from '../Tariffes/Tariffes';
 import Subscription from '../Subscription/Subscription';
 import Payment from '../Payment/Payment';
+import Success from '../Success/Success';
 
 function App() {
   const tg = window.Telegram.WebApp;
@@ -77,6 +78,7 @@ function App() {
         <Route path='/faq' element={<Faq />} />
         <Route path='/tariffes/*' element={<Tariffes />} />
         <Route path='/payment' element={<Payment />} />
+        <Route path='/success' element={<Success />} />
       </Routes>
     </div>
   );

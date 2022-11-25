@@ -31,11 +31,11 @@ function Main() {
           addText={null}
         />
         <MenuButton
-          handler={() => navigate('/tariffes')}
-          image={moneyIcon}
-          currentClass='btn-tariffes'
-          title='Тарифы'
-          text={'Цены, акции'}
+          handler={() => navigate('/instruction')}
+          image={robotIcon}
+          currentClass='btn-robot'
+          title='Ключ доступа к Outline'
+          text={'Инструкция по установке'}
           addText={null}
         />
         <MenuButton
@@ -56,11 +56,11 @@ function Main() {
         />
       </div>
       <MenuButton
-        handler={() => navigate('/instruction')}
-        image={robotIcon}
-        currentClass='btn-robot'
-        title='Ключ доступа к Outline'
-        text={'Инструкция по установке'}
+        handler={() => navigate('/tariffes')}
+        image={moneyIcon}
+        currentClass='btn-tariffes'
+        title='Тарифы'
+        text={'Цены, акции'}
         addText={null}
       />
     </section>

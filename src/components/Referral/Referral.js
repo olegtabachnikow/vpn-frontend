@@ -16,14 +16,11 @@ function Referral() {
         <div className='referral__text-box'>
           <h1 className='referral__title'>
             10 гб вам — <br />
-            10 гб другу, <br /> просто за <br />
-            приглашение.
+            10 гб другу
           </h1>
           <p className='referral__text'>
-            Не нужно ждать от моря... <br /> оплаты, 5 человек просто
-            <br /> установили robo, вы
-            <br />
-            заработали 50 гб.{' '}
+            Итого 20 Гб — от нас для вас. как только приглашенный пользователь
+            совершит первую оплату (от 69 ₽).
           </p>
         </div>
         <div className='referral__stats'>

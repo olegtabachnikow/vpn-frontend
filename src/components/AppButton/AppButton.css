@@ -90,21 +90,21 @@
   border-color: transparent;
   font-size: 14px;
   width: 80%;
-  margin: auto auto 45px auto;
+  margin: 0 auto;
 }
 .app-button-possibilities {
   color: #f95273;
   border-color: transparent;
   font-size: 14px;
   width: 80%;
-  margin: auto auto 45px auto;
+  margin: 0 auto;
 }
 .app-button-faq {
   color: #7472eb;
   border-color: transparent;
   font-size: 14px;
   width: 80%;
-  margin: auto auto 45px auto;
+  margin: 0 auto;
 }
 .app-button-news {
   color: #348ff3;
@@ -166,4 +166,17 @@
   color: #fff;
   background-color: #f95273;
   border-color: transparent;
+}
+
+.app-button-faq-secondary,
+.app-button-possibilities-secondary,
+.app-button-values-secondary {
+  border: 2px solid #fff;
+  background-color: transparent;
+  color: #fff;
+}
+.app-button-payment {
+  color: #fff;
+  border-color: transparent;
+  background-color: #064b72;
 }

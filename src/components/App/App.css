@@ -40,6 +40,12 @@
 .app-subscription {
   background-color: #064b72;
 }
+.app-payment {
+  background-color: #fff;
+}
+.app-success {
+  background-color: #064b72;
+}
 @media screen and (orientation: landscape) {
   .app {
     width: 375px;

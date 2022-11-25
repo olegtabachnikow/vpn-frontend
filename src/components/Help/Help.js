@@ -8,9 +8,11 @@ import newsIcon from '../../images/news.png';
 import faqIcon from '../../images/faq.png';
 import noResponceIcon from '../../images/noresponce.png';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function Help() {
   const navigate = useNavigate();
+  const currentUser = useSelector((state) => state.currentUser);
   return (
     <section className='help'>
       <BackButton
@@ -58,6 +60,14 @@ function Help() {
             text='Напишите нам!'
           />
         </div>
+        <MenuButton
+          image={valuesIcon}
+          currentClass='btn-options'
+          title='Мой тариф'
+          text={`Тариф: ${currentUser.tariff}`}
+          addText={`Активен до ${currentUser.endDate}`}
+          handler={() => navigate('/subscription')}
+        />
       </div>
     </section>
   );

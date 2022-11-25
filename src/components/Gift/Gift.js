@@ -6,7 +6,7 @@ import { useSwipeable } from 'react-swipeable';
 import { useSelector } from 'react-redux';
 import FormLabel from '../FormLabel/FormLabel';
 import { useNavigate } from 'react-router-dom';
-import { setPayment } from '../actions/actions';
+import { setPayment } from '../../redux/actions/actions';
 
 function Gift() {
   const [progress, setProgress] = React.useState(0);
@@ -38,16 +38,24 @@ function Gift() {
     if (value === '2') {
       currentUser.giftDiscount > 0
         ? setPayment(
-            ((prices.Nolimit_12 * 12) / 100) * currentUser.giftDiscount
+            Math.floor(
+              ((prices.Nolimit_12 * 12) / 100) * currentUser.giftDiscount
+            )
           )
         : setPayment(prices.Nolimit_12 * 12);
     } else if (value === '1') {
       currentUser.giftDiscount > 0
-        ? setPayment(((prices.Nolimit_3 * 3) / 100) * currentUser.giftDiscount)
+        ? setPayment(
+            Math.floor(
+              ((prices.Nolimit_3 * 3) / 100) * currentUser.giftDiscount
+            )
+          )
         : setPayment(prices.Nolimit_3 * 3);
     } else {
       currentUser.giftDiscount > 0
-        ? setPayment((prices.Nolimit_1 / 100) * currentUser.giftDiscount)
+        ? setPayment(
+            Math.floor((prices.Nolimit_1 / 100) * currentUser.giftDiscount)
+          )
         : setPayment(prices.Nolimit_1);
     }
     navigate('/payment');

@@ -1,0 +1,39 @@
+.success {
+  display: flex;
+  flex-direction: column;
+  padding: 20% 10% 20% 10%;
+  align-items: center;
+  color: #fff;
+  justify-content: space-between;
+  height: 100%;
+  box-sizing: border-box;
+}
+.success__text {
+  font-family: 'Actay Wide', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 34px;
+}
+.success__text-secondary {
+  font-family: 'Actay', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+}
+.success__button-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.success__app-button {
+  width: 100%;
+  border: 2px solid #fff;
+  background-color: #fff;
+  color: #064b72;
+}
+.success__app-button-secondary {
+  color: #fff;
+  background-color: transparent;
+}

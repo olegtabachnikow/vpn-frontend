@@ -167,3 +167,35 @@
 .tariff-item-nolimit .form-label__discount-box {
   color: #f95273;
 }
+.form-label__method {
+  color: #064b72;
+  background-color: transparent;
+  border: 2px solid #064b72;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.form-label__method .form-label__radio-input::before {
+  border-color: #064b72;
+  border-radius: 5px;
+  width: 14px;
+  height: 14px;
+  right: 16px;
+}
+.form-label__method .form-label__radio-input:checked::before {
+  border: 7px solid #064b72;
+}
+.form-label__method .form-label__content {
+  margin: 0;
+  width: 100%;
+}
+.form-label__method .form-label__text-secondary {
+  font-size: 12px;
+  text-decoration: underline;
+}
+.form-label__method .form-label__title {
+  font-family: 'Actay', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  text-decoration: none !important;
+}

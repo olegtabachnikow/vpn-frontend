@@ -7,7 +7,7 @@ import Popup from '../Popup/Popup';
 import AppButton from '../AppButton/AppButton';
 import TariffesTemplate from '../TariffesTemplate/TariffesTemplate';
 import { useSelector } from 'react-redux';
-import { setPayment } from '../actions/actions';
+import { setPayment } from '../../redux/actions/actions';
 
 function Tariffes() {
   const [value, setValue] = React.useState('');

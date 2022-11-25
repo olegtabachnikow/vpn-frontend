@@ -33,7 +33,7 @@ function FormLabel({
           >
             {title}
           </p>
-          {text && text}
+          {text && <span className='form-label__text-secondary'>{text}</span>}
         </div>
         <div className='form-label__value'>
           {valueMain && (

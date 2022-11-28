@@ -80,7 +80,7 @@ function Gift() {
             подарок скидка 50%
           </h2>
           <AppButton
-            currentClass='app-button-gift'
+            currentClass='primary orange'
             text='Выбрать подарок'
             handler={handleClick}
           />
@@ -109,9 +109,15 @@ function Gift() {
                 <p>
                   3. Подарок подлежит возврату только в соответствии с общими
                   условиями возврата. С условиями можно ознакомиться в разделе —
-                  тарифы, подробные условия. Коротко — только в случае, если нас
-                  заблокируют, и robo не сможет предоставить рабочий доступ к
-                  сервису в течение суток.{' '}
+                  тарифы,{' '}
+                  <span
+                    onClick={() => navigate('/tariffes')}
+                    className='gift__popup-link'
+                  >
+                    подробные условия
+                  </span>
+                  . Коротко — только в случае, если нас заблокируют, и robo не
+                  сможет предоставить рабочий доступ к сервису в течение суток.{' '}
                 </p>
                 <p>
                   4. На каждый второй подарок действует — скидка 50%. То есть
@@ -120,7 +126,7 @@ function Gift() {
                 </p>
                 <AppButton
                   text='Понятно'
-                  currentClass='app-button-popup-gift'
+                  currentClass='secondary white bg-orange border-transparent'
                   handler={() => setIsGiftPopupHidden(true)}
                 />
               </div>
@@ -287,7 +293,7 @@ function Gift() {
             )}
           </span>
           <AppButton
-            currentClass='app-button-gift'
+            currentClass='primary orange'
             text='Перейти к оплате'
             handler={handlePaymentSubmit}
           />

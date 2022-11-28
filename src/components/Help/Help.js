@@ -58,7 +58,7 @@ function Help() {
         </div>
         <MenuButton
           image={valuesIcon}
-          currentClass='btn-options'
+          currentClass='btn-my-tariff'
           title='Мой тариф'
           text={`Тариф: ${currentUser.tariff}`}
           addText={`Активен до ${currentUser.endDate}`}

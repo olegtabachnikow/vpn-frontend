@@ -162,14 +162,16 @@ function Instruction() {
       </div>
       <div className='instruction__button-container'>
         <AppButton
-          currentClass={`app-button-instruction-secondary ${
-            progress === 2 && 'active'
+          currentClass={`border-blue secondary blue hidden ${
+            progress === 2 && 'not-hidden'
           }`}
           text='Перейти в Telegram'
           handler={() => setProgress((state) => state)}
         />
         <AppButton
-          currentClass='app-button-instruction-primary'
+          currentClass={`primary white bg-blue ${
+            progress === 2 && !currentUser.activeUser && 'disabled'
+          }`}
           text={`${progress < 2 ? 'Далее' : 'Главное меню'}`}
           handler={() => (progress < 2 ? handleClick() : navigate('/'))}
         />

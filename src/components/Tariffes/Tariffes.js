@@ -16,15 +16,14 @@ function Tariffes() {
   const navigate = useNavigate();
   const location = useLocation();
   const prices = useSelector((state) => state.prices);
+  const currentUser = useSelector((state) => state.currentUser);
 
   function handleChooseClick() {
     value.length
       ? navigate(`/tariffes/${value}`)
       : handleError('Выберите тариф!');
   }
-  function handleGiftClick() {
-    navigate(`/gift`);
-  }
+
   function handleError(text) {
     setError(text);
     setTimeout(() => setError(''), 5000);
@@ -41,7 +40,7 @@ function Tariffes() {
   return (
     <section className='tariffes'>
       {location.pathname === '/tariffes' && (
-        <BackButton path='/' text='Главное меню' currentClass='' />
+        <BackButton path={-1} text='Назад' currentClass='' />
       )}
       <Routes>
         <Route
@@ -50,6 +49,9 @@ function Tariffes() {
           element={
             <>
               <div className='tariffes-list'>
+                <span className='tariffes-list__current-title'>
+                  Ваш тариф: {currentUser.tariff}
+                </span>
                 <FormLabel
                   elementValue='free'
                   name='tariff'
@@ -142,7 +144,7 @@ function Tariffes() {
                       </div>
                       <AppButton
                         text='Понятно'
-                        currentClass='app-button-popup-tariff'
+                        currentClass='margin-top bg-blue primary white'
                         handler={() => setIsTariffPopupHidden(true)}
                       />
                     </>
@@ -153,13 +155,8 @@ function Tariffes() {
                 <span className='tariffes__error'>{error}</span>
                 <div className='tariffes__button-box'>
                   <AppButton
-                    text='Подарить'
-                    currentClass='app-button-tariff-gift'
-                    handler={handleGiftClick}
-                  />
-                  <AppButton
                     text='Выбрать'
-                    currentClass='app-button-tariff-choose'
+                    currentClass='primary white bg-blue'
                     handler={handleChooseClick}
                   />
                 </div>

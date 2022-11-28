@@ -7,6 +7,7 @@ import trafficIcon from '../../images/traffic.png';
 import referralIcon from '../../images/referral.png';
 import supportIcon from '../../images/support.png';
 import happySmile from '../../images/values.png';
+import optionsIcon from '../../images/options-icon.svg';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -45,6 +46,14 @@ function MyVpn() {
           addText={null}
         />
         <MenuButton
+          image={optionsIcon}
+          handler={() => navigate('/options')}
+          currentClass='btn-options'
+          title='Настроить'
+          text={'Настроить вручную'}
+          addText={null}
+        />
+        <MenuButton
           image={supportIcon}
           handler={() => navigate('/support')}
           currentClass='btn-support'
@@ -55,7 +64,7 @@ function MyVpn() {
       </div>
       <MenuButton
         image={happySmile}
-        currentClass='btn-options'
+        currentClass='btn-my-tariff'
         title='Мой тариф'
         text={`Тариф: ${currentUser.tariff}`}
         addText={`Активен до ${currentUser.endDate}`}

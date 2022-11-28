@@ -1,6 +1,15 @@
 .support {
   padding: 40px 45px 90px 45px;
   color: #fff;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.support__text-container {
+  box-sizing: border-box;
+  padding-bottom: 20%;
 }
 .support__text {
   font-size: 20px;
@@ -8,9 +17,7 @@
   line-height: 25px;
   font-family: 'Actay Wide', sans-serif;
 }
-.support__text:first-of-type {
-  margin-top: 70px;
-}
+
 .support__link {
   text-decoration: underline;
 }

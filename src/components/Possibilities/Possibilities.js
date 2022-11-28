@@ -60,15 +60,15 @@ function Possibilities() {
           </p>
         </DataItem>
       </DataList>
-      <div className='faq__button-box'>
+      <div className='possibilities__button-box'>
         <AppButton
           text='Главное меню'
-          currentClass='app-button-possibilities app-button-possibilities-secondary'
+          currentClass='secondary margin-bottom white'
           handler={() => navigate('/')}
         />
         <AppButton
           text='Выбрать тариф'
-          currentClass='app-button-possibilities'
+          currentClass='primary rose'
           handler={() => navigate('/tariffes')}
         />
       </div>

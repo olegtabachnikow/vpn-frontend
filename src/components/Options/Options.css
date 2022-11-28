@@ -1,0 +1,198 @@
+.options {
+  padding: 0 16px 45px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  height: 100%;
+  position: relative;
+}
+.options__button-box {
+  margin-top: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.options__content {
+  width: 100%;
+  height: 100%;
+}
+.options__item {
+  position: relative;
+  width: 100%;
+  background-color: #ff824b;
+  padding: 14px 16px;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 13px;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.options__item-arrow {
+  width: 10px;
+  height: 10px;
+  transform: rotate(45deg);
+  background-color: transparent;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  position: absolute;
+  right: 20px;
+  top: 45%;
+  border-color: #fff;
+}
+.options__item-arrow.active {
+  transform: rotate(225deg);
+  top: 30%;
+}
+.options__item-title {
+  margin: 0 0 5px 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  line-height: 20px;
+  font-weight: 700;
+}
+.options__item-title.communicate {
+  font-size: 16px;
+}
+.options__item.with-popup {
+  z-index: 5;
+}
+.options__item-button-text {
+  margin: 0;
+  text-decoration: underline;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  width: 30%;
+}
+.options__item-text {
+  font-size: 14px;
+  font-weight: 400;
+  width: 90%;
+  margin: 0;
+}
+.options__item-location-box {
+  margin-top: 17px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.options__country-item {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  background-color: #fff;
+  border-radius: 50px;
+  padding: 6px 12px;
+  box-sizing: border-box;
+  color: #348ff3;
+  font-weight: 700;
+  margin-right: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.options__country-item.device {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+.options__country-item.active {
+  color: #fff;
+  background-color: #348ff3;
+}
+.options__country-current {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  border-radius: 50px;
+  padding: 6px 12px;
+  box-sizing: border-box;
+  color: #fff;
+  background-color: #348ff3;
+  font-weight: 700;
+  margin-right: 10px;
+  position: absolute;
+  right: 35px;
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.options__country-current.hidden {
+  display: none;
+}
+.options__overlay {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.6);
+  z-index: 3;
+  display: none;
+}
+.options__overlay.active {
+  display: block;
+}
+.options__item-checkbox {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 20px;
+}
+.options__popup-close-button {
+  background-color: transparent;
+  border: none;
+  padding: 15px;
+  position: absolute;
+  top: -5px;
+  right: 0;
+}
+.options__popup-text {
+  font-size: 12px;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+}
+.options__popup {
+  padding: 20px;
+  width: 100%;
+  border-radius: 16px;
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 130%;
+  background-color: #ff824b;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  z-index: 5;
+}
+.options__popup.smart::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 10px solid #ff824b;
+  position: absolute;
+  bottom: 100%;
+  left: 5%;
+}
+.options__popup.active {
+  display: block;
+}
+.options__popup.communicate::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 10px solid #ff824b;
+  position: absolute;
+  bottom: 99%;
+  right: 5%;
+}
+.options__popup-button-box {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 10px;
+}

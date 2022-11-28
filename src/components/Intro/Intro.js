@@ -163,12 +163,12 @@ function Intro() {
       </div>
       <AppButton
         text='Далее'
-        currentClass='app-button-intro-primary'
+        currentClass='border-blue secondary blue'
         handler={handleButtonClick}
       />
       <AppButton
-        currentClass='app-button-intro-secondary'
-        text='Попробовать VPN'
+        currentClass='primary white bg-blue margin-top'
+        text='Установить VPN'
         handler={handleSkip}
       />
     </section>

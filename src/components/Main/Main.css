@@ -3,6 +3,7 @@
   height: 100%;
   padding: 18px 16px 61px 16px;
   box-sizing: border-box;
+  position: relative;
 }
 .main__button-container {
   height: 75%;
@@ -11,4 +12,17 @@
   flex-wrap: wrap;
   justify-content: space-between;
   margin-bottom: 5%;
+}
+
+.test-user-set {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  box-sizing: border-box;
+}
+.test-user-set button {
+  width: 30%;
 }

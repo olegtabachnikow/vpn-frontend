@@ -58,7 +58,7 @@ function Payment() {
               <span className='payment__value-data'>{payment} ₽</span>
             </div>
             <AppButton
-              currentClass='app-button-payment'
+              currentClass='primary white bg-dark-blue margin-top'
               text='Оплатить'
               handler={handlePay}
             />

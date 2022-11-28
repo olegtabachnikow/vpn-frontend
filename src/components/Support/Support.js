@@ -8,26 +8,24 @@ function Support() {
   const navigate = useNavigate();
   return (
     <section className='support'>
-      <BackButton
-        text='Мой VPN'
-        path='/my-vpn'
-        currentClass='back-button-traffic'
-      />
-      <p className='support__text'>
-        Напишите все вопросы — мы ответим в течение суток (как правило в течение
-        часа). Как только вам поступит обстоятельный ответ — robo оповестит вас
-        прямо в телеграм.{' '}
-      </p>
-      <p className='support__text'>
-        Возможно, вам поможет раздел{' '}
-        <span onClick={() => navigate('/faq')} className='support__link'>
-          FAQ
-        </span>
-        .
-      </p>
+      <BackButton text='Мой VPN' path='/my-vpn' currentClass='white' />
+      <div className='support__text-container'>
+        <p className='support__text'>
+          Напишите все вопросы — мы ответим в течение суток (как правило в
+          течение часа). Как только вам поступит обстоятельный ответ — robo
+          оповестит вас прямо в телеграм.{' '}
+        </p>
+        <p className='support__text'>
+          Возможно, вам поможет раздел{' '}
+          <span onClick={() => navigate('/faq')} className='support__link'>
+            FAQ
+          </span>
+          .
+        </p>
+      </div>
       <AppButton
         text='Саппорт чат'
-        currentClass='app-button-support'
+        currentClass='primary blue wide'
         handler={() => (window.location.href = 'https://t.me/b0ringclub')}
       />
     </section>

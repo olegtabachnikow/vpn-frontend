@@ -8,8 +8,10 @@ import letterIcon from '../../images/letter-min.png';
 import weirdSmileIcon from '../../images/look-up-smile-min.png';
 import robotIcon from '../../images/robot-min.png';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-function Main() {
+function Main({ testSetter }) {
+  const currentUser = useSelector((state) => state.currentUser);
   const navigate = useNavigate();
   return (
     <section className='main'>
@@ -19,8 +21,8 @@ function Main() {
           image={glassesIcon}
           currentClass='btn-my-vpn'
           title='Мой VPM'
-          text={'Тариф: NO LIMIT'}
-          addText={'Активен до 20.12.22'}
+          text={`Тариф: ${currentUser.tariff}`}
+          addText={`Активен до ${currentUser.endDate}`}
         />
         <MenuButton
           handler={() => navigate('/help')}
@@ -63,6 +65,11 @@ function Main() {
         text={'Цены, акции'}
         addText={null}
       />
+      <div className='test-user-set'>
+        <button onClick={() => testSetter('FREE')}>free</button>
+        <button onClick={() => testSetter('FIT')}>fit</button>
+        <button onClick={() => testSetter('NOLIMIT')}>nolimit</button>
+      </div>
     </section>
   );
 }

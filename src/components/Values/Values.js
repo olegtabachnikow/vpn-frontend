@@ -11,12 +11,7 @@ function Values() {
   return (
     <section className='values'>
       <BackButton text='Назад' path={-1} currentClass='white narrow' />
-      <DataList
-        currentClass='data-list-values'
-        component={
-          <AppButton text='Хочу попробовать' currentClass='app-button-values' />
-        }
-      >
+      <DataList currentClass='data-list-values'>
         <DataItem title='Устойчивость к блокировкам'>
           <p className='data-item__text'>
             Мы считаем, свобода главная причина развития человека. А ее
@@ -75,12 +70,12 @@ function Values() {
       <div className='values__button-box'>
         <AppButton
           text='Главное меню'
-          currentClass='app-button-values app-button-values-secondary'
+          currentClass='secondary margin-bottom white'
           handler={() => navigate('/')}
         />
         <AppButton
           text='Выбрать тариф'
-          currentClass='app-button-values'
+          currentClass='primary orange'
           handler={() => navigate('/tariffes')}
         />
       </div>

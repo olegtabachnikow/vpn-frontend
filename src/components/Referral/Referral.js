@@ -25,7 +25,7 @@ function Referral() {
         </div>
         <div className='referral__stats'>
           <div className='referral__stat referral__stat_small'>
-            <span className='referral__stat-value'>1</span>
+            <span className='referral__stat-value'>{currentUser.refUsers}</span>
             <p className='referral__stat-text'>
               количество приглашенных пользователей
             </p>
@@ -89,7 +89,7 @@ function Referral() {
             </p>
             <AppButton
               text='Понятно'
-              currentClass='app-button-popup-referral'
+              currentClass='primary white margin-top bg-violet'
               handler={() => setIsReferPopupHidden(true)}
             />
           </>

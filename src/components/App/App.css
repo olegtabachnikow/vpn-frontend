@@ -8,7 +8,8 @@
   position: relative;
   transition: background-color 0.5s ease;
 }
-.app-gift {
+.app-gift,
+.app-options {
   background-color: #ffbe30;
 }
 .app-referral {

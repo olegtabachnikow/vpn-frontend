@@ -1,5 +1,5 @@
 .subscription {
-  padding: 0 50px 110px 50px;
+  padding: 0 30px 110px 30px;
   height: 100%;
   box-sizing: border-box;
   display: flex;
@@ -46,10 +46,29 @@
   display: flex;
   justify-content: space-between;
 }
+.subscription__widget-box.centered {
+  justify-content: center;
+}
 .subscription__widget-text {
   font-family: 'Actay', sans-serif;
   font-size: 10px;
   line-height: 11px;
+}
+.subscription__widget_secondary {
+  width: 100%;
+  border-radius: 12px;
+  border: 1.5px solid #fff;
+  padding: 11px 22px;
+  box-sizing: border-box;
+  margin-top: 5px;
+}
+.subscription__widget_secondary.hidden {
+  display: none;
+}
+.subscription__widget-text_secondary {
+  font-size: 10px;
+  font-weight: 400;
+  font-family: 'Actay', sans-serif;
 }
 .subscription__widget_disabled {
   display: none;

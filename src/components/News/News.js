@@ -17,12 +17,12 @@ function News() {
         <AppButton
           handler={() => navigate('/possibilities')}
           text='Возможности robo'
-          currentClass='app-button-news'
+          currentClass='primary blue wide'
         />
         <AppButton
           handler={() => navigate('/values')}
           text='Ценности robo'
-          currentClass='app-button-news'
+          currentClass='primary blue margin-top wide'
         />
       </div>
     </section>

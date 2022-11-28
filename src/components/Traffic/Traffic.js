@@ -11,31 +11,37 @@ function Traffic() {
   const isNolimit = currentUser.tariff === 'NOLIMIT';
   return (
     <section className='traffic'>
-      <BackButton
-        text='Мой VPN'
-        path='/my-vpn'
-        currentClass='back-button-traffic'
-      />
+      <BackButton text='Мой VPN' path='/my-vpn' currentClass='white' />
       <div className='traffic__main'>
-        <div className='traffic__main-content'>
-          <span className='traffic__main_text'>
-            Осталось до {currentUser.endDate}
-          </span>
-          <span className='traffic__main_value'>
-            {isNolimit ? '∞' : currentUser.traffic}
-          </span>
-          <span className='traffic__main_text'>
-            Кажестся, вам {!currentUser.trafficMonth && 'не'} хватит трафика до
-            конца месяца
-          </span>
-        </div>
+        {isNolimit ? (
+          <div className='traffic__main-content'>
+            <span className='traffic__main_text'>
+              Активен до {currentUser.endDate}
+            </span>
+            <span className='traffic__main_value nolimit'>NO LIMIT</span>
+            <span className='traffic__main_text'>
+              Все под контролем, потребляйте сколько хотите, у вас безлимит
+            </span>
+          </div>
+        ) : (
+          <div className='traffic__main-content'>
+            <span className='traffic__main_text'>
+              Осталось до {currentUser.endDate}
+            </span>
+            <span className='traffic__main_value'>{currentUser.traffic}</span>
+            <span className='traffic__main_text'>
+              Кажестся, вам {!currentUser.trafficMonth && 'не'} хватит трафика
+              до конца месяца
+            </span>
+          </div>
+        )}
         <div className='traffic__outlook'>
           <div className='traffic__outlook-element'>
             <span className='traffic__outlook-element-text'>
               В среднем в день вы тратите
             </span>
             <span className='traffic__outlook-element-value'>
-              {currentUser.trafficMean}
+              {currentUser.trafficPerDay}
             </span>
           </div>
           <div className='traffic__outlook-element'>
@@ -48,28 +54,48 @@ function Traffic() {
           </div>
         </div>
         <div className='traffic__secondary-content'>
-          <AppButton
-            text='Докупить Гб'
-            currentClass={`app-button-traffic-primary ${
-              !isNolimit ? 'disabled' : ''
-            }`}
-            handler={() => navigate('/tariffes/fit')}
-          />
-          <div className='traffic__button-box'>
+          {currentUser.tariff === 'NOLIMIT' ? (
             <AppButton
-              text='Заработать'
-              currentClass='app-button-traffic'
-              handler={() => navigate('/referral')}
+              text='Продлить тариф'
+              currentClass='primary rose wide margin-bottom'
+              handler={() => navigate('/tariffes/nolimit')}
             />
-            <AppButton
-              text='Сменить тариф'
-              currentClass='app-button-traffic'
-              handler={() => navigate('/tariffes')}
-            />
-          </div>
+          ) : (
+            <>
+              <AppButton
+                text='Докупить Гб'
+                currentClass={`primary rose wide margin-bottom ${
+                  isNolimit ? 'disabled' : ''
+                }`}
+                handler={() => {
+                  currentUser.activeUser
+                    ? navigate('/tariffes/fit')
+                    : navigate('/tariffes');
+                }}
+              />
+              <div className='traffic__button-box'>
+                <AppButton
+                  text='Заработать'
+                  currentClass='secondary white narrow'
+                  handler={() => navigate('/referral')}
+                />
+                <AppButton
+                  text='Сменить тариф'
+                  currentClass='secondary white narrow'
+                  handler={() => navigate('/tariffes')}
+                />
+              </div>
+            </>
+          )}
           <p className='traffic__tips'>
-            Чтобы не волноваться — можете пополнить баланс, и нажать
-            автосписание по текущему тарифу.
+            Чтобы не волноваться — можете{' '}
+            <span
+              onClick={() => navigate('/balance')}
+              className='traffic__link'
+            >
+              пополнить баланс
+            </span>
+            , и нажать автосписание по текущему тарифу.
           </p>
         </div>
       </div>

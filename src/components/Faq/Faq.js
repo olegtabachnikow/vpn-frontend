@@ -137,12 +137,12 @@ function Faq() {
       <div className='faq__button-box'>
         <AppButton
           text='Главное меню'
-          currentClass='app-button-faq app-button-faq-secondary'
+          currentClass='secondary margin-bottom white'
           handler={() => navigate('/')}
         />
         <AppButton
           text='Выбрать тариф'
-          currentClass='app-button-faq'
+          currentClass='primary violet'
           handler={() => navigate('/tariffes')}
         />
       </div>

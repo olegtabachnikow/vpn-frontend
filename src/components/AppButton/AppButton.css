@@ -1,3 +1,12 @@
+:root {
+  --blue: #348ff3;
+  --white: #ffffff;
+  --orange: #ff824b;
+  --violet: #7472eb;
+  --rose: #f95273;
+  --dark-blue: #064b72;
+  --gray: #aeaeae;
+}
 .app-button {
   box-sizing: border-box;
   width: 90%;
@@ -5,47 +14,73 @@
   border-radius: 12px;
   cursor: pointer;
   box-shadow: 0px 4px 4px 0px #00000040;
-  margin-top: 14px;
   font-size: 20px;
   line-height: 25px;
   padding: 0;
   font-weight: 700;
   font-family: 'Actay Wide', sans-serif;
+  border: 2px solid transparent;
 }
-.app-button-intro-primary {
-  background-color: transparent;
-  color: #348ff3;
-  border: 1px solid #348ff3;
+.app-button.blue {
+  color: var(--blue);
 }
-.app-button-intro-secondary {
-  background-color: #348ff3;
-  color: #fff;
-  border: 1px solid #348ff3;
+.app-button.white {
+  color: var(--white);
 }
-.app-button-gift {
-  color: #ff824b;
+.app-button.violet {
+  color: var(--violet);
+}
+.app-button.rose {
+  color: var(--rose);
+}
+.app-button.dark-blue {
+  color: var(--dark-blue);
+}
+.app-button.orange {
+  color: var(--orange);
+}
+.app-button.primary {
   background-color: #fff;
   border-color: transparent;
 }
-.app-button-popup-gift {
-  background-color: #ff824b;
-  color: #fff;
-  width: 90%;
-  margin: 20px auto 0 auto;
+.app-button.secondary {
+  background-color: transparent;
+  border: 2px solid #fff;
+}
+.app-button.narrow {
+  margin: 0;
+  width: 48%;
+  font-size: 14px;
+}
+.app-button.wide {
+  width: 100%;
+}
+.app-button.small-text {
+  font-size: 12px;
+  line-height: 12px;
+  padding: 0 20px;
+  min-height: 35px;
+  box-sizing: border-box;
+}
+.app-button.border-transparent {
   border-color: transparent;
 }
-.app-button-instruction-primary {
-  background-color: #348ff3;
-  color: #fff;
-  border: 1px solid #348ff3;
-  position: relative;
-  z-index: 3;
+.app-button.border-blue {
+  border: 2px solid #348ff3;
 }
-.app-button-instruction-secondary {
-  background-color: transparent;
-  color: #348ff3;
-  border: 1px solid #348ff3;
-  position: relative;
+.app-button.bg-blue {
+  background-color: var(--blue);
+}
+.app-button.bg-orange {
+  background-color: var(--orange);
+}
+.app-button.bg-dark-blue {
+  background-color: var(--dark-blue);
+}
+.app-button.bg-violet {
+  background-color: var(--violet);
+}
+.app-button.hidden {
   z-index: 1;
   opacity: 0;
   pointer-events: none;
@@ -54,102 +89,24 @@
   position: absolute;
   bottom: 64px;
 }
-.app-button-instruction-secondary.active {
+.app-button.disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  background-color: var(--gray);
+}
+.app-button.not-hidden {
   position: absolute;
   opacity: 1;
   pointer-events: all;
   transform: translateY(0);
 }
-.app-button-referral {
-  color: #7472eb;
-  background-color: #fff;
-  border: 1px solid transparent;
+.app-button.margin-bottom {
+  margin: 0 0 15px 0;
 }
-.app-button-traffic-primary {
-  width: 100%;
-  border-color: transparent;
-  color: #f95273;
-  margin-bottom: 15px;
+.app-button.margin-top {
+  margin: 15px 0 0 0;
 }
-.app-button-traffic {
-  border: 1.5px solid #ffffff;
-  background-color: transparent;
-  color: #fff;
-  font-size: 14px;
-  margin: 0;
-  width: 48%;
-}
-.app-button.app-button-support {
-  width: 100%;
-  color: #348ff3;
-  border-color: transparent;
-  margin: 107px 0 0 0;
-}
-.app-button-values {
-  color: #ff824b;
-  border-color: transparent;
-  font-size: 14px;
-  width: 80%;
-  margin: 0 auto;
-}
-.app-button-possibilities {
-  color: #f95273;
-  border-color: transparent;
-  font-size: 14px;
-  width: 80%;
-  margin: 0 auto;
-}
-.app-button-faq {
-  color: #7472eb;
-  border-color: transparent;
-  font-size: 14px;
-  width: 80%;
-  margin: 0 auto;
-}
-.app-button-news {
-  color: #348ff3;
-  border-color: transparent;
-  width: 100%;
-}
-.app-button-popup-referral {
-  color: #fff;
-  background-color: #7472eb;
-  border-color: transparent;
-  margin: 20px auto 0 auto;
-}
-.app-button-popup-tariff {
-  color: #fff;
-  background-color: #348ff3;
-  border-color: transparent;
-  margin: 20px auto 0 auto;
-}
-.app-button-tariff-gift {
-  width: 48%;
-  border: 2px solid #348ff3;
-  color: #348ff3;
-  background-color: transparent;
-}
-.app-button-tariff-choose {
-  width: 48%;
-  border: 2px solid #348ff3;
-  color: #fff;
-  background-color: #348ff3;
-}
-.app-button-subscription_main {
-  font-size: 14px;
-  color: #064b72;
-  width: 100%;
-  border-color: transparent;
-  box-shadow: none;
-}
-.app-button-subscription_secondary {
-  font-size: 14px;
-  width: 100%;
-  color: #fff;
-  border: 1.5px solid #fff;
-  background-color: transparent;
-  box-shadow: none;
-}
+
 .app-button.free {
   border-color: transparent;
   background-color: #7472eb;
@@ -166,17 +123,4 @@
   color: #fff;
   background-color: #f95273;
   border-color: transparent;
-}
-
-.app-button-faq-secondary,
-.app-button-possibilities-secondary,
-.app-button-values-secondary {
-  border: 2px solid #fff;
-  background-color: transparent;
-  color: #fff;
-}
-.app-button-payment {
-  color: #fff;
-  border-color: transparent;
-  background-color: #064b72;
 }

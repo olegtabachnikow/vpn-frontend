@@ -20,7 +20,7 @@ function Main({ testSetter }) {
           handler={() => navigate('/my-vpn')}
           image={glassesIcon}
           currentClass='btn-my-vpn'
-          title='Мой VPM'
+          title='Мой VPN'
           text={`Тариф: ${currentUser.tariff}`}
           addText={`Активен до ${currentUser.endDate}`}
         />

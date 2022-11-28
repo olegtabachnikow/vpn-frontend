@@ -54,3 +54,10 @@
   right: 10px;
   filter: invert(1);
 }
+.instruction__copy-to-clipboard {
+  padding-right: 30px;
+}
+.instruction__copy-to-clipboard .copy-to-clipboard__copy-icon {
+  height: 25px;
+  width: 25px;
+}

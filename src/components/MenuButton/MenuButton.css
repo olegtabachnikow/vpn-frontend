@@ -51,14 +51,9 @@
 
 .menu-button.btn-balance {
   background-color: #ff824b;
-  width: 48%;
+  width: 47%;
   height: 48%;
 }
-.menu-button.btn-referrals {
-  height: 48%;
-  background-color: #7472eb;
-}
-
 .menu-button.btn-traffic {
   width: 48%;
   height: 31%;
@@ -227,7 +222,7 @@
 }
 .menu-button.btn-referrals {
   height: 48%;
-  width: 48%;
+  width: 47%;
   background-color: #7472eb;
 }
 .menu-button__title.btn-referrals {

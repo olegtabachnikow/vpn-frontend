@@ -3,24 +3,30 @@ import './Balance.css';
 import checboxTrue from '../../images/checkbox-checked.svg';
 import checkboxFalse from '../../images/checkbox-not-checked.svg';
 import AppButton from '../AppButton/AppButton';
-import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../BackButton/BackButton';
+import { setPayment } from '../../redux/actions/actions';
+import { useSelector } from 'react-redux';
 
 function Balance() {
   const [value, setValue] = React.useState(0);
+  const currentUser = useSelector((state) => state.currentUser);
   const navigate = useNavigate();
   const [numValue, setNumValue] = React.useState('200');
   function handleValue(val) {
     value === val ? setValue(0) : setValue(val);
   }
+  function handleSubmit() {
+    setPayment(numValue * 1);
+    navigate('/payment');
+  }
+  React.useEffect(() => {
+    currentUser.radioBalance === 0 ? setValue(0) : setValue(1);
+  }, []);
+
   return (
     <section className='balance'>
-      <BackButton
-        text='Мой VPN'
-        path='/my-vpn'
-        currentClass='back-button-balance'
-      />
+      <BackButton text='Мой VPN' path='/my-vpn' currentClass='white' />
       <div className='balance__row'>
         <h2 className='balance__title'>
           Cписывать с баланса (выберите с валюты или с Гб), когда закончится
@@ -30,15 +36,17 @@ function Balance() {
           <div className='balance__item'>
             <div className='balance__current'>
               <span className='balance__current-text'>Внесенная сумма</span>
-              <span className='balance__current-value'>600 ₽</span>
+              <span className='balance__current-value'>
+                {currentUser.balance} ₽
+              </span>
             </div>
             <button
-              onClick={() => handleValue(1)}
+              onClick={() => handleValue(0)}
               className='balance__button'
               type='button'
             >
               <img
-                src={value === 1 ? checboxTrue : checkboxFalse}
+                src={value === 0 ? checboxTrue : checkboxFalse}
                 alt='checkbox'
               />
               <span>Списать с валюты</span>
@@ -49,15 +57,17 @@ function Balance() {
               <span className='balance__current-text'>
                 Заработаные гигабайты{' '}
               </span>
-              <span className='balance__current-value'>10 гБ</span>
+              <span className='balance__current-value'>
+                {currentUser.refBalance} гБ
+              </span>
             </div>
             <button
-              onClick={() => handleValue(2)}
+              onClick={() => handleValue(1)}
               className='balance__button'
               type='button'
             >
               <img
-                src={value === 2 ? checboxTrue : checkboxFalse}
+                src={value === 1 ? checboxTrue : checkboxFalse}
                 alt='checkbox'
               />
               <span>Списать с Гб</span>
@@ -79,8 +89,13 @@ function Balance() {
           <AppButton
             text='Заработать'
             currentClass='balance__button-secondary'
+            handler={() => navigate('/referral')}
           />
-          <AppButton text='Пополнить' currentClass='balance__button-primary' />
+          <AppButton
+            text='Пополнить'
+            currentClass='balance__button-primary'
+            handler={handleSubmit}
+          />
         </div>
         <p className='balance__tips'>
           Вы можете пополнить баланс и увеличить трафик или заработать Гб с

@@ -81,6 +81,7 @@
   font-size: 20px;
   outline: none;
   position: relative;
+  appearance: none;
 }
 .balance__sum-input::placeholder {
   opacity: 0.4;

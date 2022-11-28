@@ -10,7 +10,7 @@ function Values() {
   const navigate = useNavigate();
   return (
     <section className='values'>
-      <BackButton text='Назад' path={-1} currentClass='back-button-values' />
+      <BackButton text='Назад' path={-1} currentClass='white narrow' />
       <DataList
         currentClass='data-list-values'
         component={

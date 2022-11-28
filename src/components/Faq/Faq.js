@@ -10,7 +10,7 @@ function Faq() {
   const navigate = useNavigate();
   return (
     <section className='faq'>
-      <BackButton text='Назад' path={-1} currentClass='back-button-faq' />
+      <BackButton text='Назад' path={-1} currentClass='white narrow' />
       <DataList currentClass='data-list-faq'>
         <DataItem title='А вы кто?'>
           <p className='data-item__text'>

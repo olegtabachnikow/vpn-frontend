@@ -3,9 +3,12 @@ import './Traffic.css';
 import AppButton from '../AppButton/AppButton';
 import BackButton from '../BackButton/BackButton';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 function Traffic() {
   const currentUser = useSelector((state) => state.currentUser);
+  const navigate = useNavigate();
+  const isNolimit = currentUser.tariff === 'NOLIMIT';
   return (
     <section className='traffic'>
       <BackButton
@@ -18,7 +21,9 @@ function Traffic() {
           <span className='traffic__main_text'>
             Осталось до {currentUser.endDate}
           </span>
-          <span className='traffic__main_value'>{currentUser.traffic}</span>
+          <span className='traffic__main_value'>
+            {isNolimit ? '∞' : currentUser.traffic}
+          </span>
           <span className='traffic__main_text'>
             Кажестся, вам {!currentUser.trafficMonth && 'не'} хватит трафика до
             конца месяца
@@ -29,7 +34,9 @@ function Traffic() {
             <span className='traffic__outlook-element-text'>
               В среднем в день вы тратите
             </span>
-            <span className='traffic__outlook-element-value'>0,5 гБ</span>
+            <span className='traffic__outlook-element-value'>
+              {currentUser.trafficMean}
+            </span>
           </div>
           <div className='traffic__outlook-element'>
             <span className='traffic__outlook-element-text'>
@@ -43,11 +50,22 @@ function Traffic() {
         <div className='traffic__secondary-content'>
           <AppButton
             text='Докупить Гб'
-            currentClass='app-button-traffic-primary'
+            currentClass={`app-button-traffic-primary ${
+              !isNolimit ? 'disabled' : ''
+            }`}
+            handler={() => navigate('/tariffes/fit')}
           />
           <div className='traffic__button-box'>
-            <AppButton text='Заработать' currentClass='app-button-traffic' />
-            <AppButton text='Сменить тариф' currentClass='app-button-traffic' />
+            <AppButton
+              text='Заработать'
+              currentClass='app-button-traffic'
+              handler={() => navigate('/referral')}
+            />
+            <AppButton
+              text='Сменить тариф'
+              currentClass='app-button-traffic'
+              handler={() => navigate('/tariffes')}
+            />
           </div>
           <p className='traffic__tips'>
             Чтобы не волноваться — можете пополнить баланс, и нажать

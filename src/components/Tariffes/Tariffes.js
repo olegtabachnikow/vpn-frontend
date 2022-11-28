@@ -41,11 +41,7 @@ function Tariffes() {
   return (
     <section className='tariffes'>
       {location.pathname === '/tariffes' && (
-        <BackButton
-          path='/'
-          text='Главное меню'
-          currentClass='back-button-tariffes'
-        />
+        <BackButton path='/' text='Главное меню' currentClass='' />
       )}
       <Routes>
         <Route

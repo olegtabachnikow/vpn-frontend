@@ -21,7 +21,7 @@ export function getPrices() {
   }).then((res) => res.json());
 }
 export function getPaymentLink(id, value) {
-  console.log(typeof id, id, typeof value, value);
+  // console.log(typeof id, id, typeof value, value);
   return fetch(`${API_URL}/payment`, {
     method: 'POST',
     headers: {

@@ -15,11 +15,7 @@ function Help() {
   const currentUser = useSelector((state) => state.currentUser);
   return (
     <section className='help'>
-      <BackButton
-        path='/'
-        text='Главное меню'
-        currentClass='back-button-help'
-      />
+      <BackButton path='/' text='Главное меню' currentClass='' />
       <div className='help__content'>
         <MenuButton
           handler={() => navigate('/values')}

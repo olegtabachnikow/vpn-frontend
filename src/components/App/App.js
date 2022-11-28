@@ -10,6 +10,7 @@ import Referral from '../Referral/Referral';
 import { getCurrentUser, getPrices } from '../../utils/roboApi';
 import Help from '../Help/Help';
 import { setCurrentUser, setPrices } from '../../redux/actions/actions';
+import { useSelector } from 'react-redux';
 import Balance from '../Balance/Balance';
 import Traffic from '../Traffic/Traffic';
 import Support from '../Support/Support';
@@ -27,6 +28,7 @@ function App() {
   const navigate = useNavigate();
   const location = useLocation();
   const queryParams = new URLSearchParams(window.location.search);
+  const currentUser = useSelector((state) => state.currentUser);
   const userId = () => {
     const data = queryParams.get('user_id');
     if (data) {
@@ -49,14 +51,13 @@ function App() {
     tg.expand();
   }, []);
 
-  React.useEffect(() => {
-    navigate('/intro');
-  }, []);
-
   function getUser(id = 12345678) {
     getCurrentUser(id)
       .then((res) => setCurrentUser(res))
-      .catch((err) => console.log(err));
+      .then((user) =>
+        user.payload.activeUser ? navigate('/') : navigate('/intro')
+      )
+      .catch(() => navigate('/intro'));
   }
   return (
     <div className={`app app-${location.pathname.replace('/', '')}`}>

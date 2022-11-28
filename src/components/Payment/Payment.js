@@ -20,12 +20,10 @@ function Payment() {
   }
   return (
     <section className='payment'>
-      <BackButton
-        path={-1}
-        text='Вернуться назад'
-        currentClass='back-button-payment'
-      />
-      {
+      <BackButton path={-1} text='Вернуться назад' currentClass='' />
+      {!currentUser.email && !currentUser.email.length ? (
+        <PaymentsEmailForm />
+      ) : (
         <>
           <div className='payment__methods'>
             <FormLabel
@@ -66,7 +64,7 @@ function Payment() {
             />
           </div>
         </>
-      }
+      )}
     </section>
   );
 }

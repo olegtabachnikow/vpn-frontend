@@ -10,7 +10,12 @@ function Possibilities() {
   const navigate = useNavigate();
   return (
     <section className='possibilities'>
-      <BackButton text='Назад' path={-1} currentClass='white narrow' />
+      <BackButton
+        text='Назад'
+        path={-1}
+        currentClass='white narrow'
+        title='Возможности'
+      />
       <DataList
         currentClass='data-list-possibilities'
         component={

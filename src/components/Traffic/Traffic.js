@@ -11,7 +11,12 @@ function Traffic() {
   const isNolimit = currentUser.tariff === 'NOLIMIT';
   return (
     <section className='traffic'>
-      <BackButton text='Мой VPN' path='/my-vpn' currentClass='white' />
+      <BackButton
+        text='Мой VPN'
+        path='/my-vpn'
+        currentClass='white'
+        title='Трафик'
+      />
       <div className='traffic__main'>
         {isNolimit ? (
           <div className='traffic__main-content'>

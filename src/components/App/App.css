@@ -9,7 +9,9 @@
   transition: background-color 0.5s ease;
 }
 .app-gift,
-.app-options {
+.app-options,
+.app-optionscomplete,
+.app-message-us {
   background-color: #ffbe30;
 }
 .app-referral {
@@ -21,8 +23,11 @@
 .app-traffic {
   background-color: #f95273;
 }
-.app-support {
+.app-support.nolimit {
   background-color: #348ff3;
+}
+.app-support {
+  background-color: #aeaeae;
 }
 .app-faq {
   background-color: #7472eb;
@@ -44,6 +49,11 @@
 }
 .app-success {
   background-color: #064b72;
+}
+.app-tariffesnolimit .tariffes,
+.app-tariffesfree .tariffes,
+.app-tariffesfit .tariffes {
+  padding-bottom: 30px;
 }
 @media screen and (orientation: landscape) {
   .app {

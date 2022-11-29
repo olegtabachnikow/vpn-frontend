@@ -29,7 +29,12 @@ function Tariffes() {
     setTimeout(() => setError(''), 5000);
   }
   function handleRedirectAndPayment() {
-    if (value === 'fit' || value === 'free' || value === 'nolimit') {
+    if (
+      value === 'fit' ||
+      value === 'free' ||
+      value === 'nolimit' ||
+      value === ''
+    ) {
       handleError('Выберите пакет!');
       return;
     } else {
@@ -40,7 +45,7 @@ function Tariffes() {
   return (
     <section className='tariffes'>
       {location.pathname === '/tariffes' && (
-        <BackButton path={-1} text='Назад' currentClass='' />
+        <BackButton path={-1} text='Назад' currentClass='' title='Тарифы' />
       )}
       <Routes>
         <Route

@@ -11,7 +11,12 @@ function Referral() {
   const currentUser = useSelector((state) => state.currentUser);
   return (
     <section className='referral'>
-      <BackButton text='Назад' path={-1} currentClass='white' />
+      <BackButton
+        text='Назад'
+        path={-1}
+        currentClass='white'
+        title='Реферальная программа'
+      />
       <div className='referral__content'>
         <div className='referral__text-box'>
           <h1 className='referral__title'>

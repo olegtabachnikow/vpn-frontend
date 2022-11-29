@@ -27,6 +27,35 @@
   border-radius: 7px;
   transition: background-color 0.5s ease;
 }
+.intro__back-button {
+  box-sizing: border-box;
+  min-height: 10%;
+  width: 100%;
+  position: relative;
+  background-color: transparent;
+  text-align: start;
+  padding: 0 0 0 25px;
+  border: none;
+  color: #348ff3;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  line-height: 12px;
+  transition: all 0.2s linear;
+  opacity: 1;
+}
+.intro__back-button-arrow {
+  width: 10px;
+  height: 10px;
+  transform: rotate(-45deg);
+  background-color: transparent;
+  border-top: 2px solid #348ff3;
+  border-left: 2px solid #348ff3;
+  position: absolute;
+  left: 0;
+}
+.intro__back-button.hidden {
+  opacity: 0;
+}
 .intro__progress-item.active {
   background-color: #348ff3;
 }
@@ -34,7 +63,7 @@
   min-width: 187px;
   box-sizing: border-box;
   min-height: 187px;
-  margin: 20% auto 15% auto;
+  margin: 10% auto 15% auto;
   display: flex;
   justify-content: center;
   align-items: center;

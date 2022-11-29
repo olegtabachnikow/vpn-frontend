@@ -18,7 +18,12 @@ function MyVpn() {
 
   return (
     <section className='my-vpn'>
-      <BackButton path='/' text='Главное меню' currentClass='' />
+      <BackButton
+        path='/'
+        text='Главное меню'
+        currentClass=''
+        title='Мой VPN'
+      />
       <div className='my-vpn__button-container'>
         <MenuButton
           handler={() => navigate('/balance')}

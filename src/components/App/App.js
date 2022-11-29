@@ -22,6 +22,8 @@ import Subscription from '../Subscription/Subscription';
 import Payment from '../Payment/Payment';
 import Success from '../Success/Success';
 import Options from '../Options/Options';
+import MessageUs from '../MessageUs/MessageUs';
+import { useSelector } from 'react-redux';
 
 import { userFree, userFit, userNolimit } from '../../utils/fakeUserData';
 
@@ -30,6 +32,7 @@ function App() {
   const navigate = useNavigate();
   const location = useLocation();
   const queryParams = new URLSearchParams(window.location.search);
+  const currentUser = useSelector((state) => state.currentUser);
   const userId = () => {
     const data = queryParams.get('user_id');
     if (data) {
@@ -71,8 +74,13 @@ function App() {
       )
       .catch(() => navigate('/intro'));
   }
+  console.log(window.location.href);
   return (
-    <div className={`app app-${location.pathname.replace('/', '')}`}>
+    <div
+      className={`app app-${location.pathname.replaceAll('/', '')} ${
+        location.pathname === '/support' ? currentUser.tariff.toLowerCase() : ''
+      }`}
+    >
       <Routes>
         <Route exact path='/' element={<Main testSetter={testUserSetter} />} />
         <Route path='/intro' element={<Intro />} />
@@ -92,7 +100,8 @@ function App() {
         <Route path='/tariffes/*' element={<Tariffes />} />
         <Route path='/payment' element={<Payment />} />
         <Route path='/success' element={<Success />} />
-        <Route path='/options' element={<Options />} />
+        <Route path='/options/*' element={<Options />} />
+        <Route path='/message-us' element={<MessageUs />} />
       </Routes>
     </div>
   );

@@ -10,7 +10,12 @@ function Values() {
   const navigate = useNavigate();
   return (
     <section className='values'>
-      <BackButton text='Назад' path={-1} currentClass='white narrow' />
+      <BackButton
+        text='Назад'
+        path={-1}
+        currentClass='white narrow'
+        title='Ценности'
+      />
       <DataList currentClass='data-list-values'>
         <DataItem title='Устойчивость к блокировкам'>
           <p className='data-item__text'>

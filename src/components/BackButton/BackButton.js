@@ -2,7 +2,7 @@ import React from 'react';
 import './BackButton.css';
 import { useNavigate } from 'react-router-dom';
 
-function BackButton({ text, path, currentClass }) {
+function BackButton({ text, path, currentClass, title }) {
   const navigate = useNavigate();
   return (
     <button
@@ -11,7 +11,8 @@ function BackButton({ text, path, currentClass }) {
       to={path}
     >
       <span className='back-button__corner' />
-      {text}
+      <span className='back-button__title'>{text}</span>
+      <h1 className='back-button__section-title'>{title}</h1>
     </button>
   );
 }

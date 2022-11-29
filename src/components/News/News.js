@@ -8,7 +8,12 @@ function News() {
   const navigate = useNavigate();
   return (
     <section className='news'>
-      <BackButton text='Назад' path='/help' currentClass='white' />
+      <BackButton
+        text='Назад'
+        path='/help'
+        currentClass='white'
+        title='Новости'
+      />
       <p className='news__text'>
         Данный раздел в разработке. Будут полезные лайфхаки про пользования vpn
         и robo.

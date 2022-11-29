@@ -15,7 +15,12 @@ function Help() {
   const currentUser = useSelector((state) => state.currentUser);
   return (
     <section className='help'>
-      <BackButton path='/' text='Главное меню' currentClass='' />
+      <BackButton
+        path='/'
+        text='Главное меню'
+        currentClass=''
+        title='Мне не понятно'
+      />
       <div className='help__content'>
         <MenuButton
           handler={() => navigate('/values')}
@@ -49,7 +54,7 @@ function Help() {
             text='Ответы на вопросы'
           />
           <MenuButton
-            handler={() => null}
+            handler={() => navigate('/message-us')}
             image={noResponceIcon}
             currentClass='btn-no-responce'
             title='Нет ответа?'

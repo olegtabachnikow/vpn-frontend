@@ -80,31 +80,32 @@
 .app-button.bg-violet {
   background-color: var(--violet);
 }
+.app-button.support-disabled {
+  color: #aeaeae;
+  pointer-events: none;
+}
 .app-button.hidden {
-  z-index: 1;
   opacity: 0;
   pointer-events: none;
   transform: translateY(64px);
   transition: all 0.3s ease;
-  position: absolute;
   bottom: 64px;
+}
+.app-button.not-hidden {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
 }
 .app-button.disabled {
   pointer-events: none;
   cursor: not-allowed;
   background-color: var(--gray);
 }
-.app-button.not-hidden {
-  position: absolute;
-  opacity: 1;
-  pointer-events: all;
-  transform: translateY(0);
-}
 .app-button.margin-bottom {
   margin: 0 0 15px 0;
 }
 .app-button.margin-top {
-  margin: 15px 0 0 0;
+  margin: 10px 0 0 0;
 }
 
 .app-button.free {

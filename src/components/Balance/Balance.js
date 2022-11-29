@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux';
 
 function Balance() {
   const [value, setValue] = React.useState(0);
+  const [isFocused, setIsFocused] = React.useState(false);
   const currentUser = useSelector((state) => state.currentUser);
   const navigate = useNavigate();
   const [numValue, setNumValue] = React.useState('200');
@@ -26,7 +27,12 @@ function Balance() {
 
   return (
     <section className='balance'>
-      <BackButton text='Мой VPN' path='/my-vpn' currentClass='white' />
+      <BackButton
+        text='Мой VPN'
+        path='/my-vpn'
+        currentClass='white'
+        title='Баланс'
+      />
       <div className='balance__row'>
         <h2 className='balance__title'>
           Cписывать с баланса (выберите с валюты или с Гб), когда закончится
@@ -75,16 +81,21 @@ function Balance() {
           </div>
         </div>
       </div>
-      <div className='balance__row'>
+      <div className={`balance__row-input-box ${isFocused && 'focused'}`}>
         <h3 className='balance__subtitle'>Или внесите сумму на ваш баланс</h3>
-        <input
-          className='balance__sum-input'
-          onChange={(e) => setNumValue(e.target.value)}
-          type='number'
-          value={numValue}
-          placeholder='200'
-        />
-        <span className='balance__sum-cash-value'>₽</span>
+        <div className='balance__input-container'>
+          <input
+            onFocus={() => setIsFocused(true)}
+            onBlur={() => setIsFocused(false)}
+            className='balance__sum-input'
+            onChange={(e) => setNumValue(e.target.value)}
+            type='text'
+            inputMode='numeric'
+            value={numValue}
+            placeholder='200'
+          />
+          <span className='balance__sum-cash-value'>₽</span>
+        </div>
         <div className='balance__button-box'>
           <AppButton
             text='Заработать'
@@ -97,18 +108,18 @@ function Balance() {
             handler={handleSubmit}
           />
         </div>
-        <p className='balance__tips'>
-          Вы можете пополнить баланс и увеличить трафик или заработать Гб с
-          помощью{' '}
-          <span
-            onClick={() => navigate('/referral')}
-            className='balance__tips-link'
-          >
-            реферальной программы
-          </span>
-          .
-        </p>
       </div>
+      <p className='balance__tips'>
+        Вы можете пополнить баланс и увеличить трафик или заработать Гб с
+        помощью{' '}
+        <span
+          onClick={() => navigate('/referral')}
+          className='balance__tips-link'
+        >
+          реферальной программы
+        </span>
+        .
+      </p>
     </section>
   );
 }

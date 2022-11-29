@@ -20,7 +20,7 @@ function Payment() {
   }
   return (
     <section className='payment'>
-      <BackButton path={-1} text='Вернуться назад' currentClass='' />
+      <BackButton path={-1} text='' title='Способы оплаты' currentClass='' />
       {!currentUser.email && !currentUser.email.length ? (
         <PaymentsEmailForm />
       ) : (

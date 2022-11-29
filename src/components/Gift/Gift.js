@@ -66,8 +66,15 @@ function Gift() {
   return (
     <section {...handlers} className='gift'>
       <button onClick={handleBackButtonClick} className='gift__back-button'>
-        {progress > 0 ? 'Назад' : 'Главное меню'}
+        {progress > 0 ? (
+          <span className='gift__back-button-text'>Назад</span>
+        ) : (
+          <span className='gift__back-button-text'>Главное меню</span>
+        )}
         <span className='gift__back-button-corner' />
+        {progress === 0 ? (
+          <span className='gift__back-button-title'>Подарить VPN</span>
+        ) : null}
       </button>
       {progress === 0 && (
         <>
@@ -76,8 +83,10 @@ function Gift() {
             VPN друзьям <br />и близким
           </h1>
           <h2 className='gift__subtitle'>
-            На каждый второй <br />
-            подарок скидка 50%
+            Подарить — просто:
+            <br /> подарок просто нужно
+            <br /> будет переслать
+            <br /> в Telegram.
           </h2>
           <AppButton
             currentClass='primary orange'

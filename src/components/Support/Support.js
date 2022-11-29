@@ -3,29 +3,65 @@ import './Support.css';
 import AppButton from '../AppButton/AppButton';
 import BackButton from '../BackButton/BackButton';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function Support() {
   const navigate = useNavigate();
+  const currentUser = useSelector((state) => state.currentUser);
+  const isNoLimit = currentUser.tariff === 'NOLIMIT';
   return (
     <section className='support'>
-      <BackButton text='Мой VPN' path='/my-vpn' currentClass='white' />
+      <BackButton
+        text='Мой VPN'
+        path='/my-vpn'
+        currentClass='white'
+        title='Саппорт'
+      />
       <div className='support__text-container'>
-        <p className='support__text'>
-          Напишите все вопросы — мы ответим в течение суток (как правило в
-          течение часа). Как только вам поступит обстоятельный ответ — robo
-          оповестит вас прямо в телеграм.{' '}
-        </p>
-        <p className='support__text'>
-          Возможно, вам поможет раздел{' '}
-          <span onClick={() => navigate('/faq')} className='support__link'>
-            FAQ
-          </span>
-          .
-        </p>
+        {isNoLimit ? (
+          <>
+            <p className='support__text'>
+              Здесь вы можете позвать оператора службы Заботы в телеграм чат с
+              robo. Напишите все вопросы, мы ответим в течение суток.{' '}
+            </p>
+            <p className='support__text'>
+              Возможно, вам поможет раздел{' '}
+              <span onClick={() => navigate('/faq')} className='support__link'>
+                FAQ
+              </span>
+              .
+            </p>
+          </>
+        ) : (
+          <>
+            <p className='support__text'>
+              В целях сохранения доступных цен и бесплатного трафика — мы
+              сохранили опцию поддержки в чате только для пользователей
+              безлимитного тарифа.
+            </p>
+            <p className='support__text'>Надеемся, на понимание.</p>
+          </>
+        )}
       </div>
+      {!isNoLimit && (
+        <>
+          <AppButton
+            text='Все тарифы'
+            currentClass='primary blue wide'
+            handler={() => navigate('/tariffes')}
+          />
+          <AppButton
+            text='FAQ'
+            currentClass='primary blue wide margin-top'
+            handler={() => navigate('/faq')}
+          />
+        </>
+      )}
       <AppButton
-        text='Саппорт чат'
-        currentClass='primary blue wide'
+        text={isNoLimit ? 'Позвать оператора' : `Саппорт чат`}
+        currentClass={`primary blue wide margin-top ${
+          !isNoLimit ? 'support-disabled' : ''
+        }`}
         handler={() => (window.location.href = 'https://t.me/b0ringclub')}
       />
     </section>

@@ -27,7 +27,12 @@ function Subscription() {
   }
   return (
     <section className='subscription'>
-      <BackButton text='Назад' path={-1} currentClass='white' />
+      <BackButton
+        text='Назад'
+        path={-1}
+        currentClass='white'
+        title='Мой тариф'
+      />
       <div className='subscription__content'>
         <h2 className='subscription__subtitle'>Ваш тариф:</h2>
         <h1 className='subscription__title'>{currentUser.tariff}</h1>
@@ -79,7 +84,7 @@ function Subscription() {
               currentClass='primary dark-blue margin-bottom wide'
             />
             <AppButton
-              text='Поделиться'
+              text='Подарить Robo'
               handler={() => navigate('/gift')}
               currentClass='secondary white wide'
             />

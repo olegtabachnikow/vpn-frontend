@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom';
 import CopyToClipboardField from '../CopyToClipboardField/CopyToClipboardField';
 
 function Instruction() {
+  const tg = window.Telegram.WebApp;
   const [progress, setProgress] = React.useState(0);
   const [isFaded, setIsFaded] = React.useState(false);
   const navigate = useNavigate();
@@ -36,6 +37,9 @@ function Instruction() {
   }
   function handleBackClick() {
     setIsFaded(true);
+    progress === 0 && currentUser.activeUser
+      ? navigate('/')
+      : navigate('/intro');
     progress >= 1 && setTimeout(setProgress, 300, (state) => --state);
   }
   function handleSwipeLeft() {
@@ -166,10 +170,10 @@ function Instruction() {
             progress === 2 && 'not-hidden'
           }`}
           text='Перейти в Telegram'
-          handler={() => setProgress((state) => state)}
+          handler={() => tg.close()}
         />
         <AppButton
-          currentClass={`primary white bg-blue ${
+          currentClass={`primary white bg-blue margin-top ${
             progress === 2 && !currentUser.activeUser && 'disabled'
           }`}
           text={`${progress < 2 ? 'Далее' : 'Главное меню'}`}

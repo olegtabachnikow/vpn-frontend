@@ -5,19 +5,13 @@
   text-decoration: none;
   color: #fff;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-left: 20px;
+  align-items: center;
+  padding: 0 20px;
   position: relative;
   outline: none;
   border: 1px solid transparent;
   background-color: transparent;
   cursor: pointer;
-  font-size: 12px;
-  font-weight: 500;
-  font-family: 'Actay', sans-serif;
-  line-height: 0;
-  color: #006ffd;
 }
 .back-button__corner {
   width: 10px;
@@ -31,11 +25,40 @@
   transition: all 0.3s linear;
   border-color: #006ffd;
 }
+.back-button__title {
+  font-size: 12px;
+  font-weight: 500;
+  font-family: 'Actay', sans-serif;
+  line-height: 12px;
+  color: #006ffd;
+  display: flex;
+  max-width: 25%;
+  width: 100%;
+  text-align: left;
+}
+.back-button__section-title {
+  max-width: 50%;
+  width: 100%;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  color: #348ff3;
+  justify-self: center;
+}
 .back-button.white {
   color: #fff;
 }
 .back-button.white .back-button__corner {
   border-color: #fff;
+}
+.back-button.white .back-button__title {
+  color: #fff;
+}
+.back-button.white .back-button__section-title {
+  color: #fff;
 }
 .back-button.narrow {
   width: 80%;

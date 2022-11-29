@@ -22,7 +22,9 @@ function Main({ testSetter }) {
           currentClass='btn-my-vpn'
           title='Мой VPN'
           text={`Тариф: ${currentUser.tariff}`}
-          addText={`Активен до ${currentUser.endDate}`}
+          addText={`${
+            currentUser.tariff === 'NOLIMIT' ? 'Активен' : 'Хватит'
+          } до ${currentUser.endDate}`}
         />
         <MenuButton
           handler={() => navigate('/help')}

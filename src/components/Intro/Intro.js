@@ -39,6 +39,14 @@ function Intro() {
       setTimeout(setProgress, 300, (state) => ++state);
     }
   }
+  function handleBackButtonClick() {
+    if (progress < 1) {
+      return;
+    } else {
+      setIsFaded(true);
+      setTimeout(setProgress, 300, (state) => --state);
+    }
+  }
   function handleSwipeRight() {
     if (progress === 0) {
       return;
@@ -58,6 +66,13 @@ function Intro() {
 
   return (
     <section {...handlers} className={`intro ${isMoved && 'moved'}`}>
+      <button
+        onClick={handleBackButtonClick}
+        className={`intro__back-button ${progress < 1 && 'hidden'}`}
+      >
+        Назад
+        <span className='intro__back-button-arrow' />
+      </button>
       <div className='intro__image-container'>
         <img className='intro__image' src={introImg} alt='happy face' />
         <img

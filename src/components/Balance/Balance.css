@@ -3,9 +3,16 @@
   flex-direction: column;
   color: #fff;
   padding: 40px 45px 90px 45px;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
 }
 .balance__row {
   height: 45%;
+}
+.balance__row-input-box {
+  height: 35%;
+  position: relative;
 }
 .balance__title {
   font-weight: 700;
@@ -73,7 +80,7 @@
   height: 48px;
   border: 1px solid #ffffff;
   border-radius: 12px;
-  background-color: transparent;
+  background-color: #ff824b;
   padding: 12px 16px;
   box-sizing: border-box;
   color: #fff;
@@ -83,7 +90,8 @@
   position: relative;
   appearance: none;
 }
-.balance__sum-input::placeholder {
+
+.balance__sum-input:focus .balance__sum-input::placeholder {
   opacity: 0.4;
 }
 .balance__row:last-of-type {
@@ -95,12 +103,13 @@
   height: 20px;
   font-weight: 700;
   font-size: 20px;
-  right: 10px;
-  top: 34%;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
   color: #fff;
 }
 .balance__sum-input::placeholder {
-  color: #fff;
+  color: rgba(255, 255, 255, 0.4);
 }
 .balance__button-box {
   margin: 11px 0 17px 0;
@@ -129,7 +138,20 @@
 .balance__tips {
   font-size: 12px;
   line-height: 16px;
+  margin: 0;
 }
 .balance__tips-link {
   text-decoration: underline;
+}
+.balance__row-input-box.focused {
+  position: absolute;
+  top: 0;
+  left: 35px;
+  height: 100%;
+  width: calc(100% - 70px);
+  box-sizing: border-box;
+  background-color: #ff824b;
+}
+.balance__input-container {
+  position: relative;
 }

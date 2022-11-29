@@ -13,7 +13,8 @@ function TariffesTemplate({
   return (
     <section className={`tariffes-template ${currentClass}`}>
       <BackButton
-        text='Тарифы'
+        text='Назад'
+        title={'Тариф: ' + currentClass.toUpperCase()}
         path={-1}
         currentClass='back-button-tariffes-template'
       />

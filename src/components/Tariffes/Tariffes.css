@@ -83,3 +83,12 @@
 .tariffes__content-nolimit {
   width: 100%;
 }
+@media screen and (max-height: 648px) {
+  .tariffes__popup-container,
+  .tariffes__popup-overlay {
+    height: 85%;
+  }
+  .tariffes__popup-container {
+    margin-bottom: 5%;
+  }
+}

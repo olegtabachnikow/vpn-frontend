@@ -37,10 +37,10 @@ function Instruction() {
   }
   function handleBackClick() {
     setIsFaded(true);
-    progress === 0 && currentUser.activeUser
-      ? navigate('/')
-      : navigate('/intro');
-    progress >= 1 && setTimeout(setProgress, 300, (state) => --state);
+    if (progress === 0) {
+      currentUser.activeUser ? navigate('/') : navigate('/intro');
+    }
+    progress > 0 && setTimeout(setProgress, 300, (state) => --state);
   }
   function handleSwipeLeft() {
     if (progress > 1) {

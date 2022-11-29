@@ -7,17 +7,18 @@
   display: flex;
   flex-direction: column;
   position: absolute;
-  z-index: 2;
+  z-index: 10;
   padding: 0 30px 50px 30px;
   left: 2%;
   bottom: 0;
-  transform: translateY(calc(100% - 61px));
+  transform: translate3d(0, calc(100% - 61px), 0);
   transition: all 0.5s ease-in-out;
 }
 .popup.active {
   box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.15);
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
   height: 90%;
+  z-index: 10;
 }
 .popup__top-button {
   position: relative;
@@ -130,42 +131,42 @@
 .popup-balance {
   background-color: #ff824b;
   color: #fff;
-  transform: translateY(100%);
+  transform: translate3d(0, 100%, 0);
   height: auto;
   padding: 0 34px 55px 34px;
 }
 .popup-balance.active {
   background-color: #ff824b;
   color: #fff;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
 }
 
 .popup-traffic {
   background-color: #f95273;
   color: #fff;
-  transform: translateY(100%);
+  transform: translate3d(0, 100%, 0);
   height: auto;
   padding: 0 34px 55px 34px;
 }
 .popup-traffic.active {
   background-color: #f95273;
   color: #fff;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
 }
 .popup-support {
   background-color: #348ff3;
   color: #fff;
-  transform: translateY(100%);
+  transform: translate3d(0, 100%, 0);
   height: auto;
 }
 .popup-support.active {
   background-color: #348ff3;
   color: #fff;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
 }
 .popup-values {
   background-color: #ff824b;
-  transform: translateY(100%);
+  transform: translate3d(0, 100%, 0);
   padding: 0 0 55px 0;
 }
 .popup__content {
@@ -183,17 +184,17 @@
 }
 .popup-possibilities {
   background-color: #f95273;
-  transform: translateY(100%);
+  transform: translate3d(0, 100%, 0);
   padding: 0 0 55px 0;
 }
 .popup-faq {
   background-color: #7472eb;
-  transform: translateY(100%);
+  transform: translate3d(0, 100%, 0);
   padding: 0 0 55px 0;
 }
 .popup-news {
   background-color: #aeaeae;
-  transform: translateY(100%);
+  transform: translate3d(0, 100%, 0);
   color: #fff;
   font-family: 'Actay Wide', sans-serif;
   font-size: 19px;

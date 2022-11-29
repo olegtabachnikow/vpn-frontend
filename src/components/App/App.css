@@ -1,6 +1,7 @@
 .app {
   width: 100vw;
   min-width: 375px;
+  max-height: 708px;
   height: 100vh;
   box-sizing: border-box;
   overflow: hidden;
@@ -61,5 +62,10 @@
     height: 708px;
     margin: 0 auto;
     overflow-y: scroll;
+  }
+}
+@media screen and (max-height: 648px) {
+  .app {
+    overflow: hidden;
   }
 }

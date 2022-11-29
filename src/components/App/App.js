@@ -75,6 +75,7 @@ function App() {
       .catch(() => navigate('/intro'));
   }
   console.log(window.location.href);
+  console.log(window.innerHeight, window.innerWidth);
   return (
     <div
       className={`app app-${location.pathname.replaceAll('/', '')} ${

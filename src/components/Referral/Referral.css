@@ -93,3 +93,8 @@
   margin: 10px;
   font-size: 13px;
 }
+@media screen and (max-height: 648px) {
+  .referral__popup-text {
+    margin: 0 0 10px 0;
+  }
+}

@@ -17,9 +17,12 @@ function Main({ testSetter }) {
   return (
     <motion.section
       className='main'
-      initial={{ y: '-100vh', opacity: 0 }}
-      animate={{ y: 0, opacity: 1, transition: { duration: 0.3, delay: 0.6 } }}
-      exit={{ y: '100vh', opacity: 0, transition: { duration: 0.3 } }}
+      initial={{ opacity: 0 }}
+      animate={{
+        opacity: 1,
+        transition: { duration: 0.2, delay: 0.2 },
+      }}
+      exit={{ opacity: 0, transition: { duration: 0.2 } }}
     >
       <div className='main__button-container'>
         <MenuButton
@@ -70,7 +73,7 @@ function Main({ testSetter }) {
         image={moneyIcon}
         currentClass='btn-tariffes'
         title='Тарифы'
-        text={'Цены, акции'}
+        text={'Купить, выбрать тариф'}
         addText={null}
       />
       <div className='test-user-set'>

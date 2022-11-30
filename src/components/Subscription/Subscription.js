@@ -29,9 +29,9 @@ function Subscription() {
   return (
     <motion.section
       className='subscription'
-      initial={{ y: '-100vh', opacity: 0 }}
-      animate={{ y: 0, opacity: 1, transition: { duration: 0.3, delay: 0.6 } }}
-      exit={{ y: '-100vh', opacity: 0, transition: { duration: 0.3 } }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
+      exit={{ opacity: 0, transition: { duration: 0.2 } }}
     >
       <BackButton
         text='Назад'

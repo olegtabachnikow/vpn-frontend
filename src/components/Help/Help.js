@@ -17,14 +17,14 @@ function Help() {
   return (
     <motion.section
       className='help'
-      initial={{ y: '-100vh', opacity: 0 }}
-      animate={{ y: 0, opacity: 1, transition: { duration: 0.3, delay: 0.6 } }}
-      exit={{ y: '100vh', opacity: 0, transition: { duration: 0.3 } }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
+      exit={{ opacity: 0, transition: { duration: 0.2 } }}
     >
       <BackButton
         path='/'
         text='Главное меню'
-        currentClass=''
+        currentClass='wide'
         title='Мне не понятно'
       />
       <div className='help__content'>

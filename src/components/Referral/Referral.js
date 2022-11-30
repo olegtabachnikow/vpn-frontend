@@ -13,14 +13,14 @@ function Referral() {
   return (
     <motion.section
       className='referral'
-      initial={{ x: '-100vw', opacity: 0 }}
-      animate={{ x: 0, opacity: 1, transition: { duration: 0.3, delay: 0.6 } }}
-      exit={{ x: '-100vw', opacity: 0, transition: { duration: 0.3 } }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
+      exit={{ opacity: 0, transition: { duration: 0.2 } }}
     >
       <BackButton
         text='Назад'
         path={-1}
-        currentClass='white'
+        currentClass='white wide'
         title='Реферальная программа'
       />
       <div className='referral__content'>
@@ -30,7 +30,7 @@ function Referral() {
             10 гб другу
           </h1>
           <p className='referral__text'>
-            Итого 20 Гб — от нас для вас. как только приглашенный пользователь
+            Итого 20 Гб — от нас для вас. Как только приглашенный пользователь
             совершит первую оплату (от 69 ₽).
           </p>
         </div>

@@ -36,6 +36,9 @@
   width: 100%;
   text-align: left;
 }
+.back-button.wide {
+  width: 100%;
+}
 .back-button__section-title {
   max-width: 50%;
   width: 100%;

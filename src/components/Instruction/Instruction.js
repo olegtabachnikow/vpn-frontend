@@ -63,9 +63,9 @@ function Instruction() {
     <motion.section
       {...handlers}
       className='instruction'
-      initial={{ x: '-100%' }}
-      animate={{ x: 0, transition: { duration: 0.3, delay: 0.3 } }}
-      exit={{ y: '100%', transition: { duration: 0.3 } }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
+      exit={{ opacity: 0, transition: { duration: 0.2 } }}
     >
       <button
         onClick={handleBackClick}
@@ -74,7 +74,10 @@ function Instruction() {
         Назад
         <span className='instruction__button-corner'></span>
       </button>
-      <div className={`instruction__content ${isFaded && 'faded'}`}>
+      <div
+        className='instruction__content'
+        style={{ opacity: isFaded ? 0 : 1 }}
+      >
         {progress === 0 && (
           <>
             <p className='instruction__text'>
@@ -172,13 +175,20 @@ function Instruction() {
         )}
       </div>
       <div className='instruction__button-container'>
-        <AppButton
-          currentClass={`border-blue secondary blue hidden ${
-            progress === 2 && 'not-hidden'
-          }`}
-          text='Перейти в Telegram'
-          handler={() => tg.close()}
-        />
+        {progress === 2 ? (
+          <motion.div
+            className='instruction__button-wrapper'
+            initial={{ y: '110%', opacity: 0 }}
+            animate={{ y: 0, opacity: 1, transition: { duration: 0.3 } }}
+          >
+            <AppButton
+              currentClass='border-blue secondary blue'
+              text='Перейти в Telegram'
+              handler={() => tg.close()}
+            />
+          </motion.div>
+        ) : null}
+
         <AppButton
           currentClass={`primary white bg-blue margin-top ${
             progress === 2 && !currentUser.activeUser && 'disabled'

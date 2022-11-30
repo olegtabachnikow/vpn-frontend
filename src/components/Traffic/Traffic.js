@@ -13,14 +13,14 @@ function Traffic() {
   return (
     <motion.section
       className='traffic'
-      initial={{ x: '100vw', opacity: 0 }}
-      animate={{ x: 0, opacity: 1, transition: { duration: 0.3, delay: 0.6 } }}
-      exit={{ x: '100vw', opacity: 0, transition: { duration: 0.3 } }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
+      exit={{ opacity: 0, transition: { duration: 0.2 } }}
     >
       <BackButton
         text='Мой VPN'
         path='/my-vpn'
-        currentClass='white'
+        currentClass='white wide'
         title='Трафик'
       />
       <div className='traffic__main'>

@@ -4,7 +4,7 @@ export const userFree = {
   care: 0,
   discount: 20,
   domainId: 1,
-  email: 'vladimir@putin.ru',
+  email: '',
   endDate: '25.12.2022',
   firstDate: '28.11.2022',
   firstName: 'Petya',

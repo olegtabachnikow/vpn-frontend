@@ -89,11 +89,7 @@
   text-align: center;
   letter-spacing: -0.4099999964237213px;
   margin-bottom: auto;
-  opacity: 1;
-  transition: opacity 0.3s ease;
-}
-.intro__text-container.faded {
-  opacity: 0;
+  transition: opacity 0.2s ease;
 }
 .intro__title {
   font-size: 26px;

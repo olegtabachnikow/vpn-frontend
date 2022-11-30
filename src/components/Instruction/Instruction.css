@@ -15,17 +15,9 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  opacity: 1;
-  -webkit-transition: opacity 300ms ease;
-  -moz-transition: opacity 300ms ease;
-  -ms-transition: opacity 300ms ease;
-  -o-transition: opacity 300ms ease;
   transition: opacity 300ms ease;
   position: relative;
   align-items: center;
-}
-.instruction__content.faded {
-  opacity: 0;
 }
 .instruction__text {
   color: #348ff3;
@@ -256,23 +248,12 @@
   left: 0;
   transition: all 0.3s linear;
 }
+.instruction__button-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 
-@-webkit-keyframes fadeOut {
-  from {
-    -webkit-transform: translate3d(-100%, 0, 0);
-  }
-  to {
-    -webkit-transform: translate3d(0, 0, 0);
-  }
-}
-@keyframes fadeOut {
-  from {
-    transform: translate3d(-100%, 0, 0);
-  }
-  to {
-    transform: translate3d(0, 0, 0);
-  }
-}
 @media screen and (max-height: 650px) {
   .instruction__link-box {
     flex-direction: row;

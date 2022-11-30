@@ -46,12 +46,12 @@ function Tariffes() {
   return (
     <motion.section
       className='tariffes'
-      initial={{ y: '-100vh', opacity: 0 }}
-      animate={{ y: 0, opacity: 1, transition: { duration: 0.3, delay: 0.6 } }}
-      exit={{ y: '-100vh', opacity: 0, transition: { duration: 0.3 } }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
+      exit={{ opacity: 0, transition: { duration: 0.2 } }}
     >
       {location.pathname === '/tariffes' && (
-        <BackButton path={-1} text='Назад' currentClass='' title='Тарифы' />
+        <BackButton path={-1} text='Назад' currentClass='wide' title='Тарифы' />
       )}
       <Routes>
         <Route
@@ -211,7 +211,7 @@ function Tariffes() {
                   currentClass='tariff-item-fit'
                   title='5 ГБ'
                   text={null}
-                  valueMain={`от ${prices.Fix_5} ₽`}
+                  valueMain={`${prices.Fix_5} ₽`}
                   valueSecondary='разовый платеж'
                   isDiscounted={false}
                 />
@@ -222,7 +222,7 @@ function Tariffes() {
                   currentClass='tariff-item-fit'
                   title='10 ГБ'
                   text={null}
-                  valueMain={`от ${prices.Fix_10} ₽`}
+                  valueMain={`${prices.Fix_10} ₽`}
                   valueSecondary='разовый платеж'
                   isDiscounted={true}
                   discountValue='Выгоднее на 16%'
@@ -234,7 +234,7 @@ function Tariffes() {
                   currentClass='tariff-item-fit'
                   title='20 ГБ'
                   text={null}
-                  valueMain={`от ${prices.Fix_20} ₽`}
+                  valueMain={`${prices.Fix_20} ₽`}
                   valueSecondary='разовый платеж'
                   isDiscounted={true}
                   discountValue='Выгоднее на 54%'

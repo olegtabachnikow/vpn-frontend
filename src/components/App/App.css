@@ -1,7 +1,6 @@
 .app {
   width: 100vw;
   min-width: 375px;
-  max-width: 380px;
   max-height: 708px;
   height: 100vh;
   box-sizing: border-box;
@@ -52,11 +51,7 @@
 .app-success {
   background-color: #064b72;
 }
-.app-tariffesnolimit .tariffes,
-.app-tariffesfree .tariffes,
-.app-tariffesfit .tariffes {
-  padding-bottom: 30px;
-}
+
 @media screen and (orientation: landscape) {
   .app {
     width: 375px;

@@ -12,9 +12,9 @@ function Values() {
   return (
     <motion.section
       className='values'
-      initial={{ x: '-100vw', opacity: 0 }}
-      animate={{ x: 0, opacity: 1, transition: { duration: 0.3, delay: 0.6 } }}
-      exit={{ x: '-100vw', opacity: 0, transition: { duration: 0.3 } }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
+      exit={{ opacity: 0, transition: { duration: 0.2 } }}
     >
       <BackButton
         text='Назад'
@@ -52,7 +52,7 @@ function Values() {
             что есть robo. Уже сейчас для этого многое делаем: автоматизация
             скорости на серверах — не контролируем ничего руками, и как только у
             нас появляется больше пользователей — сервера сами увеличивают свою
-            мощность. и еще много всего.
+            мощность.
           </p>
         </DataItem>
         <DataItem title='Удобство'>
@@ -74,7 +74,7 @@ function Values() {
             приложение от jigsaw (<b>Google</b>) — outline. Данные в outline
             зашифрованы так, что <b>всем массонам мира вас не взломать</b> (не
             то что wi-fi в starbucks). Коммуникация с нами остается лишь на
-            уровне телеграм.
+            уровне Telegram.
           </p>
         </DataItem>
       </DataList>

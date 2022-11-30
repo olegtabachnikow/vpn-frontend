@@ -12,9 +12,9 @@ function Faq() {
   return (
     <motion.section
       className='faq'
-      initial={{ x: '100vw', opacity: 0 }}
-      animate={{ x: 0, opacity: 1, transition: { duration: 0.3, delay: 0.6 } }}
-      exit={{ x: '100vw', opacity: 0, transition: { duration: 0.3 } }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
+      exit={{ opacity: 0, transition: { duration: 0.2 } }}
     >
       <BackButton
         text='Назад'
@@ -72,10 +72,8 @@ function Faq() {
             <a className='data-item__link' href='mailto:care@getrobovpn.com'>
               care@getrobovpn.com
             </a>
-            . В теле письма, пож-ста, укажите ваш ID в тг, а в названии напишите
-            слово возврат. Ну и вопрос, не забудьте :) Возврат может быть не
-            произведен в двух случаях, Подробнее про условия возврата в разделе
-            — тарифы.
+            . В теле письма, пож-ста, укажите ваш ID в тг, а в названии названии
+            напишите слово возврат. Ну и вопрос не забудьте, пож-ста :)
           </p>
         </DataItem>
         <DataItem title='Могу ли я из-за рубежа... зайти на рф сайты?'>

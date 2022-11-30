@@ -5,11 +5,17 @@ import AppButton from '../AppButton/AppButton';
 import { useNavigate } from 'react-router-dom';
 import './Faq.css';
 import BackButton from '../BackButton/BackButton';
+import { motion } from 'framer-motion';
 
 function Faq() {
   const navigate = useNavigate();
   return (
-    <section className='faq'>
+    <motion.section
+      className='faq'
+      initial={{ x: '100vw', opacity: 0 }}
+      animate={{ x: 0, opacity: 1, transition: { duration: 0.3, delay: 0.6 } }}
+      exit={{ x: '100vw', opacity: 0, transition: { duration: 0.3 } }}
+    >
       <BackButton
         text='Назад'
         path={-1}
@@ -151,7 +157,7 @@ function Faq() {
           handler={() => navigate('/tariffes')}
         />
       </div>
-    </section>
+    </motion.section>
   );
 }
 

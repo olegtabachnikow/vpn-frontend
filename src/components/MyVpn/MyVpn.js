@@ -10,6 +10,7 @@ import happySmile from '../../images/values.png';
 import optionsIcon from '../../images/options-icon.svg';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { motion } from 'framer-motion';
 
 function MyVpn() {
   const navigate = useNavigate();
@@ -17,7 +18,12 @@ function MyVpn() {
   console.log(currentUser);
 
   return (
-    <section className='my-vpn'>
+    <motion.section
+      className='my-vpn'
+      initial={{ y: '-100vh', opacity: 0 }}
+      animate={{ y: 0, opacity: 1, transition: { duration: 0.3, delay: 0.6 } }}
+      exit={{ y: '100vh', opacity: 0, transition: { duration: 0.3 } }}
+    >
       <BackButton
         path='/'
         text='Главное меню'
@@ -75,7 +81,7 @@ function MyVpn() {
         addText={`Активен до ${currentUser.endDate}`}
         handler={() => navigate('/subscription')}
       />
-    </section>
+    </motion.section>
   );
 }
 

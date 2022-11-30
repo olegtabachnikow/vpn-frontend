@@ -9,12 +9,18 @@ import faqIcon from '../../images/faq.png';
 import noResponceIcon from '../../images/noresponce.png';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { motion } from 'framer-motion';
 
 function Help() {
   const navigate = useNavigate();
   const currentUser = useSelector((state) => state.currentUser);
   return (
-    <section className='help'>
+    <motion.section
+      className='help'
+      initial={{ y: '-100vh', opacity: 0 }}
+      animate={{ y: 0, opacity: 1, transition: { duration: 0.3, delay: 0.6 } }}
+      exit={{ y: '100vh', opacity: 0, transition: { duration: 0.3 } }}
+    >
       <BackButton
         path='/'
         text='Главное меню'
@@ -70,7 +76,7 @@ function Help() {
           handler={() => navigate('/subscription')}
         />
       </div>
-    </section>
+    </motion.section>
   );
 }
 

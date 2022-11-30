@@ -3,11 +3,17 @@ import './MessageUs.css';
 import BackButton from '../BackButton/BackButton';
 import AppButton from '../AppButton/AppButton';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 function MessageUs() {
   const navigate = useNavigate();
   return (
-    <section className='message-us'>
+    <motion.section
+      className='message-us'
+      initial={{ x: '100vw', opacity: 0 }}
+      animate={{ x: 0, opacity: 1, transition: { duration: 0.3, delay: 0.6 } }}
+      exit={{ x: '100vw', opacity: 0, transition: { duration: 0.3 } }}
+    >
       <BackButton
         path='/help'
         text='Мне не понятно'
@@ -29,7 +35,7 @@ function MessageUs() {
         handler={() => navigate('/tariffes')}
         currentClass='orange primary'
       />
-    </section>
+    </motion.section>
   );
 }
 

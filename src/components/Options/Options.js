@@ -8,6 +8,7 @@ import closeButton from '../../images/close-button.png';
 import { useSelector } from 'react-redux';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import CopyToClipboardField from '../CopyToClipboardField/CopyToClipboardField';
+import { motion } from 'framer-motion';
 
 function Options() {
   const [smartActive, setIsSmartActive] = React.useState(0);
@@ -62,7 +63,12 @@ function Options() {
     handleClose();
   }
   return (
-    <section className='options'>
+    <motion.section
+      className='options'
+      initial={{ x: '100vw', opacity: 0 }}
+      animate={{ x: 0, opacity: 1, transition: { duration: 0.3, delay: 0.6 } }}
+      exit={{ x: '100vw', opacity: 0, transition: { duration: 0.3 } }}
+    >
       <Routes>
         <Route
           path='/'
@@ -315,7 +321,7 @@ function Options() {
           }
         />
       </Routes>
-    </section>
+    </motion.section>
   );
 }
 

@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import BackButton from '../BackButton/BackButton';
 import { setPayment } from '../../redux/actions/actions';
 import { useSelector } from 'react-redux';
+import { motion } from 'framer-motion';
 
 function Balance() {
   const [value, setValue] = React.useState(0);
@@ -26,7 +27,12 @@ function Balance() {
   }, []);
 
   return (
-    <section className='balance'>
+    <motion.section
+      className='balance'
+      initial={{ x: '-100vw', opacity: 0 }}
+      animate={{ x: 0, opacity: 1, transition: { duration: 0.3, delay: 0.6 } }}
+      exit={{ x: '-100vw', opacity: 0, transition: { duration: 0.3 } }}
+    >
       <BackButton
         text='Мой VPN'
         path='/my-vpn'
@@ -99,12 +105,12 @@ function Balance() {
         <div className='balance__button-box'>
           <AppButton
             text='Заработать'
-            currentClass='balance__button-secondary'
+            currentClass='secondary narrow white'
             handler={() => navigate('/referral')}
           />
           <AppButton
             text='Пополнить'
-            currentClass='balance__button-primary'
+            currentClass='primary orange narrow'
             handler={handleSubmit}
           />
         </div>
@@ -120,7 +126,7 @@ function Balance() {
         </span>
         .
       </p>
-    </section>
+    </motion.section>
   );
 }
 

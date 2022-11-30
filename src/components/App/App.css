@@ -1,13 +1,14 @@
 .app {
   width: 100vw;
   min-width: 375px;
+  max-width: 380px;
   max-height: 708px;
   height: 100vh;
   box-sizing: border-box;
   overflow: hidden;
   background-color: transparent;
   position: relative;
-  transition: background-color 0.5s ease;
+  transition: background-color 0.3s linear;
 }
 .app-gift,
 .app-options,

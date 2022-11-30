@@ -11,6 +11,7 @@ import { useSwipeable } from 'react-swipeable';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import CopyToClipboardField from '../CopyToClipboardField/CopyToClipboardField';
+import { motion } from 'framer-motion';
 
 function Instruction() {
   const tg = window.Telegram.WebApp;
@@ -59,7 +60,13 @@ function Instruction() {
     }
   }
   return (
-    <section {...handlers} className='instruction'>
+    <motion.section
+      {...handlers}
+      className='instruction'
+      initial={{ x: '-100%' }}
+      animate={{ x: 0, transition: { duration: 0.3, delay: 0.3 } }}
+      exit={{ y: '100%', transition: { duration: 0.3 } }}
+    >
       <button
         onClick={handleBackClick}
         className={`instruction__button-top ${progress === 0 && 'hidden'}`}
@@ -180,7 +187,7 @@ function Instruction() {
           handler={() => (progress < 2 ? handleClick() : navigate('/'))}
         />
       </div>
-    </section>
+    </motion.section>
   );
 }
 

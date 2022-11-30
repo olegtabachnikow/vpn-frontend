@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import FormLabel from '../FormLabel/FormLabel';
 import AppButton from '../AppButton/AppButton';
 import { getPaymentLink } from '../../utils/roboApi';
+import { motion } from 'framer-motion';
 
 function Payment() {
   const payment = useSelector((state) => state.payment);
@@ -19,7 +20,12 @@ function Payment() {
       .catch((err) => console.log(err));
   }
   return (
-    <section className='payment'>
+    <motion.section
+      className='payment'
+      initial={{ x: '-100vw', opacity: 0 }}
+      animate={{ x: 0, opacity: 1, transition: { duration: 0.3, delay: 0.6 } }}
+      exit={{ x: '-100vw', opacity: 0, transition: { duration: 0.3 } }}
+    >
       <BackButton path={-1} text='' title='Способы оплаты' currentClass='' />
       {!currentUser.email && !currentUser.email.length ? (
         <PaymentsEmailForm />
@@ -65,7 +71,7 @@ function Payment() {
           </div>
         </>
       )}
-    </section>
+    </motion.section>
   );
 }
 

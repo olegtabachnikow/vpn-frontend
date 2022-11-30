@@ -5,11 +5,17 @@ import AppButton from '../AppButton/AppButton';
 import BackButton from '../BackButton/BackButton';
 import './Values.css';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 function Values() {
   const navigate = useNavigate();
   return (
-    <section className='values'>
+    <motion.section
+      className='values'
+      initial={{ x: '-100vw', opacity: 0 }}
+      animate={{ x: 0, opacity: 1, transition: { duration: 0.3, delay: 0.6 } }}
+      exit={{ x: '-100vw', opacity: 0, transition: { duration: 0.3 } }}
+    >
       <BackButton
         text='Назад'
         path={-1}
@@ -84,7 +90,7 @@ function Values() {
           handler={() => navigate('/tariffes')}
         />
       </div>
-    </section>
+    </motion.section>
   );
 }
 

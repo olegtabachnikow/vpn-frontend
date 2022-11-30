@@ -3,11 +3,17 @@ import './News.css';
 import AppButton from '../AppButton/AppButton';
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../BackButton/BackButton';
+import { motion } from 'framer-motion';
 
 function News() {
   const navigate = useNavigate();
   return (
-    <section className='news'>
+    <motion.section
+      className='news'
+      initial={{ x: '-100vw', opacity: 0 }}
+      animate={{ x: 0, opacity: 1, transition: { duration: 0.3, delay: 0.6 } }}
+      exit={{ x: '-100vw', opacity: 0, transition: { duration: 0.3 } }}
+    >
       <BackButton
         text='Назад'
         path='/help'
@@ -30,7 +36,7 @@ function News() {
           currentClass='primary blue margin-top wide'
         />
       </div>
-    </section>
+    </motion.section>
   );
 }
 

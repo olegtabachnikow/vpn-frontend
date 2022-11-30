@@ -8,6 +8,7 @@ import AppButton from '../AppButton/AppButton';
 import TariffesTemplate from '../TariffesTemplate/TariffesTemplate';
 import { useSelector } from 'react-redux';
 import { setPayment } from '../../redux/actions/actions';
+import { motion } from 'framer-motion';
 
 function Tariffes() {
   const [value, setValue] = React.useState('');
@@ -43,7 +44,12 @@ function Tariffes() {
     }
   }
   return (
-    <section className='tariffes'>
+    <motion.section
+      className='tariffes'
+      initial={{ y: '-100vh', opacity: 0 }}
+      animate={{ y: 0, opacity: 1, transition: { duration: 0.3, delay: 0.6 } }}
+      exit={{ y: '-100vh', opacity: 0, transition: { duration: 0.3 } }}
+    >
       {location.pathname === '/tariffes' && (
         <BackButton path={-1} text='Назад' currentClass='' title='Тарифы' />
       )}
@@ -286,7 +292,7 @@ function Tariffes() {
           }
         />
       </Routes>
-    </section>
+    </motion.section>
   );
 }
 

@@ -4,13 +4,19 @@ import AppButton from '../AppButton/AppButton';
 import BackButton from '../BackButton/BackButton';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { motion } from 'framer-motion';
 
 function Support() {
   const navigate = useNavigate();
   const currentUser = useSelector((state) => state.currentUser);
   const isNoLimit = currentUser.tariff === 'NOLIMIT';
   return (
-    <section className='support'>
+    <motion.section
+      className='support'
+      initial={{ x: '100vw', opacity: 0 }}
+      animate={{ x: 0, opacity: 1, transition: { duration: 0.3, delay: 0.6 } }}
+      exit={{ x: '100vw', opacity: 0, transition: { duration: 0.3 } }}
+    >
       <BackButton
         text='Мой VPN'
         path='/my-vpn'
@@ -64,7 +70,7 @@ function Support() {
         }`}
         handler={() => (window.location.href = 'https://t.me/b0ringclub')}
       />
-    </section>
+    </motion.section>
   );
 }
 

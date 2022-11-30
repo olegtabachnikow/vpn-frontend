@@ -5,12 +5,18 @@ import BackButton from '../BackButton/BackButton';
 import AppButton from '../AppButton/AppButton';
 import CopyToClipboardField from '../CopyToClipboardField/CopyToClipboardField';
 import { useSelector } from 'react-redux';
+import { motion } from 'framer-motion';
 
 function Referral() {
   const [isReferPopupHidden, setIsReferPopupHidden] = React.useState(true);
   const currentUser = useSelector((state) => state.currentUser);
   return (
-    <section className='referral'>
+    <motion.section
+      className='referral'
+      initial={{ x: '-100vw', opacity: 0 }}
+      animate={{ x: 0, opacity: 1, transition: { duration: 0.3, delay: 0.6 } }}
+      exit={{ x: '-100vw', opacity: 0, transition: { duration: 0.3 } }}
+    >
       <BackButton
         text='Назад'
         path={-1}
@@ -100,7 +106,7 @@ function Referral() {
           </>
         }
       </Popup>
-    </section>
+    </motion.section>
   );
 }
 

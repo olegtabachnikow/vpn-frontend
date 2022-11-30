@@ -9,12 +9,18 @@ import weirdSmileIcon from '../../images/look-up-smile-min.png';
 import robotIcon from '../../images/robot-min.png';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { motion } from 'framer-motion';
 
 function Main({ testSetter }) {
   const currentUser = useSelector((state) => state.currentUser);
   const navigate = useNavigate();
   return (
-    <section className='main'>
+    <motion.section
+      className='main'
+      initial={{ y: '-100vh', opacity: 0 }}
+      animate={{ y: 0, opacity: 1, transition: { duration: 0.3, delay: 0.6 } }}
+      exit={{ y: '100vh', opacity: 0, transition: { duration: 0.3 } }}
+    >
       <div className='main__button-container'>
         <MenuButton
           handler={() => navigate('/my-vpn')}
@@ -72,7 +78,7 @@ function Main({ testSetter }) {
         <button onClick={() => testSetter('FIT')}>fit</button>
         <button onClick={() => testSetter('NOLIMIT')}>nolimit</button>
       </div>
-    </section>
+    </motion.section>
   );
 }
 

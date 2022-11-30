@@ -6,11 +6,6 @@
   align-items: center;
   padding: 0 35px 61px 35px;
   box-sizing: border-box;
-  transform: translate3d(0, 0, 0);
-  transition: all 0.5s ease;
-}
-.intro.moved {
-  transform: translate3d(100%, 0, 0);
 }
 .intro__progress {
   width: 304.5px;

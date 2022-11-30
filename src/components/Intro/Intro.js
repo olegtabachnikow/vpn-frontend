@@ -8,11 +8,11 @@ import sector3 from '../../images/sector3.svg';
 import sector4 from '../../images/sector4.svg';
 import AppButton from '../AppButton/AppButton';
 import { useSwipeable } from 'react-swipeable';
+import { motion } from 'framer-motion';
 
 function Intro() {
   const [progress, setProgress] = React.useState(0);
   const [isFaded, setIsFaded] = React.useState(false);
-  const [isMoved, setIsMoved] = React.useState(false);
 
   const navigate = useNavigate();
   const handlers = useSwipeable({
@@ -23,17 +23,12 @@ function Intro() {
 
   React.useEffect(() => {
     isFaded && setTimeout(setIsFaded, 400, false);
-    isMoved && setTimeout(setIsMoved, 600, false);
     progress > 4 && setProgress(4);
-  }, [isFaded, isMoved, progress]);
-  function handleSkip() {
-    setIsMoved(true);
-    setTimeout(navigate, 500, '/instruction');
-  }
+  }, [isFaded, progress]);
+
   function handleButtonClick() {
     if (progress >= 4) {
-      setIsMoved(true);
-      setTimeout(navigate, 500, '/instruction');
+      navigate('/instruction');
     } else {
       setIsFaded(true);
       setTimeout(setProgress, 300, (state) => ++state);
@@ -65,7 +60,13 @@ function Intro() {
   }
 
   return (
-    <section {...handlers} className={`intro ${isMoved && 'moved'}`}>
+    <motion.section
+      {...handlers}
+      className='intro'
+      initial={{ x: '-100%' }}
+      animate={{ x: 0, transition: { duration: 0.3 } }}
+      exit={{ x: '100%', transition: { duration: 0.3 } }}
+    >
       <button
         onClick={handleBackButtonClick}
         className={`intro__back-button ${progress < 1 && 'hidden'}`}
@@ -184,9 +185,9 @@ function Intro() {
       <AppButton
         currentClass='primary white bg-blue margin-top'
         text='Установить VPN'
-        handler={handleSkip}
+        handler={() => navigate('/instruction')}
       />
-    </section>
+    </motion.section>
   );
 }
 

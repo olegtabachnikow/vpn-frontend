@@ -4,13 +4,19 @@ import AppButton from '../AppButton/AppButton';
 import BackButton from '../BackButton/BackButton';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 function Traffic() {
   const currentUser = useSelector((state) => state.currentUser);
   const navigate = useNavigate();
   const isNolimit = currentUser.tariff === 'NOLIMIT';
   return (
-    <section className='traffic'>
+    <motion.section
+      className='traffic'
+      initial={{ x: '100vw', opacity: 0 }}
+      animate={{ x: 0, opacity: 1, transition: { duration: 0.3, delay: 0.6 } }}
+      exit={{ x: '100vw', opacity: 0, transition: { duration: 0.3 } }}
+    >
       <BackButton
         text='Мой VPN'
         path='/my-vpn'
@@ -104,7 +110,7 @@ function Traffic() {
           </p>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 

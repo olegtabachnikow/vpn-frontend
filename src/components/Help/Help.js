@@ -10,16 +10,19 @@ import noResponceIcon from '../../images/noresponce.png';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
+import { directionVariants } from '../../utils/directionOptions';
 
 function Help() {
   const navigate = useNavigate();
+  const direction = useSelector((state) => state.direction);
   const currentUser = useSelector((state) => state.currentUser);
   return (
     <motion.section
       className='help'
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
-      exit={{ opacity: 0, transition: { duration: 0.2 } }}
+      exit={direction ? 'exitToMiddle' : 'exitToLeft'}
+      variants={directionVariants}
     >
       <BackButton
         path='/'

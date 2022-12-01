@@ -6,16 +6,19 @@ import AppButton from '../AppButton/AppButton';
 import CopyToClipboardField from '../CopyToClipboardField/CopyToClipboardField';
 import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
+import { directionVariants } from '../../utils/directionOptions';
 
 function Referral() {
   const [isReferPopupHidden, setIsReferPopupHidden] = React.useState(true);
   const currentUser = useSelector((state) => state.currentUser);
+  const direction = useSelector((state) => state.direction);
   return (
     <motion.section
       className='referral'
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
-      exit={{ opacity: 0, transition: { duration: 0.2 } }}
+      initial={direction ? 'fromLeft' : 'fromRight'}
+      animate={{ x: 0, opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
+      exit={direction ? 'exitToRight' : 'exitToLeft'}
+      variants={directionVariants}
     >
       <BackButton
         text='Назад'

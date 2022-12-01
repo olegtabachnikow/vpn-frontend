@@ -7,14 +7,15 @@ import FormLabel from '../FormLabel/FormLabel';
 import AppButton from '../AppButton/AppButton';
 import { getPaymentLink } from '../../utils/roboApi';
 import { motion } from 'framer-motion';
+import { directionVariants } from '../../utils/directionOptions';
 
 function Payment() {
   const payment = useSelector((state) => state.payment);
   const currentUser = useSelector((state) => state.currentUser);
+  const direction = useSelector((state) => state.direction);
   const [method, setMethod] = React.useState('');
-  console.log(currentUser);
+
   function handlePay() {
-    console.log(`zoplotili ${payment}₽ :)`);
     getPaymentLink(currentUser.userId, payment.toString())
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
@@ -22,9 +23,10 @@ function Payment() {
   return (
     <motion.section
       className='payment'
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
-      exit={{ opacity: 0, transition: { duration: 0.2 } }}
+      initial={direction ? 'fromLeft' : 'fromRight'}
+      animate={{ x: 0, opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
+      exit={direction ? 'exitToRight' : 'exitToLeft'}
+      variants={directionVariants}
     >
       <BackButton
         path={-1}

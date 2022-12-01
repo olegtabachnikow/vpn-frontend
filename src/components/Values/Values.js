@@ -6,9 +6,13 @@ import BackButton from '../BackButton/BackButton';
 import './Values.css';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { directionVariants } from '../../utils/directionOptions';
+import { useSelector } from 'react-redux';
+import { setDirection } from '../../redux/actions/actions';
 
 function Values() {
   const navigate = useNavigate();
+  const direction = useSelector((state) => state.direction);
   const [index, setIndex] = React.useState(0);
   React.useEffect(() => {
     setIndex(0);
@@ -16,9 +20,10 @@ function Values() {
   return (
     <motion.section
       className='values'
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
-      exit={{ opacity: 0, transition: { duration: 0.2 } }}
+      initial={direction ? 'fromLeft' : 'fromRight'}
+      animate={{ x: 0, opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
+      exit={direction ? 'exitToRight' : 'exitToLeft'}
+      variants={directionVariants}
     >
       <BackButton
         text='Назад'
@@ -111,12 +116,18 @@ function Values() {
         <AppButton
           text='Главное меню'
           currentClass='secondary margin-bottom white'
-          handler={() => navigate('/')}
+          handler={() => {
+            setDirection(true);
+            navigate('/');
+          }}
         />
         <AppButton
           text='Выбрать тариф'
           currentClass='primary orange'
-          handler={() => navigate('/tariffes')}
+          handler={() => {
+            setDirection(true);
+            navigate('/tariffes');
+          }}
         />
       </div>
     </motion.section>

@@ -5,20 +5,23 @@ import checkboxFalse from '../../images/checkbox-not-checked.svg';
 import AppButton from '../AppButton/AppButton';
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../BackButton/BackButton';
-import { setPayment } from '../../redux/actions/actions';
+import { setDirection, setPayment } from '../../redux/actions/actions';
 import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
+import { directionVariants } from '../../utils/directionOptions';
 
 function Balance() {
   const [value, setValue] = React.useState(0);
   const [isFocused, setIsFocused] = React.useState(false);
   const currentUser = useSelector((state) => state.currentUser);
+  const direction = useSelector((state) => state.direction);
   const navigate = useNavigate();
   const [numValue, setNumValue] = React.useState('200');
   function handleValue(val) {
     value === val ? setValue(0) : setValue(val);
   }
   function handleSubmit() {
+    setDirection(true);
     setPayment(numValue * 1);
     navigate('/payment');
   }
@@ -29,9 +32,10 @@ function Balance() {
   return (
     <motion.section
       className='balance'
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
-      exit={{ opacity: 0, transition: { duration: 0.2 } }}
+      initial={direction ? 'fromLeft' : 'fromRight'}
+      animate={{ x: 0, opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
+      exit={direction ? 'exitToRight' : 'exitToLeft'}
+      variants={directionVariants}
     >
       <BackButton
         text='Мой VPN'
@@ -106,7 +110,10 @@ function Balance() {
           <AppButton
             text='Заработать'
             currentClass='secondary narrow white'
-            handler={() => navigate('/referral')}
+            handler={() => {
+              setDirection(true);
+              navigate('/referral');
+            }}
           />
           <AppButton
             text='Пополнить'

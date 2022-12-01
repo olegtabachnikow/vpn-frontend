@@ -6,9 +6,13 @@ import { useNavigate } from 'react-router-dom';
 import BackButton from '../BackButton/BackButton';
 import './Possibilities.css';
 import { motion } from 'framer-motion';
+import { directionVariants } from '../../utils/directionOptions';
+import { useSelector } from 'react-redux';
+import { setDirection } from '../../redux/actions/actions';
 
 function Possibilities() {
   const [index, setIndex] = React.useState(0);
+  const direction = useSelector((state) => state.direction);
   React.useEffect(() => {
     setIndex(0);
   }, []);
@@ -16,9 +20,10 @@ function Possibilities() {
   return (
     <motion.section
       className='possibilities'
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
-      exit={{ opacity: 0, transition: { duration: 0.2 } }}
+      initial={direction ? 'fromLeft' : 'fromRight'}
+      animate={{ x: 0, opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
+      exit={direction ? 'exitToRight' : 'exitToLeft'}
+      variants={directionVariants}
     >
       <BackButton
         text='Назад'
@@ -26,16 +31,7 @@ function Possibilities() {
         currentClass='white'
         title='Возможности'
       />
-      <DataList
-        currentClass='data-list-possibilities'
-        component={
-          <AppButton
-            text='Выбрать тариф'
-            currentClass='app-button-possibilities'
-            handler={() => navigate('/tariffes')}
-          />
-        }
-      >
+      <DataList currentClass='data-list-possibilities'>
         <DataItem
           title='Умный robo'
           index={index}
@@ -104,12 +100,18 @@ function Possibilities() {
         <AppButton
           text='Главное меню'
           currentClass='secondary margin-bottom white'
-          handler={() => navigate('/')}
+          handler={() => {
+            setDirection(true);
+            navigate('/');
+          }}
         />
         <AppButton
           text='Выбрать тариф'
           currentClass='primary rose'
-          handler={() => navigate('/tariffes')}
+          handler={() => {
+            setDirection(true);
+            navigate('/tariffes');
+          }}
         />
       </div>
     </motion.section>

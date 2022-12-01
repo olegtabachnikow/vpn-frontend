@@ -71,7 +71,7 @@
   z-index: 2;
   opacity: 0;
   position: absolute;
-  transition: opacity 1.5s ease;
+  transition: opacity 1s ease;
   top: 0;
   left: 0;
 }
@@ -89,7 +89,6 @@
   text-align: center;
   letter-spacing: -0.4099999964237213px;
   margin-bottom: auto;
-  transition: opacity 0.2s ease;
 }
 .intro__title {
   font-size: 26px;

@@ -15,12 +15,7 @@
   font-weight: 700;
   text-decoration: underline;
 }
-.data-item__link:active {
-  color: #fff;
-}
-.data-item__link:visited {
-  color: #fff;
-}
+
 .data-item__arrow {
   width: 10px;
   height: 10px;

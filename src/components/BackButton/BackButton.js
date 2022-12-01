@@ -1,12 +1,17 @@
 import React from 'react';
 import './BackButton.css';
 import { useNavigate } from 'react-router-dom';
+import { setDirection } from '../../redux/actions/actions';
 
 function BackButton({ text, path, currentClass, title }) {
   const navigate = useNavigate();
+  function handleClick() {
+    setDirection(false);
+    navigate(path);
+  }
   return (
     <button
-      onClick={() => navigate(path)}
+      onClick={handleClick}
       className={`back-button ${currentClass && currentClass}`}
       to={path}
     >

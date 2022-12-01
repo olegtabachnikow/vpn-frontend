@@ -5,21 +5,26 @@ import BackButton from '../BackButton/BackButton';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { directionVariants } from '../../utils/directionOptions';
+import { setDirection } from '../../redux/actions/actions';
 
 function Traffic() {
   const currentUser = useSelector((state) => state.currentUser);
   const navigate = useNavigate();
   const isNolimit = currentUser.tariff === 'NOLIMIT';
+  const direction = useSelector((state) => state.direction);
+
   return (
     <motion.section
       className='traffic'
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
-      exit={{ opacity: 0, transition: { duration: 0.2 } }}
+      initial={direction ? 'fromLeft' : 'fromRight'}
+      animate={{ x: 0, opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
+      exit={direction ? 'exitToRight' : 'exitToLeft'}
+      variants={directionVariants}
     >
       <BackButton
-        text='Мой VPN'
-        path='/my-vpn'
+        text='Назад'
+        path={-1}
         currentClass='white wide'
         title='Трафик'
       />
@@ -69,7 +74,10 @@ function Traffic() {
             <AppButton
               text='Продлить тариф'
               currentClass='primary rose wide margin-bottom'
-              handler={() => navigate('/tariffes/nolimit')}
+              handler={() => {
+                setDirection(true);
+                navigate('/tariffes/nolimit');
+              }}
             />
           ) : (
             <>
@@ -79,6 +87,7 @@ function Traffic() {
                   isNolimit ? 'disabled' : ''
                 }`}
                 handler={() => {
+                  setDirection(true);
                   currentUser.activeUser
                     ? navigate('/tariffes/fit')
                     : navigate('/tariffes');
@@ -88,12 +97,18 @@ function Traffic() {
                 <AppButton
                   text='Заработать'
                   currentClass='secondary white narrow'
-                  handler={() => navigate('/referral')}
+                  handler={() => {
+                    setDirection(true);
+                    navigate('/referral');
+                  }}
                 />
                 <AppButton
                   text='Сменить тариф'
                   currentClass='secondary white narrow'
-                  handler={() => navigate('/tariffes')}
+                  handler={() => {
+                    setDirection(true);
+                    navigate('/tariffes');
+                  }}
                 />
               </div>
             </>
@@ -101,7 +116,10 @@ function Traffic() {
           <p className='traffic__tips'>
             Чтобы не волноваться — можете{' '}
             <span
-              onClick={() => navigate('/balance')}
+              onClick={() => {
+                setDirection(true);
+                navigate('/balance');
+              }}
               className='traffic__link'
             >
               пополнить баланс

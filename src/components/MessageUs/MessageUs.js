@@ -4,15 +4,20 @@ import BackButton from '../BackButton/BackButton';
 import AppButton from '../AppButton/AppButton';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { directionVariants } from '../../utils/directionOptions';
+import { useSelector } from 'react-redux';
+import { setDirection } from '../../redux/actions/actions';
 
 function MessageUs() {
   const navigate = useNavigate();
+  const direction = useSelector((state) => state.direction);
   return (
     <motion.section
       className='message-us'
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
-      exit={{ opacity: 0, transition: { duration: 0.2 } }}
+      initial={direction ? 'fromLeft' : 'fromRight'}
+      animate={{ x: 0, opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
+      exit={direction ? 'exitToRight' : 'exitToLeft'}
+      variants={directionVariants}
     >
       <BackButton
         path='/help'
@@ -26,13 +31,19 @@ function MessageUs() {
       </p>
       <p className='message-us__text_secondary'>
         Вы всегда можете написать нам на почту{' '}
-        <a className='message-us__link' href='mailto:care@getrobovpn.com'>
+        <span
+          onClick={() => window.open('mailto:care@getrobovpn.com')}
+          className='message-us__link'
+        >
           care@getrobovpn.com.
-        </a>
+        </span>
       </p>
       <AppButton
         text='Все тарифы'
-        handler={() => navigate('/tariffes')}
+        handler={() => {
+          setDirection(true);
+          navigate('/tariffes');
+        }}
         currentClass='orange primary'
       />
     </motion.section>

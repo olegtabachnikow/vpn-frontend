@@ -9,11 +9,14 @@ import { useSelector } from 'react-redux';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import CopyToClipboardField from '../CopyToClipboardField/CopyToClipboardField';
 import { motion } from 'framer-motion';
+import { directionVariants } from '../../utils/directionOptions';
+import { setDirection } from '../../redux/actions/actions';
 
 function Options() {
   const [smartActive, setIsSmartActive] = React.useState(0);
   const [isCommunicateActive, setIsCommunicateActive] = React.useState(true);
   const [country, setCountry] = React.useState(0);
+  const direction = useSelector((state) => state.direction);
   const navigate = useNavigate();
   const [isActive, setIsActive] = React.useState({
     location: false,
@@ -65,9 +68,10 @@ function Options() {
   return (
     <motion.section
       className='options'
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
-      exit={{ opacity: 0, transition: { duration: 0.2 } }}
+      initial={direction ? 'fromLeft' : 'fromRight'}
+      animate={{ x: 0, opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
+      exit={direction ? 'exitToRight' : 'exitToLeft'}
+      variants={directionVariants}
     >
       <Routes>
         <Route
@@ -273,7 +277,10 @@ function Options() {
                 <AppButton
                   text='Сохранить настройки'
                   currentClass='primary orange'
-                  handler={() => navigate('/options/complete')}
+                  handler={() => {
+                    setDirection(true);
+                    navigate('/options/complete');
+                  }}
                 />
                 <AppButton
                   text='Автонастройка'
@@ -309,7 +316,10 @@ function Options() {
                 <AppButton
                   text='Настроить заново'
                   currentClass='primary orange'
-                  handler={() => navigate('/options')}
+                  handler={() => {
+                    setDirection(false);
+                    navigate('/options');
+                  }}
                 />
                 <AppButton
                   text='Мой VPN'

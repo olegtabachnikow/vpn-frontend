@@ -12,12 +12,15 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import CopyToClipboardField from '../CopyToClipboardField/CopyToClipboardField';
 import { motion } from 'framer-motion';
+import { directionVariants } from '../../utils/directionOptions';
+import { setDirection } from '../../redux/actions/actions';
 
 function Instruction() {
   const tg = window.Telegram.WebApp;
   const [progress, setProgress] = React.useState(0);
   const [isFaded, setIsFaded] = React.useState(false);
   const navigate = useNavigate();
+  const direction = useSelector((state) => state.direction);
   const currentUser = useSelector((state) => state.currentUser);
   const handlers = useSwipeable({
     onSwipedLeft: handleSwipeLeft,
@@ -31,7 +34,7 @@ function Instruction() {
   const buttonVariants = {
     visible: { y: 0, opacity: 1, transition: { duration: 0.2 } },
     hidden: {
-      y: '125%',
+      y: '120%',
       opacity: 0,
       transition: { duration: 0.1 },
     },
@@ -43,6 +46,7 @@ function Instruction() {
 
   function handleClick() {
     if (progress > 1) {
+      setDirection(true);
       navigate('/');
     } else {
       setIsFaded(true);
@@ -51,6 +55,7 @@ function Instruction() {
   }
   function handleBackClick() {
     if (progress === 0) {
+      setDirection(false);
       currentUser.activeUser ? navigate('/') : navigate('/intro');
     } else {
       setIsFaded(true);
@@ -77,9 +82,10 @@ function Instruction() {
     <motion.section
       {...handlers}
       className='instruction'
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
-      exit={{ opacity: 0, transition: { duration: 0.2 } }}
+      initial={direction ? 'fromLeft' : 'fromRight'}
+      animate={{ x: 0, opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
+      exit={direction ? 'exitToRight' : 'exitToLeft'}
+      variants={directionVariants}
     >
       <button onClick={handleBackClick} className='instruction__button-top'>
         Назад

@@ -6,9 +6,13 @@ import { useNavigate } from 'react-router-dom';
 import './Faq.css';
 import BackButton from '../BackButton/BackButton';
 import { motion } from 'framer-motion';
+import { directionVariants } from '../../utils/directionOptions';
+import { useSelector } from 'react-redux';
+import { setDirection } from '../../redux/actions/actions';
 
 function Faq() {
   const [index, setIndex] = React.useState(0);
+  const direction = useSelector((state) => state.direction);
   React.useEffect(() => {
     setIndex(0);
   }, []);
@@ -16,9 +20,10 @@ function Faq() {
   return (
     <motion.section
       className='faq'
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
-      exit={{ opacity: 0, transition: { duration: 0.2 } }}
+      initial={direction ? 'fromLeft' : 'fromRight'}
+      animate={{ x: 0, opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
+      exit={direction ? 'exitToRight' : 'exitToLeft'}
+      variants={directionVariants}
     >
       <BackButton text='Назад' path={-1} currentClass='white' title='FAQ' />
       <DataList currentClass='data-list-faq'>
@@ -119,7 +124,10 @@ function Faq() {
             Отличий много, но основных 5. Про них мы написали в разделе — мне не
             понятно, возможности (
             <span
-              onClick={() => navigate('/possibilities')}
+              onClick={() => {
+                setDirection(true);
+                navigate('/possibilities');
+              }}
               className='data-item__link'
             >
               линк
@@ -174,15 +182,21 @@ function Faq() {
             Пока мы в процессе разработки автоматизированной партнерской
             программы. но в целом готовы уже сейчас договариваться. если вы
             блоггер или сообщество и разделяете наши ценности —{' '}
-            <a className='data-item__link' href='mailto:collab@getrobovpn.com'>
+            <span
+              className='data-item__link'
+              onClick={() => window.open('mailto:collab@getrobovpn.com')}
+            >
               collab@getrobovpn.com
-            </a>
+            </span>
             <br />В целом, так как мы data driven проект — мы видим, что
             работает, а что — нет. Тем не менее, так как недавно запустились,
             будем рады любому конструктуривному фидбэку или предложению —
-            <a className='data-item__link' href='mailto:care@getrobovpn.com'>
+            <span
+              className='data-item__link'
+              onClick={() => window.open('mailto:care@getrobovpn.com')}
+            >
               care@getrobovpn.com
-            </a>
+            </span>
             , по вопросам поддержки — нужно обращаться в чат.
           </p>
         </DataItem>
@@ -191,12 +205,18 @@ function Faq() {
         <AppButton
           text='Главное меню'
           currentClass='secondary margin-bottom white'
-          handler={() => navigate('/')}
+          handler={() => {
+            setDirection(true);
+            navigate('/');
+          }}
         />
         <AppButton
           text='Выбрать тариф'
           currentClass='primary violet'
-          handler={() => navigate('/tariffes')}
+          handler={() => {
+            setDirection(true);
+            navigate('/tariffes');
+          }}
         />
       </div>
     </motion.section>

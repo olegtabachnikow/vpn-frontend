@@ -10,11 +10,11 @@ import AppButton from '../AppButton/AppButton';
 import { useSwipeable } from 'react-swipeable';
 import { motion } from 'framer-motion';
 import * as introMarkup from '../../utils/text-index-markup';
+import { setDirection } from '../../redux/actions/actions';
 
 function Intro() {
   const [progress, setProgress] = React.useState(0);
   const [isFaded, setIsFaded] = React.useState(false);
-
   const navigate = useNavigate();
   const handlers = useSwipeable({
     onSwipedLeft: handleSwipeLeft,
@@ -24,7 +24,7 @@ function Intro() {
 
   const variants = {
     visible: { opacity: 1, transition: { duration: 0.2 } },
-    faded: { opacity: 0, transition: { duration: 0.1 } },
+    faded: { opacity: 0, transition: { duration: 0.2 } },
   };
 
   React.useEffect(() => {
@@ -34,6 +34,7 @@ function Intro() {
 
   function handleButtonClick() {
     if (progress >= 4) {
+      setDirection(true);
       navigate('/instruction');
     } else {
       setIsFaded(true);
@@ -70,8 +71,8 @@ function Intro() {
       {...handlers}
       className='intro'
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
-      exit={{ opacity: 0, transition: { duration: 0.2 } }}
+      animate={{ opacity: 1, transition: { duration: 0.2 } }}
+      exit={{ x: '100%', opacity: 0, transition: { duration: 0.2 } }}
     >
       <button
         onClick={handleBackButtonClick}

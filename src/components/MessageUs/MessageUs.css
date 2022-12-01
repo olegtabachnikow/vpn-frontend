@@ -23,8 +23,7 @@
 .message-us__text_secondary {
   margin-bottom: auto;
 }
-.message-us__link,
-.message-us__link:visited,
-.message-us__link:active {
+.message-us__link {
   color: #fff;
+  text-decoration: underline;
 }

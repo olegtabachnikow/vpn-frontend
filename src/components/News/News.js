@@ -4,15 +4,20 @@ import AppButton from '../AppButton/AppButton';
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../BackButton/BackButton';
 import { motion } from 'framer-motion';
+import { directionVariants } from '../../utils/directionOptions';
+import { useSelector } from 'react-redux';
+import { setDirection } from '../../redux/actions/actions';
 
 function News() {
   const navigate = useNavigate();
+  const direction = useSelector((state) => state.direction);
   return (
     <motion.section
       className='news'
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
-      exit={{ opacity: 0, transition: { duration: 0.2 } }}
+      initial={direction ? 'fromLeft' : 'fromRight'}
+      animate={{ x: 0, opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
+      exit={direction ? 'exitToRight' : 'exitToLeft'}
+      variants={directionVariants}
     >
       <BackButton
         text='Назад'
@@ -26,12 +31,18 @@ function News() {
       </p>
       <div className='news__button-box'>
         <AppButton
-          handler={() => navigate('/possibilities')}
+          handler={() => {
+            setDirection(true);
+            navigate('/possibilities');
+          }}
           text='Возможности robo'
           currentClass='primary blue wide'
         />
         <AppButton
-          handler={() => navigate('/values')}
+          handler={() => {
+            setDirection(true);
+            navigate('/values');
+          }}
           text='Ценности robo'
           currentClass='primary blue margin-top wide'
         />

@@ -7,8 +7,9 @@ import Popup from '../Popup/Popup';
 import AppButton from '../AppButton/AppButton';
 import TariffesTemplate from '../TariffesTemplate/TariffesTemplate';
 import { useSelector } from 'react-redux';
-import { setPayment } from '../../redux/actions/actions';
+import { setDirection, setPayment } from '../../redux/actions/actions';
 import { motion } from 'framer-motion';
+import { directionVariants } from '../../utils/directionOptions';
 
 function Tariffes() {
   const [value, setValue] = React.useState('');
@@ -18,11 +19,15 @@ function Tariffes() {
   const location = useLocation();
   const prices = useSelector((state) => state.prices);
   const currentUser = useSelector((state) => state.currentUser);
+  const direction = useSelector((state) => state.direction);
 
   function handleChooseClick() {
-    value.length
-      ? navigate(`/tariffes/${value}`)
-      : handleError('Выберите тариф!');
+    if (value.length) {
+      setDirection(true);
+      navigate(`/tariffes/${value}`);
+    } else {
+      handleError('Выберите тариф!');
+    }
   }
 
   function handleError(text) {
@@ -39,6 +44,7 @@ function Tariffes() {
       handleError('Выберите пакет!');
       return;
     } else {
+      setDirection(true);
       setPayment(parseInt(value));
       navigate('/payment');
     }
@@ -46,9 +52,10 @@ function Tariffes() {
   return (
     <motion.section
       className='tariffes'
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
-      exit={{ opacity: 0, transition: { duration: 0.2 } }}
+      initial={direction ? 'fromLeft' : 'fromRight'}
+      animate={{ x: 0, opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
+      exit={direction ? 'exitToRight' : 'exitToLeft'}
+      variants={directionVariants}
     >
       {location.pathname === '/tariffes' && (
         <BackButton path={-1} text='Назад' currentClass='wide' title='Тарифы' />
@@ -184,7 +191,10 @@ function Tariffes() {
             <TariffesTemplate
               currentClass='free'
               buttonText='Пригласить друга'
-              handler={() => navigate('/referral')}
+              handler={() => {
+                setDirection(true);
+                navigate('/referral');
+              }}
             >
               <p className='tariffes__free-text'>
                 Дарим до 10 Гб на тарифах FREE и FIX каждый месяц, так же можно{' '}

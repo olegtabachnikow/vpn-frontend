@@ -5,12 +5,15 @@ import AppButton from '../AppButton/AppButton';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
+import { directionVariants } from '../../utils/directionOptions';
+import { setDirection } from '../../redux/actions/actions';
 
 function Subscription() {
   const navigate = useNavigate();
   const currentUser = useSelector((state) => state.currentUser);
   const isNolimit = currentUser.tariff === 'NOLIMIT';
   const isFree = currentUser.tariff === 'FREE';
+  const direction = useSelector((state) => state.direction);
   function getDate() {
     return currentUser.endDate.slice(0, 6) + currentUser.endDate.slice(8, 10);
   }
@@ -29,9 +32,10 @@ function Subscription() {
   return (
     <motion.section
       className='subscription'
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
-      exit={{ opacity: 0, transition: { duration: 0.2 } }}
+      initial={direction ? 'fromLeft' : 'fromRight'}
+      animate={{ x: 0, opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
+      exit={direction ? 'exitToRight' : 'exitToLeft'}
+      variants={directionVariants}
     >
       <BackButton
         text='Назад'
@@ -86,12 +90,18 @@ function Subscription() {
           <>
             <AppButton
               text='Продлить тариф'
-              handler={() => navigate('/tariffes/nolimit')}
+              handler={() => {
+                setDirection(true);
+                navigate('/tariffes/nolimit');
+              }}
               currentClass='primary dark-blue margin-bottom wide'
             />
             <AppButton
               text='Подарить Robo'
-              handler={() => navigate('/gift')}
+              handler={() => {
+                setDirection(true);
+                navigate('/gift');
+              }}
               currentClass='secondary white wide'
             />
           </>
@@ -100,6 +110,7 @@ function Subscription() {
             <AppButton
               text='Докупить гБ'
               handler={() => {
+                setDirection(true);
                 currentUser.activeUser
                   ? navigate('/tariffes/fit')
                   : navigate('/tariffes');
@@ -108,7 +119,10 @@ function Subscription() {
             />
             <AppButton
               text='Мой трафик'
-              handler={() => navigate('/traffic')}
+              handler={() => {
+                setDirection(true);
+                navigate('/traffic');
+              }}
               currentClass='secondary white wide'
             />
           </>

@@ -6,8 +6,9 @@ import { useSwipeable } from 'react-swipeable';
 import { useSelector } from 'react-redux';
 import FormLabel from '../FormLabel/FormLabel';
 import { useNavigate } from 'react-router-dom';
-import { setPayment } from '../../redux/actions/actions';
+import { setDirection, setPayment } from '../../redux/actions/actions';
 import { motion } from 'framer-motion';
+import { directionVariants } from '../../utils/directionOptions';
 
 function Gift() {
   const [progress, setProgress] = React.useState(0);
@@ -15,15 +16,19 @@ function Gift() {
   const [isFaded, setIsFaded] = React.useState(false);
   const [isGiftPopupHidden, setIsGiftPopupHidden] = React.useState(true);
   const currentUser = useSelector((state) => state.currentUser);
+  const direction = useSelector((state) => state.direction);
   const prices = useSelector((state) => state.prices);
   const navigate = useNavigate();
   const handlers = useSwipeable({
     onSwipedLeft: handleSwipeLeft,
     onSwipedRight: handleSwipeRight,
   });
-
+  const variants = {
+    visible: { opacity: 1, transition: { duration: 0.2 } },
+    faded: { opacity: 0, transition: { duration: 0.2 } },
+  };
   React.useEffect(() => {
-    isFaded && setTimeout(setIsFaded, 400, false);
+    isFaded && setTimeout(setIsFaded, 300, false);
   }, [isFaded]);
 
   function handleSwipeLeft() {
@@ -52,6 +57,7 @@ function Gift() {
     handleClick();
   }
   function handlePaymentSubmit() {
+    setDirection(true);
     if (value === '2') {
       currentUser.giftDiscount > 0
         ? setPayment(
@@ -82,15 +88,19 @@ function Gift() {
     if (progress > 0) {
       setIsFaded(true);
       setTimeout(setProgress, 300, (state) => --state);
-    } else navigate('/');
+    } else {
+      setDirection(false);
+      navigate('/');
+    }
   }
   return (
     <motion.section
       {...handlers}
       className='gift'
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
-      exit={{ opacity: 0, transition: { duration: 0.2 } }}
+      initial={direction ? 'fromLeft' : 'fromRight'}
+      animate={{ x: 0, opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
+      exit={direction ? 'exitToRight' : 'exitToLeft'}
+      variants={directionVariants}
     >
       <button onClick={handleBackButtonClick} className='gift__back-button'>
         {progress > 0 ? (
@@ -103,7 +113,12 @@ function Gift() {
           <span className='gift__back-button-title'>Подарить VPN</span>
         ) : null}
       </button>
-      <div className={`gift__content ${isFaded && 'faded'}`}>
+      <motion.div
+        className='gift__content'
+        initial={{ opacity: 0 }}
+        animate={isFaded ? 'faded' : 'visible'}
+        variants={variants}
+      >
         {progress === 0 && (
           <>
             <h1 className='gift__title'>
@@ -341,7 +356,7 @@ function Gift() {
             />
           </>
         )}
-      </div>
+      </motion.div>
     </motion.section>
   );
 }

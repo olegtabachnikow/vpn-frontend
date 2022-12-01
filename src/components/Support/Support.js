@@ -5,17 +5,21 @@ import BackButton from '../BackButton/BackButton';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
+import { directionVariants } from '../../utils/directionOptions';
+import { setDirection } from '../../redux/actions/actions';
 
 function Support() {
   const navigate = useNavigate();
+  const direction = useSelector((state) => state.direction);
   const currentUser = useSelector((state) => state.currentUser);
   const isNoLimit = currentUser.tariff === 'NOLIMIT';
   return (
     <motion.section
       className='support'
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
-      exit={{ opacity: 0, transition: { duration: 0.2 } }}
+      initial={direction ? 'fromLeft' : 'fromRight'}
+      animate={{ x: 0, opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
+      exit={direction ? 'exitToRight' : 'exitToLeft'}
+      variants={directionVariants}
     >
       <BackButton
         text='Мой VPN'
@@ -54,12 +58,18 @@ function Support() {
           <AppButton
             text='Все тарифы'
             currentClass='primary blue wide'
-            handler={() => navigate('/tariffes')}
+            handler={() => {
+              setDirection(true);
+              navigate('/tariffes');
+            }}
           />
           <AppButton
             text='FAQ'
             currentClass='primary blue wide margin-top'
-            handler={() => navigate('/faq')}
+            handler={() => {
+              setDirection(true);
+              navigate('/faq');
+            }}
           />
         </>
       )}

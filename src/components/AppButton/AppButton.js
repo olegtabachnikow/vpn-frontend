@@ -1,15 +1,18 @@
 import React from 'react';
 import './AppButton.css';
+import { motion } from 'framer-motion';
 
 function AppButton({ text, handler, currentClass }) {
   return (
-    <button
+    <motion.button
+      whileHover={{ scale: 0.95, transition: { duration: 0.2 } }}
+      whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
       className={`app-button ${currentClass}`}
       onClick={handler}
       type='button'
     >
       {text}
-    </button>
+    </motion.button>
   );
 }
 

@@ -22,8 +22,13 @@ function Intro() {
   });
   const progressBarItems = [...Array(5).keys()];
 
+  const variants = {
+    visible: { opacity: 1, transition: { duration: 0.2 } },
+    faded: { opacity: 0, transition: { duration: 0.1 } },
+  };
+
   React.useEffect(() => {
-    isFaded && setTimeout(setIsFaded, 400, false);
+    isFaded && setTimeout(setIsFaded, 300, false);
     progress > 4 && setProgress(4);
   }, [isFaded, progress]);
 
@@ -98,16 +103,18 @@ function Intro() {
           alt='sector'
         />
       </div>
-      <div
+      <motion.div
         className='intro__text-container'
-        style={{ opacity: isFaded ? 0 : 1 }}
+        initial={{ opacity: 0 }}
+        animate={isFaded ? 'faded' : 'visible'}
+        variants={variants}
       >
         {(progress === 0 && introMarkup.textOne) ||
           (progress === 1 && introMarkup.textTwo) ||
           (progress === 2 && introMarkup.textThree) ||
           (progress === 3 && introMarkup.textFour) ||
           (progress === 4 && introMarkup.textFive)}
-      </div>
+      </motion.div>
       <div className='intro__progress'>
         {progressBarItems.map((el) => (
           <span

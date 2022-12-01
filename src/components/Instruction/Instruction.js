@@ -24,24 +24,38 @@ function Instruction() {
     onSwipedRight: handleSwipeRight,
   });
 
+  const variants = {
+    visible: { opacity: 1, transition: { duration: 0.2 } },
+    faded: { opacity: 0, transition: { duration: 0.1 } },
+  };
+  const buttonVariants = {
+    visible: { y: 0, opacity: 1, transition: { duration: 0.2 } },
+    hidden: {
+      y: '125%',
+      opacity: 0,
+      transition: { duration: 0.1 },
+    },
+  };
   React.useEffect(() => {
-    isFaded && setTimeout(setIsFaded, 400, false);
-  }, [isFaded]);
+    isFaded && setTimeout(setIsFaded, 300, false);
+    progress > 2 && setProgress(4);
+  }, [isFaded, progress]);
 
   function handleClick() {
-    setIsFaded(true);
     if (progress > 1) {
       navigate('/');
     } else {
+      setIsFaded(true);
       setTimeout(setProgress, 300, (state) => ++state);
     }
   }
   function handleBackClick() {
-    setIsFaded(true);
     if (progress === 0) {
       currentUser.activeUser ? navigate('/') : navigate('/intro');
+    } else {
+      setIsFaded(true);
+      progress > 0 && setTimeout(setProgress, 300, (state) => --state);
     }
-    progress > 0 && setTimeout(setProgress, 300, (state) => --state);
   }
   function handleSwipeLeft() {
     if (progress > 1) {
@@ -67,16 +81,15 @@ function Instruction() {
       animate={{ opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
       exit={{ opacity: 0, transition: { duration: 0.2 } }}
     >
-      <button
-        onClick={handleBackClick}
-        className={`instruction__button-top ${progress === 0 && 'hidden'}`}
-      >
+      <button onClick={handleBackClick} className='instruction__button-top'>
         Назад
         <span className='instruction__button-corner'></span>
       </button>
-      <div
+      <motion.div
         className='instruction__content'
-        style={{ opacity: isFaded ? 0 : 1 }}
+        initial={{ opacity: 0 }}
+        animate={isFaded ? 'faded' : 'visible'}
+        variants={variants}
       >
         {progress === 0 && (
           <>
@@ -173,22 +186,20 @@ function Instruction() {
             </p>
           </>
         )}
-      </div>
+      </motion.div>
       <div className='instruction__button-container'>
-        {progress === 2 ? (
-          <motion.div
-            className='instruction__button-wrapper'
-            initial={{ y: '110%', opacity: 0 }}
-            animate={{ y: 0, opacity: 1, transition: { duration: 0.3 } }}
-          >
-            <AppButton
-              currentClass='border-blue secondary blue'
-              text='Перейти в Telegram'
-              handler={() => tg.close()}
-            />
-          </motion.div>
-        ) : null}
-
+        <motion.div
+          className='instruction__button-wrapper'
+          style={{ pointerEvents: progress === 2 ? 'all' : 'none' }}
+          animate={progress === 2 ? 'visible' : 'hidden'}
+          variants={buttonVariants}
+        >
+          <AppButton
+            currentClass='border-blue secondary blue'
+            text='Перейти в Telegram'
+            handler={() => tg.close()}
+          />
+        </motion.div>
         <AppButton
           currentClass={`primary white bg-blue margin-top ${
             progress === 2 && !currentUser.activeUser && 'disabled'

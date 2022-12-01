@@ -97,4 +97,7 @@
   .referral__popup-text {
     margin: 0 0 10px 0;
   }
+  .referral__text-box {
+    padding-top: 0;
+  }
 }

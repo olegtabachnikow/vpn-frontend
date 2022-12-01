@@ -5,7 +5,8 @@ import copiedIcon from '../../images/check.svg';
 
 function CopyToClipboardField({ currentClass, data }) {
   const [isCopied, setIsCopied] = React.useState(false);
-  function copyToClipboard() {
+  function copyToClipboard(e) {
+    e.stopPropagation();
     setIsCopied(true);
     navigator.clipboard.writeText(data);
     setTimeout(() => {

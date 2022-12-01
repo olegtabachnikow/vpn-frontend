@@ -252,12 +252,14 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  z-index: 0;
 }
 
 @media screen and (max-height: 650px) {
   .instruction__link-box {
     flex-direction: row;
     justify-content: space-around;
+    margin-bottom: 0;
   }
   .instruction__gallery {
     margin: 5% 0;

@@ -49,3 +49,10 @@
   color: #f95273;
   margin-bottom: 0;
 }
+@media screen and (max-height: 650px) {
+  .tariffes-template__info {
+    padding: 10px 24px;
+    font-size: 10px;
+    margin-top: 10px;
+  }
+}

@@ -249,14 +249,16 @@ function Gift() {
                 discountValue={`${currentUser.giftDiscount}%`}
               />
             </form>
-            <button
+            <motion.button
+              whileHover={{ scale: 0.9, transition: { duration: 0.2 } }}
+              whileTap={{ scale: 0.9, transition: { duration: 0.2 } }}
               className='gift__submit-button'
               type='submit'
               form='tariff-form'
               value='submit'
             >
               Далее
-            </button>
+            </motion.button>
           </>
         )}
         {progress === 2 && (

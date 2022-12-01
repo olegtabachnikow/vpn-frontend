@@ -1,11 +1,14 @@
 import React from 'react';
 import './DataItem.css';
 
-function DataItem({ title, children }) {
+function DataItem({ title, children, index, currentIndex, setIndex }) {
   const [isExpanded, setIsExpanded] = React.useState(false);
   function handleClick() {
-    setIsExpanded((state) => !state);
+    index === currentIndex ? setIndex(0) : setIndex(currentIndex);
   }
+  React.useEffect(() => {
+    index === currentIndex ? setIsExpanded(true) : setIsExpanded(false);
+  }, [index, currentIndex]);
   return (
     <li className={`data-item ${isExpanded && 'data-item_expanded'}`}>
       <div className='data-item__content'>

@@ -9,6 +9,10 @@ import { motion } from 'framer-motion';
 
 function Values() {
   const navigate = useNavigate();
+  const [index, setIndex] = React.useState(0);
+  React.useEffect(() => {
+    setIndex(0);
+  }, []);
   return (
     <motion.section
       className='values'
@@ -19,11 +23,16 @@ function Values() {
       <BackButton
         text='Назад'
         path={-1}
-        currentClass='white narrow'
+        currentClass='white'
         title='Ценности'
       />
       <DataList currentClass='data-list-values'>
-        <DataItem title='Устойчивость к блокировкам'>
+        <DataItem
+          title='Устойчивость к блокировкам'
+          index={index}
+          currentIndex={1}
+          setIndex={setIndex}
+        >
           <p className='data-item__text'>
             Мы считаем, свобода главная причина развития человека. А ее
             ущемление — ведет в противоположную сторону. Поэтому, в первую
@@ -34,7 +43,12 @@ function Values() {
             <b> на весь период пользования robo</b>.
           </p>
         </DataItem>
-        <DataItem title='Доступно всем'>
+        <DataItem
+          title='Доступно всем'
+          index={index}
+          currentIndex={2}
+          setIndex={setIndex}
+        >
           <p className='data-item__text'>
             Исходя из главной для нас ценности — свободы — мы верим, что
             предоставляя экстра возможности для наших пользователей наперед...
@@ -45,7 +59,12 @@ function Values() {
             тарифов.
           </p>
         </DataItem>
-        <DataItem title='Соединение'>
+        <DataItem
+          title='Соединение'
+          index={index}
+          currentIndex={3}
+          setIndex={setIndex}
+        >
           <p className='data-item__text'>
             <b>В идеале мы бы хотели, чтобы вы не замечали, что есть</b> вообще
             какие-то блокировки или <b>ограничения в интернете</b>. Не замечали,
@@ -55,7 +74,12 @@ function Values() {
             мощность.
           </p>
         </DataItem>
-        <DataItem title='Удобство'>
+        <DataItem
+          title='Удобство'
+          index={index}
+          currentIndex={4}
+          setIndex={setIndex}
+        >
           <p className='data-item__text'>
             Это синоним слову сервис для нас.{' '}
             <b>Мы не хотим, чтобы вы запаривались вообще...</b>и как было
@@ -66,7 +90,12 @@ function Values() {
             встроенного приложения прямо в телеграм.
           </p>
         </DataItem>
-        <DataItem title='Безопасность'>
+        <DataItem
+          title='Безопасность'
+          index={index}
+          currentIndex={5}
+          setIndex={setIndex}
+        >
           <p className='data-item__text'>
             Мы решили выбрать решение, чтоб у вас совсем не было сомнений.
             Примерно...<b>безопаснее некуда</b>. мы не устанавливаем ничего

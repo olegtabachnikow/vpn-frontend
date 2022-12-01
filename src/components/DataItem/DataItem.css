@@ -39,6 +39,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
 }
 .data-item__arrow_rotated {
   transform: rotate(45deg);
@@ -56,7 +57,7 @@
   text-align: start;
   height: 100%;
   min-height: 60px;
-  padding: 0 15px 0 0;
+  padding: 0 25px 0 0;
   font-family: 'Actay Wide', sans-serif;
 }
 .data-item__button:active {
@@ -66,17 +67,18 @@
   font-family: 'Inter', sans-serif;
   margin: 0;
   font-weight: 400;
-  padding: 15px 0;
+  padding: 15px 0 25px 0;
+  box-sizing: border-box;
 }
 .data-item_expanded {
   height: auto;
-  top: 0;
-  left: 0;
+}
+.data-item__button-text {
+  padding: 15px 0;
 }
 .data-item_expanded .data-item__button {
   max-height: 80px;
 }
 .data-list-faq .data-item__button {
   font-size: 16px;
-  padding: 15px 15px 15px 0;
 }

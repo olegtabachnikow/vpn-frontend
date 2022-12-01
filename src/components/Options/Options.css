@@ -180,6 +180,7 @@
 }
 .options__popup.active {
   display: block;
+  padding-right: 35px;
 }
 .options__popup.communicate::before {
   content: '';

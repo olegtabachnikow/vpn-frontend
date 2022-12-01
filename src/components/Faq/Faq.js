@@ -8,6 +8,10 @@ import BackButton from '../BackButton/BackButton';
 import { motion } from 'framer-motion';
 
 function Faq() {
+  const [index, setIndex] = React.useState(0);
+  React.useEffect(() => {
+    setIndex(0);
+  }, []);
   const navigate = useNavigate();
   return (
     <motion.section
@@ -16,14 +20,14 @@ function Faq() {
       animate={{ opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
       exit={{ opacity: 0, transition: { duration: 0.2 } }}
     >
-      <BackButton
-        text='Назад'
-        path={-1}
-        currentClass='white narrow'
-        title='FAQ'
-      />
+      <BackButton text='Назад' path={-1} currentClass='white' title='FAQ' />
       <DataList currentClass='data-list-faq'>
-        <DataItem title='А вы кто?'>
+        <DataItem
+          title='А вы кто?'
+          index={index}
+          currentIndex={1}
+          setIndex={setIndex}
+        >
           <p className='data-item__text'>
             Мы команда it специалистов с <b>опытом более 30 лет работы</b> в
             индустрии (сбер, skyeng и др.). До 2022 года мы занимались разными
@@ -36,7 +40,12 @@ function Faq() {
             пункт.
           </p>
         </DataItem>
-        <DataItem title='Почему вами безопасно пользоваться?'>
+        <DataItem
+          title='Почему вами безопасно пользоваться?'
+          index={index}
+          currentIndex={2}
+          setIndex={setIndex}
+        >
           <p className='data-item__text'>
             <b>Мы не устанавливаем ничего своего вам на телефон</b> или любое
             устройство. А предлагаем один раз установить надежное приложение от
@@ -48,7 +57,12 @@ function Faq() {
             устройства — без них не возможно подключение к интернету.
           </p>
         </DataItem>
-        <DataItem title='Почему вас не заблокируют?'>
+        <DataItem
+          title='Почему вас не заблокируют?'
+          index={index}
+          currentIndex={3}
+          setIndex={setIndex}
+        >
           <p className='data-item__text'>
             Для этого мы используем лучшие мировые технологии, адаптированные
             под robo. <b>Протокол shadowsocks</b>, который не смогли
@@ -61,7 +75,12 @@ function Faq() {
             всех).
           </p>
         </DataItem>
-        <DataItem title='Как именно работает возврат средств?'>
+        <DataItem
+          title='Как именно работает возврат средств?'
+          index={index}
+          currentIndex={4}
+          setIndex={setIndex}
+        >
           <p className='data-item__text'>
             Мы гарантируем 100% возврат только в случае если нас заблокирует ркн
             и мы не сможем вам предоставить доступ к впн в течение суток. В этом
@@ -76,7 +95,12 @@ function Faq() {
             напишите слово возврат. Ну и вопрос не забудьте, пож-ста :)
           </p>
         </DataItem>
-        <DataItem title='Могу ли я из-за рубежа... зайти на рф сайты?'>
+        <DataItem
+          title='Могу ли я из-за рубежа... зайти на рф сайты?'
+          index={index}
+          currentIndex={5}
+          setIndex={setIndex}
+        >
           <p className='data-item__text'>
             Да, можете. Алгоритимы функции <b>умный впн</b> — позволяют вне
             зависимости от вашего расположения со свлюченным впн заходить
@@ -85,7 +109,12 @@ function Faq() {
             по 10 раз за день.
           </p>
         </DataItem>
-        <DataItem title='Чем вы отличаетесь от других сервисов vpn?'>
+        <DataItem
+          title='Чем вы отличаетесь от других сервисов vpn?'
+          index={index}
+          currentIndex={6}
+          setIndex={setIndex}
+        >
           <p className='data-item__text'>
             Отличий много, но основных 5. Про них мы написали в разделе — мне не
             понятно, возможности (
@@ -98,7 +127,12 @@ function Faq() {
             ).
           </p>
         </DataItem>
-        <DataItem title='Сколько одновременно и какие устройства доступны?'>
+        <DataItem
+          title='Сколько одновременно и какие устройства доступны?'
+          index={index}
+          currentIndex={7}
+          setIndex={setIndex}
+        >
           <p className='data-item__text'>
             <b>Сколько угодно</b>, а среди устройств —{' '}
             <b>IOS, Android, Mac, Windows, Linux и Google Chrome</b>, все их
@@ -109,7 +143,12 @@ function Faq() {
             ситуации вам в директ или с возвратом, без объяснения причин.
           </p>
         </DataItem>
-        <DataItem title='Я могу делиться с кем-то своей ссылкой в outline?'>
+        <DataItem
+          title='Я могу делиться с кем-то своей ссылкой в outline?'
+          index={index}
+          currentIndex={8}
+          setIndex={setIndex}
+        >
           <p className='data-item__text'>
             <b>Увы, нет</b>. Для нас это нарушение правил, поскольку так будет
             не честно, ведь вы заплатили за одного пользователя, а в итоге
@@ -125,7 +164,12 @@ function Faq() {
             причины.
           </p>
         </DataItem>
-        <DataItem title='Как с вами связаться?'>
+        <DataItem
+          title='Как с вами связаться?'
+          index={index}
+          currentIndex={9}
+          setIndex={setIndex}
+        >
           <p className='data-item__text'>
             Пока мы в процессе разработки автоматизированной партнерской
             программы. но в целом готовы уже сейчас договариваться. если вы

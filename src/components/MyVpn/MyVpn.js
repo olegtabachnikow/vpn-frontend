@@ -21,9 +21,9 @@ function MyVpn() {
   return (
     <motion.section
       className='my-vpn'
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
-      exit={direction ? 'exitToMiddle' : 'exitToLeft'}
+      initial={direction ? 'fromLeft' : 'fromRight'}
+      animate={{ x: 0, opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
+      exit={direction ? 'exitToRight' : 'exitToLeft'}
       variants={directionVariants}
     >
       <BackButton

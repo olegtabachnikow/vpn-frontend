@@ -34,18 +34,26 @@
 .options__item-arrow {
   width: 10px;
   height: 10px;
+  box-sizing: border-box;
   transform: rotate(45deg);
   background-color: transparent;
   border-top: 2px solid #fff;
   border-left: 2px solid #fff;
   position: absolute;
-  right: 20px;
+  right: 10px;
   top: 45%;
   border-color: #fff;
 }
 .options__item-arrow.active {
   transform: rotate(225deg);
-  top: 30%;
+  top: 0;
+}
+.options__item-arrow-wrapper {
+  padding: 20px;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 .options__item-title {
   margin: 0 0 5px 0;

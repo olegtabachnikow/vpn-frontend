@@ -10,19 +10,19 @@ import robotIcon from '../../images/robot-min.png';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
+import { directionVariants } from '../../utils/directionOptions';
 
 function Main({ testSetter }) {
   const currentUser = useSelector((state) => state.currentUser);
+  const direction = useSelector((state) => state.direction);
   const navigate = useNavigate();
   return (
     <motion.section
       className='main'
-      initial={{ opacity: 0 }}
-      animate={{
-        opacity: 1,
-        transition: { duration: 0.2, delay: 0.2 },
-      }}
-      exit={{ opacity: 0, transition: { duration: 0.2 } }}
+      initial={direction ? 'fromLeft' : 'fromRight'}
+      animate={{ x: 0, opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
+      exit={direction ? 'exitToRight' : 'exitToLeft'}
+      variants={directionVariants}
     >
       <div className='main__button-container'>
         <MenuButton

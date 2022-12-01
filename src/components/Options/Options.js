@@ -5,6 +5,7 @@ import AppButton from '../AppButton/AppButton';
 import checkboxChecked from '../../images/checkbox-checked.svg';
 import checkboxNotChecked from '../../images/checkbox-not-checked.svg';
 import closeButton from '../../images/close-button.png';
+import checkboxDisabled from '../../images/checkbox-disabled.png';
 import { useSelector } from 'react-redux';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import CopyToClipboardField from '../CopyToClipboardField/CopyToClipboardField';
@@ -27,11 +28,13 @@ function Options() {
     React.useState(false);
   const [isOverlayActive, setIsOverlayActive] = React.useState(false);
   const currentUser = useSelector((state) => state.currentUser);
+  const isNolimit = currentUser.tariff === 'NOLIMIT';
 
   React.useEffect(() => {
     currentUser.smart && setIsSmartActive(1);
     setCountry(currentUser.domainId);
   }, []);
+
   function handleClose() {
     setIsSmartPopupOpen(false);
     setIsCommunicatePopupOpen(false);
@@ -137,11 +140,20 @@ function Options() {
                   >
                     {country === 1 ? 'Finland' : 'Cypress'}
                   </span>
-                  <span
-                    className={`options__item-arrow ${
-                      isActive.location ? 'active' : ''
-                    }`}
-                  />
+                  <div
+                    className='options__item-arrow-wrapper'
+                    onClick={(e) => {
+                      isActive.location
+                        ? setIsActive({ device: false, location: false })
+                        : handleClick(e, { device: false, location: true });
+                    }}
+                  >
+                    <span
+                      className={`options__item-arrow ${
+                        isActive.location ? 'active' : ''
+                      }`}
+                    />
+                  </div>
                 </div>
                 <div
                   onClick={() => setIsActive({ ...isActive, device: false })}
@@ -171,11 +183,20 @@ function Options() {
                       </div>
                     </div>
                   )}
-                  <span
-                    className={`options__item-arrow ${
-                      isActive.device ? 'active' : ''
-                    }`}
-                  />
+                  <div
+                    className='options__item-arrow-wrapper'
+                    onClick={(e) => {
+                      isActive.device
+                        ? setIsActive({ device: false, location: false })
+                        : handleClick(e, { device: true, location: false });
+                    }}
+                  >
+                    <span
+                      className={`options__item-arrow ${
+                        isActive.device ? 'active' : ''
+                      }`}
+                    />
+                  </div>
                 </div>
                 <div
                   className={`options__item ${
@@ -205,9 +226,8 @@ function Options() {
                   >
                     <p className='options__popup-text'>
                       Алгоритмы robo перераспределяют трафик в зависимости от
-                      того, на какой сайты вы хотите попасть. благодаря даже с
-                      включенным впн доступны и рф, и зарубежные сайты, где бы
-                      вы не находились.
+                      того, на какой сайт вы хотите попасть. Даже с включенным
+                      впн — доступны и рф сайты. В том числе из-за рубежа.
                     </p>
                     <button
                       onClick={handleClose}
@@ -239,9 +259,11 @@ function Options() {
                   >
                     <img
                       src={
-                        isCommunicateActive
-                          ? checkboxChecked
-                          : checkboxNotChecked
+                        isNolimit
+                          ? isCommunicateActive
+                            ? checkboxChecked
+                            : checkboxNotChecked
+                          : checkboxDisabled
                       }
                       alt='checkbox'
                     />
@@ -251,25 +273,33 @@ function Options() {
                       isCommunicatePopupOpen && 'active'
                     }`}
                   >
-                    <p className='options__popup-text'>
-                      Внимание! При отключении коммуникации с ботом, мы будем
-                      связываться с вами только в случае блокировки, чтобы
-                      предоставить работающий доступ к сервису. Robo напишет,
-                      что нажать в Telegram, если соединение можно улучшить или
-                      РКН заблокирует именно ваш сервер.
-                    </p>
-                    <div className='options__popup-button-box'>
-                      <AppButton
-                        text='Все равно выключить'
-                        currentClass='secondary white small-text narrow'
-                        handler={handleDisableCommunicate}
-                      />
-                      <AppButton
-                        text='Не отключать'
-                        currentClass='primary orange narrow small-text'
-                        handler={handleClose}
-                      />
-                    </div>
+                    {isNolimit ? (
+                      <>
+                        <p className='options__popup-text'>
+                          Внимание! При отключении коммуникации с ботом, мы
+                          будем связываться с вами только в случае блокировки,
+                          чтобы предоставить работающий доступ к сервису. Robo
+                          напишет, что нажать в Telegram, если соединение можно
+                          улучшить или РКН заблокирует именно ваш сервер.
+                        </p>
+                        <div className='options__popup-button-box'>
+                          <AppButton
+                            text='Все равно выключить'
+                            currentClass='secondary white small-text narrow'
+                            handler={handleDisableCommunicate}
+                          />
+                          <AppButton
+                            text='Не отключать'
+                            currentClass='primary orange narrow small-text'
+                            handler={handleClose}
+                          />
+                        </div>
+                      </>
+                    ) : (
+                      <p className='options__popup-text'>
+                        Коммуникацию можно отключить только на платных тарифах.
+                      </p>
+                    )}
                   </div>
                 </div>
               </div>

@@ -31,17 +31,20 @@
   font-weight: 700;
   margin: 0 0 3px 0;
   font-family: 'Actay Wide', sans-serif;
+  z-index: 1;
 }
 
 .menu-button__text {
   font-size: 12px;
   line-height: 16px;
   margin: 0;
+  z-index: 1;
 }
 .menu-button__additional-text {
   margin: 0;
   font-size: 12px;
   line-height: 16px;
+  z-index: 1;
 }
 .menu-button.btn-my-tariff {
   width: 100%;
@@ -228,6 +231,16 @@
 .menu-button__title.btn-referrals {
   font-size: 16px;
   line-height: 18px;
+}
+.menu-button-circle {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: inherit;
+  border-radius: 13px;
+  top: 0;
+  left: 0;
+  z-index: 0;
 }
 @media screen and (max-height: 650px) {
   .menu-button__icon {

@@ -38,8 +38,8 @@ function Balance() {
       variants={directionVariants}
     >
       <BackButton
-        text='Мой VPN'
-        path='/my-vpn'
+        text='Назад'
+        path={-1}
         currentClass='white wide'
         title='Баланс'
       />

@@ -16,6 +16,8 @@
   text-decoration: underline;
   position: relative;
   margin: 15px 0;
+  background-color: transparent;
+  text-align: left;
 }
 .copy-to-clipboard__key {
   width: 100%;

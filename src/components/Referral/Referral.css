@@ -93,9 +93,12 @@
   margin: 10px;
   font-size: 13px;
 }
-@media screen and (max-height: 648px) {
+@media screen and (max-height: 650px) {
   .referral__popup-text {
     margin: 0 0 10px 0;
+  }
+  .referral__popup-text:first-of-type {
+    margin-top: 20px;
   }
   .referral__text-box {
     padding-top: 0;

@@ -123,3 +123,15 @@
 .gift__content.faded {
   opacity: 0;
 }
+
+@media screen and (max-height: 650px) {
+  .gift__popup-text {
+    margin: 0 0 10px 0;
+  }
+  .gift__popup-text:first-of-type {
+    margin-top: 20px;
+  }
+  .gift__popup-text:last-of-type {
+    margin-bottom: 20px;
+  }
+}

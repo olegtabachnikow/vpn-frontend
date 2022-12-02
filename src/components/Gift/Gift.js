@@ -147,18 +147,18 @@ function Gift() {
             >
               {
                 <div className='popup-gift__text'>
-                  <p>
+                  <p className='gift__popup-text'>
                     1. Чтобы программа действовала — вам нужно поделиться
                     подарком (ссылкой) с другом, а ему просто перейти по ссылке,
                     и зарегистирироваться будто новый пользователь.{' '}
                   </p>
-                  <p>
+                  <p className='gift__popup-text'>
                     {' '}
                     2. Оплаченный тариф начинает действовать с момента вашей
                     оплаты его в качестве подарка, а не с момента его активации
                     со стороны пользователя.{' '}
                   </p>
-                  <p>
+                  <p className='gift__popup-text'>
                     3. Подарок подлежит возврату только в соответствии с общими
                     условиями возврата. С условиями можно ознакомиться в разделе
                     — тарифы,{' '}
@@ -172,7 +172,7 @@ function Gift() {
                     сможет предоставить рабочий доступ к сервису в течение
                     суток.{' '}
                   </p>
-                  <p>
+                  <p className='gift__popup-text'>
                     4. На каждый второй подарок действует — скидка 50%. То есть
                     если вы покупаете и дарите кому-то первый подарок, на каждый
                     второй будет автоматически применятсья скидка 50%.{' '}
@@ -265,8 +265,8 @@ function Gift() {
               />
             </form>
             <motion.button
-              whileHover={{ scale: 0.9, transition: { duration: 0.2 } }}
-              whileTap={{ scale: 0.9, transition: { duration: 0.2 } }}
+              whileHover={{ scale: 0.95, transition: { duration: 0.2 } }}
+              whileTap={{ scale: 0.95, transition: { duration: 0.1 } }}
               className='gift__submit-button'
               type='submit'
               form='tariff-form'

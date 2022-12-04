@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 const menuVariants = {
   open: {
-    clipPath: `circle(1000px at 90% 40px)`,
+    clipPath: `circle(1000px at 100% 0px)`,
     transition: {
       type: 'spring',
       stiffness: 20,
@@ -14,7 +14,7 @@ const menuVariants = {
     },
   },
   closed: {
-    clipPath: 'circle(0px at 90% 40px)',
+    clipPath: 'circle(0px at 100% 0px)',
     transition: {
       delay: 0.5,
       type: 'spring',

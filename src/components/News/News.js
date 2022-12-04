@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { directionVariants } from '../../utils/directionOptions';
 import { useSelector } from 'react-redux';
 import { setDirection } from '../../redux/actions/actions';
+import BurgerMenu from '../BurgerMenu/BurgerMenu';
 
 function News() {
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ function News() {
       exit={direction ? 'exitToRight' : 'exitToLeft'}
       variants={directionVariants}
     >
+      <BurgerMenu color='#fff' />
       <BackButton
         text='Назад'
         path='/help'

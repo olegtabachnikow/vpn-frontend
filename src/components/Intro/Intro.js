@@ -12,6 +12,11 @@ import { motion } from 'framer-motion';
 import * as introMarkup from '../../utils/text-index-markup';
 import { setDirection } from '../../redux/actions/actions';
 
+const variants = {
+  visible: { opacity: 1, transition: { duration: 0.2 } },
+  faded: { opacity: 0, transition: { duration: 0.2 } },
+};
+
 function Intro() {
   const [progress, setProgress] = React.useState(0);
   const [isFaded, setIsFaded] = React.useState(false);
@@ -21,11 +26,6 @@ function Intro() {
     onSwipedRight: handleSwipeRight,
   });
   const progressBarItems = [...Array(5).keys()];
-
-  const variants = {
-    visible: { opacity: 1, transition: { duration: 0.2 } },
-    faded: { opacity: 0, transition: { duration: 0.2 } },
-  };
 
   React.useEffect(() => {
     isFaded && setTimeout(setIsFaded, 300, false);

@@ -9,6 +9,7 @@ import { motion } from 'framer-motion';
 import { directionVariants } from '../../utils/directionOptions';
 import { useSelector } from 'react-redux';
 import { setDirection } from '../../redux/actions/actions';
+import BurgerMenu from '../BurgerMenu/BurgerMenu';
 
 function Faq() {
   const [index, setIndex] = React.useState(0);
@@ -25,7 +26,13 @@ function Faq() {
       exit={direction ? 'exitToRight' : 'exitToLeft'}
       variants={directionVariants}
     >
-      <BackButton text='Назад' path={-1} currentClass='white' title='FAQ' />
+      <BurgerMenu color='#fff' />
+      <BackButton
+        text='Назад'
+        path={-1}
+        currentClass='white moved-right'
+        title='FAQ'
+      />
       <DataList currentClass='data-list-faq'>
         <DataItem
           title='А вы кто?'

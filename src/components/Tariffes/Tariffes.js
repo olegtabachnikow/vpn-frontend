@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux';
 import { setDirection, setPayment } from '../../redux/actions/actions';
 import { motion } from 'framer-motion';
 import { directionVariants } from '../../utils/directionOptions';
+import BurgerMenu from '../BurgerMenu/BurgerMenu';
 
 function Tariffes() {
   const [value, setValue] = React.useState('');
@@ -60,6 +61,7 @@ function Tariffes() {
       {location.pathname === '/tariffes' && (
         <BackButton path={-1} text='Назад' currentClass='wide' title='Тарифы' />
       )}
+      <BurgerMenu color='#348FF3' />
       <Routes>
         <Route
           exact

@@ -73,7 +73,3 @@
 .subscription__widget_disabled {
   display: none;
 }
-.subscription .back-button {
-  align-self: center;
-  width: 100%;
-}

@@ -9,6 +9,7 @@ import { setDirection, setPayment } from '../../redux/actions/actions';
 import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
 import { directionVariants } from '../../utils/directionOptions';
+import BurgerMenu from '../BurgerMenu/BurgerMenu';
 
 function Balance() {
   const [value, setValue] = React.useState(0);
@@ -37,12 +38,8 @@ function Balance() {
       exit={direction ? 'exitToRight' : 'exitToLeft'}
       variants={directionVariants}
     >
-      <BackButton
-        text='Назад'
-        path={-1}
-        currentClass='white wide'
-        title='Баланс'
-      />
+      <BurgerMenu color='#fff' />
+      <BackButton text='Назад' path={-1} currentClass='white' title='Баланс' />
       <div className='balance__row'>
         <h2 className='balance__title'>
           Cписывать с баланса (выберите с валюты или с Гб), когда закончится

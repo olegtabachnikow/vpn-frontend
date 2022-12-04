@@ -18,7 +18,7 @@
   box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.15);
   transform: translate3d(0, 0, 0);
   height: 90%;
-  z-index: 10;
+  z-index: 17;
 }
 .popup__top-button {
   position: relative;
@@ -113,6 +113,7 @@
 .popup__overlay.active {
   opacity: 1;
   pointer-events: all;
+  z-index: 16;
 }
 .popup__text-container_hidden {
   opacity: 0;

@@ -9,6 +9,7 @@ import { motion } from 'framer-motion';
 import { directionVariants } from '../../utils/directionOptions';
 import { useSelector } from 'react-redux';
 import { setDirection } from '../../redux/actions/actions';
+import BurgerMenu from '../BurgerMenu/BurgerMenu';
 
 function Values() {
   const navigate = useNavigate();
@@ -25,10 +26,11 @@ function Values() {
       exit={direction ? 'exitToRight' : 'exitToLeft'}
       variants={directionVariants}
     >
+      <BurgerMenu color='#fff' />
       <BackButton
         text='Назад'
         path={-1}
-        currentClass='white'
+        currentClass='white moved-right'
         title='Ценности'
       />
       <DataList currentClass='data-list-values'>

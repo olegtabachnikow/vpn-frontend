@@ -15,6 +15,19 @@ import { motion } from 'framer-motion';
 import { directionVariants } from '../../utils/directionOptions';
 import { setDirection } from '../../redux/actions/actions';
 
+const variants = {
+  visible: { opacity: 1, transition: { duration: 0.2 } },
+  faded: { opacity: 0, transition: { duration: 0.1 } },
+};
+const buttonVariants = {
+  visible: { y: 0, opacity: 1, transition: { duration: 0.2 } },
+  hidden: {
+    y: '120%',
+    opacity: 0,
+    transition: { duration: 0.1 },
+  },
+};
+
 function Instruction() {
   const tg = window.Telegram.WebApp;
   const [progress, setProgress] = React.useState(0);
@@ -27,18 +40,6 @@ function Instruction() {
     onSwipedRight: handleSwipeRight,
   });
 
-  const variants = {
-    visible: { opacity: 1, transition: { duration: 0.2 } },
-    faded: { opacity: 0, transition: { duration: 0.1 } },
-  };
-  const buttonVariants = {
-    visible: { y: 0, opacity: 1, transition: { duration: 0.2 } },
-    hidden: {
-      y: '120%',
-      opacity: 0,
-      transition: { duration: 0.1 },
-    },
-  };
   React.useEffect(() => {
     isFaded && setTimeout(setIsFaded, 300, false);
     progress > 2 && setProgress(4);

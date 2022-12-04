@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
 import { directionVariants } from '../../utils/directionOptions';
+import BurgerMenu from '../BurgerMenu/BurgerMenu';
 
 function MyVpn() {
   const navigate = useNavigate();
@@ -22,14 +23,19 @@ function MyVpn() {
     <motion.section
       className='my-vpn'
       initial={direction ? 'fromLeft' : 'fromRight'}
-      animate={{ x: 0, opacity: 1, transition: { duration: 0.2, delay: 0.2 } }}
+      animate={{
+        x: 0,
+        opacity: 1,
+        transition: { duration: 0.2, delay: 0.2 },
+      }}
       exit={direction ? 'exitToRight' : 'exitToLeft'}
       variants={directionVariants}
     >
+      <BurgerMenu color='#348ff3' />
       <BackButton
         path='/'
         text='Главное меню'
-        currentClass='wide'
+        currentClass=''
         title='Мой VPN'
       />
       <div className='my-vpn__button-container'>

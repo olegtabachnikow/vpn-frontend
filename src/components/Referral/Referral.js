@@ -7,6 +7,7 @@ import CopyToClipboardField from '../CopyToClipboardField/CopyToClipboardField';
 import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
 import { directionVariants } from '../../utils/directionOptions';
+import BurgerMenu from '../BurgerMenu/BurgerMenu';
 
 function Referral() {
   const [isReferPopupHidden, setIsReferPopupHidden] = React.useState(true);
@@ -20,10 +21,11 @@ function Referral() {
       exit={direction ? 'exitToRight' : 'exitToLeft'}
       variants={directionVariants}
     >
+      <BurgerMenu color='#fff' />
       <BackButton
         text='Назад'
         path={-1}
-        currentClass='white wide'
+        currentClass='white'
         title='Реферальная программа'
       />
       <div className='referral__content'>

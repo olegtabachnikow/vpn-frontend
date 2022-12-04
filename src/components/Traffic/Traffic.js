@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { directionVariants } from '../../utils/directionOptions';
 import { setDirection } from '../../redux/actions/actions';
+import BurgerMenu from '../BurgerMenu/BurgerMenu';
 
 function Traffic() {
   const currentUser = useSelector((state) => state.currentUser);
@@ -22,12 +23,8 @@ function Traffic() {
       exit={direction ? 'exitToRight' : 'exitToLeft'}
       variants={directionVariants}
     >
-      <BackButton
-        text='Назад'
-        path={-1}
-        currentClass='white wide'
-        title='Трафик'
-      />
+      <BurgerMenu color='#fff' />
+      <BackButton text='Назад' path={-1} currentClass='white' title='Трафик' />
       <div className='traffic__main'>
         {isNolimit ? (
           <div className='traffic__main-content'>

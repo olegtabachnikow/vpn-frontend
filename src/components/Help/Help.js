@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
 import { directionVariants } from '../../utils/directionOptions';
+import BurgerMenu from '../BurgerMenu/BurgerMenu';
 
 function Help() {
   const navigate = useNavigate();
@@ -24,6 +25,7 @@ function Help() {
       exit={direction ? 'exitToRight' : 'exitToLeft'}
       variants={directionVariants}
     >
+      <BurgerMenu color='#348ff3' />
       <BackButton
         path='/'
         text='Главное меню'

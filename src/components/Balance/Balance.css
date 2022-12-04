@@ -149,6 +149,7 @@
   left: 35px;
   height: 100%;
   width: calc(100% - 70px);
+  padding-top: 15%;
   box-sizing: border-box;
   background-color: #ff824b;
 }

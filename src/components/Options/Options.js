@@ -12,6 +12,7 @@ import CopyToClipboardField from '../CopyToClipboardField/CopyToClipboardField';
 import { motion } from 'framer-motion';
 import { directionVariants } from '../../utils/directionOptions';
 import { setDirection } from '../../redux/actions/actions';
+import BurgerMenu from '../BurgerMenu/BurgerMenu';
 
 function Options() {
   const [smartActive, setIsSmartActive] = React.useState(0);
@@ -76,6 +77,7 @@ function Options() {
       exit={direction ? 'exitToRight' : 'exitToLeft'}
       variants={directionVariants}
     >
+      <BurgerMenu color='#fff' />
       <Routes>
         <Route
           path='/'

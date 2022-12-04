@@ -9,6 +9,12 @@ import { useNavigate } from 'react-router-dom';
 import { setDirection, setPayment } from '../../redux/actions/actions';
 import { motion } from 'framer-motion';
 import { directionVariants } from '../../utils/directionOptions';
+import BurgerMenu from '../BurgerMenu/BurgerMenu';
+
+const variants = {
+  visible: { opacity: 1, transition: { duration: 0.2 } },
+  faded: { opacity: 0, transition: { duration: 0.2 } },
+};
 
 function Gift() {
   const [progress, setProgress] = React.useState(0);
@@ -23,10 +29,7 @@ function Gift() {
     onSwipedLeft: handleSwipeLeft,
     onSwipedRight: handleSwipeRight,
   });
-  const variants = {
-    visible: { opacity: 1, transition: { duration: 0.2 } },
-    faded: { opacity: 0, transition: { duration: 0.2 } },
-  };
+
   React.useEffect(() => {
     isFaded && setTimeout(setIsFaded, 300, false);
   }, [isFaded]);
@@ -102,6 +105,7 @@ function Gift() {
       exit={direction ? 'exitToRight' : 'exitToLeft'}
       variants={directionVariants}
     >
+      <BurgerMenu color='#fff' />
       <button onClick={handleBackButtonClick} className='gift__back-button'>
         {progress > 0 ? (
           <span className='gift__back-button-text'>Назад</span>
@@ -267,6 +271,7 @@ function Gift() {
             <motion.button
               whileHover={{ scale: 0.95, transition: { duration: 0.2 } }}
               whileTap={{ scale: 0.95, transition: { duration: 0.1 } }}
+              exit={{ opacity: 0, transition: { duration: 0.1 } }}
               className='gift__submit-button'
               type='submit'
               form='tariff-form'

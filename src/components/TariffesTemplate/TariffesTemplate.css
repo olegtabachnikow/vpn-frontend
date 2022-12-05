@@ -1,20 +1,13 @@
 .tariffes-template {
   display: flex;
   flex-direction: column;
+  width: 100%;
   align-items: center;
   height: 100%;
   justify-content: space-between;
 }
-
-.tariffes-template__info {
-  font-size: 12px;
-  line-height: 12px;
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  background: #f8f9fe;
-  border-radius: 16px;
-  margin-bottom: 30px;
+.tariffes-template.free {
+  color: #7472eb;
 }
 .tariffes-template__content {
   width: 100%;
@@ -22,37 +15,57 @@
   flex-direction: column;
   align-items: center;
 }
-.tariffes-template__info-title {
-  margin: 0;
-  font-family: 'Actay Wide', sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 20px;
+.tariffes-template__content-secondary {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.tariffes-template__info-subtitle {
-  margin: 10px 0 0 0;
+
+.tariffes-template__content-button {
+  width: 100%;
+  border: none;
+  background-color: #f8f9fe;
+  border-radius: 16px;
   font-family: 'Actay Wide';
   font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  padding: 24px;
+  box-sizing: border-box;
+  text-align: start;
+  margin-bottom: 20px;
+  position: relative;
 }
-.tariffes-template__info-text {
-  font-family: 'Inter', sans-serif;
-  margin: 0;
+.tariffes-template__content-button.hidden {
+  opacity: 0;
 }
-.tariffes-template.free {
+.tariffes-template__content-button.free {
   color: #7472eb;
 }
-.tariffes-template__info.fit {
+.tariffes-template__content-button.fit {
   color: #ff824b;
-  margin: 0;
+  margin-bottom: 10px;
 }
-.tariffes-template__info.nolimit {
+.tariffes-template__content-button.nolimit {
   color: #f95273;
-  margin-bottom: 0;
 }
-@media screen and (max-height: 650px) {
-  .tariffes-template__info {
-    padding: 10px 24px;
-    font-size: 10px;
-    margin-top: 10px;
-  }
+.tariffes-template__content-button-arrow {
+  width: 10px;
+  height: 10px;
+  transform: rotate(-135deg);
+  background-color: transparent;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  position: absolute;
+  right: 35px;
+}
+.tariffes-template__content-button-arrow.free {
+  border-color: #7472eb;
+}
+.tariffes-template__content-button-arrow.fit {
+  border-color: #ff824b;
+}
+.tariffes-template__content-button-arrow.nolimit {
+  border-color: #f95273;
 }

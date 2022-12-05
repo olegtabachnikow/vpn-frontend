@@ -15,49 +15,39 @@
 .app-message-us {
   background-color: #ffbe30;
 }
-.app-referral {
+.app-referral,
+.app-faq {
   background-color: #7472eb;
 }
-.app-balance {
+.app-balance,
+.app-values {
   background-color: #ff824b;
 }
-.app-traffic {
+.app-traffic,
+.app-possibilities {
   background-color: #f95273;
 }
 .app-support.nolimit {
   background-color: #348ff3;
 }
-.app-support {
-  background-color: #aeaeae;
-}
-.app-faq {
-  background-color: #7472eb;
-}
+.app-support,
+.app-error,
 .app-news {
   background-color: #aeaeae;
 }
-.app-possibilities {
-  background-color: #f95273;
-}
-.app-values {
-  background-color: #ff824b;
-}
-.app-subscription {
+.app-subscription,
+.app-success {
   background-color: #064b72;
 }
 .app-payment {
   background-color: #fff;
 }
-.app-success {
-  background-color: #064b72;
-}
-.app-burger {
-  background-color: #064b72;
-}
+
 @media screen and (orientation: landscape) {
   .app {
     width: 375px;
-    height: 708px;
+    height: 100%;
+    max-height: 700px;
     margin: 0 auto;
   }
 }

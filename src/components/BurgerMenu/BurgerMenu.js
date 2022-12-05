@@ -2,7 +2,6 @@ import React from 'react';
 import './BurgerMenu.css';
 import { motion, useCycle } from 'framer-motion';
 import BurgerMenuNav from '../BurgerMenuNav/BurgerMenuNav';
-import { useSelector } from 'react-redux';
 
 const menuVariants = {
   open: {
@@ -27,7 +26,6 @@ const menuVariants = {
 function BurgerMenu({ color }) {
   const [isOpen, toggleOpen] = useCycle(false, true);
   const [isActive, setIsActive] = React.useState(false);
-  const currentUser = useSelector((state) => state.currentUser);
 
   const Path = (props) => (
     <motion.path

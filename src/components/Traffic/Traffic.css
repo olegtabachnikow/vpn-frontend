@@ -78,4 +78,5 @@
 }
 .traffic__link {
   text-decoration: underline;
+  cursor: pointer;
 }

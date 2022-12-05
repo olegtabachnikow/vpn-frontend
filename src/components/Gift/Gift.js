@@ -183,7 +183,7 @@ function Gift() {
                   </p>
                   <AppButton
                     text='Понятно'
-                    currentClass='secondary white bg-orange border-transparent'
+                    currentClass='secondary white bg-orange border-transparent margin-top'
                     handler={() => setIsGiftPopupHidden(true)}
                   />
                 </div>

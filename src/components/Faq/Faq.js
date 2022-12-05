@@ -100,9 +100,12 @@ function Faq() {
             из тг), чтобы все сделать.
             <br />
             Если у вас есть вопросы по возврату, то можете написать нам на почту{' '}
-            <a className='data-item__link' href='mailto:care@getrobovpn.com'>
-              care@getrobovpn.com
-            </a>
+            <span
+              onClick={() => window.open('mailto:care@getrobovpn.com')}
+              className='data-item__link'
+            >
+              care@getrobovpn.com.
+            </span>
             . В теле письма, пож-ста, укажите ваш ID в тг, а в названии названии
             напишите слово возврат. Ну и вопрос не забудьте, пож-ста :)
           </p>

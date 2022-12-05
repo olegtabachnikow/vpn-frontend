@@ -124,12 +124,10 @@
   border: 1px solid #fff;
   background-color: transparent;
   margin: 0;
-  cursor: pointer;
 }
 .balance__button-primary {
   font-size: 17px;
   width: 48%;
-  cursor: pointer;
   background-color: #fff;
   border-color: transparent;
   color: #ff824b;
@@ -142,6 +140,7 @@
 }
 .balance__tips-link {
   text-decoration: underline;
+  cursor: pointer;
 }
 .balance__row-input-box.focused {
   position: absolute;

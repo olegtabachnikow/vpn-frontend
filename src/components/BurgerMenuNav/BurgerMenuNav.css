@@ -31,7 +31,7 @@
   font-family: 'Actay', sans-serif;
   padding-bottom: 10px;
   border: 2px solid #348ff3;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 13px;
   width: 100%;
   justify-content: space-around;
@@ -87,6 +87,7 @@
 }
 .burger-menu-nav__link {
   text-decoration: underline;
+  cursor: pointer;
 }
 @keyframes rotation {
   from {

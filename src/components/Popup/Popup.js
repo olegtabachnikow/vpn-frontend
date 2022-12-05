@@ -1,14 +1,51 @@
 import React from 'react';
 import './Popup.css';
+import { motion } from 'framer-motion';
 
+const popupVariants = {
+  open: {
+    y: 0,
+    zIndex: 17,
+    transition: {
+      duration: 0.3,
+    },
+  },
+  closed: {
+    zIndex: 15,
+    y: 'calc(100% - 61px)',
+    transition: {
+      duration: 0.2,
+    },
+  },
+};
+const overlayVariants = {
+  open: {
+    zIndex: 16,
+    opacity: 1,
+    transition: { duration: 0.3 },
+  },
+  closed: {
+    zIndex: 1,
+    opacity: 0,
+    transition: { duration: 0.3 },
+  },
+};
 function Popup({ title, currentClass, children, isHidden, handleHide }) {
   return (
     <>
-      <div
+      <motion.div
+        initial='closed'
+        animate={isHidden ? 'closed' : 'open'}
+        variants={overlayVariants}
         onClick={(e) => e.stopPropagation()}
         className={`popup__overlay ${!isHidden && 'active'}`}
-      ></div>
-      <section className={`popup ${!isHidden && 'active'} ${currentClass}`}>
+      ></motion.div>
+      <motion.section
+        className={`popup ${!isHidden && 'active'} ${currentClass}`}
+        initial='closed'
+        animate={isHidden ? 'closed' : 'open'}
+        variants={popupVariants}
+      >
         {!!title.length && (
           <button
             onClick={() => handleHide((state) => !state)}
@@ -29,7 +66,7 @@ function Popup({ title, currentClass, children, isHidden, handleHide }) {
         >
           {children}
         </div>
-      </section>
+      </motion.section>
     </>
   );
 }

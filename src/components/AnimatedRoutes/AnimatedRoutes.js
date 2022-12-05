@@ -21,6 +21,7 @@ import MyVpn from '../MyVpn/MyVpn';
 import Referral from '../Referral/Referral';
 import Help from '../Help/Help';
 import { AnimatePresence } from 'framer-motion';
+import ErrorPage from '../ErrorPage/ErrorPage';
 
 function AnimatedRoutes({ testUserSetter }) {
   const location = useLocation();
@@ -47,6 +48,7 @@ function AnimatedRoutes({ testUserSetter }) {
         <Route path='/success' element={<Success />} />
         <Route path='/options/*' element={<Options />} />
         <Route path='/message-us' element={<MessageUs />} />
+        <Route path='/error' element={<ErrorPage />} />
       </Routes>
     </AnimatePresence>
   );

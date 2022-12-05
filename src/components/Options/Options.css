@@ -30,6 +30,7 @@
   border-radius: 13px;
   color: #fff;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 .options__item-arrow {
   width: 10px;

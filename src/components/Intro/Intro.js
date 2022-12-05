@@ -12,7 +12,7 @@ import { motion } from 'framer-motion';
 import * as introMarkup from '../../utils/text-index-markup';
 import { setDirection } from '../../redux/actions/actions';
 
-const variants = {
+const introTextVariants = {
   visible: { opacity: 1, transition: { duration: 0.2 } },
   faded: { opacity: 0, transition: { duration: 0.2 } },
 };
@@ -108,7 +108,7 @@ function Intro() {
         className='intro__text-container'
         initial={{ opacity: 0 }}
         animate={isFaded ? 'faded' : 'visible'}
-        variants={variants}
+        variants={introTextVariants}
       >
         {(progress === 0 && introMarkup.textOne) ||
           (progress === 1 && introMarkup.textTwo) ||

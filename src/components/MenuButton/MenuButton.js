@@ -10,6 +10,7 @@ function MenuButton({ image, currentClass, title, text, addText, handler }) {
   }
   return (
     <motion.button
+      whileHover={{ rotate: '2deg', transition: { duration: 0.3 } }}
       whileTap={{ scale: 0.9, transition: { duration: 0.2 } }}
       onClick={handleClick}
       className={`menu-button  ${currentClass}`}

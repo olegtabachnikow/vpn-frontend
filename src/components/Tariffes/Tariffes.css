@@ -83,10 +83,27 @@
 .tariffes__content-nolimit {
   width: 100%;
 }
-@media screen and (max-height: 648px) {
+.tariffes__fit-text {
+  font-family: 'Actay Wide', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  color: #ff824b;
+  border: 1.5px solid #ff824b;
+  padding: 14px 22px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 12px;
+  margin-top: 5%;
+  margin-bottom: 3%;
+}
+@media screen and (max-height: 650px) {
   .tariffes__popup-container,
   .tariffes__popup-overlay {
     height: 85%;
+  }
+  .tariffes__fit-text {
+    display: none;
   }
   .tariffes__popup-container {
     margin-bottom: 5%;

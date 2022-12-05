@@ -71,6 +71,10 @@ function Tariffes() {
               <div className='tariffes-list'>
                 <span className='tariffes-list__current-title'>
                   Ваш тариф: {currentUser.tariff}
+                  <br />
+                  {currentUser.tariff === 'NOLIMIT'
+                    ? 'Активен до ' + currentUser.endDate
+                    : null}
                 </span>
                 <FormLabel
                   elementValue='free'
@@ -249,9 +253,13 @@ function Tariffes() {
                   valueMain={`${prices.Fix_20} ₽`}
                   valueSecondary='разовый платеж'
                   isDiscounted={true}
-                  discountValue='Выгоднее на 54%'
+                  discountValue='Выгоднее на 40%'
                 />
               </div>
+              <span className='tariffes__fit-text'>
+                Если делаете хотя бы одну покупку в месяц, начисляем сверху 10
+                Гб бесплатного трафика. Если 0 покупок, то всего лишь 5 Гб.
+              </span>
             </TariffesTemplate>
           }
         />

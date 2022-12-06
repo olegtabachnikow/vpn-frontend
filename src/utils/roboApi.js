@@ -1,37 +1,40 @@
-const API_URL = 'https://api1.getrobovpn.com:3401';
+const API_URL = process.env.REACT_APP_API_URL;
+const TOKEN = process.env.REACT_APP_TOKEN;
 
 export function getCurrentUser(user_id) {
   console.log(`${API_URL}/userdata/${user_id}`);
   return fetch(`${API_URL}/userdata/${user_id}`, {
     method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: 'Bearer ZGtvKJDPYAys8TEBGd33',
-    },
-  }).then((res) => res.json());
+    headers: generateHeaders(),
+  }).then(checkResponse);
 }
 
 export function getPrices() {
   return fetch(`${API_URL}/prices`, {
     method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: 'Bearer ZGtvKJDPYAys8TEBGd33',
-    },
-  }).then((res) => res.json());
+    headers: generateHeaders(),
+  }).then(checkResponse);
 }
 export function getPaymentLink(id, value) {
-  // console.log(typeof id, id, typeof value, value);
   return fetch(`${API_URL}/payment`, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: 'Bearer ZGtvKJDPYAys8TEBGd33',
-    },
+    headers: generateHeaders(),
     body: {
       user_id: id,
       amount: value,
       desc: 'test1',
     },
-  }).then((res) => res.json());
+  }).then(checkResponse);
+}
+
+function generateHeaders() {
+  return {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${TOKEN}`,
+  };
+}
+function checkResponse(res) {
+  if (res.ok) {
+    return res.json();
+  } else Promise.reject(`Error: ${res.status}`);
 }

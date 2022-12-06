@@ -1,16 +1,24 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './DataItem.css';
 
 function DataItem({ title, children, index, currentIndex, setIndex }) {
   const [isExpanded, setIsExpanded] = React.useState(false);
+  const itemRef = useRef(null);
   function handleClick() {
     index === currentIndex ? setIndex(0) : setIndex(currentIndex);
+    itemRef.current.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center',
+    });
   }
   React.useEffect(() => {
     index === currentIndex ? setIsExpanded(true) : setIsExpanded(false);
   }, [index, currentIndex]);
   return (
-    <li className={`data-item ${isExpanded && 'data-item_expanded'}`}>
+    <li
+      ref={itemRef}
+      className={`data-item ${isExpanded && 'data-item_expanded'}`}
+    >
       <div className='data-item__content'>
         <button
           type='button'

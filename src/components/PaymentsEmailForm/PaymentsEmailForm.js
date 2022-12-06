@@ -18,7 +18,7 @@ function PaymentsEmailForm() {
       : setIsEmailEqual(false);
   }, [email, comparedEmail]);
 
-  const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+  const regex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g;
   const debounce = (fn, delay) => {
     let timerId;
     return (...args) => {

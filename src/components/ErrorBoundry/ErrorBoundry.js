@@ -5,14 +5,11 @@ export default class ErrorBoundry extends Component {
   state = {
     hasError: false,
   };
-  componentDidCatch() {
+  componentDidCatch(err) {
     this.setState({ hasError: true });
   }
 
   render() {
-    if (this.state.hasError) {
-      return <ErrorPage />;
-    }
-    return this.props.children;
+    return <>{this.state.hasError ? <ErrorPage /> : this.props.children}</>;
   }
 }

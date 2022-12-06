@@ -14,7 +14,6 @@ function App() {
   const location = useLocation();
   const queryParams = new URLSearchParams(window.location.search);
   const currentUser = useSelector((state) => state.currentUser);
-
   const userId = () => {
     const data = queryParams.get('user_id');
     if (data) {
@@ -34,7 +33,7 @@ function App() {
     // const id = userId();
     // getUser(id);
     setCurrentUser(userNolimit);
-    navigate('/intro');
+    navigate('/');
   }, []);
 
   React.useEffect(() => {

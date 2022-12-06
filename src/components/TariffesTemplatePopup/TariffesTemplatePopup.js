@@ -5,8 +5,14 @@ import { useNavigate } from 'react-router-dom';
 function TariffesTemplatePopup({ currentClass, isHidden, setIsHidden }) {
   const navigate = useNavigate();
   return (
-    <div className={`tariffes-template-popup ${!isHidden && 'active'}`}>
-      <div className={`tariffes-template-popup__info ${currentClass}`}>
+    <div
+      className={`tariffes-template-popup ${!isHidden && 'active'}`}
+      onClick={() => setIsHidden(true)}
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className={`tariffes-template-popup__info ${currentClass}`}
+      >
         <button
           onClick={() => setIsHidden(true)}
           className='tariffes-template-popup__info-button'

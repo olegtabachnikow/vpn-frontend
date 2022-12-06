@@ -1,8 +1,10 @@
 .app {
   width: 100vw;
+  height: 100vh;
+  max-width: 400px;
   min-width: 375px;
   max-height: 708px;
-  height: 100vh;
+  margin: 0 auto;
   box-sizing: border-box;
   overflow: hidden;
   background-color: transparent;
@@ -31,7 +33,6 @@
   background-color: #348ff3;
 }
 .app-support,
-.app-error,
 .app-news {
   background-color: #aeaeae;
 }
@@ -41,15 +42,6 @@
 }
 .app-payment {
   background-color: #fff;
-}
-
-@media screen and (orientation: landscape) {
-  .app {
-    width: 375px;
-    height: 100%;
-    max-height: 700px;
-    margin: 0 auto;
-  }
 }
 @media screen and (max-height: 648px) {
   .app {

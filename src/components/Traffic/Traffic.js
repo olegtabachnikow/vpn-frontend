@@ -79,7 +79,7 @@ function Traffic() {
           ) : (
             <>
               <AppButton
-                text='Докупить Гб'
+                text='Пополнить Гб'
                 currentClass={`primary rose wide margin-bottom ${
                   isNolimit ? 'disabled' : ''
                 }`}

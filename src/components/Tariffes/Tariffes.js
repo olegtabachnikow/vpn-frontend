@@ -21,6 +21,7 @@ function Tariffes() {
   const prices = useSelector((state) => state.prices);
   const currentUser = useSelector((state) => state.currentUser);
   const direction = useSelector((state) => state.direction);
+  const isNolimit = currentUser.tariff === 'NOLIMIT';
 
   function handleChooseClick() {
     if (value.length) {
@@ -102,7 +103,7 @@ function Tariffes() {
                   name='tariff'
                   handler={(data) => setValue(data)}
                   currentClass='tariff-item-nolimit'
-                  title='NO LIMIT'
+                  title='NOLIMIT'
                   text='Забудьте про ограничения. безлимитное потребление, сколько нужно устройств, доступ везде. '
                   valueMain={`от ${prices.Nolimit_12} ₽`}
                   isDiscounted={false}
@@ -202,11 +203,53 @@ function Tariffes() {
                 navigate('/referral');
               }}
             >
-              <p className='tariffes__free-text'>
-                Дарим до 10 Гб на тарифах FREE и FIX каждый месяц, так же можно{' '}
-                <u>заработать</u> 20 гб просто за приглашение — 10 Гб вам и 10
-                Гб другу.
-              </p>
+              <div className='tariffes__free-content'>
+                <h1 className='tariffes__free-title'>5+5=10</h1>
+                <div className='tariffes__free-widgets'>
+                  <div className='tariffes__free-widgets-row'>
+                    <div className='tariffes__free-widget_small'>
+                      <h2 className='tariffes__free-widget-title'>5 Гб</h2>
+                      <span className='tariffes__free-widget-text'>
+                        Каждый месяц на тарифах FREE/FIT
+                      </span>
+                    </div>
+                    <div className='tariffes__free-widget_small'>
+                      <h2 className='tariffes__free-widget-title'>5 Гб</h2>
+                      <span className='tariffes__free-widget-text'>
+                        В первый месяц, и со второго, если есть хотя бы одна
+                        покупка
+                      </span>
+                    </div>
+                  </div>
+                  {!isNolimit ? (
+                    <div className='tariffes__free-widget-info'>
+                      <p className='tariffes__free-widget-info-text'>
+                        Осталось в этом месяце:{' '}
+                        <span className='tariffes__free-widget-info-text_bold'>
+                          {currentUser.traffic}
+                        </span>
+                      </p>
+                      <p className='tariffes__free-widget-info-text'>
+                        Новые 5 Гб:{' '}
+                        <span className='tariffes__free-widget-info-text_bold'>
+                          {currentUser.endDate}
+                        </span>
+                      </p>
+                      <p className='tariffes__free-widget-info-text'>
+                        В среднем потребляете:{' '}
+                        <span className='tariffes__free-widget-info-text_bold'>
+                          {currentUser.trafficPerDay + 'Гб/день'}
+                        </span>
+                      </p>
+                      <p className='tariffes__free-widget-info-text_bold'>
+                        Алгоритм робо думает, что трафика{' '}
+                        {currentUser.trafficMonth ? '' : 'не'} хватит до
+                        следующих бесплатных Гб
+                      </p>
+                    </div>
+                  ) : null}
+                </div>
+              </div>
             </TariffesTemplate>
           }
         />
@@ -241,7 +284,11 @@ function Tariffes() {
                   valueMain={`${prices.Fix_10} ₽`}
                   valueSecondary='разовый платеж'
                   isDiscounted={true}
-                  discountValue='Выгоднее на 16%'
+                  discountValue={
+                    value === '' + prices.Fix_10
+                      ? 'тут Гб дешевле на 5%, чем в пакете 5 Гб'
+                      : 'Рекомендуем'
+                  }
                 />
                 <FormLabel
                   elementValue={prices.Fix_20}
@@ -253,7 +300,11 @@ function Tariffes() {
                   valueMain={`${prices.Fix_20} ₽`}
                   valueSecondary='разовый платеж'
                   isDiscounted={true}
-                  discountValue='Выгоднее на 40%'
+                  discountValue={
+                    value === '' + prices.Fix_20
+                      ? 'тут Гб дешевле на 40%, чем в пакете 5 Гб'
+                      : null
+                  }
                 />
               </div>
               <span className='tariffes__fit-text'>

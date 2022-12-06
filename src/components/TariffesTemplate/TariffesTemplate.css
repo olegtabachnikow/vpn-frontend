@@ -69,3 +69,7 @@
 .tariffes-template__content-button-arrow.nolimit {
   border-color: #f95273;
 }
+.tariffes-template.free .tariffes-template__content,
+.tariffes-template.nolimit .tariffes-template__content {
+  margin: auto 0;
+}

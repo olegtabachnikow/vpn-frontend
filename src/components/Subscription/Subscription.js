@@ -110,7 +110,7 @@ function Subscription() {
         ) : (
           <>
             <AppButton
-              text='Докупить гБ'
+              text='Пополнить гБ'
               handler={() => {
                 setDirection(true);
                 currentUser.activeUser

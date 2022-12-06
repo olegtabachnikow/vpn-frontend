@@ -9,7 +9,6 @@ const LocationProvider = ({ children }) => {
   React.useEffect(() => {
     const currentLocation = Cookies.get('location_app');
     if (!currentLocation) return;
-    console.log(currentLocation, currentLocation === '/payment');
     if (currentLocation === '/payment') {
       navigate('/');
       return;

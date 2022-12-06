@@ -1,5 +1,6 @@
 import React from 'react';
 import './FormLabel.css';
+import { motion } from 'framer-motion';
 
 function FormLabel({
   elementValue,
@@ -14,8 +15,12 @@ function FormLabel({
   discountValue,
   defaultChecked,
 }) {
+  const isRecommended = discountValue === 'Рекомендуем';
   return (
-    <label className={`form-label ${currentClass}`}>
+    <motion.label
+      className={`form-label ${currentClass} ${isRecommended && 'recomended'}`}
+      whileTap={{ scale: 0.95 }}
+    >
       <input
         onChange={(e) => handler(e.target.value)}
         className='form-label__radio-input'
@@ -51,9 +56,15 @@ function FormLabel({
         </div>
       </div>
       {isDiscounted && discountValue ? (
-        <span className='form-label__discount-box'>{discountValue}</span>
+        <span
+          className={`form-label__discount-box ${
+            isRecommended && 'recomended'
+          }`}
+        >
+          {discountValue}
+        </span>
       ) : null}
-    </label>
+    </motion.label>
   );
 }
 

@@ -9,7 +9,6 @@ import sector4 from '../../images/sector4.svg';
 import AppButton from '../AppButton/AppButton';
 import { useSwipeable } from 'react-swipeable';
 import { motion } from 'framer-motion';
-import * as introMarkup from '../../utils/text-index-markup';
 import { setDirection } from '../../redux/actions/actions';
 
 const introTextVariants = {
@@ -110,11 +109,76 @@ function Intro() {
         animate={isFaded ? 'faded' : 'visible'}
         variants={introTextVariants}
       >
-        {(progress === 0 && introMarkup.textOne) ||
-          (progress === 1 && introMarkup.textTwo) ||
-          (progress === 2 && introMarkup.textThree) ||
-          (progress === 3 && introMarkup.textFour) ||
-          (progress === 4 && introMarkup.textFive)}
+        {(progress === 0 && (
+          <>
+            <h1 className='intro__title'>
+              Одна установка — <br />
+              <span className='intro__title_colored'>
+                {' '}
+                про VPN можно забыть
+              </span>
+            </h1>
+            <p className='intro__text'>
+              Можно забыть о выключении и включении VPN по 10 раз на дню.
+              Instagram, Netflix и YouTube. Авито, Сбер и Госуслуги. Robo
+              работает везде — и на рф, и на зарубежных сайтах, вне зависимости
+              от того где вы находитесь.
+            </p>
+          </>
+        )) ||
+          (progress === 1 && (
+            <>
+              <h1 className='intro__title'>
+                Безопасность <br />
+                от
+                <span className='intro__title_colored'> Google</span>
+              </h1>
+              <p className='intro__text'>
+                Мы не устанавливаем ничего своего вам на телефон. А предлагаем
+                один раз установить надежное приложение от Jigsaw (Google) —
+                Outline.
+              </p>
+            </>
+          )) ||
+          (progress === 2 && (
+            <>
+              <h1 className='intro__title'>
+                Вcтроенное <br />
+                приложение <br />
+                <span className='intro__title_colored'> прямо в Telegram</span>
+              </h1>
+              <p className='intro__text'>
+                Не нужно искать приложения и что-то настраивать. Встроенное
+                приложение в телеграмм всегда под рукой, а алгоритмы robo
+                сообщат о важном прямо в чате.
+              </p>
+            </>
+          )) ||
+          (progress === 3 && (
+            <>
+              <h1 className='intro__title'>
+                100% гарантия <br />
+                <span className='intro__title_colored'> возврата </span> всегда
+              </h1>
+              <p className='intro__text'>
+                А не первые 7 или 30 дней как у ... но, вероятно, возврат не
+                потребуется. Наши технологии не заблокировали даже в Китае. А мы
+                пошли еще дальше.
+              </p>
+            </>
+          )) ||
+          (progress === 4 && (
+            <>
+              <h1 className='intro__title'>
+                Бесплатно <br />
+                <span className='intro__title_colored'> каждый месяц</span>
+              </h1>
+              <p className='intro__text'>
+                До 10 Гб каждый месяц всем пользователям. Без ограничений. Если
+                не хватит — тарифы доступны от 69 рублей.
+              </p>
+            </>
+          ))}
       </motion.div>
       <div className='intro__progress'>
         {progressBarItems.map((el) => (

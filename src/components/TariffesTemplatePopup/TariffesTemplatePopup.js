@@ -1,6 +1,7 @@
 import React from 'react';
 import './TariffesTemplatePopup.css';
 import { motion } from 'framer-motion';
+import PropTypes from 'prop-types';
 
 const popupVariants = {
   open: { opacity: 1, transition: { duration: 0.2 } },
@@ -40,5 +41,11 @@ function TariffesTemplatePopup({
     </motion.div>
   );
 }
+TariffesTemplatePopup.propTypes = {
+  currentClass: PropTypes.string.isRequired,
+  buttonText: PropTypes.string.isRequired,
+  setIsHidden: PropTypes.func.isRequired,
+  isHidden: PropTypes.bool.isRequired,
+};
 
 export default TariffesTemplatePopup;

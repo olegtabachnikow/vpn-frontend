@@ -23,12 +23,12 @@ import Help from '../Help/Help';
 import { AnimatePresence } from 'framer-motion';
 import ErrorPage from '../ErrorPage/ErrorPage';
 
-function AnimatedRoutes({ testUserSetter }) {
+function AnimatedRoutes() {
   const location = useLocation();
   return (
     <AnimatePresence>
       <Routes location={location} key={location.pathname}>
-        <Route exact path='/' element={<Main testSetter={testUserSetter} />} />
+        <Route exact path='/' element={<Main />} />
         <Route path='/intro' element={<Intro />} />
         <Route path='/instruction' element={<Instruction />} />
         <Route path='/gift' element={<Gift />} />

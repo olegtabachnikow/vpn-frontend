@@ -113,3 +113,11 @@
   background-color: #f95273;
   border-color: transparent;
 }
+
+@media screen and (max-height: 650px) {
+  .app-button.fit,
+  .app-button.nolimit,
+  .app-button.free {
+    margin-top: 0;
+  }
+}

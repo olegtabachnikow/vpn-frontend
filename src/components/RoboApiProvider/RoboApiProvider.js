@@ -4,7 +4,7 @@ import { getCurrentUser, getPrices } from '../../utils/roboApi';
 import { useNavigate } from 'react-router-dom';
 import Preloader from '../Preloader/Preloader';
 
-function UserProvider({ children }) {
+function RoboApiProvider({ children }) {
   const [isLoading, setIsLoading] = React.useState(true);
   const navigate = useNavigate();
   const queryParams = new URLSearchParams(window.location.search);
@@ -15,13 +15,13 @@ function UserProvider({ children }) {
     }
   };
 
-  function getUser(id = 411929916) {
+  function getUser(id = 294899214) {
     getCurrentUser(id)
       .then((res) => {
         setCurrentUser(res);
         setIsLoading(false);
       })
-      .catch((err) => {
+      .catch(() => {
         setIsLoading(false);
         navigate('/error');
       });
@@ -41,4 +41,4 @@ function UserProvider({ children }) {
   return <>{!isLoading ? children : <Preloader />}</>;
 }
 
-export default UserProvider;
+export default RoboApiProvider;

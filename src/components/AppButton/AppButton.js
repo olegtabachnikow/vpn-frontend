@@ -1,6 +1,7 @@
 import React from 'react';
 import './AppButton.css';
 import { motion } from 'framer-motion';
+import PropTypes from 'prop-types';
 
 function AppButton({ text, handler, currentClass }) {
   return (
@@ -15,5 +16,9 @@ function AppButton({ text, handler, currentClass }) {
     </motion.button>
   );
 }
-
+AppButton.propTypes = {
+  text: PropTypes.string.isRequired,
+  handler: PropTypes.func.isRequired,
+  currentClass: PropTypes.string.isRequired,
+};
 export default AppButton;

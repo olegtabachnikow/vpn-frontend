@@ -1,5 +1,6 @@
 import React from 'react';
 import './DataList.css';
+import PropTypes from 'prop-types';
 
 function DataList({ currentClass, children }) {
   return (
@@ -11,5 +12,7 @@ function DataList({ currentClass, children }) {
     </div>
   );
 }
-
+DataList.propTypes = {
+  currentClass: PropTypes.string.isRequired,
+};
 export default DataList;

@@ -2,6 +2,7 @@ import React from 'react';
 import './MenuButton.css';
 import { motion } from 'framer-motion';
 import { setDirection } from '../../redux/actions/actions';
+import PropTypes from 'prop-types';
 
 function MenuButton({ image, currentClass, title, text, addText, handler }) {
   function handleClick() {
@@ -22,5 +23,12 @@ function MenuButton({ image, currentClass, title, text, addText, handler }) {
     </motion.button>
   );
 }
-
+MenuButton.propTypes = {
+  image: PropTypes.string.isRequired,
+  currentClass: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  addText: PropTypes.string,
+  handler: PropTypes.func.isRequired,
+};
 export default MenuButton;

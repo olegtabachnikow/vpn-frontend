@@ -9,8 +9,6 @@ function App() {
   const location = useLocation();
   const currentUser = useSelector((state) => state.currentUser);
 
-  console.log(window.innerHeight, window.innerWidth);
-
   React.useEffect(() => {
     tg.enableClosingConfirmation();
     tg.expand();

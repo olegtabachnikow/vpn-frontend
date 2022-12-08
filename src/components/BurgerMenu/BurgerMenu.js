@@ -2,6 +2,7 @@ import React from 'react';
 import './BurgerMenu.css';
 import { motion, useCycle } from 'framer-motion';
 import BurgerMenuNav from '../BurgerMenuNav/BurgerMenuNav';
+import PropTypes from 'prop-types';
 
 const menuVariants = {
   open: {
@@ -79,4 +80,7 @@ function BurgerMenu({ color }) {
   );
 }
 
+BurgerMenu.propTypes = {
+  color: PropTypes.string,
+};
 export default BurgerMenu;

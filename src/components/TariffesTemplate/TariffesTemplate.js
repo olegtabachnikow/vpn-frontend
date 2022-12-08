@@ -6,6 +6,8 @@ import TariffesTemplatePopup from '../TariffesTemplatePopup/TariffesTemplatePopu
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { parseTimestamp } from '../../utils/helpers';
+import CurrentTariffWidget from '../CurrentTariffWidget/CurrentTariffWidget';
+import PropTypes from 'prop-types';
 
 function TariffesTemplate({
   currentClass,
@@ -21,7 +23,6 @@ function TariffesTemplate({
 
   const navigate = useNavigate();
   const currentUser = useSelector((state) => state.currentUser);
-  console.log(currentUser);
   return (
     <section className={`tariffes-template ${currentClass}`}>
       <BackButton
@@ -30,13 +31,7 @@ function TariffesTemplate({
         path={-1}
         currentClass='back-button-tariffes-template'
       />
-      <span className='tariffes-list__current-title'>
-        Ваш тариф: {currentUser.tariff}
-        <br />
-        {currentUser.tariff === 'NOLIMIT'
-          ? 'Активен до ' + parseTimestamp(currentUser.endDate)
-          : 'Хватит до ' + parseTimestamp(currentUser.endDate)}
-      </span>
+      <CurrentTariffWidget />
       <div className='tariffes-template__content'>{children}</div>
       <div className='tariffes-template__content-secondary'>
         {currentClass === 'free' ? (
@@ -198,5 +193,10 @@ function TariffesTemplate({
     </section>
   );
 }
-
+TariffesTemplate.propTypes = {
+  currentClass: PropTypes.string.isRequired,
+  buttonText: PropTypes.string.isRequired,
+  handler: PropTypes.func.isRequired,
+  error: PropTypes.string,
+};
 export default TariffesTemplate;

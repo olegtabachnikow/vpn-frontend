@@ -1,6 +1,7 @@
 import React from 'react';
 import './FormLabel.css';
 import { motion } from 'framer-motion';
+import PropTypes from 'prop-types';
 
 function FormLabel({
   elementValue,
@@ -67,5 +68,18 @@ function FormLabel({
     </motion.label>
   );
 }
-
+FormLabel.propTypes = {
+  currentClass: PropTypes.string.isRequired,
+  elementValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    .isRequired,
+  handler: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  text: PropTypes.string,
+  valueMain: PropTypes.string,
+  valueSecondary: PropTypes.string,
+  isDiscounted: PropTypes.bool,
+  discountValue: PropTypes.string,
+  defaultChecked: PropTypes.bool,
+};
 export default FormLabel;

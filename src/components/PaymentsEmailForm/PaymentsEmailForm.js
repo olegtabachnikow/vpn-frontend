@@ -1,6 +1,7 @@
 import React from 'react';
 import './PaymentsEmailForm.css';
 import paymentCheckbox from '../../images/payment-checkbox.svg';
+import { motion } from 'framer-motion';
 
 function PaymentsEmailForm() {
   const [email, setEmail] = React.useState('');
@@ -84,13 +85,19 @@ function PaymentsEmailForm() {
         Не (!) для спама, а для технических моментов, если телеграмму, например,
         будет плохо — чтобы связаться с вами, такое бывает редко, но бывает.
       </p>
-      <button
+      <motion.button
+        whileHover={
+          isEmailEqual ? { scale: 0.95, transition: { duration: 0.2 } } : null
+        }
+        whileTap={
+          isEmailEqual ? { scale: 0.95, transition: { duration: 0.1 } } : null
+        }
         className={`payments-email-form-button ${!isEmailEqual && 'disabled'}`}
         type='submit'
         disabled={isEmailEqual ? false : true}
       >
         Подтвердить
-      </button>
+      </motion.button>
     </form>
   );
 }

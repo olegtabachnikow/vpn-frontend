@@ -2,6 +2,7 @@ import React from 'react';
 import './BackButton.css';
 import { useNavigate } from 'react-router-dom';
 import { setDirection } from '../../redux/actions/actions';
+import PropTypes from 'prop-types';
 
 function BackButton({ text, path, currentClass, title }) {
   const navigate = useNavigate();
@@ -21,5 +22,10 @@ function BackButton({ text, path, currentClass, title }) {
     </button>
   );
 }
-
+BackButton.propTypes = {
+  text: PropTypes.string.isRequired,
+  path: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  currentClass: PropTypes.string.isRequired,
+  title: PropTypes.string,
+};
 export default BackButton;

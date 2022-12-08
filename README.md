@@ -9,6 +9,7 @@ Frontend SPA for Robo VPN services, integrated with Telegram Bot web app.
 * Core: [React](https://reactjs.org/), [Telegram Bot API](https://core.telegram.org/bots/webapps)
 * State management: [Redux](https://redux.js.org/)
 * Routing: React Router v6
+* Type control: [Prop-Types](https://www.npmjs.com/package/prop-types)
 * Animations: [Framer-Motion](https://www.framer.com/developers/), CSS3
 * Privacy: dotenv
 

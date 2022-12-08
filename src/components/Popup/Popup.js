@@ -1,6 +1,7 @@
 import React from 'react';
 import './Popup.css';
 import { motion } from 'framer-motion';
+import PropTypes from 'prop-types';
 
 const popupVariants = {
   open: {
@@ -70,5 +71,10 @@ function Popup({ title, currentClass, children, isHidden, handleHide }) {
     </>
   );
 }
-
+Popup.propTypes = {
+  currentClass: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  isHidden: PropTypes.bool.isRequired,
+  handleHide: PropTypes.func.isRequired,
+};
 export default Popup;

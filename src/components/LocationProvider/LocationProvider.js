@@ -14,14 +14,16 @@ const LocationProvider = ({ children }) => {
     } else {
       if (!currentUser.activeUser) {
         navigate('/intro');
-      } else {
+      } else if (currentUser.activeUser) {
         const currentLocation = Cookies.get('location_app');
-        if (!currentLocation) return;
         if (currentLocation === '/payment') {
           navigate('/');
           return;
         }
-        navigate(currentLocation);
+        if (!currentLocation) {
+          navigate('/');
+          return;
+        } else navigate(currentLocation);
       }
     }
   }, []);

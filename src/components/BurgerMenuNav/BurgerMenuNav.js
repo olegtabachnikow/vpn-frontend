@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import roboLogo from '../../images/intro_smile_0.svg';
 import { setDirection } from '../../redux/actions/actions';
 import { parseTimestamp } from '../../utils/helpers';
+import PropTypes from 'prop-types';
 
 const variants = {
   open: {
@@ -127,4 +128,8 @@ function BurgerMenuNav({ toggleOpen, setIsActive }) {
   );
 }
 
+BurgerMenuNav.propTypes = {
+  toggleOpen: PropTypes.func.isRequired,
+  setIsActive: PropTypes.func.isRequired,
+};
 export default BurgerMenuNav;

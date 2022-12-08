@@ -3,6 +3,7 @@ import './CopyToClipboardField.css';
 import copyIcon from '../../images/copy.svg';
 import copiedIcon from '../../images/check.svg';
 import { motion } from 'framer-motion';
+import PropTypes from 'prop-types';
 
 function CopyToClipboardField({ currentClass, data }) {
   const [isCopied, setIsCopied] = React.useState(false);
@@ -32,5 +33,8 @@ function CopyToClipboardField({ currentClass, data }) {
     </motion.button>
   );
 }
-
+CopyToClipboardField.propTypes = {
+  currentClass: PropTypes.string.isRequired,
+  data: PropTypes.string.isRequired,
+};
 export default CopyToClipboardField;

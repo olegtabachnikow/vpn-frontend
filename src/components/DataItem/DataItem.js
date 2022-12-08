@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import './DataItem.css';
+import PropTypes from 'prop-types';
 
 function DataItem({ title, children, index, currentIndex, setIndex }) {
   const [isExpanded, setIsExpanded] = React.useState(false);
@@ -37,5 +38,11 @@ function DataItem({ title, children, index, currentIndex, setIndex }) {
     </li>
   );
 }
+DataItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  setIndex: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired,
+  currentIndex: PropTypes.number.isRequired,
+};
 
 export default DataItem;

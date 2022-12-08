@@ -19,7 +19,6 @@ function MyVpn() {
   const navigate = useNavigate();
   const currentUser = useSelector((state) => state.currentUser);
   const direction = useSelector((state) => state.direction);
-  console.log(currentUser);
   return (
     <motion.section
       className='my-vpn'

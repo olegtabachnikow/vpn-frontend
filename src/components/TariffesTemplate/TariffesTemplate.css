@@ -70,3 +70,8 @@
 .tariffes-template__content-button-arrow.nolimit {
   border-color: #f95273;
 }
+@media screen and (max-height: 650px) {
+  .tariffes-template__content-button.fit {
+    margin-bottom: 5px;
+  }
+}

@@ -11,6 +11,7 @@ import { setDirection, setPayment } from '../../redux/actions/actions';
 import { motion } from 'framer-motion';
 import { directionVariants } from '../../utils/directionOptions';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
+import { parseTimestamp } from '../../utils/helpers';
 
 function Tariffes() {
   const [value, setValue] = React.useState('');
@@ -21,7 +22,6 @@ function Tariffes() {
   const prices = useSelector((state) => state.prices);
   const currentUser = useSelector((state) => state.currentUser);
   const direction = useSelector((state) => state.direction);
-  const isNolimit = currentUser.tariff === 'NOLIMIT';
 
   function handleChooseClick() {
     if (value.length) {
@@ -31,7 +31,10 @@ function Tariffes() {
       handleError('Выберите тариф!');
     }
   }
-
+  function addMonths(date, count) {
+    let newDate = new Date(date);
+    return newDate.setMonth(newDate.getMonth() + count);
+  }
   function handleError(text) {
     setError(text);
     setTimeout(() => setError(''), 5000);
@@ -69,22 +72,21 @@ function Tariffes() {
           path='/'
           element={
             <>
+              <span className='tariffes-list__current-title'>
+                Ваш тариф: {currentUser.tariff}
+                <br />
+                {currentUser.tariff === 'NOLIMIT'
+                  ? 'Активен до ' + parseTimestamp(currentUser.endDate)
+                  : 'Хватит до ' + parseTimestamp(currentUser.endDate)}
+              </span>
               <div className='tariffes-list'>
-                <span className='tariffes-list__current-title'>
-                  Ваш тариф: {currentUser.tariff}
-                  <br />
-                  {currentUser.tariff === 'NOLIMIT'
-                    ? 'Активен до ' + currentUser.endDate
-                    : null}
-                </span>
                 <FormLabel
                   elementValue='free'
                   name='tariff'
                   handler={(data) => setValue(data)}
                   currentClass='tariff-item-free'
                   title='FREE'
-                  text='Бесплатно 10 Гб, всем, каждый месяц, 
-                без ограничений по скорости.'
+                  text='До 10 Гб бесплатно каждый месяц.'
                   valueMain={null}
                   isDiscounted={false}
                 />
@@ -94,7 +96,8 @@ function Tariffes() {
                   handler={(data) => setValue(data)}
                   currentClass='tariff-item-fit'
                   title='FIT'
-                  text='Не хватает бесплатных Гб в этом месяце? Рассчитайте и докупите, сколько нужно по доступным ценам.'
+                  text='Не хватает Гб на FREE? Расчитайте 
+                  и докупите сколько нужно.'
                   valueMain={`от ${prices.Fix_5} ₽`}
                   isDiscounted={false}
                 />
@@ -104,7 +107,7 @@ function Tariffes() {
                   handler={(data) => setValue(data)}
                   currentClass='tariff-item-nolimit'
                   title='NOLIMIT'
-                  text='Забудьте про ограничения. безлимитное потребление, сколько нужно устройств, доступ везде. '
+                  text='Забудьте про ограничения, потребляйте сколько хочется.'
                   valueMain={`от ${prices.Nolimit_12} ₽`}
                   isDiscounted={false}
                 />
@@ -126,10 +129,10 @@ function Tariffes() {
                           пользования robo.{' '}
                         </p>
                         <p className='tariffes__popup-text'>
-                          3. Гарантия на возврат вступае в силу только в случае,
-                          если мы не смогли предоставить работающий доступ к
-                          сервису в течение суток с момента блокировки нас со
-                          стороны блокираторов. А так же у вас включены
+                          3. Гарантия на возврат вступает в силу только в
+                          случае, если мы не смогли предоставить работающий
+                          доступ к сервису в течение суток с момента блокировки
+                          нас со стороны блокираторов. А так же у вас включены
                           уведомление "забота" от robo. Забота включена по
                           умолчанию, отключить можно только на безлимитном
                           тарифе.{' '}
@@ -156,7 +159,7 @@ function Tariffes() {
                           тарифу NOLIMIT (то есть 1 тариф = 1 человек). если
                           сервисом будет замечено нарушение правила — мы
                           оставляем за собой право заблокировать доступ такому
-                          пользователю без возврата средств.{' '}
+                          пользователю без объяснения причин.{' '}
                         </p>
                         <p className='tariffes__popup-text'>
                           8. robo, как и любой впн сервис или интернет провайдер
@@ -206,48 +209,19 @@ function Tariffes() {
               <div className='tariffes__free-content'>
                 <h1 className='tariffes__free-title'>5+5=10</h1>
                 <div className='tariffes__free-widgets'>
-                  <div className='tariffes__free-widgets-row'>
-                    <div className='tariffes__free-widget_small'>
-                      <h2 className='tariffes__free-widget-title'>5 Гб</h2>
-                      <span className='tariffes__free-widget-text'>
-                        Каждый месяц на тарифах FREE/FIT
-                      </span>
-                    </div>
-                    <div className='tariffes__free-widget_small'>
-                      <h2 className='tariffes__free-widget-title'>5 Гб</h2>
-                      <span className='tariffes__free-widget-text'>
-                        В первый месяц, и со второго, если есть хотя бы одна
-                        покупка
-                      </span>
-                    </div>
+                  <div className='tariffes__free-widget_small'>
+                    <h2 className='tariffes__free-widget-title'>5 Гб</h2>
+                    <span className='tariffes__free-widget-text'>
+                      Каждый месяц на тарифах FREE/FIT
+                    </span>
                   </div>
-                  {!isNolimit ? (
-                    <div className='tariffes__free-widget-info'>
-                      <p className='tariffes__free-widget-info-text'>
-                        Осталось в этом месяце:{' '}
-                        <span className='tariffes__free-widget-info-text_bold'>
-                          {currentUser.traffic}
-                        </span>
-                      </p>
-                      <p className='tariffes__free-widget-info-text'>
-                        Новые 5 Гб:{' '}
-                        <span className='tariffes__free-widget-info-text_bold'>
-                          {currentUser.endDate}
-                        </span>
-                      </p>
-                      <p className='tariffes__free-widget-info-text'>
-                        В среднем потребляете:{' '}
-                        <span className='tariffes__free-widget-info-text_bold'>
-                          {currentUser.trafficPerDay + 'Гб/день'}
-                        </span>
-                      </p>
-                      <p className='tariffes__free-widget-info-text_bold'>
-                        Алгоритм робо думает, что трафика{' '}
-                        {currentUser.trafficMonth ? '' : 'не'} хватит до
-                        следующих бесплатных Гб
-                      </p>
-                    </div>
-                  ) : null}
+                  <div className='tariffes__free-widget_small'>
+                    <h2 className='tariffes__free-widget-title'>5 Гб</h2>
+                    <span className='tariffes__free-widget-text'>
+                      В первый месяц, и со второго, если есть хотя бы одна
+                      покупка
+                    </span>
+                  </div>
                 </div>
               </div>
             </TariffesTemplate>
@@ -268,7 +242,7 @@ function Tariffes() {
                   name='package'
                   handler={(data) => setValue(data)}
                   currentClass='tariff-item-fit'
-                  title='5 ГБ'
+                  title='5 + 10 ГБ'
                   text={null}
                   valueMain={`${prices.Fix_5} ₽`}
                   valueSecondary='разовый платеж'
@@ -279,15 +253,13 @@ function Tariffes() {
                   name='package'
                   handler={(data) => setValue(data)}
                   currentClass='tariff-item-fit'
-                  title='10 ГБ'
+                  title='10 + 10 ГБ'
                   text={null}
                   valueMain={`${prices.Fix_10} ₽`}
                   valueSecondary='разовый платеж'
                   isDiscounted={true}
                   discountValue={
-                    value === '' + prices.Fix_10
-                      ? 'тут Гб дешевле на 5%, чем в пакете 5 Гб'
-                      : 'Рекомендуем'
+                    value === '' + prices.Fix_10 ? 'Выгода 6%' : 'Рекомендуем'
                   }
                 />
                 <FormLabel
@@ -295,22 +267,16 @@ function Tariffes() {
                   name='package'
                   handler={(data) => setValue(data)}
                   currentClass='tariff-item-fit'
-                  title='20 ГБ'
+                  title='20 + 10 ГБ'
                   text={null}
                   valueMain={`${prices.Fix_20} ₽`}
                   valueSecondary='разовый платеж'
                   isDiscounted={true}
                   discountValue={
-                    value === '' + prices.Fix_20
-                      ? 'тут Гб дешевле на 40%, чем в пакете 5 Гб'
-                      : null
+                    value === '' + prices.Fix_20 ? 'Выгода 17%' : null
                   }
                 />
               </div>
-              <span className='tariffes__fit-text'>
-                Если делаете хотя бы одну покупку в месяц, начисляем сверху 10
-                Гб бесплатного трафика. Если 0 покупок, то всего лишь 5 Гб.
-              </span>
             </TariffesTemplate>
           }
         />
@@ -330,8 +296,14 @@ function Tariffes() {
                   handler={(data) => setValue(data)}
                   currentClass='tariff-item-nolimit'
                   title='Месяц'
-                  text={null}
-                  valueMain={`от ${prices.Nolimit_1} ₽/мес`}
+                  text={
+                    value === '' + prices.Nolimit_1
+                      ? `Забудь про ограничения до ${parseTimestamp(
+                          addMonths(currentUser.endDate, 1)
+                        )}`
+                      : null
+                  }
+                  valueMain={`${prices.Nolimit_1} ₽/мес`}
                   isDiscounted={false}
                 />
                 <FormLabel
@@ -340,11 +312,19 @@ function Tariffes() {
                   handler={(data) => setValue((data * 3).toString())}
                   currentClass='tariff-item-nolimit'
                   title='3 месяца'
-                  text={null}
-                  valueMain={`от ${prices.Nolimit_3} ₽/мес`}
+                  text={
+                    value === '' + prices.Nolimit_3 * 3
+                      ? `Забудь про ограничения до ${parseTimestamp(
+                          addMonths(currentUser.endDate, 3)
+                        )}`
+                      : null
+                  }
+                  valueMain={`${prices.Nolimit_3} ₽/мес`}
                   valueSecondary={`${prices.Nolimit_3 * 3}₽ всего`}
                   isDiscounted={true}
-                  discountValue='Выгода 90₽'
+                  discountValue={
+                    value === '' + prices.Nolimit_3 * 3 ? 'Выгода 90₽' : null
+                  }
                 />
                 <FormLabel
                   elementValue={prices.Nolimit_12}
@@ -352,11 +332,17 @@ function Tariffes() {
                   handler={(data) => setValue((data * 12).toString())}
                   currentClass='tariff-item-nolimit'
                   title='12 месяцев'
-                  text={null}
-                  valueMain={`от ${prices.Nolimit_12} ₽/мес`}
+                  text={
+                    value === '' + prices.Nolimit_12 * 12
+                      ? 'Год матрицы без ограничений, Нео'
+                      : null
+                  }
+                  valueMain={`${prices.Nolimit_12} ₽/мес`}
                   valueSecondary={`${prices.Nolimit_12 * 12}₽ всего`}
                   isDiscounted={true}
-                  discountValue='Выгода 720₽'
+                  discountValue={
+                    value === '' + prices.Nolimit_12 * 12 ? 'Выгода 720₽' : null
+                  }
                 />
               </div>
             </TariffesTemplate>

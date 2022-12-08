@@ -1,19 +1,29 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import { useSelector } from 'react-redux';
 
 const LocationProvider = ({ children }) => {
+  const currentUser = useSelector((state) => state.currentUser);
   const location = useLocation();
   const navigate = useNavigate();
 
   React.useEffect(() => {
-    const currentLocation = Cookies.get('location_app');
-    if (!currentLocation) return;
-    if (currentLocation === '/payment') {
-      navigate('/');
+    if (!Object.keys(currentUser).length) {
       return;
+    } else {
+      if (!currentUser.activeUser) {
+        navigate('/intro');
+      } else {
+        const currentLocation = Cookies.get('location_app');
+        if (!currentLocation) return;
+        if (currentLocation === '/payment') {
+          navigate('/');
+          return;
+        }
+        navigate(currentLocation);
+      }
     }
-    navigate(currentLocation);
   }, []);
 
   React.useEffect(() => {

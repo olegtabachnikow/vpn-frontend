@@ -8,6 +8,7 @@ import LocationProvider from './components/LocationProvider/LocationProvider';
 import { HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './redux/store/store';
+import RoboApiProvider from './components/RoboApiProvider/RoboApiProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,9 +16,11 @@ root.render(
     <ErrorBoundry>
       <Provider store={store}>
         <HashRouter>
-          <LocationProvider>
-            <App />
-          </LocationProvider>
+          <RoboApiProvider>
+            <LocationProvider>
+              <App />
+            </LocationProvider>
+          </RoboApiProvider>
         </HashRouter>
       </Provider>
     </ErrorBoundry>

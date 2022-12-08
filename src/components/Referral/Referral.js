@@ -55,7 +55,9 @@ function Referral() {
             </p>
           </div>
           <div className='referral__stat referral__stat_big'>
-            <span className='referral__stat-value'>10 Гб</span>
+            <span className='referral__stat-value'>
+              {currentUser.refUsers * 5} Гб
+            </span>
             <p className='referral__stat-text'>
               такой объем свободной информации получили друзья благодаря вам{' '}
               {'<3'}

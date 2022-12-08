@@ -8,6 +8,7 @@ import { motion } from 'framer-motion';
 import { directionVariants } from '../../utils/directionOptions';
 import { setDirection } from '../../redux/actions/actions';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
+import { parseTimestamp } from '../../utils/helpers';
 
 function Subscription() {
   const navigate = useNavigate();
@@ -15,9 +16,7 @@ function Subscription() {
   const isNolimit = currentUser.tariff === 'NOLIMIT';
   const isFree = currentUser.tariff === 'FREE';
   const direction = useSelector((state) => state.direction);
-  function getDate() {
-    return currentUser.endDate.slice(0, 6) + currentUser.endDate.slice(8, 10);
-  }
+
   function getText() {
     switch (currentUser.tariff) {
       case 'FREE':
@@ -54,7 +53,9 @@ function Subscription() {
             <span className='subscription__widget-text'>
               {isNolimit ? 'Активен до' : 'Рассчетная дата окончания тарифа'}
             </span>
-            <span className='subscription__widget-value'>{getDate()}</span>
+            <span className='subscription__widget-value'>
+              {parseTimestamp(currentUser.endDate)}
+            </span>
           </div>
           <div
             className={`subscription__widget ${

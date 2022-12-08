@@ -12,10 +12,11 @@ import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
 import { directionVariants } from '../../utils/directionOptions';
 
-function Main({ testSetter }) {
+function Main() {
   const currentUser = useSelector((state) => state.currentUser);
   const direction = useSelector((state) => state.direction);
   const navigate = useNavigate();
+
   return (
     <motion.section
       className='main'
@@ -76,11 +77,6 @@ function Main({ testSetter }) {
         text={'Купить, выбрать тариф'}
         addText={null}
       />
-      <div className='test-user-set'>
-        <button onClick={() => testSetter('FREE')}>free</button>
-        <button onClick={() => testSetter('FIT')}>fit</button>
-        <button onClick={() => testSetter('NOLIMIT')}>nolimit</button>
-      </div>
     </motion.section>
   );
 }

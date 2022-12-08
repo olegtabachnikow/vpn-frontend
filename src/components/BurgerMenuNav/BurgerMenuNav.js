@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import roboLogo from '../../images/intro_smile_0.svg';
 import { setDirection } from '../../redux/actions/actions';
+import { parseTimestamp } from '../../utils/helpers';
 
 const variants = {
   open: {
@@ -52,7 +53,7 @@ function BurgerMenuNav({ toggleOpen, setIsActive }) {
             Тариф: {currentUser.tariff}
           </span>
           <span className='burger-menu-nav__text'>
-            Активен до: {currentUser.endDate}
+            Активен до: {parseTimestamp(currentUser.endDate)}
           </span>
           <span className='burger-menu-nav__text'>
             Текущий баланс: {currentUser.balance} рублей

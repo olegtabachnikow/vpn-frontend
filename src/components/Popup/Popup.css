@@ -73,9 +73,14 @@
   line-height: 17px;
   font-family: 'Inter', sans-serif;
   font-weight: 600;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 20px;
+}
+.gift__popup-text:last-of-type {
+  margin-bottom: auto;
 }
 .popup-gift .popup__title {
   color: #ff824b;

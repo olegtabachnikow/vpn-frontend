@@ -12,6 +12,7 @@ import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
 import { directionVariants } from '../../utils/directionOptions';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
+import { parseTimestamp } from '../../utils/helpers';
 
 function Help() {
   const navigate = useNavigate();
@@ -77,7 +78,7 @@ function Help() {
           currentClass='btn-my-tariff'
           title='Мой тариф'
           text={`Тариф: ${currentUser.tariff}`}
-          addText={`Активен до ${currentUser.endDate}`}
+          addText={`Активен до ${parseTimestamp(currentUser.endDate)}`}
           handler={() => navigate('/subscription')}
         />
       </div>

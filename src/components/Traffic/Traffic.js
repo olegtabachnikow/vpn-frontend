@@ -8,6 +8,7 @@ import { motion } from 'framer-motion';
 import { directionVariants } from '../../utils/directionOptions';
 import { setDirection } from '../../redux/actions/actions';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
+import { parseTimestamp } from '../../utils/helpers';
 
 function Traffic() {
   const currentUser = useSelector((state) => state.currentUser);
@@ -39,9 +40,11 @@ function Traffic() {
         ) : (
           <div className='traffic__main-content'>
             <span className='traffic__main_text'>
-              Осталось до {currentUser.endDate}
+              Осталось до {parseTimestamp(currentUser.endDate)}
             </span>
-            <span className='traffic__main_value'>{currentUser.traffic}</span>
+            <span className='traffic__main_value'>
+              {currentUser.traffic} гБ
+            </span>
             <span className='traffic__main_text'>
               Кажестся, вам {!currentUser.trafficMonth && 'не'} хватит трафика
               до конца месяца
@@ -54,7 +57,7 @@ function Traffic() {
               В среднем в день вы тратите
             </span>
             <span className='traffic__outlook-element-value'>
-              {currentUser.trafficPerDay}
+              {currentUser.trafficPerDay} гБ
             </span>
           </div>
           <div className='traffic__outlook-element'>
@@ -62,7 +65,7 @@ function Traffic() {
               Ваше прогнозное потребление трафика в месяц
             </span>
             <span className='traffic__outlook-element-value'>
-              {currentUser.trafficForecast}
+              {currentUser.trafficForecast} гБ
             </span>
           </div>
         </div>

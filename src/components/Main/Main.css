@@ -6,7 +6,7 @@
   position: relative;
 }
 .main__button-container {
-  height: 75%;
+  height: 80%;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -14,7 +14,6 @@
   padding-bottom: 5%;
   box-sizing: border-box;
 }
-
 .test-user-set {
   position: absolute;
   height: 5%;

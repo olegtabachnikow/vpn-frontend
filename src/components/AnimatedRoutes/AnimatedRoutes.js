@@ -48,6 +48,7 @@ function AnimatedRoutes({ testUserSetter }) {
         <Route path='/success' element={<Success />} />
         <Route path='/options/*' element={<Options />} />
         <Route path='/message-us' element={<MessageUs />} />
+        <Route path='/error' element={<ErrorPage />} />
       </Routes>
     </AnimatePresence>
   );

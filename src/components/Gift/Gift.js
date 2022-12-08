@@ -165,21 +165,9 @@ function Gift() {
                   <p className='gift__popup-text'>
                     3. Подарок подлежит возврату только в соответствии с общими
                     условиями возврата. С условиями можно ознакомиться в разделе
-                    — тарифы,{' '}
-                    <span
-                      onClick={() => navigate('/tariffes')}
-                      className='gift__popup-link'
-                    >
-                      подробные условия
-                    </span>
-                    . Коротко — только в случае, если нас заблокируют, и robo не
-                    сможет предоставить рабочий доступ к сервису в течение
-                    суток.{' '}
-                  </p>
-                  <p className='gift__popup-text'>
-                    4. На каждый второй подарок действует — скидка 50%. То есть
-                    если вы покупаете и дарите кому-то первый подарок, на каждый
-                    второй будет автоматически применятсья скидка 50%.{' '}
+                    — тарифы, подробные условия. Коротко — только в случае, если
+                    нас заблокируют, и robo не сможет предоставить рабочий
+                    доступ к сервису в течение суток.{' '}
                   </p>
                   <AppButton
                     text='Понятно'
@@ -194,7 +182,7 @@ function Gift() {
         {progress === 1 && (
           <>
             <h1 className='gift__title'>
-              Выбери
+              Выберите
               <br />
               тариф
             </h1>
@@ -211,7 +199,7 @@ function Gift() {
                   currentUser.giftDiscount > 0 &&
                   'form-label-item-gift_discounted'
                 }`}
-                title='Mесяц NO LIMIT'
+                title='Mесяц NOLIMIT'
                 text={null}
                 valueMain={`${prices.Nolimit_1} ₽`}
                 valueSecondary={`${
@@ -233,7 +221,7 @@ function Gift() {
                   currentUser.giftDiscount > 0 &&
                   'form-label-item-gift_discounted'
                 }`}
-                title='3 месяца NO LIMIT'
+                title='3 месяца NOLIMIT'
                 text={null}
                 valueMain={`${prices.Nolimit_3}/мес ₽`}
                 valueSecondary={`${
@@ -254,7 +242,7 @@ function Gift() {
                   currentUser.giftDiscount > 0 &&
                   'form-label-item-gift_discounted'
                 }`}
-                title='12 месяцев NO LIMIT'
+                title='12 месяцев NOLIMIT'
                 text={null}
                 valueMain={`${prices.Nolimit_12}/мес ₽`}
                 valueSecondary={`${
@@ -336,7 +324,7 @@ function Gift() {
               )}
               {value === '2' && (
                 <span className='gift__user-selection-placeholder'>
-                  12 месяцев NO LIMIT
+                  12 месяцев NOLIMIT
                   <div className='gift__user-selection-placeholder-value'>
                     {currentUser.giftDiscount > 0 ? (
                       <span>

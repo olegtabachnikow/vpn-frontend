@@ -5,7 +5,15 @@ import FormLabel from '../FormLabel/FormLabel';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
-function TariffFit({ handler, value, setValue, error }) {
+function TariffFit({
+  handler,
+  value,
+  setValue,
+  error,
+  setIsHidden,
+  setIsGbHidden,
+  setIsRecommendHidden,
+}) {
   const prices = useSelector((state) => state.prices);
   return (
     <TariffesTemplate
@@ -13,6 +21,9 @@ function TariffFit({ handler, value, setValue, error }) {
       buttonText='Оплата'
       handler={handler}
       error={error}
+      setIsHidden={setIsHidden}
+      setIsGbHidden={setIsGbHidden}
+      setIsRecommendHidden={setIsRecommendHidden}
     >
       <div className='tariffes__content-fit'>
         <FormLabel
@@ -61,6 +72,9 @@ TariffFit.propTypes = {
   handler: PropTypes.func.isRequired,
   setValue: PropTypes.func.isRequired,
   error: PropTypes.string,
+  setIsHidden: PropTypes.func.isRequired,
+  setIsRecommendHidden: PropTypes.func,
+  setIsGbHidden: PropTypes.func,
 };
 
 export default TariffFit;

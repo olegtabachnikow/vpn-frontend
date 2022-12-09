@@ -1,14 +1,19 @@
 .app {
-  width: 100vw;
-  height: 100vh;
-  min-width: 375px;
-  max-height: 708px;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  max-width: 500px;
   margin: 0 auto;
   box-sizing: border-box;
   overflow: hidden;
   background-color: transparent;
-  position: relative;
   transition: background-color 0.2s linear;
+  z-index: 0;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 .app-gift,
 .app-options,
@@ -18,29 +23,29 @@
 }
 .app-referral,
 .app-faq {
-  background-color: #7472eb;
+  background-color: var(--violet);
 }
 .app-balance,
 .app-values {
-  background-color: #ff824b;
+  background-color: var(--orange);
 }
 .app-traffic,
 .app-possibilities {
-  background-color: #f95273;
+  background-color: var(--rose);
 }
 .app-support.nolimit {
-  background-color: #348ff3;
+  background-color: var(--blue);
 }
 .app-support,
 .app-news {
-  background-color: #aeaeae;
+  background-color: var(--gray);
 }
 .app-subscription,
 .app-success {
-  background-color: #064b72;
+  background-color: var(--dark-blue);
 }
 .app-payment {
-  background-color: #fff;
+  background-color: var(--white);
 }
 @media screen and (max-height: 648px) {
   .app {

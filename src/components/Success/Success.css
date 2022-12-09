@@ -3,7 +3,7 @@
   flex-direction: column;
   padding: 20% 10% 20% 10%;
   align-items: center;
-  color: #fff;
+  color: var(--white);
   justify-content: space-between;
   height: 100%;
   box-sizing: border-box;
@@ -30,10 +30,10 @@
 .success__app-button {
   width: 100%;
   border: 2px solid #fff;
-  background-color: #fff;
-  color: #064b72;
+  background-color: var(--white);
+  color: var(--dark-blue);
 }
 .success__app-button-secondary {
-  color: #fff;
+  color: var(--white);
   background-color: transparent;
 }

@@ -5,7 +5,7 @@
   justify-content: space-between;
   padding: 16px 45px 90px 45px;
   box-sizing: border-box;
-  color: #fff;
+  color: var(--white);
 }
 .news__button-box {
   margin-top: auto;

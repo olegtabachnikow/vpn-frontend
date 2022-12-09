@@ -10,7 +10,7 @@
 }
 
 .gift__explanation {
-  color: #fff;
+  color: var(--white);
   font-size: 11px;
   line-height: 16px;
   margin-top: 10px;
@@ -29,14 +29,14 @@
   margin: 60px auto 20px 4%;
   font-size: 38px;
   line-height: 43px;
-  color: #fff;
+  color: var(--white);
 }
 .gift__subtitle {
   font-size: 24px;
   line-height: 30px;
   margin: 0 auto auto 4%;
   align-self: flex-start;
-  color: #fff;
+  color: var(--white);
 }
 .gift__form {
   width: 95%;
@@ -46,7 +46,7 @@
 .gift__user-selection {
   width: 90%;
   height: 42px;
-  background-color: #ff824b;
+  background-color: var(--orange);
   margin-bottom: 18px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 16px;
@@ -62,7 +62,7 @@
   font-size: 14px;
   font-weight: 700;
   line-height: 17px;
-  color: #fff;
+  color: var(--white);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -79,7 +79,7 @@
   font-weight: 700;
   font-size: 20px;
   line-height: 25px;
-  color: #ff824b;
+  color: var(--orange);
 }
 .gift__back-button {
   width: 90%;
@@ -91,7 +91,7 @@
   background-color: transparent;
   font-family: 'Actay', sans-serif;
   font-size: 14px;
-  color: #fff;
+  color: var(--white);
   position: relative;
   padding: 0 0 0 20px;
 }

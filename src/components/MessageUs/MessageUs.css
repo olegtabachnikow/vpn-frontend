@@ -13,7 +13,7 @@
   font-weight: 700;
   font-size: 20px;
   line-height: 28px;
-  color: #fff;
+  color: var(--white);
   width: 90%;
   margin: 0;
 }
@@ -24,7 +24,7 @@
   margin-bottom: auto;
 }
 .message-us__link {
-  color: #fff;
+  color: var(--white);
   text-decoration: underline;
   cursor: pointer;
 }

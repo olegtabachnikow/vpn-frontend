@@ -1,7 +1,7 @@
 .menu-button {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 13px;
-  color: #fff;
+  color: var(--white);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -48,18 +48,18 @@
 .menu-button.btn-my-tariff {
   width: 100%;
   height: 20%;
-  background-color: #064b72;
+  background-color: var(--dark-blue);
 }
 
 .menu-button.btn-balance {
-  background-color: #ff824b;
+  background-color: var(--orange);
   width: 47%;
   height: 48%;
 }
 .menu-button.btn-traffic {
   width: 48%;
   height: 31%;
-  background-color: #f95273;
+  background-color: var(--rose);
   margin-left: auto;
 }
 .menu-button.btn-options {
@@ -72,7 +72,7 @@
 .menu-button.btn-support {
   width: 48%;
   height: 31%;
-  background-color: #348ff3;
+  background-color: var(--blue);
   margin-left: auto;
 }
 .menu-button.btn-options .menu-button__icon {
@@ -83,7 +83,7 @@
   height: 18%;
   margin-bottom: 3%;
   width: 100%;
-  background-color: #ff824b;
+  background-color: var(--orange);
 }
 .menu-button.btn-our-values .menu-button__icon {
   height: 40px;
@@ -95,7 +95,7 @@
   height: 18%;
   margin-bottom: 3%;
   width: 100%;
-  background-color: #f95273;
+  background-color: var(--rose);
 }
 .menu-button.btn-our-possibilities .menu-button__title {
   font-size: 24px;
@@ -107,7 +107,7 @@
 .menu-button.btn-news {
   height: 100%;
   width: 48%;
-  background-color: #348ff3;
+  background-color: var(--blue);
 }
 .menu-button.btn-news .menu-button__title {
   font-size: 24px;
@@ -116,7 +116,7 @@
 .menu-button.btn-news {
   height: 100%;
   width: 48%;
-  background-color: #348ff3;
+  background-color: var(--blue);
 }
 .menu-button__title.btn-news {
   font-size: 26px;
@@ -125,7 +125,7 @@
 .menu-button.btn-faq {
   height: 49%;
   width: 49%;
-  background-color: #7472eb;
+  background-color: var(--violet);
   margin-bottom: 2%;
   margin-left: auto;
 }
@@ -159,13 +159,13 @@
 }
 
 .menu-button.btn-referral {
-  background-color: #7472eb;
+  background-color: var(--violet);
   height: 26%;
   margin-left: auto;
 }
 
 .menu-button.btn-my-vpn {
-  background-color: #348ff3;
+  background-color: var(--blue);
   height: 64%;
 }
 .menu-button__title.btn-my-vpn {
@@ -173,7 +173,7 @@
   line-height: 43px;
 }
 .menu-button.btn-not-understand {
-  background-color: #f95273;
+  background-color: var(--rose);
   height: 33%;
 }
 .menu-button__title.btn-not-understand {
@@ -182,7 +182,7 @@
 }
 
 .menu-button.btn-tariffes {
-  background-color: #ff824b;
+  background-color: var(--orange);
   height: 20%;
   margin-left: auto;
   width: 100%;
@@ -192,7 +192,7 @@
   line-height: 34px;
 }
 .menu-button.btn-referral {
-  background-color: #7472eb;
+  background-color: var(--violet);
   height: 30%;
   margin-left: auto;
   width: 48%;
@@ -213,7 +213,7 @@
 }
 
 .menu-button.btn-robot {
-  background-color: #064b72;
+  background-color: var(--dark-blue);
   height: 31%;
   width: 48%;
   margin-left: auto;
@@ -225,7 +225,7 @@
 .menu-button.btn-referrals {
   height: 48%;
   width: 47%;
-  background-color: #7472eb;
+  background-color: var(--violet);
 }
 .menu-button__title.btn-referrals {
   font-size: 16px;

@@ -1,11 +1,11 @@
 .error-page {
-  color: #fff;
+  color: var(--white);
   width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #aeaeae;
+  background-color: var(--gray);
 }
 .error-page__image {
   width: 154px;

@@ -3,8 +3,9 @@ import './TariffFree.css';
 import TariffesTemplate from '../TariffesTemplate/TariffesTemplate';
 import { useNavigate } from 'react-router-dom';
 import { setDirection } from '../../redux/actions/actions';
+import PropTypes from 'prop-types';
 
-function TariffFree() {
+function TariffFree({ setIsHidden, setIsFreeInfoHidden }) {
   const navigate = useNavigate();
   return (
     <TariffesTemplate
@@ -14,6 +15,8 @@ function TariffFree() {
         setDirection(true);
         navigate('/referral');
       }}
+      setIsHidden={setIsHidden}
+      setIsFreeInfoHidden={setIsFreeInfoHidden}
     >
       <div className='tariffes__free-content'>
         <h1 className='tariffes__free-title'>5+5=10</h1>
@@ -35,5 +38,8 @@ function TariffFree() {
     </TariffesTemplate>
   );
 }
-
+TariffFree.propTypes = {
+  setIsHidden: PropTypes.func.isRequired,
+  setIsFreeInfoHidden: PropTypes.func,
+};
 export default TariffFree;

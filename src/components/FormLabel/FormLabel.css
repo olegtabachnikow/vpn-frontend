@@ -4,7 +4,7 @@
   padding: 16px;
   background-color: gray;
   position: relative;
-  color: #fff;
+  color: var(--white);
   border-radius: 16px;
   box-sizing: border-box;
 }
@@ -45,7 +45,7 @@
   box-sizing: border-box;
 }
 .form-label__radio-input:checked::before {
-  background-color: #fff;
+  background-color: var(--white);
   border: 5px solid #348ff3;
 }
 .form-label__value {
@@ -58,20 +58,20 @@
   font-weight: 700;
 }
 .tariff-item-free {
-  background-color: #7472eb;
+  background-color: var(--violet);
   margin-bottom: 12px;
   box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
 }
 .tariff-item-fit {
-  background-color: #ff824b;
+  background-color: var(--orange);
   margin-bottom: 12px;
 }
 .tariff-item-nolimit {
-  background-color: #f95273;
+  background-color: var(--rose);
   margin-bottom: 12px;
 }
 .form-label-item-gift {
-  background-color: #ff824b;
+  background-color: var(--orange);
   margin-top: 15px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
@@ -93,7 +93,7 @@
 }
 .form-label__discount-box {
   position: absolute;
-  background-color: #fff;
+  background-color: var(--white);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 12px;
   font-family: 'Inter', sans-serif;
@@ -105,7 +105,7 @@
   right: 11px;
 }
 .form-label-item-gift_discounted .form-label__discount-box {
-  color: #ff824b;
+  color: var(--orange);
 }
 .form-label.tariff-item-fit {
   width: 100%;
@@ -131,7 +131,7 @@
   align-items: flex-end;
 }
 .tariff-item-fit .form-label__discount-box {
-  color: #ff824b;
+  color: var(--orange);
 }
 .form-label.tariff-item-nolimit:first-of-type,
 .form-label.tariff-item-fit:first-of-type {
@@ -167,10 +167,10 @@
   align-items: flex-end;
 }
 .tariff-item-nolimit .form-label__discount-box {
-  color: #f95273;
+  color: var(--rose);
 }
 .form-label__method {
-  color: #064b72;
+  color: var(--dark-blue);
   background-color: transparent;
   border: 2px solid #064b72;
   flex-direction: row-reverse;
@@ -178,7 +178,7 @@
   margin-bottom: 10px;
 }
 .form-label__method .form-label__radio-input::before {
-  border-color: #064b72;
+  border-color: var(--dark-blue);
   border-radius: 5px;
   width: 14px;
   height: 14px;
@@ -202,7 +202,7 @@
   text-decoration: none !important;
 }
 .form-label__discount-box.recomended {
-  color: #f95273;
+  color: var(--rose);
   box-shadow: 0px 4px 4px rgba(249, 82, 115, 0.8);
 }
 .form-label.recomended {

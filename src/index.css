@@ -1,5 +1,16 @@
 @import url(./vendor/normalize.css);
 @import url(./vendor/fonts/fonts.css);
+
+:root {
+  --blue: #348ff3;
+  --white: #ffffff;
+  --orange: #ff824b;
+  --violet: #7472eb;
+  --rose: #f95273;
+  --dark-blue: #064b72;
+  --gray: #aeaeae;
+}
+
 html {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;

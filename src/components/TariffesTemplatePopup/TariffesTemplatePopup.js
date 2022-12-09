@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 const popupVariants = {
   open: { opacity: 1, transition: { duration: 0.2 } },
-  closed: { opacity: 0 },
+  closed: { opacity: 0, transition: { duration: 0.2 } },
 };
 
 function TariffesTemplatePopup({
@@ -19,6 +19,7 @@ function TariffesTemplatePopup({
     <motion.div
       initial='closed'
       animate={isHidden ? 'closed' : 'open'}
+      exit='closed'
       variants={popupVariants}
       className={`tariffes-template-popup ${!isHidden && 'active'}`}
       onClick={() => setIsHidden(true)}

@@ -1,6 +1,6 @@
 .support {
   padding: 16px 45px 90px 45px;
-  color: #fff;
+  color: var(--white);
   height: 100%;
   box-sizing: border-box;
   display: flex;

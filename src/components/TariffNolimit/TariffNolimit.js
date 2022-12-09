@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { parseTimestamp } from '../../utils/helpers';
 import PropTypes from 'prop-types';
 
-function TariffNolimit({ handler, error, value, setValue }) {
+function TariffNolimit({ handler, error, value, setValue, setIsHidden }) {
   const currentUser = useSelector((state) => state.currentUser);
   const prices = useSelector((state) => state.prices);
 
@@ -20,6 +20,7 @@ function TariffNolimit({ handler, error, value, setValue }) {
       buttonText='Оплата'
       handler={handler}
       error={error}
+      setIsHidden={setIsHidden}
     >
       <div className='tariffes__content-nolimit'>
         <FormLabel
@@ -84,6 +85,7 @@ TariffNolimit.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   handler: PropTypes.func.isRequired,
   setValue: PropTypes.func.isRequired,
+  setIsHidden: PropTypes.func.isRequired,
   error: PropTypes.string,
 };
 

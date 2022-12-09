@@ -24,9 +24,9 @@
   flex-direction: column;
 }
 .tariffes__free-widget_small {
-  background-color: #7472eb;
+  background-color: var(--violet);
   border-radius: 12px;
-  color: #fff;
+  color: var(--white);
   padding: 15px 15px;
   box-sizing: border-box;
   display: flex;

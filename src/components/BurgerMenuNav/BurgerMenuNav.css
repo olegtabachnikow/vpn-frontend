@@ -16,7 +16,7 @@
   display: flex;
   justify-content: flex-end;
   font-size: 20px;
-  color: #348ff3;
+  color: var(--blue);
 }
 .burger-item:nth-child(2) {
   margin: 40px 0 20px 0;
@@ -27,7 +27,7 @@
 .burger-item__user {
   display: flex;
   flex-direction: column;
-  color: #348ff3;
+  color: var(--blue);
   font-family: 'Actay', sans-serif;
   padding-bottom: 10px;
   border: 2px solid #348ff3;
@@ -67,7 +67,7 @@
   border: none;
   background-color: transparent;
   font-family: 'Actay Wide', sans-serif;
-  color: #348ff3;
+  color: var(--blue);
   padding: 0 40px 10px 0;
   box-sizing: border-box;
   text-align: right;

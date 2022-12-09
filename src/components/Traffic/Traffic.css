@@ -1,6 +1,6 @@
 .traffic {
   padding: 16px 45px 90px 45px;
-  color: #fff;
+  color: var(--white);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -15,13 +15,13 @@
 }
 .traffic__main-content {
   width: 100%;
-  background-color: #fff;
+  background-color: var(--white);
   height: 136px;
   border: 1.5px solid #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 12px;
   box-sizing: border-box;
-  color: #f95273;
+  color: var(--rose);
   display: flex;
   flex-direction: column;
   justify-content: space-between;

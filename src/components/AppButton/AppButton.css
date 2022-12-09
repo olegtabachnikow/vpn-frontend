@@ -1,12 +1,3 @@
-:root {
-  --blue: #348ff3;
-  --white: #ffffff;
-  --orange: #ff824b;
-  --violet: #7472eb;
-  --rose: #f95273;
-  --dark-blue: #064b72;
-  --gray: #aeaeae;
-}
 .app-button {
   box-sizing: border-box;
   width: 90%;
@@ -39,7 +30,7 @@
   color: var(--orange);
 }
 .app-button.primary {
-  background-color: #fff;
+  background-color: var(--white);
   border-color: transparent;
 }
 .app-button.secondary {
@@ -80,7 +71,7 @@
   background-color: var(--violet);
 }
 .app-button.support-disabled {
-  color: #aeaeae;
+  color: var(--gray);
   pointer-events: none;
 }
 .app-button.disabled {
@@ -97,20 +88,20 @@
 
 .app-button.free {
   border-color: transparent;
-  background-color: #7472eb;
-  color: #fff;
+  background-color: var(--violet);
+  color: var(--white);
 }
 .app-button.fit {
   margin-top: 10px;
-  color: #fff;
-  background-color: #ff824b;
+  color: var(--white);
+  background-color: var(--orange);
   border-color: transparent;
 }
 
 .app-button.nolimit {
   margin-top: 0;
-  color: #fff;
-  background-color: #f95273;
+  color: var(--white);
+  background-color: var(--rose);
   border-color: transparent;
 }
 

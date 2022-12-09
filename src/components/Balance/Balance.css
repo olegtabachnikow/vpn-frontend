@@ -1,7 +1,7 @@
 .balance {
   display: flex;
   flex-direction: column;
-  color: #fff;
+  color: var(--white);
   padding: 16px 45px 90px 45px;
   height: 100%;
   box-sizing: border-box;
@@ -26,7 +26,7 @@
   border: 1.5px solid #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 12px;
-  color: #ff824b;
+  color: var(--orange);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -56,7 +56,7 @@
 }
 .balance__button {
   width: 100%;
-  color: #fff;
+  color: var(--white);
   font-size: 12px;
   background-color: transparent;
   border: none;
@@ -80,10 +80,10 @@
   height: 48px;
   border: 1px solid #ffffff;
   border-radius: 12px;
-  background-color: #ff824b;
+  background-color: var(--orange);
   padding: 12px 16px;
   box-sizing: border-box;
-  color: #fff;
+  color: var(--white);
   font-weight: 700;
   font-size: 20px;
   outline: none;
@@ -106,7 +106,7 @@
   right: 5px;
   top: 50%;
   transform: translate3d(0, -50%, 0);
-  color: #fff;
+  color: var(--white);
 }
 .balance__sum-input::placeholder {
   color: rgba(255, 255, 255, 0.4);
@@ -120,7 +120,7 @@
 .balance__button-secondary {
   font-size: 17px;
   width: 48%;
-  color: #fff;
+  color: var(--white);
   border: 1px solid #fff;
   background-color: transparent;
   margin: 0;
@@ -128,9 +128,9 @@
 .balance__button-primary {
   font-size: 17px;
   width: 48%;
-  background-color: #fff;
+  background-color: var(--white);
   border-color: transparent;
-  color: #ff824b;
+  color: var(--orange);
   margin: 0;
 }
 .balance__tips {
@@ -150,7 +150,7 @@
   width: calc(100% - 70px);
   padding-top: 15%;
   box-sizing: border-box;
-  background-color: #ff824b;
+  background-color: var(--orange);
 }
 .balance__input-container {
   position: relative;

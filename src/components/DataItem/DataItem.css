@@ -11,7 +11,7 @@
   margin-top: 5%;
 }
 .data-item__link {
-  color: #fff;
+  color: var(--white);
   font-weight: 700;
   text-decoration: underline;
   cursor: pointer;
@@ -45,7 +45,7 @@
   outline: none;
   box-sizing: border-box;
   background-color: transparent;
-  color: #fff;
+  color: var(--white);
   font-weight: 700;
   font-size: 20px;
   width: 100%;

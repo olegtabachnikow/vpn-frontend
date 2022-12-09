@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
 import { directionVariants } from '../../utils/directionOptions';
+import { parseTimestamp } from '../../utils/helpers';
 
 function Main() {
   const currentUser = useSelector((state) => state.currentUser);
@@ -34,7 +35,7 @@ function Main() {
           text={`Тариф: ${currentUser.tariff}`}
           addText={`${
             currentUser.tariff === 'NOLIMIT' ? 'Активен' : 'Хватит'
-          } до ${currentUser.endDate}`}
+          } до ${parseTimestamp(currentUser.endDate)}`}
         />
         <MenuButton
           handler={() => navigate('/help')}

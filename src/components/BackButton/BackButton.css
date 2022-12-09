@@ -2,7 +2,7 @@
   height: 60px;
   width: 82%;
   text-decoration: none;
-  color: #fff;
+  color: var(--white);
   display: flex;
   align-self: flex-start;
   align-items: center;
@@ -44,24 +44,24 @@
   font-size: 16px;
   line-height: 19px;
   text-align: center;
-  color: #348ff3;
+  color: var(--blue);
   justify-self: center;
 }
 .back-button.white {
-  color: #fff;
+  color: var(--white);
 }
 .back-button.moved-right {
   margin-left: 30px;
   width: 70%;
 }
 .back-button.white .back-button__corner {
-  border-color: #fff;
+  border-color: var(--white);
 }
 .back-button.white .back-button__title {
-  color: #fff;
+  color: var(--white);
 }
 .back-button.white .back-button__section-title {
-  color: #fff;
+  color: var(--white);
 }
 .back-button.narrow {
   width: 80%;

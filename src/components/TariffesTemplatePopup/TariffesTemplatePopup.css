@@ -5,14 +5,15 @@
   position: absolute;
   top: 0;
   left: 0;
-  display: none;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 16;
+  z-index: 20;
+  pointer-events: none;
 }
 .tariffes-template-popup.active {
-  display: flex;
+  pointer-events: all;
 }
 .tariffes-template-popup__info {
   width: 80%;
@@ -49,15 +50,15 @@
   font-family: 'Inter', sans-serif;
   margin: 0;
 }
-.tariffes-template-popup.free {
-  color: #7472eb;
+.tariffes-template-popup__info.free {
+  color: var(--violet);
 }
 .tariffes-template-popup__info.fit {
-  color: #ff824b;
+  color: var(--orange);
   margin: 0;
 }
 .tariffes-template-popup__info.nolimit {
-  color: #f95273;
+  color: var(--rose);
   margin-bottom: 0;
 }
 
@@ -73,13 +74,13 @@
   top: 50%;
 }
 .tariffes-template-popup__info-button-arrow.free {
-  border-color: #7472eb;
+  border-color: var(--violet);
 }
 .tariffes-template-popup__info-button-arrow.fit {
-  border-color: #ff824b;
+  border-color: var(--orange);
 }
 .tariffes-template-popup__info-button-arrow.nolimit {
-  border-color: #f95273;
+  border-color: var(--rose);
 }
 .tariffes-template-popup__link {
   text-decoration: underline;

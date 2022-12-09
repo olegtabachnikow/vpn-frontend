@@ -14,7 +14,7 @@
   justify-content: center;
 }
 .tariffes__tips {
-  color: #348ff3;
+  color: var(--blue);
   font-size: 11px;
   font-family: 'Inter', sans-serif;
   margin-top: 15px;

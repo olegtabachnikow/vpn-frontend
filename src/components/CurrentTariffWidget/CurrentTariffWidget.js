@@ -12,7 +12,7 @@ function CurrentTariffWidget() {
       {currentUser.traffic === 0
         ? 'Ваш трафик закончился'
         : currentUser.tariff === 'NOLIMIT'
-        ? 'Активен до ' + parseTimestamp(currentUser.endDate)
+        ? 'Активен до ' + parseTimestamp(currentUser.endActiveDate)
         : 'Хватит до ' + parseTimestamp(currentUser.endDate)}
     </span>
   );

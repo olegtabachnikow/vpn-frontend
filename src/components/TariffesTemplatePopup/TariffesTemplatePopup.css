@@ -18,8 +18,8 @@
 .tariffes-template-popup__info {
   width: 80%;
   box-sizing: border-box;
-  font-size: 12px;
-  line-height: 12px;
+  font-size: 1.2rem;
+  line-height: 1.2rem;
   padding: 24px;
   display: flex;
   flex-direction: column;
@@ -36,9 +36,9 @@
   padding: 0;
   margin: 0;
   font-family: 'Actay Wide', sans-serif;
-  font-size: 16px;
+  font-size: 1.6rem;
   font-weight: 700;
-  line-height: 20px;
+  line-height: 2rem;
   position: relative;
 }
 .tariffes-template-popup__info-subtitle {

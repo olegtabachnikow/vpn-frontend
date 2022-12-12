@@ -16,8 +16,8 @@
 }
 .balance__title {
   font-weight: 700;
-  font-size: 20px;
-  line-height: 22px;
+  font-size: 2rem;
+  line-height: 2.2rem;
   font-family: 'Actay Wide', sans-serif;
 }
 .balance__current {
@@ -36,8 +36,8 @@
 }
 .balance__current-value {
   font-weight: 700;
-  font-size: 24px;
-  line-height: 22px;
+  font-size: 2.4rem;
+  line-height: 2.2rem;
   font-family: 'Actay Wide', sans-serif;
 }
 .balance__current-text {
@@ -45,7 +45,7 @@
   padding-bottom: 10px;
   font-weight: 400;
   font-size: 10px;
-  line-height: 17px;
+  line-height: 1.7rem;
 }
 .balance__box {
   display: flex;
@@ -57,7 +57,7 @@
 .balance__button {
   width: 100%;
   color: var(--white);
-  font-size: 12px;
+  font-size: 1.2rem;
   background-color: transparent;
   border: none;
   display: flex;
@@ -72,7 +72,7 @@
 .balance__subtitle {
   margin-top: 45px;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 1.4rem;
   font-family: 'Actay Wide', sans-serif;
 }
 .balance__sum-input {
@@ -85,7 +85,7 @@
   box-sizing: border-box;
   color: var(--white);
   font-weight: 700;
-  font-size: 20px;
+  font-size: 2rem;
   outline: none;
   position: relative;
   appearance: none;
@@ -102,7 +102,7 @@
   width: 20px;
   height: 20px;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 2rem;
   right: 5px;
   top: 50%;
   transform: translate3d(0, -50%, 0);
@@ -118,7 +118,7 @@
   justify-content: space-between;
 }
 .balance__button-secondary {
-  font-size: 17px;
+  font-size: 1.7rem;
   width: 48%;
   color: var(--white);
   border: 1px solid #fff;
@@ -126,7 +126,7 @@
   margin: 0;
 }
 .balance__button-primary {
-  font-size: 17px;
+  font-size: 1.7rem;
   width: 48%;
   background-color: var(--white);
   border-color: transparent;
@@ -134,8 +134,8 @@
   margin: 0;
 }
 .balance__tips {
-  font-size: 12px;
-  line-height: 16px;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
   margin: 0;
 }
 .balance__tips-link {

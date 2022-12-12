@@ -37,7 +37,7 @@
   cursor: pointer;
 }
 .burger-menu-nav__support-text {
-  font-size: 14px;
+  font-size: 1.4rem;
   color: var(--blue);
   text-align: right;
   margin-right: 16px;

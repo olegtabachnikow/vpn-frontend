@@ -1,8 +1,8 @@
 .tariffes__free-text {
   font-family: 'Actay Wide', sans-serif;
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 700;
-  line-height: 24px;
+  line-height: 2.4rem;
   width: 90%;
   margin: 30px auto;
 }
@@ -15,8 +15,8 @@
 .tariffes__free-title {
   font-family: 'Actay Wide';
   font-weight: 700;
-  font-size: 48px;
-  line-height: 48px;
+  font-size: 4.8rem;
+  line-height: 4.8rem;
   margin: 0;
 }
 .tariffes__free-widgets {
@@ -40,8 +40,8 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  font-size: 12px;
-  line-height: 12px;
+  font-size: 1.2rem;
+  line-height: 1.2rem;
   font-family: 'Inter', sans-serif;
   box-sizing: border-box;
   margin-top: 15px;
@@ -59,8 +59,8 @@
 .tariffes__free-widget-title {
   font-family: 'Actay Wide';
   font-weight: 700;
-  font-size: 24px;
-  line-height: 22px;
+  font-size: 2.4rem;
+  line-height: 2.2rem;
   margin: 10px 0 5px 0;
   width: 50%;
   text-align: start;
@@ -68,7 +68,7 @@
 .tariffes__free-widget-text {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
-  font-size: 12px;
-  line-height: 12px;
+  font-size: 1.2rem;
+  line-height: 1.2rem;
   width: 50%;
 }

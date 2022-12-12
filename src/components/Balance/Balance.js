@@ -5,11 +5,16 @@ import checkboxFalse from '../../images/checkbox-not-checked.svg';
 import AppButton from '../AppButton/AppButton';
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../BackButton/BackButton';
-import { setDirection, setPayment } from '../../redux/actions/actions';
+import {
+  setDirection,
+  setPayment,
+  setCurrentUser,
+} from '../../redux/actions/actions';
 import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
 import { directionVariants } from '../../utils/directionOptions';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
+import { setRadioBalance } from '../../utils/roboApi';
 
 function Balance() {
   const [value, setValue] = React.useState(0);
@@ -18,8 +23,13 @@ function Balance() {
   const direction = useSelector((state) => state.direction);
   const navigate = useNavigate();
   const [numValue, setNumValue] = React.useState('200');
+
   function handleValue(val) {
-    value === val ? setValue(0) : setValue(val);
+    setRadioBalance(currentUser.userId, val)
+      .then((res) => {
+        setCurrentUser(res);
+      })
+      .catch((err) => console.log(err));
   }
   function handleSubmit() {
     setDirection(true);
@@ -28,7 +38,7 @@ function Balance() {
   }
   React.useEffect(() => {
     currentUser.radioBalance === 0 ? setValue(0) : setValue(1);
-  }, []);
+  }, [currentUser.radioBalance]);
 
   return (
     <motion.section

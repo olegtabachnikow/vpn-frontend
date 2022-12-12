@@ -15,6 +15,7 @@ function FormLabel({
   isDiscounted,
   discountValue,
   defaultChecked,
+  disabled,
 }) {
   const isRecommended = discountValue === 'Рекомендуем';
   return (
@@ -29,6 +30,7 @@ function FormLabel({
         name={name}
         value={elementValue}
         defaultChecked={defaultChecked}
+        disabled={disabled ? true : false}
       />
       <div className='form-label__content'>
         <div className='form-label__text-box'>
@@ -81,5 +83,6 @@ FormLabel.propTypes = {
   isDiscounted: PropTypes.bool,
   discountValue: PropTypes.string,
   defaultChecked: PropTypes.bool,
+  disabled: PropTypes.bool,
 };
 export default FormLabel;

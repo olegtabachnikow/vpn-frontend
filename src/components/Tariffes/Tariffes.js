@@ -174,9 +174,8 @@ function Tariffes() {
           <p className='tariffes__free-widget-info-text'>
             — Новые 5 Гб:{' '}
             <span className='tariffes__free-widget-info-text_bold'>
-              {parseTimestamp(currentUser.endDate)} (осталось{' '}
-              {new Date(currentUser.endDate).getDate() -
-                new Date(currentUser.firstDate).getDate()}{' '}
+              {parseTimestamp(currentUser.freeUpdateDate)} (осталось{' '}
+              {currentUser.freeUpdateDays}
               дней)
             </span>
           </p>

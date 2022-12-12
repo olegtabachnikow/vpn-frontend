@@ -8,9 +8,9 @@
   border-radius: 13px;
   padding: 8px 17px;
   color: var(--blue);
-  font-size: 14px;
+  font-size: 1.4rem;
   font-weight: 400;
-  line-height: 21px;
+  line-height: 2.1rem;
   box-sizing: border-box;
   word-wrap: break-word;
   text-decoration: underline;
@@ -44,7 +44,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: 14px;
+  font-size: 1.4rem;
   font-family: 'Actay Wide', sans-serif;
   text-align: start;
 }
@@ -79,8 +79,8 @@
 }
 
 .copy-to-clipboard.options .copy-to-clipboard__key {
-  font-size: 14px;
-  line-height: 14px;
+  font-size: 1.4rem;
+  line-height: 1.4rem;
   color: var(--white);
   white-space: nowrap;
   overflow: hidden;

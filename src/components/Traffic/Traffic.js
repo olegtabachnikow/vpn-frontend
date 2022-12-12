@@ -30,9 +30,9 @@ function Traffic() {
         {isNolimit ? (
           <div className='traffic__main-content'>
             <span className='traffic__main_text'>
-              Активен до {currentUser.endDate}
+              Активен до {currentUser.endActiveDate}
             </span>
-            <span className='traffic__main_value nolimit'>NO LIMIT</span>
+            <span className='traffic__main_value nolimit'>NOLIMIT</span>
             <span className='traffic__main_text'>
               Все под контролем, потребляйте сколько хотите, у вас безлимит
             </span>
@@ -70,7 +70,7 @@ function Traffic() {
           </div>
         </div>
         <div className='traffic__secondary-content'>
-          {currentUser.tariff === 'NOLIMIT' ? (
+          {isNolimit ? (
             <AppButton
               text='Продлить тариф'
               currentClass='primary rose wide margin-bottom'

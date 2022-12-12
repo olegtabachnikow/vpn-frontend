@@ -54,7 +54,9 @@ function Subscription() {
               {isNolimit ? 'Активен до' : 'Рассчетная дата окончания тарифа'}
             </span>
             <span className='subscription__widget-value'>
-              {parseTimestamp(currentUser.endDate)}
+              {isNolimit
+                ? parseTimestamp(currentUser.endActiveDate)
+                : parseTimestamp(currentUser.endDate)}
             </span>
           </div>
           <div
@@ -65,7 +67,7 @@ function Subscription() {
             <span className='subscription__widget-text'>
               Алгоритм робо думает, что трафика{' '}
               <b>{!currentUser.trafficMonth && 'не'} хватит</b> до следующих
-              бесплатных 10 Гб
+              бесплатных 5 Гб
             </span>
           </div>
         </div>

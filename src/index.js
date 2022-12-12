@@ -4,7 +4,6 @@ import './index.css';
 import App from './components/App/App';
 import reportWebVitals from './reportWebVitals';
 import ErrorBoundry from './components/ErrorBoundry/ErrorBoundry';
-import LocationProvider from './components/LocationProvider/LocationProvider';
 import { HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './redux/store/store';
@@ -17,9 +16,7 @@ root.render(
       <Provider store={store}>
         <HashRouter>
           <RoboApiProvider>
-            <LocationProvider>
-              <App />
-            </LocationProvider>
+            <App />
           </RoboApiProvider>
         </HashRouter>
       </Provider>

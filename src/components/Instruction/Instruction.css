@@ -20,9 +20,9 @@
 }
 .instruction__text {
   color: var(--blue);
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 700;
-  line-height: 25px;
+  line-height: 2.5rem;
   letter-spacing: -0.4099999964237213px;
   text-align: left;
   margin: 0;
@@ -34,8 +34,8 @@
 }
 .instruction__text-tip {
   font-weight: 400;
-  font-size: 12px;
-  line-height: 16px;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
   width: 287px;
   color: var(--blue);
 }
@@ -65,8 +65,8 @@
   height: 176px;
 }
 .instruction__step-tooltip {
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 1.4rem;
+  line-height: 2rem;
   font-weight: 700;
   color: var(--blue);
   position: absolute;
@@ -214,8 +214,8 @@
   text-align: left;
   width: 287px;
   margin: 20% 0 18px 0;
-  font-size: 32px;
-  line-height: 34px;
+  font-size: 3.2rem;
+  line-height: 3.4rem;
   font-weight: 700;
   font-family: 'Actay Wide', sans-serif;
 }
@@ -227,7 +227,7 @@
   position: relative;
   text-align: start;
   padding-left: 20px;
-  font-size: 12px;
+  font-size: 1.2rem;
   color: var(--blue);
   display: flex;
   align-items: center;

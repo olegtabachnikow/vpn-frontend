@@ -31,11 +31,14 @@ function Main() {
           handler={() => navigate('/my-vpn')}
           image={glassesIcon}
           currentClass='btn-my-vpn'
-          title='Мой VPN'
+          title={`w: ${window.innerWidth}, h: ${window.innerHeight}`}
+          //title='Мой VPN'
           text={`Тариф: ${currentUser.tariff}`}
-          addText={`${
-            currentUser.tariff === 'NOLIMIT' ? 'Активен' : 'Хватит'
-          } до ${parseTimestamp(currentUser.endDate)}`}
+          addText={
+            currentUser.tariff === 'NOLIMIT'
+              ? 'Активен до ' + parseTimestamp(currentUser.endActiveDate)
+              : 'Хватит до ' + parseTimestamp(currentUser.endDate)
+          }
         />
         <MenuButton
           handler={() => navigate('/help')}

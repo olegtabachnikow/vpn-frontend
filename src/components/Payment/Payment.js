@@ -13,11 +13,12 @@ function Payment() {
   const payment = useSelector((state) => state.payment);
   const currentUser = useSelector((state) => state.currentUser);
   const direction = useSelector((state) => state.direction);
+  const [withBalance, setWithBalance] = React.useState(false);
   const [method, setMethod] = React.useState('');
 
   function handlePay() {
     getPaymentLink(currentUser.userId, payment.toString())
-      .then((res) => console.log(res))
+      .then((res) => (window.location.href = res))
       .catch((err) => console.log(err));
   }
   return (
@@ -50,19 +51,20 @@ function Payment() {
             />
             <FormLabel
               name='method'
-              currentClass='form-label__method'
-              title='Крипта'
+              currentClass='form-label__method disabled'
+              title='Крипта (в разработке)'
               text='Биткоин и другие'
               elementValue='crypto'
               handler={(data) => setMethod(data)}
+              disabled={true}
             />
             <FormLabel
-              name='method'
+              name='balance'
               currentClass='form-label__method'
               title='Оплатить за счет баланса'
               text={`На вашем балансе ${currentUser.balance} ₽`}
               elementValue='balance'
-              handler={(data) => setMethod(data)}
+              handler={() => setWithBalance(true)}
             />
           </div>
           <div className='payment__button-box'>

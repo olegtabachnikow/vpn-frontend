@@ -86,7 +86,11 @@ function MyVpn() {
         currentClass='btn-my-tariff'
         title='Мой тариф'
         text={`Тариф: ${currentUser.tariff}`}
-        addText={`Активен до ${parseTimestamp(currentUser.endDate)}`}
+        addText={
+          currentUser.tariff === 'NOLIMIT'
+            ? 'Активен до ' + parseTimestamp(currentUser.endActiveDate)
+            : 'Хватит до ' + parseTimestamp(currentUser.endDate)
+        }
         handler={() => navigate('/subscription')}
       />
     </motion.section>

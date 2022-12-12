@@ -50,13 +50,13 @@
   background-color: var(--orange);
 }
 .popup.active .popup__title {
-  font-size: 16px;
-  line-height: 16px;
+  font-size: 1.6rem;
+  line-height: 1.6rem;
 }
 .popup__title {
   font-weight: 700;
   transition: all 0.3s ease;
-  font-size: 14px;
+  font-size: 1.4rem;
   text-align: center;
   font-family: 'Actay Wide', sans-serif;
   margin: 0;
@@ -69,8 +69,8 @@
   padding: 0 30px;
 }
 .popup-gift__text {
-  font-size: 13px;
-  line-height: 17px;
+  font-size: 1.3rem;
+  line-height: 1.7rem;
   font-family: 'Inter', sans-serif;
   font-weight: 600;
   height: 100%;
@@ -124,8 +124,8 @@
   padding: 0 30px;
 }
 .popup-referral__text {
-  font-size: 13px;
-  line-height: 17px;
+  font-size: 1.3rem;
+  line-height: 1.7rem;
 }
 
 .popup__content {
@@ -136,8 +136,8 @@
   padding-bottom: 5px;
   font-family: 'Inter', sans-serif;
   font-weight: 600;
-  font-size: 14px;
-  line-height: 21px;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
   position: relative;
   align-items: center;
 }

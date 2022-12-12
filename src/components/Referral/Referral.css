@@ -16,8 +16,8 @@
 }
 .referral__title {
   font-weight: 700;
-  font-size: 30px;
-  line-height: 32px;
+  font-size: 3rem;
+  line-height: 3.2rem;
   margin: 5px 0;
 }
 .referral__text-box {
@@ -27,8 +27,8 @@
 }
 .referral__text {
   font-weight: 700;
-  font-size: 16px;
-  line-height: 18px;
+  font-size: 1.6rem;
+  line-height: 1.8rem;
   margin: 0;
 }
 .referral__stats {
@@ -63,13 +63,13 @@
   width: 50%;
 }
 .referral__stat-value {
-  font-size: 36px;
+  font-size: 3.6rem;
   font-weight: 700;
   font-family: 'Actay Wide', sans-serif;
 }
 .referral__stat-text {
   font-size: 10px;
-  line-height: 11px;
+  line-height: 1.1rem;
   margin: 10px 0 0 0;
   font-family: 'Inter', sans-serif;
 }
@@ -80,8 +80,8 @@
   align-items: center;
 }
 .referral__tips {
-  font-size: 11px;
-  line-height: 13px;
+  font-size: 1.1rem;
+  line-height: 1.3rem;
   margin-bottom: 20px;
   width: 100%;
   font-family: 'Inter', sans-serif;
@@ -91,7 +91,7 @@
 }
 .referral__popup-text {
   margin: 10px;
-  font-size: 13px;
+  font-size: 1.3rem;
 }
 .referral__popup-text:last-of-type {
   margin-bottom: auto;

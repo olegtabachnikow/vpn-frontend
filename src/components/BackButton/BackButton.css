@@ -25,10 +25,10 @@
   border-color: #006ffd;
 }
 .back-button__title {
-  font-size: 12px;
+  font-size: 1.2rem;
   font-weight: 500;
   font-family: 'Actay', sans-serif;
-  line-height: 12px;
+  line-height: 1.2rem;
   color: #006ffd;
   display: flex;
   max-width: 25%;
@@ -41,8 +41,8 @@
   margin: 0;
   font-family: 'Inter', sans-serif;
   font-weight: 500;
-  font-size: 16px;
-  line-height: 19px;
+  font-size: 1.6rem;
+  line-height: 1.9rem;
   text-align: center;
   color: var(--blue);
   justify-self: center;

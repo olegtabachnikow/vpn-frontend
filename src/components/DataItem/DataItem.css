@@ -47,7 +47,7 @@
   background-color: transparent;
   color: var(--white);
   font-weight: 700;
-  font-size: 20px;
+  font-size: 2rem;
   width: 100%;
   text-align: start;
   height: 100%;
@@ -75,5 +75,5 @@
   max-height: 80px;
 }
 .data-list-faq .data-item__button {
-  font-size: 16px;
+  font-size: 1.6rem;
 }

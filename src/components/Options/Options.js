@@ -7,19 +7,24 @@ import checkboxNotChecked from '../../images/checkbox-not-checked.svg';
 import closeButton from '../../images/close-button.png';
 import checkboxDisabled from '../../images/checkbox-disabled.png';
 import { useSelector } from 'react-redux';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import CopyToClipboardField from '../CopyToClipboardField/CopyToClipboardField';
 import { motion } from 'framer-motion';
 import { directionVariants } from '../../utils/directionOptions';
-import { setDirection } from '../../redux/actions/actions';
+import { setDirection, setCurrentUser } from '../../redux/actions/actions';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
+import { setOptions } from '../../utils/roboApi';
 
 function Options() {
-  const [smartActive, setIsSmartActive] = React.useState(0);
-  const [isCommunicateActive, setIsCommunicateActive] = React.useState(true);
-  const [country, setCountry] = React.useState(0);
+  const currentUser = useSelector((state) => state.currentUser);
+  const [smartActive, setIsSmartActive] = React.useState(currentUser.smart);
+  const [isCommunicateActive, setIsCommunicateActive] = React.useState(
+    currentUser.care
+  );
+  const [country, setCountry] = React.useState(currentUser.domainId);
   const direction = useSelector((state) => state.direction);
   const navigate = useNavigate();
+  const location = useLocation();
   const [isActive, setIsActive] = React.useState({
     location: false,
     device: false,
@@ -28,13 +33,18 @@ function Options() {
   const [isCommunicatePopupOpen, setIsCommunicatePopupOpen] =
     React.useState(false);
   const [isOverlayActive, setIsOverlayActive] = React.useState(false);
-  const currentUser = useSelector((state) => state.currentUser);
   const isNolimit = currentUser.tariff === 'NOLIMIT';
 
-  React.useEffect(() => {
-    currentUser.smart && setIsSmartActive(1);
-    setCountry(currentUser.domainId);
-  }, []);
+  function handleGenerateLink() {
+    const smart = smartActive ? 1 : 0;
+    setOptions(currentUser.userId, smart, isCommunicateActive, country)
+      .then((res) => {
+        console.log(res);
+        setCurrentUser(res);
+        navigate('/options/complete');
+      })
+      .catch((err) => console.log(err));
+  }
 
   function handleClose() {
     setIsSmartPopupOpen(false);
@@ -69,6 +79,15 @@ function Options() {
     setIsCommunicateActive(false);
     handleClose();
   }
+  React.useEffect(() => {
+    if (location.pathname === '/options') {
+      console.log(1);
+      setCountry(currentUser.domainId);
+      setIsCommunicateActive(currentUser.care);
+      setIsSmartActive(currentUser.smart);
+    }
+  }, []);
+
   return (
     <motion.section
       className='options'
@@ -117,17 +136,17 @@ function Options() {
                       </p>
                       <div className='options__item-location-box'>
                         <span
-                          onClick={(e) => handleCountryItemClick(e, 1)}
+                          onClick={(e) => handleCountryItemClick(e, 0)}
                           className={`options__country-item ${
-                            country === 1 && 'active'
+                            country === 0 && 'active'
                           }`}
                         >
                           Finland
                         </span>
                         <span
-                          onClick={(e) => handleCountryItemClick(e, 2)}
+                          onClick={(e) => handleCountryItemClick(e, 1)}
                           className={`options__country-item ${
-                            country === 2 && 'active'
+                            country === 1 && 'active'
                           }`}
                         >
                           Cypress
@@ -140,7 +159,7 @@ function Options() {
                       isActive.location && 'hidden'
                     }`}
                   >
-                    {country === 1 ? 'Finland' : 'Cypress'}
+                    {country === 0 ? 'Finland' : 'Cypress'}
                   </span>
                   <div
                     className='options__item-arrow-wrapper'
@@ -311,7 +330,7 @@ function Options() {
                   currentClass='primary orange'
                   handler={() => {
                     setDirection(true);
-                    navigate('/options/complete');
+                    handleGenerateLink();
                   }}
                 />
                 <AppButton
@@ -332,18 +351,28 @@ function Options() {
                 currentClass='white'
                 path={'/my-vpn'}
               />
-              <div className='options__complete-content'>
-                <p className='option__complete-text'>
+              {currentUser.domainId === country ? (
+                <div className='options__complete-content no-margin'>
+                  <p className='option__complete-text-big'>
+                    Отлично, вы настроили robo под себя! Новые настройки
+                    внесены.{' '}
+                  </p>
+                </div>
+              ) : (
+                <div className='options__complete-content'>
                   {' '}
-                  Отлично, вы настроили robo под себя. Ваш ключ доступа — чтобы
-                  новые настройки заработали, вставьте новый ключ в приложение
-                  outline.
-                </p>
-                <CopyToClipboardField
-                  currentClass='options'
-                  data={currentUser.link}
-                />
-              </div>
+                  <p className='option__complete-text'>
+                    {' '}
+                    Отлично, вы настроили robo под себя. Ваш ключ доступа —
+                    чтобы новые настройки заработали, вставьте новый ключ в
+                    приложение outline.
+                  </p>
+                  <CopyToClipboardField
+                    currentClass='options'
+                    data={currentUser.link}
+                  />
+                </div>
+              )}
               <div className='options__button-box'>
                 <AppButton
                   text='Настроить заново'

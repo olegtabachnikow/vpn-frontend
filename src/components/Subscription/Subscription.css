@@ -11,18 +11,18 @@
 }
 .subscription__subtitle {
   margin: 0;
-  font-size: 24px;
+  font-size: 2.4rem;
   font-weight: 400;
   font-family: 'Actay', sans-serif;
 }
 .subscription__title {
   margin: 14px 0 0 0;
-  font-size: 32px;
+  font-size: 3.2rem;
   font-weight: 700;
 }
 .subscription__text {
   margin: 12px 0 18px 0;
-  font-size: 14px;
+  font-size: 1.4rem;
   font-weight: 400;
   font-family: 'Actay', sans-serif;
 }
@@ -39,7 +39,7 @@
 }
 .subscription__widget-value {
   margin-top: 4px;
-  font-size: 24px;
+  font-size: 2.4rem;
   font-weight: 700;
 }
 .subscription__widget-box {
@@ -52,7 +52,7 @@
 .subscription__widget-text {
   font-family: 'Actay', sans-serif;
   font-size: 10px;
-  line-height: 11px;
+  line-height: 1.1rem;
 }
 .subscription__widget_secondary {
   width: 100%;

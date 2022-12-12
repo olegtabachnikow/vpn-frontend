@@ -20,6 +20,8 @@ function RoboApiProvider({ children }) {
       .then((res) => {
         setCurrentUser(res);
         setIsLoading(false);
+        !res.activeUser ? navigate('/intro') : navigate('/');
+        console.log(res);
       })
       .catch(() => {
         setIsLoading(false);

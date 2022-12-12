@@ -13,7 +13,7 @@
 }
 .payment__value {
   font-family: 'Inter', sans-serif;
-  font-size: 14px;
+  font-size: 1.4rem;
   font-weight: 700;
   height: 44px;
   box-sizing: border-box;
@@ -23,7 +23,7 @@
   display: flex;
   justify-content: space-between;
   width: 90%;
-  line-height: 15px;
+  line-height: 1.5rem;
 }
 .payment__button-box {
   margin-top: auto;
@@ -34,5 +34,5 @@
 }
 .payment__value-data {
   font-weight: 900;
-  font-size: 17px;
+  font-size: 1.7rem;
 }

@@ -59,12 +59,12 @@
 .options__item-title {
   margin: 0 0 5px 0;
   font-family: 'Inter', sans-serif;
-  font-size: 18px;
-  line-height: 20px;
+  font-size: 1.8rem;
+  line-height: 2rem;
   font-weight: 700;
 }
 .options__item-title.communicate {
-  font-size: 16px;
+  font-size: 1.6rem;
 }
 .options__item.with-popup {
   z-index: 5;
@@ -73,11 +73,11 @@
   margin: 0;
   text-decoration: underline;
   font-family: 'Inter', sans-serif;
-  font-size: 13px;
+  font-size: 1.3rem;
   width: 30%;
 }
 .options__item-text {
-  font-size: 14px;
+  font-size: 1.4rem;
   font-weight: 400;
   width: 90%;
   margin: 0;
@@ -158,7 +158,7 @@
   right: 0;
 }
 .options__popup-text {
-  font-size: 12px;
+  font-size: 1.2rem;
   font-weight: 700;
   font-family: 'Inter', sans-serif;
   margin: 0;
@@ -213,9 +213,18 @@
   color: var(--white);
   margin: 0 0 24px 0;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 2rem;
+}
+.option__complete-text-big {
+  font-family: 'Actay Wide', sans-serif;
+  font-size: 4rem;
+  line-height: 4.3rem;
+  color: var(--white);
 }
 .options__complete-content {
   width: 90%;
   margin-top: 30%;
+}
+.options__complete-content.no-margin {
+  margin-top: 0;
 }

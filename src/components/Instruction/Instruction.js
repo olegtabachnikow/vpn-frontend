@@ -14,6 +14,7 @@ import CopyToClipboardField from '../CopyToClipboardField/CopyToClipboardField';
 import { motion } from 'framer-motion';
 import { directionVariants } from '../../utils/directionOptions';
 import { setDirection } from '../../redux/actions/actions';
+import useAnalyticsEventTracker from '../../hooks/useAnanlyticsEventTracker';
 
 const variants = {
   visible: { opacity: 1, transition: { duration: 0.2 } },
@@ -29,6 +30,7 @@ const buttonVariants = {
 };
 
 function Instruction() {
+  const gaEventTracker = useAnalyticsEventTracker('instruction');
   const tg = window.Telegram.WebApp;
   const [progress, setProgress] = React.useState(0);
   const [isFaded, setIsFaded] = React.useState(false);
@@ -117,6 +119,7 @@ function Instruction() {
             <CopyToClipboardField
               currentClass='instruction__copy-to-clipboard'
               data={currentUser.link}
+              gaCategory='instruction'
             />
             <div>
               <p className='instruction__text'>
@@ -131,6 +134,12 @@ function Instruction() {
             <div className='instruction__link-box'>
               <a
                 href='https://play.google.com/store/apps/details?id=org.outline.android.client&hl=en_US&gl=US&pli=1'
+                onClick={() =>
+                  gaEventTracker(
+                    'visit google play',
+                    'visit outline google play '
+                  )
+                }
                 target='_blank'
                 rel='noreferrer'
               >
@@ -138,6 +147,9 @@ function Instruction() {
               </a>
               <a
                 href='https://apps.apple.com/us/app/outline-app/id1356177741'
+                onClick={() =>
+                  gaEventTracker('visit appstore', 'visit outline appstore ')
+                }
                 target='_blank'
                 rel='noreferrer'
               >

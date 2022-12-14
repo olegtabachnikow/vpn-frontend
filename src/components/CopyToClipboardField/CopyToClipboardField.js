@@ -4,11 +4,14 @@ import copyIcon from '../../images/copy.svg';
 import copiedIcon from '../../images/check.svg';
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
+import useAnalyticsEventTracker from '../../hooks/useAnanlyticsEventTracker';
 
-function CopyToClipboardField({ currentClass, data }) {
+function CopyToClipboardField({ currentClass, data, gaCategory }) {
   const [isCopied, setIsCopied] = React.useState(false);
+  const gaEventTracker = useAnalyticsEventTracker('copy2keyboard');
   function copyToClipboard(e) {
     e.stopPropagation();
+    gaEventTracker(gaCategory, 'key copied');
     setIsCopied(true);
     navigator.clipboard.writeText(data);
     setTimeout(() => {
@@ -36,5 +39,6 @@ function CopyToClipboardField({ currentClass, data }) {
 CopyToClipboardField.propTypes = {
   currentClass: PropTypes.string.isRequired,
   data: PropTypes.string.isRequired,
+  gaCategory: PropTypes.string,
 };
 export default CopyToClipboardField;

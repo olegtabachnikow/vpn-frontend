@@ -8,6 +8,7 @@ import AppButton from '../AppButton/AppButton';
 import { getPaymentLink } from '../../utils/roboApi';
 import { motion } from 'framer-motion';
 import { directionVariants } from '../../utils/directionOptions';
+import useAnalyticsEventTracker from '../../hooks/useAnanlyticsEventTracker';
 
 function Payment() {
   const payment = useSelector((state) => state.payment);
@@ -15,8 +16,10 @@ function Payment() {
   const direction = useSelector((state) => state.direction);
   const [withBalance, setWithBalance] = React.useState(false);
   const [method, setMethod] = React.useState('');
+  const gaEventTracker = useAnalyticsEventTracker('payment');
 
   function handlePay() {
+    gaEventTracker('click', 'payment button click');
     getPaymentLink(currentUser.userId, payment.toString())
       .then((res) => (window.location.href = res))
       .catch((err) => console.log(err));

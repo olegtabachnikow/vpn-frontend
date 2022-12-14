@@ -12,6 +12,7 @@ Frontend SPA for Robo VPN services, integrated with Telegram Bot web app.
 * Type control: [Prop-Types](https://www.npmjs.com/package/prop-types)
 * Animations: [Framer-Motion](https://www.framer.com/developers/), CSS3
 * Privacy: dotenv
+* Analytics: [Google Analytics](https://analytics.google.com/), ReactGA
 
 ### Languages
 

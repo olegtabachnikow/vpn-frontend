@@ -2,7 +2,7 @@
 
 website can be started with the command <code>/start</code>
 
-Frontend SPA for Robo VPN services, integrated with Telegram Bot web app.
+Frontend SPA for Robo VPN services, integrated in Telegram Bot web app.
 
 ## Technologies used in this project
 

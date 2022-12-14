@@ -69,9 +69,9 @@ function Referral() {
             Скопируйте ссылку и поделитесь в другом:
           </p>
           <CopyToClipboardField
-            currentClass='refferal__copy-to-clipboard'
+            currentClass='referral__copy-to-clipboard'
             data={currentUser.referralLink}
-            gaCategory='refferal'
+            gaAction='Referral'
           />
           <p className='referral__tips'>
             Участвуя в реферальной программе, вы принимаете ее условия.

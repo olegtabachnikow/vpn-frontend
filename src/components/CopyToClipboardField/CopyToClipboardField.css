@@ -30,7 +30,7 @@
   filter: invert(0.35) sepia(1) saturate(5) hue-rotate(175deg);
 }
 
-.refferal__copy-to-clipboard {
+.referral__copy-to-clipboard {
   height: auto;
   color: var(--white);
   border-color: var(--white);
@@ -39,7 +39,7 @@
   width: 100%;
   padding-left: 10px;
 }
-.refferal__copy-to-clipboard .copy-to-clipboard__key {
+.referral__copy-to-clipboard .copy-to-clipboard__key {
   width: 250px;
   white-space: nowrap;
   overflow: hidden;
@@ -48,7 +48,7 @@
   font-family: 'Actay Wide', sans-serif;
   text-align: start;
 }
-.refferal__copy-to-clipboard .copy-to-clipboard__copy-icon {
+.referral__copy-to-clipboard .copy-to-clipboard__copy-icon {
   width: 18px;
   height: 18px;
   top: 50%;

@@ -6,12 +6,12 @@ import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 import useAnalyticsEventTracker from '../../hooks/useAnanlyticsEventTracker';
 
-function CopyToClipboardField({ currentClass, data, gaCategory }) {
+function CopyToClipboardField({ currentClass, data, gaAction }) {
   const [isCopied, setIsCopied] = React.useState(false);
-  const gaEventTracker = useAnalyticsEventTracker('copy2keyboard');
+  const gaEventTracker = useAnalyticsEventTracker('CopyLink');
   function copyToClipboard(e) {
     e.stopPropagation();
-    gaEventTracker(gaCategory, 'key copied');
+    gaEventTracker(gaAction, 'Key_copied');
     setIsCopied(true);
     navigator.clipboard.writeText(data);
     setTimeout(() => {
@@ -39,6 +39,6 @@ function CopyToClipboardField({ currentClass, data, gaCategory }) {
 CopyToClipboardField.propTypes = {
   currentClass: PropTypes.string.isRequired,
   data: PropTypes.string.isRequired,
-  gaCategory: PropTypes.string,
+  gaAction: PropTypes.string,
 };
 export default CopyToClipboardField;

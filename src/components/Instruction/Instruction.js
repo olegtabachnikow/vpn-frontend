@@ -119,7 +119,7 @@ function Instruction() {
             <CopyToClipboardField
               currentClass='instruction__copy-to-clipboard'
               data={currentUser.link}
-              gaCategory='instruction'
+              gaAction='Install_copy'
             />
             <div>
               <p className='instruction__text'>

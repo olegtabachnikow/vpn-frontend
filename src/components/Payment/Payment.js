@@ -70,7 +70,14 @@ function Payment() {
           <div className='payment__button-box'>
             <div className='payment__value'>
               <span className='payment__value-title'>К оплате</span>
-              <span className='payment__value-data'>{payment} ₽</span>
+              <span className='payment__value-data'>
+                {withBalance
+                  ? currentUser.balance > payment
+                    ? 0
+                    : payment - currentUser.balance
+                  : payment}{' '}
+                ₽
+              </span>
             </div>
             <AppButton
               currentClass='primary white bg-dark-blue margin-top'

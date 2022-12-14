@@ -72,3 +72,8 @@
   line-height: 1.2rem;
   width: 50%;
 }
+@media screen and (max-height: 552px) {
+  .tariffes__free-title {
+    display: none;
+  }
+}

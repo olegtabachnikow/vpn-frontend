@@ -11,12 +11,17 @@ import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import CopyToClipboardField from '../CopyToClipboardField/CopyToClipboardField';
 import { motion } from 'framer-motion';
 import { directionVariants } from '../../utils/directionOptions';
-import { setDirection, setCurrentUser } from '../../redux/actions/actions';
+import {
+  setDirection,
+  setCurrentUser,
+  setCurrentCountry,
+} from '../../redux/actions/actions';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import { setOptions } from '../../utils/roboApi';
 
 function Options() {
   const currentUser = useSelector((state) => state.currentUser);
+  const currentCountry = useSelector((state) => state.currentCountry);
   const [smartActive, setIsSmartActive] = React.useState(currentUser.smart);
   const [isCommunicateActive, setIsCommunicateActive] = React.useState(
     currentUser.care
@@ -81,7 +86,6 @@ function Options() {
   }
   React.useEffect(() => {
     if (location.pathname === '/options') {
-      console.log(1);
       setCountry(currentUser.domainId);
       setIsCommunicateActive(currentUser.care);
       setIsSmartActive(currentUser.smart);
@@ -351,7 +355,7 @@ function Options() {
                 currentClass='white'
                 path={'/my-vpn'}
               />
-              {currentUser.domainId === country ? (
+              {currentCountry === country ? (
                 <div className='options__complete-content no-margin'>
                   <p className='option__complete-text-big'>
                     Отлично, вы настроили robo под себя! Новые настройки
@@ -384,7 +388,11 @@ function Options() {
                 />
                 <AppButton
                   text='Мой VPN'
-                  handler={() => navigate('/my-vpn')}
+                  handler={() => {
+                    setDirection(true);
+                    setCurrentCountry(country);
+                    navigate('/my-vpn');
+                  }}
                   currentClass='primary orange margin-top'
                 />
               </div>

@@ -193,7 +193,7 @@ function Tariffes() {
         isHidden={isRecommendHidden}
         setIsHidden={setIsRecommendHidden}
         currentClass={location.pathname.replace('/tariffes/', '')}
-        buttonText={'«Рекомендуем» — это?'}
+        buttonText={'Рекомендуем — это?'}
       >
         <p className='tariffes-template-popup__info-text'>
           Берем среднее потребление за 5 прошедших дней. Берем ваши оставшиеся
@@ -205,7 +205,7 @@ function Tariffes() {
         isHidden={isGbHidden}
         setIsHidden={setIsGbHidden}
         currentClass={location.pathname.replace('/tariffes/', '')}
-        buttonText={'«+ 10 Гб» — это?'}
+        buttonText={'+ 10 Гб — это?'}
       >
         <p className='tariffes-template-popup__info-text'>
           На тарифах FREE и FIT мы начисляем 10 Гб один раз в месяц, если вы

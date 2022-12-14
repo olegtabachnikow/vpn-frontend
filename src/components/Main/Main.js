@@ -31,8 +31,7 @@ function Main() {
           handler={() => navigate('/my-vpn')}
           image={glassesIcon}
           currentClass='btn-my-vpn'
-          title={`w: ${window.innerWidth}, h: ${window.innerHeight}`}
-          //title='Мой VPN'
+          title='Мой VPN'
           text={`Тариф: ${currentUser.tariff}`}
           addText={
             currentUser.tariff === 'NOLIMIT'

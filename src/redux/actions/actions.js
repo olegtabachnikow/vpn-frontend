@@ -25,13 +25,25 @@ const setDirectionAction = (payload) => {
     payload,
   };
 };
-export const { setCurrentUser, setPayment, setPrices, setDirection } =
-  bindActionCreators(
-    {
-      setCurrentUser: setCurrentUserAction,
-      setPayment: setPaymentAction,
-      setPrices: setPricesAction,
-      setDirection: setDirectionAction,
-    },
-    dispatch
-  );
+const setCurrentCountryAction = (payload) => {
+  return {
+    type: 'COUNTRY/SET',
+    payload,
+  };
+};
+export const {
+  setCurrentUser,
+  setPayment,
+  setPrices,
+  setDirection,
+  setCurrentCountry,
+} = bindActionCreators(
+  {
+    setCurrentUser: setCurrentUserAction,
+    setPayment: setPaymentAction,
+    setPrices: setPricesAction,
+    setDirection: setDirectionAction,
+    setCurrentCountry: setCurrentCountryAction,
+  },
+  dispatch
+);

@@ -1,5 +1,9 @@
 import React from 'react';
-import { setCurrentUser, setPrices } from '../../redux/actions/actions';
+import {
+  setCurrentUser,
+  setPrices,
+  setCurrentCountry,
+} from '../../redux/actions/actions';
 import { getCurrentUser, getPrices } from '../../utils/roboApi';
 import { useNavigate } from 'react-router-dom';
 import Preloader from '../Preloader/Preloader';
@@ -19,6 +23,7 @@ function RoboApiProvider({ children }) {
     getCurrentUser(id)
       .then((res) => {
         setCurrentUser(res);
+        setCurrentCountry(res.domainId);
         setIsLoading(false);
         !res.activeUser ? navigate('/intro') : navigate('/');
         console.log(res);

@@ -43,3 +43,9 @@
   margin-right: 16px;
   justify-self: flex-end;
 }
+
+@media screen and (max-height: 552px) {
+  .burger-menu__button {
+    top: 27px;
+  }
+}

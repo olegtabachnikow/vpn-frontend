@@ -252,7 +252,14 @@
   justify-content: center;
   z-index: 0;
 }
-
+.instruction__tips {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  color: var(--blue);
+  margin-top: 14px;
+  width: 90%;
+}
 @media screen and (max-height: 650px) {
   .instruction__link-box {
     flex-direction: row;
@@ -261,5 +268,17 @@
   }
   .instruction__gallery {
     margin: 5% 0;
+  }
+}
+@media screen and (max-height: 552px) {
+  .instruction__button-top {
+    margin-bottom: 0;
+  }
+  .instruction__gallery {
+    margin: 0;
+    transform: scale(0.9);
+  }
+  .instruction__content {
+    max-height: 65%;
   }
 }

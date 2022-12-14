@@ -55,7 +55,7 @@ function TariffesTemplate({
               className={`tariffes-template__content-button ${currentClass}`}
               onClick={() => setIsRecommendHidden(false)}
             >
-              «Рекомендуем» — это?{' '}
+              Рекомендуем — это?{' '}
               <span
                 className={`tariffes-template__content-button-arrow ${currentClass}`}
               />
@@ -64,7 +64,7 @@ function TariffesTemplate({
               className={`tariffes-template__content-button ${currentClass}`}
               onClick={() => setIsGbHidden(false)}
             >
-              «+ 10 Гб» — это?{' '}
+              + 10 Гб — это?{' '}
               <span
                 className={`tariffes-template__content-button-arrow ${currentClass}`}
               />

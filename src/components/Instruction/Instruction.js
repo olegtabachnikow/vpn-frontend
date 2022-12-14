@@ -32,6 +32,7 @@ function Instruction() {
   const tg = window.Telegram.WebApp;
   const [progress, setProgress] = React.useState(0);
   const [isFaded, setIsFaded] = React.useState(false);
+  const [isDisabled, setIsDisabled] = React.useState(true);
   const navigate = useNavigate();
   const direction = useSelector((state) => state.direction);
   const currentUser = useSelector((state) => state.currentUser);
@@ -54,6 +55,12 @@ function Instruction() {
       setTimeout(setProgress, 300, (state) => ++state);
     }
   }
+  React.useLayoutEffect(() => {
+    progress === 2 && !currentUser.activeUser
+      ? setIsDisabled(true)
+      : setIsDisabled(false);
+  }, [progress, currentUser.activeUser]);
+
   function handleBackClick() {
     if (progress === 0) {
       setDirection(false);
@@ -209,11 +216,17 @@ function Instruction() {
         </motion.div>
         <AppButton
           currentClass={`primary white bg-blue margin-top ${
-            progress === 2 && !currentUser.activeUser && 'disabled'
+            isDisabled && 'disabled'
           }`}
           text={`${progress < 2 ? 'Далее' : 'Главное меню'}`}
-          handler={() => (progress < 2 ? handleClick() : navigate('/'))}
+          handler={handleClick}
         />
+        {progress === 2 && isDisabled ? (
+          <span className='instruction__tips'>
+            Как только загрузите первые киллобайты — robo станет активным. И вы
+            сможете ознакомиться со всеми возможностями. :)
+          </span>
+        ) : null}
       </div>
     </motion.section>
   );

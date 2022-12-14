@@ -71,6 +71,7 @@ function Referral() {
           <CopyToClipboardField
             currentClass='refferal__copy-to-clipboard'
             data={currentUser.referralLink}
+            gaCategory='refferal'
           />
           <p className='referral__tips'>
             Участвуя в реферальной программе, вы принимаете ее условия.

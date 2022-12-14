@@ -80,7 +80,7 @@ function Support() {
         currentClass={`primary blue wide margin-top ${
           !isNoLimit ? 'support-disabled' : ''
         }`}
-        handler={() => (window.location.href = 'https://t.me/b0ringclub')}
+        handler={() => (window.location.href = 'https://t.me/getrobovpn_bot')}
       />
     </motion.section>
   );

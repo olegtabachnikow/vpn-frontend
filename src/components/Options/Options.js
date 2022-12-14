@@ -374,6 +374,7 @@ function Options() {
                   <CopyToClipboardField
                     currentClass='options'
                     data={currentUser.link}
+                    gaCategory='options'
                   />
                 </div>
               )}

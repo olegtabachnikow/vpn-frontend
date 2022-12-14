@@ -4,6 +4,7 @@ import AppButton from '../AppButton/AppButton';
 import { useNavigate } from 'react-router-dom';
 
 function Success() {
+  const tg = window.Telegram.WebApp;
   const navigate = useNavigate();
   return (
     <section className='success'>
@@ -19,11 +20,11 @@ function Success() {
         <AppButton
           text='Назад в Telegram'
           currentClass='success__app-button success__app-button-secondary'
-          handler={() => navigate()}
+          handler={() => tg.close()}
         />
         <AppButton
           text='Мой ВПН'
-          currentClass='success__app-button'
+          currentClass='success__app-button margin-top'
           handler={() => navigate('/my-vpn')}
         />
       </div>

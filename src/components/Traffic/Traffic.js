@@ -30,7 +30,7 @@ function Traffic() {
         {isNolimit ? (
           <div className='traffic__main-content'>
             <span className='traffic__main_text'>
-              Активен до {currentUser.endActiveDate}
+              Активен до {parseTimestamp(currentUser.endActiveDate)}
             </span>
             <span className='traffic__main_value nolimit'>NOLIMIT</span>
             <span className='traffic__main_text'>
@@ -69,64 +69,64 @@ function Traffic() {
             </span>
           </div>
         </div>
-        <div className='traffic__secondary-content'>
-          {isNolimit ? (
+      </div>
+      <div className='traffic__secondary-content'>
+        {isNolimit ? (
+          <AppButton
+            text='Продлить тариф'
+            currentClass='primary rose wide margin-bottom'
+            handler={() => {
+              setDirection(true);
+              navigate('/tariffes/nolimit');
+            }}
+          />
+        ) : (
+          <>
             <AppButton
-              text='Продлить тариф'
-              currentClass='primary rose wide margin-bottom'
+              text='Пополнить Гб'
+              currentClass={`primary rose wide margin-bottom ${
+                isNolimit ? 'disabled' : ''
+              }`}
               handler={() => {
                 setDirection(true);
-                navigate('/tariffes/nolimit');
+                currentUser.activeUser
+                  ? navigate('/tariffes/fit')
+                  : navigate('/tariffes');
               }}
             />
-          ) : (
-            <>
+            <div className='traffic__button-box'>
               <AppButton
-                text='Пополнить Гб'
-                currentClass={`primary rose wide margin-bottom ${
-                  isNolimit ? 'disabled' : ''
-                }`}
+                text='Заработать'
+                currentClass='secondary white narrow'
                 handler={() => {
                   setDirection(true);
-                  currentUser.activeUser
-                    ? navigate('/tariffes/fit')
-                    : navigate('/tariffes');
+                  navigate('/referral');
                 }}
               />
-              <div className='traffic__button-box'>
-                <AppButton
-                  text='Заработать'
-                  currentClass='secondary white narrow'
-                  handler={() => {
-                    setDirection(true);
-                    navigate('/referral');
-                  }}
-                />
-                <AppButton
-                  text='Сменить тариф'
-                  currentClass='secondary white narrow'
-                  handler={() => {
-                    setDirection(true);
-                    navigate('/tariffes');
-                  }}
-                />
-              </div>
-            </>
-          )}
-          <p className='traffic__tips'>
-            Чтобы не волноваться — можете{' '}
-            <span
-              onClick={() => {
-                setDirection(true);
-                navigate('/balance');
-              }}
-              className='traffic__link'
-            >
-              пополнить баланс
-            </span>
-            , и нажать автосписание по текущему тарифу.
-          </p>
-        </div>
+              <AppButton
+                text='Сменить тариф'
+                currentClass='secondary white narrow'
+                handler={() => {
+                  setDirection(true);
+                  navigate('/tariffes');
+                }}
+              />
+            </div>
+          </>
+        )}
+        <p className='traffic__tips'>
+          Чтобы не волноваться — можете{' '}
+          <span
+            onClick={() => {
+              setDirection(true);
+              navigate('/balance');
+            }}
+            className='traffic__link'
+          >
+            пополнить баланс
+          </span>
+          , и нажать автосписание по текущему тарифу.
+        </p>
       </div>
     </motion.section>
   );

@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/vpn-frontend/static/css/main.ebba7e93.css",
-    "main.js": "/vpn-frontend/static/js/main.a1f0bac6.js",
+    "main.css": "/vpn-frontend/static/css/main.8db094dc.css",
+    "main.js": "/vpn-frontend/static/js/main.45b016ed.js",
     "static/js/787.0aaa55be.chunk.js": "/vpn-frontend/static/js/787.0aaa55be.chunk.js",
     "static/media/ActayWide-Bold.otf": "/vpn-frontend/static/media/ActayWide-Bold.caa5b9cf6208eb686929.otf",
     "static/media/Actay-Regular.otf": "/vpn-frontend/static/media/Actay-Regular.5d1905c4a1e4369e5c0a.otf",
     "static/media/options-icon.svg": "/vpn-frontend/static/media/options-icon.8a13270e3baef690e3248cc55063dd29.svg",
+    "index.html": "/vpn-frontend/index.html",
     "static/media/error-robo.svg": "/vpn-frontend/static/media/error-robo.6873b5903b5875b990251d783016e0a3.svg",
     "static/media/checkbox-checked.svg": "/vpn-frontend/static/media/checkbox-checked.fa9311d7dec9cdd880be25662ff650a7.svg",
-    "index.html": "/vpn-frontend/index.html",
     "static/media/intro_smile_0.svg": "/vpn-frontend/static/media/intro_smile_0.06663b430fd79f5f1be8afe085d074a6.svg",
     "static/media/sector1.svg": "/vpn-frontend/static/media/sector1.c2b381e112ab6021709ad3e60380f3f8.svg",
     "static/media/sector2.svg": "/vpn-frontend/static/media/sector2.97cd8667e55c204b05a6e38a0d40153e.svg",
@@ -18,12 +18,12 @@
     "static/media/checkbox-not-checked.svg": "/vpn-frontend/static/media/checkbox-not-checked.7e1d1e16f2c5fae7a4c04580c7e90a62.svg",
     "static/media/check.svg": "/vpn-frontend/static/media/check.a6151888542feae6b5840a95a69ed0b8.svg",
     "static/media/payment-checkbox.svg": "/vpn-frontend/static/media/payment-checkbox.80fb623a43ba32add35b895e68ee9832.svg",
-    "main.ebba7e93.css.map": "/vpn-frontend/static/css/main.ebba7e93.css.map",
-    "main.a1f0bac6.js.map": "/vpn-frontend/static/js/main.a1f0bac6.js.map",
+    "main.8db094dc.css.map": "/vpn-frontend/static/css/main.8db094dc.css.map",
+    "main.45b016ed.js.map": "/vpn-frontend/static/js/main.45b016ed.js.map",
     "787.0aaa55be.chunk.js.map": "/vpn-frontend/static/js/787.0aaa55be.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ebba7e93.css",
-    "static/js/main.a1f0bac6.js"
+    "static/css/main.8db094dc.css",
+    "static/js/main.45b016ed.js"
   ]
 }

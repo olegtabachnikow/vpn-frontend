@@ -6,6 +6,7 @@ export const reducer = combineReducers({
   prices: pricesReducer,
   direction: currentDirectionReducer,
   currentCountry: currentCountryReducer,
+  paymentUrl: paymentUrlReducer,
 });
 
 function currentUserReducer(state = {}, action) {
@@ -19,6 +20,14 @@ function currentUserReducer(state = {}, action) {
 function paymentReducer(state = 0, action) {
   switch (action.type) {
     case 'PAYMENT/SET':
+      return action.payload;
+    default:
+      return state;
+  }
+}
+function paymentUrlReducer(state = 'success', action) {
+  switch (action.type) {
+    case 'PAYMENT_URL/SET':
       return action.payload;
     default:
       return state;

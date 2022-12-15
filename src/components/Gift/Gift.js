@@ -6,7 +6,11 @@ import { useSwipeable } from 'react-swipeable';
 import { useSelector } from 'react-redux';
 import FormLabel from '../FormLabel/FormLabel';
 import { useNavigate } from 'react-router-dom';
-import { setDirection, setPayment } from '../../redux/actions/actions';
+import {
+  setDirection,
+  setPayment,
+  setPaymentUrl,
+} from '../../redux/actions/actions';
 import { motion } from 'framer-motion';
 import { directionVariants } from '../../utils/directionOptions';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
@@ -60,6 +64,7 @@ function Gift() {
     handleClick();
   }
   function handlePaymentSubmit() {
+    setPaymentUrl('gift-success');
     setDirection(true);
     if (value === '2') {
       currentUser.giftDiscount > 0

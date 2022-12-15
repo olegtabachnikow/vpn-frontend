@@ -18,14 +18,20 @@ function RoboApiProvider({ children }) {
       return parseInt(data.replace('/', ''));
     }
   };
+  const userPayedFor = () => queryParams.get('path');
 
   function getUser(id = 294899214) {
+    const pathAfterPay = userPayedFor();
     getCurrentUser(id)
       .then((res) => {
         setCurrentUser(res);
         setCurrentCountry(res.domainId);
         setIsLoading(false);
-        !res.activeUser ? navigate('/intro') : navigate('/');
+        if (!res.activeUser) {
+          navigate('/intro');
+        } else {
+          pathAfterPay ? navigate(pathAfterPay) : navigate('/');
+        }
         console.log(res);
       })
       .catch(() => {

@@ -22,6 +22,7 @@ import Referral from '../Referral/Referral';
 import Help from '../Help/Help';
 import { AnimatePresence } from 'framer-motion';
 import ErrorPage from '../ErrorPage/ErrorPage';
+import GiftSuccess from '../GiftSuccess/GiftSuccess';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -49,6 +50,7 @@ function AnimatedRoutes() {
         <Route path='/options/*' element={<Options />} />
         <Route path='/message-us' element={<MessageUs />} />
         <Route path='/error' element={<ErrorPage />} />
+        <Route path='/gift-success' element={<GiftSuccess />} />
       </Routes>
     </AnimatePresence>
   );

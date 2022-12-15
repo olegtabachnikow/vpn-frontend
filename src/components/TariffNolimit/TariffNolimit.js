@@ -14,6 +14,9 @@ function TariffNolimit({ handler, error, value, setValue, setIsHidden }) {
     let newDate = new Date(date);
     return newDate.setMonth(newDate.getMonth() + count);
   }
+  const getProfitValue = (main, secondary, count) =>
+    main * count - secondary * count;
+
   return (
     <TariffesTemplate
       currentClass='nolimit'
@@ -53,10 +56,20 @@ function TariffNolimit({ handler, error, value, setValue, setIsHidden }) {
               : null
           }
           valueMain={`${prices.Nolimit_3} ₽/мес`}
-          valueSecondary={`${prices.Nolimit_3 * 3}₽ всего`}
+          valueSecondary={
+            value === '' + prices.Nolimit_3 * 3
+              ? `${prices.Nolimit_3 * 3}₽ всего`
+              : null
+          }
           isDiscounted={true}
           discountValue={
-            value === '' + prices.Nolimit_3 * 3 ? 'Выгода 90₽' : null
+            value === '' + prices.Nolimit_3 * 3
+              ? `Выгода ${getProfitValue(
+                  prices.Nolimit_1,
+                  prices.Nolimit_3,
+                  3
+                )}₽`
+              : null
           }
         />
         <FormLabel
@@ -71,10 +84,20 @@ function TariffNolimit({ handler, error, value, setValue, setIsHidden }) {
               : null
           }
           valueMain={`${prices.Nolimit_12} ₽/мес`}
-          valueSecondary={`${prices.Nolimit_12 * 12}₽ всего`}
+          valueSecondary={
+            value === '' + prices.Nolimit_12 * 12
+              ? `${prices.Nolimit_12 * 12}₽ всего`
+              : null
+          }
           isDiscounted={true}
           discountValue={
-            value === '' + prices.Nolimit_12 * 12 ? 'Выгода 720₽' : null
+            value === '' + prices.Nolimit_12 * 12
+              ? `Выгода ${getProfitValue(
+                  prices.Nolimit_1,
+                  prices.Nolimit_12,
+                  12
+                )}₽`
+              : null
           }
         />
       </div>

@@ -14,13 +14,14 @@ export function getPrices() {
     headers: generateHeaders(),
   }).then(checkResponse);
 }
-export function getPaymentLink(id, value) {
+export function getPaymentLink(id, amount, path) {
   return fetch(`${API_URL}/payment`, {
     method: 'POST',
     headers: generateHeaders(),
     body: JSON.stringify({
       user_id: id,
-      amount: value,
+      amount,
+      path,
       desc: 'test1',
     }),
   }).then(checkResponse);

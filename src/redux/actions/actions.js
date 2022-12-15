@@ -13,6 +13,12 @@ const setPaymentAction = (payload) => {
     payload,
   };
 };
+const setPaymentUrlAction = (payload) => {
+  return {
+    type: 'PAYMENT_URL/SET',
+    payload,
+  };
+};
 const setPricesAction = (payload) => {
   return {
     type: 'PRICES/SET',
@@ -37,6 +43,7 @@ export const {
   setPrices,
   setDirection,
   setCurrentCountry,
+  setPaymentUrl,
 } = bindActionCreators(
   {
     setCurrentUser: setCurrentUserAction,
@@ -44,6 +51,7 @@ export const {
     setPrices: setPricesAction,
     setDirection: setDirectionAction,
     setCurrentCountry: setCurrentCountryAction,
+    setPaymentUrl: setPaymentUrlAction,
   },
   dispatch
 );

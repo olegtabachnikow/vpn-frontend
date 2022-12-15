@@ -5,11 +5,12 @@ import PaymentsEmailForm from '../PaymentsEmailForm/PaymentsEmailForm';
 import { useSelector } from 'react-redux';
 import FormLabel from '../FormLabel/FormLabel';
 import AppButton from '../AppButton/AppButton';
-import { getPaymentLink } from '../../utils/roboApi';
-import { setPaymentUrl } from '../../redux/actions/actions';
+import { getPaymentLink, payWithBalance } from '../../utils/roboApi';
+import { setCurrentUser, setPaymentUrl } from '../../redux/actions/actions';
 import { motion } from 'framer-motion';
 import { directionVariants } from '../../utils/directionOptions';
 import useAnalyticsEventTracker from '../../hooks/useAnanlyticsEventTracker';
+import { useNavigate } from 'react-router-dom';
 
 function Payment() {
   const payment = useSelector((state) => state.payment);
@@ -18,16 +19,33 @@ function Payment() {
   const paymentUrl = useSelector((state) => state.paymentUrl);
   const [withBalance, setWithBalance] = React.useState(false);
   const [method, setMethod] = React.useState('');
+  const navigate = useNavigate();
   const gaEventTracker = useAnalyticsEventTracker('payment');
 
   function handlePay() {
+    const balanceInUse = withBalance ? 1 : 0;
     gaEventTracker('click', 'payment button click');
-    getPaymentLink(currentUser.userId, payment.toString(), paymentUrl)
-      .then((res) => {
-        window.location.href = res;
-        setPaymentUrl('success');
-      })
-      .catch((err) => console.log(err));
+    if (withBalance && currentUser.balance > payment) {
+      payWithBalance(currentUser.userId, payment.toString())
+        .then((res) => {
+          setCurrentUser(res);
+          navigate(paymentUrl);
+          setPaymentUrl('success');
+        })
+        .catch((err) => console.log(err));
+    } else {
+      getPaymentLink(
+        currentUser.userId,
+        payment.toString(),
+        paymentUrl,
+        balanceInUse
+      )
+        .then((res) => {
+          window.location.href = res;
+          setPaymentUrl('success');
+        })
+        .catch((err) => console.log(err));
+    }
   }
   return (
     <motion.section
@@ -66,14 +84,21 @@ function Payment() {
               handler={(data) => setMethod(data)}
               disabled={true}
             />
-            <FormLabel
-              name='balance'
-              currentClass='form-label__method'
-              title='Оплатить за счет баланса'
-              text={`На вашем балансе ${currentUser.balance} ₽`}
-              elementValue='balance'
-              handler={() => setWithBalance(true)}
-            />
+            <motion.label
+              className='form-label__method checkbox'
+              whileTap={{ scale: 0.95 }}
+            >
+              <span className='form-label__title form-label__title_moved'>
+                Оплатить за счет баланса
+              </span>
+              <span className='form-label__text-secondary'>{`На вашем балансе ${currentUser.balance} ₽`}</span>
+              <input
+                className='form-label__radio-input'
+                type='checkbox'
+                checked={withBalance}
+                onChange={() => setWithBalance((state) => !state)}
+              />
+            </motion.label>
           </div>
           <div className='payment__button-box'>
             <div className='payment__value'>

@@ -22,17 +22,23 @@ function CopyToClipboardField({ currentClass, data, gaAction }) {
     <motion.button
       type='button'
       onClick={copyToClipboard}
-      className={`copy-to-clipboard ${currentClass}`}
+      className={`copy-to-clipboard ${currentClass} ${isCopied && 'high'}`}
       whileTap={{ scale: 0.98 }}
     >
       <span className='copy-to-clipboard__key'>{data}</span>
-      {
-        <img
-          className='copy-to-clipboard__copy-icon'
-          src={!isCopied ? copyIcon : copiedIcon}
-          alt='copy'
-        />
-      }
+      <img className='copy-to-clipboard__copy-icon' src={copyIcon} alt='copy' />
+      {isCopied && (
+        <div className={`copy-to-clipboard__popup ${currentClass}`}>
+          <span className='copy-to-clipboard__popup-text'>
+            Ссылка скопирована, всё гуд!
+          </span>
+          <img
+            className='copy-to-clipboard__popup-icon'
+            src={copiedIcon}
+            alt='copied'
+          />
+        </div>
+      )}
     </motion.button>
   );
 }

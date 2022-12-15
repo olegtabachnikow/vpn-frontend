@@ -18,7 +18,8 @@
 .app-gift,
 .app-options,
 .app-optionscomplete,
-.app-message-us {
+.app-message-us,
+.app-gift-success {
   background-color: #ffbe30;
 }
 .app-referral,

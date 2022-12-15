@@ -82,7 +82,7 @@
 .referral__tips {
   font-size: 1.1rem;
   line-height: 1.3rem;
-  margin-bottom: 20px;
+  margin: 0 0 20px 0;
   width: 100%;
   font-family: 'Inter', sans-serif;
 }

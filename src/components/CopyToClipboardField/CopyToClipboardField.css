@@ -6,18 +6,18 @@
   align-items: center;
   border: 1.5px solid #348ff3;
   border-radius: 13px;
-  padding: 8px 17px;
+  padding: 8.5px 17px;
   color: var(--blue);
   font-size: 1.4rem;
   font-weight: 400;
   line-height: 2.1rem;
-  box-sizing: border-box;
   word-wrap: break-word;
   text-decoration: underline;
   position: relative;
   margin: 15px 0;
   background-color: transparent;
   text-align: left;
+  box-sizing: border-box;
 }
 .copy-to-clipboard__key {
   width: 100%;
@@ -34,7 +34,7 @@
   height: auto;
   color: var(--white);
   border-color: var(--white);
-  margin-top: 0;
+  margin: 0 0 3rem 0;
   justify-content: flex-start;
   width: 100%;
   padding-left: 10px;
@@ -77,7 +77,9 @@
   width: 25px;
   top: 17%;
 }
-
+.copy-to-clipboard.high .copy-to-clipboard__copy-icon {
+  top: 35%;
+}
 .copy-to-clipboard.options .copy-to-clipboard__key {
   font-size: 1.4rem;
   line-height: 1.4rem;
@@ -87,4 +89,81 @@
   text-overflow: ellipsis;
   width: 250px;
   text-decoration: underline;
+}
+.copy-to-clipboard__popup {
+  position: absolute;
+  left: -2px;
+  bottom: 0;
+  transform: translateY(30%);
+  width: calc(100% + 3px);
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.copy-to-clipboard__popup.referral__copy-to-clipboard {
+  color: var(--violet);
+  background-color: var(--white);
+  display: flex;
+  border-radius: 13px;
+  padding: 5px 15px;
+  margin-bottom: 0;
+}
+.referral__copy-to-clipboard.high {
+  padding-bottom: 2.3rem;
+  margin-bottom: 1.5rem;
+}
+.copy-to-clipboard__popup.referral__copy-to-clipboard
+  .copy-to-clipboard__popup-icon {
+  position: absolute;
+  right: 5px;
+  filter: invert(45%) sepia(66%) saturate(929%) hue-rotate(210deg)
+    brightness(93%) contrast(99%);
+}
+.copy-to-clipboard__popup.options {
+  color: var(--orange);
+  background-color: var(--white);
+  display: flex;
+  border-radius: 13px;
+  padding: 5px 15px;
+  margin-bottom: 0;
+  height: auto;
+  width: 100%;
+  left: 0;
+}
+.copy-to-clipboard__popup.options .copy-to-clipboard__popup-icon {
+  position: absolute;
+  right: 5px;
+  filter: invert(59%) sepia(82%) saturate(1243%) hue-rotate(327deg)
+    brightness(101%) contrast(101%);
+}
+.copy-to-clipboard.options.high {
+  padding-bottom: 3rem;
+  margin-bottom: 1.5rem;
+}
+.copy-to-clipboard.options.high .copy-to-clipboard__copy-icon {
+  top: 10%;
+}
+
+.copy-to-clipboard__popup.instruction__copy-to-clipboard {
+  color: var(--white);
+  background-color: var(--blue);
+  display: flex;
+  border-radius: 13px;
+  padding: 5px 15px;
+  height: auto;
+  transform: translateY(35%);
+}
+.copy-to-clipboard__popup.instruction__copy-to-clipboard
+  .copy-to-clipboard__popup-icon {
+  position: absolute;
+  right: 5px;
+  filter: invert(98%) sepia(6%) saturate(21%) hue-rotate(275deg)
+    brightness(106%) contrast(100%);
+}
+.copy-to-clipboard.instruction__copy-to-clipboard.high {
+  margin-bottom: 1.5rem;
+  height: 99px;
+}
+.copy-to-clipboard.instruction__copy-to-clipboard.high
+  .copy-to-clipboard__copy-icon {
+  top: 5px;
 }

@@ -121,7 +121,7 @@ function Instruction() {
               data={currentUser.link}
               gaAction='Install_copy'
             />
-            <div>
+            <div className='instruction__text-case'>
               <p className='instruction__text'>
                 2. Скачай приложение
                 <span className='instruction__text_colored'> Outline </span>

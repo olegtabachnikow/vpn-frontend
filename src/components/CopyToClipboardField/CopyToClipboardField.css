@@ -138,6 +138,7 @@
 .copy-to-clipboard.options.high {
   padding-bottom: 3rem;
   margin-bottom: 1.5rem;
+  height: auto;
 }
 .copy-to-clipboard.options.high .copy-to-clipboard__copy-icon {
   top: 10%;

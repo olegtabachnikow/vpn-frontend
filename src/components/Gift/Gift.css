@@ -135,6 +135,6 @@
     margin-top: 20px;
   }
   .gift__popup-text:last-of-type {
-    margin-bottom: 20px;
+    margin-bottom: auto;
   }
 }

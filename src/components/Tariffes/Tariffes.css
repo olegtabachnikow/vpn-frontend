@@ -46,3 +46,11 @@
     padding-bottom: 16px;
   }
 }
+@media screen and (max-height: 552px) {
+  .tariffes__popup-overlay {
+    height: 86%;
+  }
+  .tariffes__popup-container {
+    margin-bottom: 0;
+  }
+}

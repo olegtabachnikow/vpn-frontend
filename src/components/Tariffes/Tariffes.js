@@ -52,7 +52,7 @@ function Tariffes() {
   return (
     <>
       <motion.section
-        className='tariffes'
+        className={`tariffes ${location.pathname.replace('/tariffes/', '')}`}
         initial={direction ? 'fromLeft' : 'fromRight'}
         animate={{
           x: 0,

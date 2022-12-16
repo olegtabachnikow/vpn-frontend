@@ -40,4 +40,9 @@
   .tariffes__popup-container {
     margin-bottom: 5%;
   }
+  .tariffes.free,
+  .tariffes.fit,
+  .tariffes.nolimit {
+    padding-bottom: 16px;
+  }
 }

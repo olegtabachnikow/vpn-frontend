@@ -225,4 +225,8 @@
   .tariffes__content-fit {
     margin: 5px 0;
   }
+  .form-label {
+    padding: 10px;
+    min-height: 50px;
+  }
 }

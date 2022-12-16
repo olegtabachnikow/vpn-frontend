@@ -45,7 +45,6 @@ function Options() {
     const smart = smartActive ? 1 : 0;
     setOptions(currentUser.userId, smart, isCommunicateActive, country)
       .then((res) => {
-        console.log(res);
         setCurrentUser(res);
         navigate('/options/complete');
       })
@@ -120,7 +119,7 @@ function Options() {
               <BackButton
                 text='Мой VPN'
                 currentClass='white'
-                path={-1}
+                path={'/my-vpn'}
                 title='Ручная настройка'
               />
               <div

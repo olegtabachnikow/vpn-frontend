@@ -93,7 +93,7 @@ function Payment() {
               </span>
               <span className='form-label__text-secondary'>{`На вашем балансе ${currentUser.balance} ₽`}</span>
               <input
-                className='form-label__radio-input'
+                className='form-label__radio-input checkbox'
                 type='checkbox'
                 checked={withBalance}
                 onChange={() => setWithBalance((state) => !state)}

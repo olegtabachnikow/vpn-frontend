@@ -16,6 +16,19 @@ function TariffNolimit({ handler, error, value, setValue, setIsHidden }) {
   }
   const getProfitValue = (main, secondary, count) =>
     main * count - secondary * count;
+  const isNolimitOneChecked = value * 1 === prices.Nolimit_1;
+  const isNolimitThreeChecked = value * 1 === prices.Nolimit_3 * 3;
+  const isNolimitYearChecked = value * 1 === prices.Nolimit_12 * 12;
+
+  function getTotalDiscountedValue(plan, months) {
+    if (currentUser.discount) {
+      return Math.round(
+        plan * months - ((plan * months) / 100) * currentUser.discount
+      );
+    } else {
+      return Math.round(plan * months);
+    }
+  }
 
   return (
     <TariffesTemplate
@@ -30,26 +43,33 @@ function TariffNolimit({ handler, error, value, setValue, setIsHidden }) {
           elementValue={prices.Nolimit_1}
           name='package'
           handler={(data) => setValue(data)}
-          currentClass='tariff-item-nolimit'
+          currentClass={`tariff-item-nolimit ${
+            isNolimitOneChecked && 'tariff-plan-checked'
+          }`}
           title='Месяц'
           text={
-            value === '' + prices.Nolimit_1
+            isNolimitOneChecked
               ? `Забудь про ограничения до ${parseTimestamp(
                   addMonths(currentUser.endDate, 1)
                 )}`
               : null
           }
           valueMain={`${prices.Nolimit_1} ₽/мес`}
-          isDiscounted={false}
+          isDiscounted={currentUser.discount ? true : false}
+          currentUserDiscount={
+            isNolimitOneChecked ? currentUser.discount : null
+          }
         />
         <FormLabel
           elementValue={prices.Nolimit_3}
           name='package'
           handler={(data) => setValue((data * 3).toString())}
-          currentClass='tariff-item-nolimit'
+          currentClass={`tariff-item-nolimit ${
+            isNolimitThreeChecked && 'tariff-plan-checked'
+          }`}
           title='3 месяца'
           text={
-            value === '' + prices.Nolimit_3 * 3
+            isNolimitThreeChecked
               ? `Забудь про ограничения до ${parseTimestamp(
                   addMonths(currentUser.endDate, 3)
                 )}`
@@ -57,13 +77,13 @@ function TariffNolimit({ handler, error, value, setValue, setIsHidden }) {
           }
           valueMain={`${prices.Nolimit_3} ₽/мес`}
           valueSecondary={
-            value === '' + prices.Nolimit_3 * 3
-              ? `${prices.Nolimit_3 * 3}₽ всего`
+            isNolimitThreeChecked
+              ? `${getTotalDiscountedValue(prices.Nolimit_3, 3)}₽ всего`
               : null
           }
           isDiscounted={true}
-          discountValue={
-            value === '' + prices.Nolimit_3 * 3
+          profitValue={
+            isNolimitThreeChecked
               ? `Выгода ${getProfitValue(
                   prices.Nolimit_1,
                   prices.Nolimit_3,
@@ -71,33 +91,39 @@ function TariffNolimit({ handler, error, value, setValue, setIsHidden }) {
                 )}₽`
               : null
           }
+          currentUserDiscount={
+            isNolimitThreeChecked ? currentUser.discount : null
+          }
         />
         <FormLabel
           elementValue={prices.Nolimit_12}
           name='package'
           handler={(data) => setValue((data * 12).toString())}
-          currentClass='tariff-item-nolimit'
+          currentClass={`tariff-item-nolimit ${
+            isNolimitYearChecked && 'tariff-plan-checked'
+          }`}
           title='12 месяцев'
           text={
-            value === '' + prices.Nolimit_12 * 12
-              ? 'Год матрицы без ограничений, Нео'
-              : null
+            isNolimitYearChecked ? 'Год матрицы без ограничений, Нео' : null
           }
           valueMain={`${prices.Nolimit_12} ₽/мес`}
           valueSecondary={
-            value === '' + prices.Nolimit_12 * 12
-              ? `${prices.Nolimit_12 * 12}₽ всего`
+            isNolimitYearChecked
+              ? `${getTotalDiscountedValue(prices.Nolimit_12, 12)}₽ всего`
               : null
           }
           isDiscounted={true}
-          discountValue={
-            value === '' + prices.Nolimit_12 * 12
+          profitValue={
+            isNolimitYearChecked
               ? `Выгода ${getProfitValue(
                   prices.Nolimit_1,
                   prices.Nolimit_12,
                   12
                 )}₽`
               : null
+          }
+          currentUserDiscount={
+            isNolimitYearChecked ? currentUser.discount : null
           }
         />
       </div>

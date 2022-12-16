@@ -54,6 +54,7 @@
   justify-content: center;
 }
 .form-label__value-main {
+  text-align: right;
   font-size: 1.6rem;
   font-weight: 700;
 }
@@ -91,22 +92,6 @@
 .form-label-item-gift_discounted .form-label__value-secondary {
   display: block;
 }
-.form-label__discount-box {
-  position: absolute;
-  background-color: var(--white);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 12px;
-  font-family: 'Inter', sans-serif;
-  font-weight: 900;
-  font-size: 10px;
-  line-height: 1.2rem;
-  padding: 6px 12px;
-  top: -12px;
-  right: 11px;
-}
-.form-label-item-gift_discounted .form-label__discount-box {
-  color: var(--orange);
-}
 .form-label.tariff-item-fit {
   width: 100%;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -130,8 +115,8 @@
   flex-direction: column;
   align-items: flex-end;
 }
-.tariff-item-fit .form-label__discount-box {
-  color: var(--orange);
+.form-label__value-main_crossed {
+  text-decoration: line-through;
 }
 .form-label.tariff-item-nolimit:first-of-type,
 .form-label.tariff-item-fit:first-of-type {
@@ -153,6 +138,7 @@
   display: inline-block;
   font-size: 10px;
   font-family: 'Inter', sans-serif;
+  font-weight: 400;
   width: 100%;
   text-align: right;
   margin-top: 3px;
@@ -165,9 +151,6 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-}
-.tariff-item-nolimit .form-label__discount-box {
-  color: var(--rose);
 }
 .form-label__method {
   color: var(--dark-blue);
@@ -202,10 +185,7 @@
   font-weight: 400;
   text-decoration: none !important;
 }
-.form-label__discount-box.recomended {
-  color: var(--rose);
-  box-shadow: 0px 4px 4px rgba(249, 82, 115, 0.8);
-}
+
 .form-label.recomended {
   box-shadow: 0px 4px 4px rgba(249, 82, 115, 0.8);
 }
@@ -220,6 +200,18 @@
 .form-label__radio-input.checkbox {
   position: absolute;
   right: 0;
+}
+.form-label__discounted-items {
+  position: absolute;
+  height: 2rem;
+  width: 100%;
+  top: 0;
+  left: 0;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 10px;
+  box-sizing: border-box;
 }
 @media screen and (max-height: 552px) {
   .tariffes__content-fit {

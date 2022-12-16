@@ -2,6 +2,7 @@ import React from 'react';
 import './FormLabel.css';
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
+import FormLabelDiscount from '../FormLabelDiscount/FormLabelDiscount';
 
 function FormLabel({
   elementValue,
@@ -12,12 +13,27 @@ function FormLabel({
   text,
   valueMain,
   valueSecondary,
-  isDiscounted,
-  discountValue,
+  profitValue,
   defaultChecked,
+  isDiscounted,
   disabled,
+  currentUserDiscount,
+  isRecommended,
 }) {
-  const isRecommended = discountValue === 'Рекомендуем';
+  const [discountItems, setDiscountItems] = React.useState([]);
+  const valueDiscounted = Math.round(
+    parseInt(valueMain) - (parseInt(valueMain) / 100) * currentUserDiscount
+  );
+
+  React.useEffect(() => {
+    setDiscountItems(
+      [
+        currentUserDiscount ? '-' + currentUserDiscount + '%' : null,
+        profitValue,
+        isRecommended ? 'Рекомендуем' : null,
+      ].filter((el) => !!el)
+    );
+  }, [currentUserDiscount, profitValue, isRecommended]);
   return (
     <motion.label
       className={`form-label ${currentClass} ${isRecommended && 'recomended'}`}
@@ -48,7 +64,17 @@ function FormLabel({
             <span
               className={`form-label__value-main form-label__value-main-${currentClass}`}
             >
-              {valueMain}
+              {currentUserDiscount ? (
+                <>
+                  <span className='form-label__value-main_crossed'>
+                    {parseInt(valueMain)}
+                  </span>
+                  <br />
+                  <span>{valueDiscounted + '₽/мес'}</span>
+                </>
+              ) : (
+                valueMain
+              )}
             </span>
           )}
           {valueSecondary && (
@@ -58,14 +84,12 @@ function FormLabel({
           )}
         </div>
       </div>
-      {isDiscounted && discountValue ? (
-        <span
-          className={`form-label__discount-box ${
-            isRecommended && 'recomended'
-          }`}
-        >
-          {discountValue}
-        </span>
+      {isDiscounted ? (
+        <motion.div className='form-label__discounted-items'>
+          {discountItems.map((item, i) => (
+            <FormLabelDiscount item={item} key={i} />
+          ))}
+        </motion.div>
       ) : null}
     </motion.label>
   );
@@ -80,9 +104,11 @@ FormLabel.propTypes = {
   text: PropTypes.string,
   valueMain: PropTypes.string,
   valueSecondary: PropTypes.string,
-  isDiscounted: PropTypes.bool,
-  discountValue: PropTypes.string,
+  profitValue: PropTypes.string,
   defaultChecked: PropTypes.bool,
   disabled: PropTypes.bool,
+  currentUserDiscount: PropTypes.number,
+  isDiscounted: PropTypes.bool,
+  isRecommended: PropTypes.bool,
 };
 export default FormLabel;

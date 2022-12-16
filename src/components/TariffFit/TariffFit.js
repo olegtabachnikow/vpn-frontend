@@ -15,6 +15,8 @@ function TariffFit({
   setIsRecommendHidden,
 }) {
   const prices = useSelector((state) => state.prices);
+  const currentUser = useSelector((state) => state.currentUser);
+
   return (
     <TariffesTemplate
       currentClass='fit'
@@ -35,7 +37,10 @@ function TariffFit({
           text={null}
           valueMain={`${prices.Fix_5} ₽`}
           valueSecondary='разовый платеж'
-          isDiscounted={false}
+          isDiscounted={currentUser.discount ? true : false}
+          currentUserDiscount={
+            value * 1 === prices.Fix_5 ? currentUser.discount : null
+          }
         />
         <FormLabel
           elementValue={prices.Fix_10}
@@ -46,9 +51,11 @@ function TariffFit({
           text={null}
           valueMain={`${prices.Fix_10} ₽`}
           valueSecondary='разовый платеж'
+          profitValue={value * 1 === prices.Fix_10 ? 'Выгода 6%' : null}
+          isRecommended={true}
           isDiscounted={true}
-          discountValue={
-            value === '' + prices.Fix_10 ? 'Выгода 6%' : 'Рекомендуем'
+          currentUserDiscount={
+            value * 1 === prices.Fix_10 ? currentUser.discount : null
           }
         />
         <FormLabel
@@ -61,7 +68,10 @@ function TariffFit({
           valueMain={`${prices.Fix_20} ₽`}
           valueSecondary='разовый платеж'
           isDiscounted={true}
-          discountValue={value === '' + prices.Fix_20 ? 'Выгода 17%' : null}
+          profitValue={value * 1 === prices.Fix_20 ? 'Выгода 17%' : null}
+          currentUserDiscount={
+            value * 1 === prices.Fix_20 ? currentUser.discount : null
+          }
         />
       </div>
     </TariffesTemplate>

@@ -45,7 +45,9 @@ function Tariffes() {
       return;
     } else {
       setDirection(true);
-      setPayment(parseInt(value));
+      currentUser.discount
+        ? setPayment(Math.floor(value - (value / 100) * currentUser.discount))
+        : setPayment(parseInt(value));
       navigate('/payment');
     }
   }

@@ -51,7 +51,7 @@ function Instruction() {
   function handleClick() {
     if (progress > 1) {
       setDirection(true);
-      navigate('/');
+      currentUser.activeUser ? navigate('/') : setProgress(2);
     } else {
       setIsFaded(true);
       setTimeout(setProgress, 300, (state) => ++state);

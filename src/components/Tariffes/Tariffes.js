@@ -168,7 +168,7 @@ function Tariffes() {
           <p className='tariffes__free-widget-info-text'>
             — В этом месяце: вы получили:{' '}
             <span className='tariffes__free-widget-info-text_bold'>
-              {currentUser.traffic} Гб
+              {currentUser.extra5gb ? 10 : 5} Гб
             </span>
           </p>
           <p className='tariffes__free-widget-info-text'>

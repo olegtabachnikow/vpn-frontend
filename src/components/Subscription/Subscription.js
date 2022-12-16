@@ -67,7 +67,7 @@ function Subscription() {
             <span className='subscription__widget-text'>
               Алгоритм робо думает, что трафика{' '}
               <b>{!currentUser.trafficMonth && 'не'} хватит</b> до следующих
-              бесплатных 5 Гб
+              бесплатных {currentUser.extra5gb ? 10 : 5} Гб
             </span>
           </div>
         </div>
@@ -76,9 +76,10 @@ function Subscription() {
         >
           {isFree ? (
             <span className='subscription__widget-text_secondary'>
-              В следующем месяце вам будет начислено <b>только 5 Гб</b>{' '}
-              бесплатного трафика. Мы начисляем 10 начиная со второго месяца
-              тем, кто делает хотя бы одну покупку.
+              В этом месяце вам начислено{' '}
+              <b>{currentUser.extra5gb ? 10 : 'только 5'} Гб</b> бесплатного
+              трафика. Мы начисляем 10 начиная со второго месяца тем, кто делает
+              хотя бы одну покупку.
             </span>
           ) : (
             <span className='subscription__widget-text_secondary'>

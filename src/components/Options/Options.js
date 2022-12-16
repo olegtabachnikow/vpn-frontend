@@ -37,8 +37,9 @@ function Options() {
   const [isSmartPopupOpen, setIsSmartPopupOpen] = React.useState(false);
   const [isCommunicatePopupOpen, setIsCommunicatePopupOpen] =
     React.useState(false);
+  const [isCarePopupOpen, setIsCarePopupOpen] = React.useState(false);
   const [isOverlayActive, setIsOverlayActive] = React.useState(false);
-  const isNolimit = currentUser.tariff === 'NOLIMIT';
+  const isNotFree = currentUser.tariff !== 'FREE';
 
   function handleGenerateLink() {
     const smart = smartActive ? 1 : 0;
@@ -55,6 +56,7 @@ function Options() {
     setIsSmartPopupOpen(false);
     setIsCommunicatePopupOpen(false);
     setIsOverlayActive(false);
+    setIsCarePopupOpen(false);
   }
   function handleCountryItemClick(e, val) {
     e.stopPropagation();
@@ -65,6 +67,14 @@ function Options() {
       handleClose();
     } else {
       setIsSmartPopupOpen(true);
+      setIsOverlayActive(true);
+    }
+  }
+  function handleCarePopup() {
+    if (isCarePopupOpen) {
+      handleClose();
+    } else {
+      setIsCarePopupOpen(true);
       setIsOverlayActive(true);
     }
   }
@@ -89,6 +99,7 @@ function Options() {
       setCountry(currentUser.domainId);
       setIsCommunicateActive(currentUser.care);
       setIsSmartActive(currentUser.smart);
+      setCurrentCountry(currentUser.domainId);
     }
   }, []);
 
@@ -113,7 +124,10 @@ function Options() {
                 title='Ручная настройка'
               />
               <div
-                onClick={(e) => e.stopPropagation()}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleClose();
+                }}
                 className={`options__overlay ${isOverlayActive && 'active'}`}
               />
               <div className='options__content'>
@@ -274,6 +288,33 @@ function Options() {
                   <h2 className='options__item-title communicate'>
                     Коммуникация с robo в Telegram
                   </h2>
+                  <p
+                    onClick={handleCarePopup}
+                    className='options__item-button-text'
+                  >
+                    Подробнее.
+                  </p>
+                  <div
+                    className={`options__popup care ${
+                      isCarePopupOpen && 'active'
+                    }`}
+                  >
+                    <p className='options__popup-text'>
+                      Robo скажет, если ркн заблокирует ваш сервер и предложит
+                      сразу новый, напомнит об окончании тарифа, поможет с
+                      установкой. И не только.
+                    </p>
+                    <button
+                      onClick={handleClose}
+                      className='options__popup-close-button'
+                    >
+                      <img
+                        className='options__popup-close-button-image'
+                        src={closeButton}
+                        alt='close'
+                      />
+                    </button>
+                  </div>
                   <div
                     onClick={() =>
                       isCommunicateActive
@@ -284,7 +325,7 @@ function Options() {
                   >
                     <img
                       src={
-                        isNolimit
+                        isNotFree
                           ? isCommunicateActive
                             ? checkboxChecked
                             : checkboxNotChecked
@@ -298,7 +339,7 @@ function Options() {
                       isCommunicatePopupOpen && 'active'
                     }`}
                   >
-                    {isNolimit ? (
+                    {isNotFree ? (
                       <>
                         <p className='options__popup-text'>
                           Внимание! При отключении коммуникации с ботом, мы

@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
 import { directionVariants } from '../../utils/directionOptions';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
+import { translations } from '../../utils/translations/translations';
 
 function Referral() {
   const [isReferPopupHidden, setIsReferPopupHidden] = React.useState(true);
@@ -21,52 +22,52 @@ function Referral() {
       exit={direction ? 'exitToRight' : 'exitToLeft'}
       variants={directionVariants}
     >
-      <BurgerMenu color='#fff' />
+      <BurgerMenu color='var(--white)' />
       <BackButton
-        text='Назад'
+        text={translations.ru.backButton.back}
         path={-1}
         currentClass='white'
-        title='Реферальная программа'
+        title={translations.ru.textTips.referral}
       />
       <div className='referral__content'>
         <div className='referral__text-box'>
           <h1 className='referral__title'>
-            10 гб вам — <br />
-            10 гб другу
+            {translations.ru.referral.refTitle1}
+            <br />
+            {translations.ru.referral.refTitle2}
           </h1>
           <p className='referral__text'>
-            Итого 20 Гб — от нас для вас. Как только приглашенный пользователь
-            совершит первую оплату (от 79 ₽).
+            {translations.ru.referral.refSubtitle}
           </p>
         </div>
         <div className='referral__stats'>
           <div className='referral__stat referral__stat_small'>
             <span className='referral__stat-value'>{currentUser.refUsers}</span>
             <p className='referral__stat-text'>
-              количество приглашенных пользователей
+              {translations.ru.referral.refWidgetInvitedUsers}
             </p>
           </div>
           <div className='referral__stat referral__stat_small'>
             <span className='referral__stat-value'>
-              {currentUser.refBalance} Гб
+              {currentUser.refBalance + translations.ru.textTips.gb}
             </span>
             <p className='referral__stat-text'>
-              кол-во заработанных Гб на реферальной программе
+              {translations.ru.referral.refWidgetTrafficRef}
             </p>
           </div>
           <div className='referral__stat referral__stat_big'>
             <span className='referral__stat-value'>
-              {currentUser.refUsers * 5} Гб
+              {currentUser.refUsers * 5 + translations.ru.textTips.gb}
             </span>
             <p className='referral__stat-text'>
-              такой объем свободной информации получили друзья благодаря вам{' '}
-              {'<3'}
+              {translations.ru.referral.refUsersGetTraffic}
+              {' <3'}
             </p>
           </div>
         </div>
         <div className='referral__button-container'>
           <p className='referral__tips'>
-            Скопируйте ссылку и поделитесь в другом:
+            {translations.ru.referral.refTipCopyLink}
           </p>
           <CopyToClipboardField
             currentClass='referral__copy-to-clipboard'
@@ -74,12 +75,12 @@ function Referral() {
             gaAction='Referral'
           />
           <p className='referral__tips'>
-            Участвуя в реферальной программе, вы принимаете ее условия.
+            {translations.ru.referral.refTipUserTerms}
           </p>
         </div>
       </div>
       <Popup
-        title='Подробные условия'
+        title={translations.ru.textTips.termsAndConditions}
         currentClass='popup-referral'
         isHidden={isReferPopupHidden}
         handleHide={setIsReferPopupHidden}
@@ -87,27 +88,19 @@ function Referral() {
         {
           <>
             <p className='referral__popup-text'>
-              1. Чтобы программа действовала — нужно поделиться ссылкой с
-              другом, а ему просто перейти по ней в телеграмм.
-            </p>{' '}
+              {translations.ru.referral.refPopupText1}
+            </p>
             <p className='referral__popup-text'>
-              2. Как только приглашенный сделает первую любую покупку (от 79 р.)
-              — будет начислено 20 гб, 10 вам и 10 приглашенному.
-            </p>{' '}
+              {translations.ru.referral.refPopupText2}
+            </p>
             <p className='referral__popup-text'>
-              3. Трафик за реферальную программу будет отображаться в разделях
-              "Трафик" и "Реферальная программа". В разделе "Трафик" вы можете
-              активировать использование бонусных гигабайтов в любой момент
-              времени. Они начнут ипользоваться сразу после того, как закончится
-              ваш текущий тариф.
-            </p>{' '}
+              {translations.ru.referral.refPopupText3}
+            </p>
             <p className='referral__popup-text'>
-              4. Программа действует только, если пользователь ранее не
-              регистрировался в нашем сервисе. регистрация — это переход в
-              телеграм на robo (запуск бота).
+              {translations.ru.referral.refPopupText4}
             </p>
             <AppButton
-              text='Понятно'
+              text={translations.ru.appButton.gotIt}
               currentClass='primary white margin-top bg-violet'
               handler={() => setIsReferPopupHidden(true)}
             />

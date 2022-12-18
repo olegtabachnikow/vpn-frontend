@@ -2,6 +2,7 @@ import React from 'react';
 import './Success.css';
 import AppButton from '../AppButton/AppButton';
 import { useNavigate } from 'react-router-dom';
+import { translations } from '../../utils/translations/translations';
 
 function Success() {
   const tg = window.Telegram.WebApp;
@@ -9,21 +10,19 @@ function Success() {
   return (
     <section className='success'>
       <p className='success__text'>
-        Оплата прошла успешно! Теперь ты можешь настроить свой впн и следить за{' '}
-        <u>оставшимся трафиком</u> в разделе <u>«мой впн»</u>.
+        {translations.ru.payment.paymentSuccessTitle}
       </p>
       <p className='success__text-secondary'>
-        Ты можешь довериться нашему <u>алгоритму настройки</u>, или все сделать
-        самостоятельно.
+        {translations.ru.payment.paymentSuccessText}
       </p>
       <div className='success__button-box'>
         <AppButton
-          text='Назад в Telegram'
+          text={translations.ru.appButton.backToTelegram}
           currentClass='success__app-button success__app-button-secondary'
           handler={() => tg.close()}
         />
         <AppButton
-          text='Мой ВПН'
+          text={translations.ru.textTips.myVpn}
           currentClass='success__app-button margin-top'
           handler={() => navigate('/my-vpn')}
         />

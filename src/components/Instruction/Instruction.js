@@ -15,6 +15,7 @@ import { motion } from 'framer-motion';
 import { directionVariants } from '../../utils/directionOptions';
 import { setDirection } from '../../redux/actions/actions';
 import useAnalyticsEventTracker from '../../hooks/useAnanlyticsEventTracker';
+import { translations } from '../../utils/translations/translations';
 
 const variants = {
   visible: { opacity: 1, transition: { duration: 0.2 } },
@@ -99,7 +100,7 @@ function Instruction() {
       variants={directionVariants}
     >
       <button onClick={handleBackClick} className='instruction__button-top'>
-        Назад
+        {translations.ru.backButton.back}
         <span className='instruction__button-corner'></span>
       </button>
       <motion.div
@@ -111,11 +112,15 @@ function Instruction() {
         {progress === 0 && (
           <>
             <p className='instruction__text'>
-              1. Скопируй свой <br />
-              <span className='instruction__text_colored'>уникальный ключ</span>
-              , чтобы
+              {translations.ru.instruction.p1TitleBegin}
               <br />
-              получить доступ <br />к VPN.
+              <span className='instruction__text_colored'>
+                {translations.ru.instruction.p1TitleMiddle1}
+              </span>
+              {translations.ru.instruction.p1TitleMiddle2}
+              <br />
+              {translations.ru.instruction.p1TitleMiddle3}
+              <br /> {translations.ru.instruction.p1TitleEnd}
             </p>
             <CopyToClipboardField
               currentClass='instruction__copy-to-clipboard'
@@ -124,12 +129,15 @@ function Instruction() {
             />
             <div className='instruction__text-case'>
               <p className='instruction__text'>
-                2. Скачай приложение
-                <span className='instruction__text_colored'> Outline </span>
-                на свое устройство.
+                {translations.ru.instruction.p2TitleBegin}
+                <span className='instruction__text_colored'>
+                  {' '}
+                  {translations.ru.instruction.p2TitleMiddle}
+                </span>
+                {translations.ru.instruction.p2TitleEnd}
               </p>
               <p className='instruction__text-tip'>
-                Это безопасно, проверено и разработано при участии Google.
+                {translations.ru.instruction.p2Text}
               </p>
             </div>
             <div className='instruction__link-box'>
@@ -162,8 +170,13 @@ function Instruction() {
         {progress === 1 && (
           <>
             <p className='instruction__text'>
-              3. Вставь ключ <br />в приложение
-              <span className='instruction__text_colored'> Outline </span>.
+              {translations.ru.instruction.p3TitleBegin}
+              <br />
+              {translations.ru.instruction.p3TitleMiddle}
+              <span className='instruction__text_colored'>
+                {' '}
+                {translations.ru.instruction.p3TitleEnd}{' '}
+              </span>
             </p>
             <div className='instruction__gallery'>
               <div className='instruction__gallery-row first'>
@@ -172,14 +185,18 @@ function Instruction() {
                   src={stepOne}
                   alt='step'
                 />
-                <span className='instruction__step-tooltip one'>1ый шаг</span>
+                <span className='instruction__step-tooltip one'>
+                  {translations.ru.instruction.step1}
+                </span>
                 <span className='instruction__step-rectangle one' />
                 <img
                   className='instruction__step-image'
                   src={stepTwo}
                   alt='step'
                 />
-                <span className='instruction__step-tooltip two'>2ой шаг</span>
+                <span className='instruction__step-tooltip two'>
+                  {translations.ru.instruction.step2}
+                </span>
                 <span className='instruction__step-rectangle two' />
               </div>
               <div className='instruction__gallery-row second'>
@@ -188,14 +205,18 @@ function Instruction() {
                   src={stepThree}
                   alt='step'
                 />
-                <span className='instruction__step-tooltip three'>3ий шаг</span>
+                <span className='instruction__step-tooltip three'>
+                  {translations.ru.instruction.step4}
+                </span>
                 <span className='instruction__step-rectangle three' />
                 <img
                   className='instruction__step-image'
                   src={stepFour}
                   alt='step'
                 />
-                <span className='instruction__step-tooltip four'>4ый шаг</span>
+                <span className='instruction__step-tooltip four'>
+                  {translations.ru.instruction.step4}
+                </span>
                 <span className='instruction__step-rectangle four' />
               </div>
             </div>
@@ -204,12 +225,14 @@ function Instruction() {
         {progress === 2 && (
           <>
             <span className='instruction__title'>
-              Отлично! <br />
-              Все работает!
+              {translations.ru.instruction.p4TitleBegin}
+              <br />
+              {translations.ru.instruction.p4TitleEnd}
             </span>
             <p className='instruction__text'>
-              Можете свернуть приложение — его всегда можно найти <br /> в
-              Telegram-чате с robo.
+              {translations.ru.instruction.p4TextBegin}
+              <br />
+              {translations.ru.instruction.p4TextEnd}
             </p>
           </>
         )}
@@ -223,7 +246,7 @@ function Instruction() {
         >
           <AppButton
             currentClass='border-blue secondary blue'
-            text='Перейти в Telegram'
+            text={translations.ru.appButton.toTelegram}
             handler={() => tg.close()}
           />
         </motion.div>
@@ -231,13 +254,16 @@ function Instruction() {
           currentClass={`primary white bg-blue margin-top ${
             isDisabled && 'disabled'
           }`}
-          text={`${progress < 2 ? 'Далее' : 'Главное меню'}`}
+          text={`${
+            progress < 2
+              ? translations.ru.appButton.next
+              : translations.ru.appButton.mainMenu
+          }`}
           handler={handleClick}
         />
         {progress === 2 && isDisabled ? (
           <span className='instruction__tips'>
-            Как только загрузите первые киллобайты — robo станет активным. И вы
-            сможете ознакомиться со всеми возможностями. :)
+            {translations.ru.instruction.p4NotActiveUserTips}
           </span>
         ) : null}
       </div>

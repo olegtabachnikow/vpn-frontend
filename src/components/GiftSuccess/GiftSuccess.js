@@ -1,6 +1,7 @@
 import React from 'react';
 import './GiftSuccess.css';
 import AppButton from '../AppButton/AppButton';
+import { translations } from '../../utils/translations/translations';
 
 function GiftSuccess() {
   const tg = window.Telegram.WebApp;
@@ -9,15 +10,15 @@ function GiftSuccess() {
       {' '}
       <div className='gift-success__content'>
         <h1 className='gift-success__title'>
-          Ура, все готово! Подарок запакован
-          <br /> — дело за малым.
+          {translations.ru.gift.giftSuccessTitle1}
+          <br /> {translations.ru.gift.giftSuccessTitle2}
         </h1>
         <p className='gift-success__text'>
-          Перейдите в Telegram с robo — перешлите подарок нужному человеку.
+          {translations.ru.gift.giftSuccessText}
         </p>
       </div>
       <AppButton
-        text='Перейти в Telegram'
+        text={translations.ru.appButton.toTelegram}
         handler={() => tg.close()}
         currentClass='orange primary wide'
       />

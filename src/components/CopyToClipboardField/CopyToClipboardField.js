@@ -5,6 +5,7 @@ import copiedIcon from '../../images/check.svg';
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 import useAnalyticsEventTracker from '../../hooks/useAnanlyticsEventTracker';
+import { translations } from '../../utils/translations/translations';
 
 function CopyToClipboardField({ currentClass, data, gaAction }) {
   const [isCopied, setIsCopied] = React.useState(false);
@@ -30,7 +31,7 @@ function CopyToClipboardField({ currentClass, data, gaAction }) {
       {isCopied && (
         <div className={`copy-to-clipboard__popup ${currentClass}`}>
           <span className='copy-to-clipboard__popup-text'>
-            Ссылка скопирована, всё гуд!
+            {translations.ru.copyToClipboard}
           </span>
           <img
             className='copy-to-clipboard__popup-icon'

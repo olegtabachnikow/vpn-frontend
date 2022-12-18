@@ -13,6 +13,7 @@ import TariffNolimit from '../TariffNolimit/TariffNolimit';
 import TariffesList from '../TariffesList/TariffesList';
 import TariffesTemplatePopup from '../TariffesTemplatePopup/TariffesTemplatePopup';
 import { parseTimestamp } from '../../utils/helpers';
+import { translations } from '../../utils/translations/translations';
 
 function Tariffes() {
   const [value, setValue] = React.useState('');
@@ -41,7 +42,7 @@ function Tariffes() {
       value === 'nolimit' ||
       value === ''
     ) {
-      handleError('Выберите пакет!');
+      handleError(translations.ru.tariffes.errorPackage);
       return;
     } else {
       setDirection(true);
@@ -67,12 +68,12 @@ function Tariffes() {
         {location.pathname === '/tariffes' && (
           <BackButton
             path={-1}
-            text='Назад'
+            text={translations.ru.backButton.back}
             currentClass='wide'
-            title='Тарифы'
+            title={translations.ru.textTips.tariffes}
           />
         )}
-        <BurgerMenu color='#348FF3' />
+        <BurgerMenu color='var(--blue)' />
         <Routes>
           <Route
             exact
@@ -127,67 +128,73 @@ function Tariffes() {
         isHidden={isHidden}
         setIsHidden={setIsHidden}
         currentClass={location.pathname.replace('/tariffes/', '')}
-        buttonText={'Почему robo?'}
+        buttonText={translations.ru.tariffes.tariffPopupTitleRobo}
       >
         <span className='tariffes-template-popup__info-subtitle'>
-          1. Гарантия возврата всегда
+          {translations.ru.tariffes.tariffPopupTextRoboT1}
         </span>
         <p className='tariffes-template-popup__info-text'>
-          Если заблокируют, вернем деньги.
+          {translations.ru.tariffes.tariffPopupTextRoboA1}
         </p>
         <span className='tariffes-template-popup__info-subtitle'>
-          2. Умный robo
+          {translations.ru.tariffes.tariffPopupTextRoboT2}
         </span>
         <p className='tariffes-template-popup__info-text'>
-          Доступ к рф сайтам и зарубежным — одним нажатием, и к рф из-за рубежа
+          {translations.ru.tariffes.tariffPopupTextRoboA2}
         </p>
         <span className='tariffes-template-popup__info-subtitle'>
-          3. robo + telegram
+          {translations.ru.tariffes.tariffPopupTextRoboT3}
         </span>
         <p className='tariffes-template-popup__info-text'>
-          Всегда под рукой, алгоритмы сделают vpn незаметным.
+          {translations.ru.tariffes.tariffPopupTextRoboA3}
         </p>
         <span className='tariffes-template-popup__info-subtitle'>
-          4. Secure with Google
+          {translations.ru.tariffes.tariffPopupTextRoboT4}
         </span>
         <p className='tariffes-template-popup__info-text'>
-          Безопаснее (и удобнее) некуда:)
+          {translations.ru.tariffes.tariffPopupTextRoboA4}
         </p>
         <span className='tariffes-template-popup__info-subtitle'>
-          5. Бесплатно до 10 гб
+          {translations.ru.tariffes.tariffPopupTextRoboT5}
         </span>
         <p className='tariffes-template-popup__info-text'>
-          Всем, каждый месяц, без ограничений по скорости.
+          {translations.ru.tariffes.tariffPopupTextRoboA5}
         </p>
       </TariffesTemplatePopup>
       <TariffesTemplatePopup
         isHidden={isFreeInfoHidden}
         setIsHidden={setIsFreeInfoHidden}
         currentClass={location.pathname.replace('/tariffes/', '')}
-        buttonText={'А у меня...5 или 10 Гб?'}
+        buttonText={translations.ru.tariffes.tariffPopupTitleFree}
       >
         <div className='tariffes__free-widget-info'>
           <p className='tariffes__free-widget-info-text'>
-            — В этом месяце: вы получили:{' '}
+            {translations.ru.tariffes.tariffPopupTextFreeT1}
             <span className='tariffes__free-widget-info-text_bold'>
-              {currentUser.extra5gb ? 10 : 5} Гб
+              {currentUser.extra5gb ? 10 : 5 + translations.ru.textTips.gbReg}
             </span>
           </p>
           <p className='tariffes__free-widget-info-text'>
-            — Новые 5 Гб:{' '}
+            {translations.ru.tariffes.tariffPopupTextFreeT2}
             <span className='tariffes__free-widget-info-text_bold'>
-              {parseTimestamp(currentUser.freeUpdateDate)} (осталось{' '}
-              {currentUser.freeUpdateDays}
-              дней)
+              {parseTimestamp(currentUser.freeUpdateDate) +
+                translations.ru.tariffes.tariffPopupTextFreeT3 +
+                currentUser.freeUpdateDays +
+                translations.ru.tariffes.tariffPopupTextFreeT4}
             </span>
           </p>
           <p className='tariffes__free-widget-info-text'>
-            — В среднем потребляете: {currentUser.trafficPerDay + 'Гб/день'}
+            {translations.ru.tariffes.tariffPopupTextFreeT5 +
+              currentUser.trafficPerDay +
+              translations.ru.tariffes.tariffPopupTextFreeT6}
           </p>
           <p className='tariffes__free-widget-info-text'>
-            robo думает, что трафика{' '}
-            <b>{currentUser.trafficMonth ? '' : 'не'} хватит</b> до следующих
-            бесплатных Гб
+            {translations.ru.tariffes.tariffPopupTextFreeT7}
+            <b>
+              {currentUser.trafficMonth ? '' : translations.ru.textTips.not}{' '}
+              {translations.ru.textTips.enough}
+            </b>{' '}
+            {translations.ru.tariffes.tariffPopupTextFreeT8}
           </p>
         </div>
       </TariffesTemplatePopup>
@@ -195,25 +202,20 @@ function Tariffes() {
         isHidden={isRecommendHidden}
         setIsHidden={setIsRecommendHidden}
         currentClass={location.pathname.replace('/tariffes/', '')}
-        buttonText={'Рекомендуем — это?'}
+        buttonText={translations.ru.tariffes.tariffPopupTitleReccomend}
       >
         <p className='tariffes-template-popup__info-text'>
-          Берем среднее потребление за 5 прошедших дней. Берем ваши оставшиеся
-          Гб. Берем дату обновления бесплатного трафика. Считаем, какой пакет
-          вам подойдет. Можете сами посчитать, в разделе Трафик, кстати.
+          {translations.ru.tariffes.tariffPopupTextReccomend}
         </p>
       </TariffesTemplatePopup>
       <TariffesTemplatePopup
         isHidden={isGbHidden}
         setIsHidden={setIsGbHidden}
         currentClass={location.pathname.replace('/tariffes/', '')}
-        buttonText={'+ 10 Гб — это?'}
+        buttonText={translations.ru.tariffes.tariffPopupTitle10gbAbout}
       >
         <p className='tariffes-template-popup__info-text'>
-          На тарифах FREE и FIT мы начисляем 10 Гб один раз в месяц, если вы
-          совершаете хотя бы одну покупку. Так же, начиная со второго месяца
-          функция «Умный впн», в том числе доступ к рф сайтам из-за рубежа —
-          доступна только у пользователей FIT или NOLIMT.
+          {translations.ru.tariffes.tariffPopupText10gbAbout}
         </p>
       </TariffesTemplatePopup>
     </>

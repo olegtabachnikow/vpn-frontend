@@ -15,6 +15,7 @@ import { motion } from 'framer-motion';
 import { directionVariants } from '../../utils/directionOptions';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import { setRadioBalance } from '../../utils/roboApi';
+import { translations } from '../../utils/translations/translations';
 
 function Balance() {
   const [value, setValue] = React.useState(0);
@@ -48,19 +49,18 @@ function Balance() {
       exit={direction ? 'exitToRight' : 'exitToLeft'}
       variants={directionVariants}
     >
-      <BurgerMenu color='#fff' />
+      <BurgerMenu color='var(--white)' />
       <BackButton text='Назад' path={-1} currentClass='white' title='Баланс' />
       <div className='balance__row'>
-        <h2 className='balance__title'>
-          Cписывать с баланса (выберите с валюты или с Гб), когда закончится
-          текущий тариф.
-        </h2>
+        <h2 className='balance__title'>{translations.ru.balance.title}</h2>
         <div className='balance__box'>
           <div className='balance__item'>
             <div className='balance__current'>
-              <span className='balance__current-text'>Внесенная сумма</span>
+              <span className='balance__current-text'>
+                {translations.ru.balance.subtitle}
+              </span>
               <span className='balance__current-value'>
-                {currentUser.balance} ₽
+                {currentUser.balance + translations.ru.textTips.currency}
               </span>
             </div>
             <button
@@ -72,16 +72,16 @@ function Balance() {
                 src={value === 0 ? checboxTrue : checkboxFalse}
                 alt='checkbox'
               />
-              <span>Списать с валюты</span>
+              <span>{translations.ru.balance.takeFromBalance}</span>
             </button>
           </div>
           <div className='balance__item'>
             <div className='balance__current'>
               <span className='balance__current-text'>
-                Заработаные гигабайты{' '}
+                {translations.ru.balance.recievedGb}
               </span>
               <span className='balance__current-value'>
-                {currentUser.refBalance} гБ
+                {currentUser.refBalance + translations.ru.textTips.gb}
               </span>
             </div>
             <button
@@ -93,13 +93,15 @@ function Balance() {
                 src={value === 1 ? checboxTrue : checkboxFalse}
                 alt='checkbox'
               />
-              <span>Списать с Гб</span>
+              <span>{translations.ru.balance.takeFromGb}</span>
             </button>
           </div>
         </div>
       </div>
       <div className={`balance__row-input-box ${isFocused && 'focused'}`}>
-        <h3 className='balance__subtitle'>Или внесите сумму на ваш баланс</h3>
+        <h3 className='balance__subtitle'>
+          {translations.ru.balance.inputTitle}
+        </h3>
         <div className='balance__input-container'>
           <input
             onFocus={() => setIsFocused(true)}
@@ -111,11 +113,13 @@ function Balance() {
             value={numValue}
             placeholder='200'
           />
-          <span className='balance__sum-cash-value'>₽</span>
+          <span className='balance__sum-cash-value'>
+            {translations.ru.textTips.currency}
+          </span>
         </div>
         <div className='balance__button-box'>
           <AppButton
-            text='Заработать'
+            text={translations.ru.appButton.earn}
             currentClass='secondary narrow white'
             handler={() => {
               setDirection(true);
@@ -123,22 +127,20 @@ function Balance() {
             }}
           />
           <AppButton
-            text='Пополнить'
+            text={translations.ru.appButton.fill}
             currentClass='primary orange narrow'
             handler={handleSubmit}
           />
         </div>
       </div>
       <p className='balance__tips'>
-        Вы можете пополнить баланс и увеличить трафик или заработать Гб с
-        помощью{' '}
+        {translations.ru.balance.balanceTip}
         <span
           onClick={() => navigate('/referral')}
           className='balance__tips-link'
         >
-          реферальной программы
+          {translations.ru.balance.balanceTipLink}
         </span>
-        .
       </p>
     </motion.section>
   );

@@ -8,6 +8,7 @@ import { motion } from 'framer-motion';
 import { directionVariants } from '../../utils/directionOptions';
 import { setDirection } from '../../redux/actions/actions';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
+import { translations } from '../../utils/translations/translations';
 
 function Support() {
   const navigate = useNavigate();
@@ -22,43 +23,41 @@ function Support() {
       exit={direction ? 'exitToRight' : 'exitToLeft'}
       variants={directionVariants}
     >
-      <BurgerMenu color='#fff' />
+      <BurgerMenu color='var(--white)' />
       <BackButton
-        text='Мой VPN'
+        text={translations.ru.textTips.myVpn}
         path='/my-vpn'
         currentClass='white'
-        title='Саппорт'
+        title={translations.ru.backButton.support}
       />
       <div className='support__text-container'>
         {isNoLimit ? (
           <>
             <p className='support__text'>
-              Здесь вы можете позвать оператора службы Заботы в телеграм чат с
-              robo. Напишите все вопросы, мы ответим в течение суток.{' '}
+              {translations.ru.support.supportNolimitText}
             </p>
             <p className='support__text'>
-              Возможно, вам поможет раздел{' '}
+              {translations.ru.support.supportToFaq}
               <span onClick={() => navigate('/faq')} className='support__link'>
-                FAQ
+                {translations.ru.support.faq}
               </span>
-              .
             </p>
           </>
         ) : (
           <>
             <p className='support__text'>
-              В целях сохранения доступных цен и бесплатного трафика — мы
-              сохранили опцию поддержки в чате только для пользователей
-              безлимитного тарифа.
+              {translations.ru.support.supportFreeText1}
             </p>
-            <p className='support__text'>Надеемся, на понимание.</p>
+            <p className='support__text'>
+              {translations.ru.support.supportFreeText2}
+            </p>
           </>
         )}
       </div>
       {!isNoLimit && (
         <>
           <AppButton
-            text='Все тарифы'
+            text={translations.ru.appButton.allTariffes}
             currentClass='primary blue wide'
             handler={() => {
               setDirection(true);
@@ -66,7 +65,7 @@ function Support() {
             }}
           />
           <AppButton
-            text='FAQ'
+            text={translations.ru.support.faq}
             currentClass='primary blue wide margin-top'
             handler={() => {
               setDirection(true);
@@ -76,7 +75,11 @@ function Support() {
         </>
       )}
       <AppButton
-        text={isNoLimit ? 'Позвать оператора' : `Саппорт чат`}
+        text={
+          isNoLimit
+            ? translations.ru.support.callOperator
+            : translations.ru.support.supportChat
+        }
         currentClass={`primary blue wide margin-top ${
           !isNoLimit ? 'support-disabled' : ''
         }`}

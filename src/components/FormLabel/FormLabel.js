@@ -102,7 +102,7 @@ FormLabel.propTypes = {
   name: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   text: PropTypes.string,
-  valueMain: PropTypes.string,
+  valueMain: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   valueSecondary: PropTypes.string,
   profitValue: PropTypes.string,
   defaultChecked: PropTypes.bool,

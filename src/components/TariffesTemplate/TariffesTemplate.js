@@ -5,6 +5,7 @@ import AppButton from '../AppButton/AppButton';
 import { useNavigate } from 'react-router-dom';
 import CurrentTariffWidget from '../CurrentTariffWidget/CurrentTariffWidget';
 import PropTypes from 'prop-types';
+import { translations } from '../../utils/translations/translations';
 
 function TariffesTemplate({
   currentClass,
@@ -21,8 +22,8 @@ function TariffesTemplate({
   return (
     <section className={`tariffes-template ${currentClass}`}>
       <BackButton
-        text='Назад'
-        title={'Тариф: ' + currentClass.toUpperCase()}
+        text={translations.ru.backButton.back}
+        title={translations.ru.textTips.tariff + currentClass.toUpperCase()}
         path={-1}
         currentClass='back-button-tariffes-template'
       />
@@ -34,7 +35,7 @@ function TariffesTemplate({
             className={`tariffes-template__content-button ${currentClass}`}
             onClick={() => setIsFreeInfoHidden(false)}
           >
-            А у меня...5 или 10 Гб?{' '}
+            {translations.ru.tariffes.tariffPopupTitleFree}
             <span
               className={`tariffes-template__content-button-arrow ${currentClass}`}
             />
@@ -44,7 +45,7 @@ function TariffesTemplate({
           className={`tariffes-template__content-button ${currentClass}`}
           onClick={() => setIsHidden(false)}
         >
-          Почему robo?{' '}
+          {translations.ru.tariffes.tariffPopupTitleRobo}
           <span
             className={`tariffes-template__content-button-arrow ${currentClass}`}
           />
@@ -55,7 +56,7 @@ function TariffesTemplate({
               className={`tariffes-template__content-button ${currentClass}`}
               onClick={() => setIsRecommendHidden(false)}
             >
-              Рекомендуем — это?{' '}
+              {translations.ru.tariffes.tariffPopupTitleReccomend}
               <span
                 className={`tariffes-template__content-button-arrow ${currentClass}`}
               />
@@ -64,7 +65,7 @@ function TariffesTemplate({
               className={`tariffes-template__content-button ${currentClass}`}
               onClick={() => setIsGbHidden(false)}
             >
-              + 10 Гб — это?{' '}
+              {translations.ru.tariffes.tariffPopupTitle10gbAbout}
               <span
                 className={`tariffes-template__content-button-arrow ${currentClass}`}
               />
@@ -74,7 +75,7 @@ function TariffesTemplate({
         <span className='tariffes__error'>{error}</span>
         {currentClass === 'free' ? (
           <AppButton
-            text='Пополнить Гб'
+            text={translations.ru.appButton.addGb}
             handler={() => navigate('/tariffes/fit')}
             currentClass={`${currentClass} margin-bottom`}
           />

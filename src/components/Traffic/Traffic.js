@@ -9,6 +9,7 @@ import { directionVariants } from '../../utils/directionOptions';
 import { setDirection } from '../../redux/actions/actions';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import { parseTimestamp } from '../../utils/helpers';
+import { translations } from '../../utils/translations/translations';
 
 function Traffic() {
   const currentUser = useSelector((state) => state.currentUser);
@@ -24,48 +25,53 @@ function Traffic() {
       exit={direction ? 'exitToRight' : 'exitToLeft'}
       variants={directionVariants}
     >
-      <BurgerMenu color='#fff' />
+      <BurgerMenu color='var(--white)' />
       <BackButton text='Назад' path={-1} currentClass='white' title='Трафик' />
       <div className='traffic__main'>
         {isNolimit ? (
           <div className='traffic__main-content'>
             <span className='traffic__main_text'>
-              Активен до {parseTimestamp(currentUser.endActiveDate)}
+              {translations.ru.textTips.activeUntil +
+                parseTimestamp(currentUser.endActiveDate)}
             </span>
-            <span className='traffic__main_value nolimit'>NOLIMIT</span>
+            <span className='traffic__main_value nolimit'>
+              {translations.ru.traffic.nolimit}
+            </span>
             <span className='traffic__main_text'>
-              Все под контролем, потребляйте сколько хотите, у вас безлимит
+              {translations.ru.traffic.nolimitTip}
             </span>
           </div>
         ) : (
           <div className='traffic__main-content'>
             <span className='traffic__main_text'>
-              Осталось до {parseTimestamp(currentUser.endDate)}
+              {translations.ru.textTips.enoughTo +
+                parseTimestamp(currentUser.endDate)}
             </span>
             <span className='traffic__main_value'>
-              {currentUser.traffic} гБ
+              {currentUser.traffic + translations.ru.textTips.gb}
             </span>
             <span className='traffic__main_text'>
-              Кажестся, вам {!currentUser.trafficMonth && 'не'} хватит трафика
-              до конца месяца
+              {translations.ru.traffic.seemsLike}
+              {!currentUser.trafficMonth && translations.ru.textTips.not}
+              {translations.ru.traffic.enoghTraffic}
             </span>
           </div>
         )}
         <div className='traffic__outlook'>
           <div className='traffic__outlook-element'>
             <span className='traffic__outlook-element-text'>
-              В среднем в день вы тратите
+              {translations.ru.traffic.averagePerDay}
             </span>
             <span className='traffic__outlook-element-value'>
-              {currentUser.trafficPerDay} гБ
+              {currentUser.trafficPerDay + translations.ru.textTips.gb}
             </span>
           </div>
           <div className='traffic__outlook-element'>
             <span className='traffic__outlook-element-text'>
-              Ваше прогнозное потребление трафика в месяц
+              {translations.ru.traffic.forecast}
             </span>
             <span className='traffic__outlook-element-value'>
-              {currentUser.trafficForecast} гБ
+              {currentUser.trafficForecast + translations.ru.textTips.gb}
             </span>
           </div>
         </div>
@@ -73,7 +79,7 @@ function Traffic() {
       <div className='traffic__secondary-content'>
         {isNolimit ? (
           <AppButton
-            text='Продлить тариф'
+            text={translations.ru.appButton.continueTariff}
             currentClass='primary rose wide margin-bottom'
             handler={() => {
               setDirection(true);
@@ -83,7 +89,7 @@ function Traffic() {
         ) : (
           <>
             <AppButton
-              text='Пополнить Гб'
+              text={translations.ru.appButton.addGb}
               currentClass={`primary rose wide margin-bottom ${
                 isNolimit ? 'disabled' : ''
               }`}
@@ -96,7 +102,7 @@ function Traffic() {
             />
             <div className='traffic__button-box'>
               <AppButton
-                text='Заработать'
+                text={translations.ru.appButton.earn}
                 currentClass='secondary white narrow'
                 handler={() => {
                   setDirection(true);
@@ -104,7 +110,7 @@ function Traffic() {
                 }}
               />
               <AppButton
-                text='Сменить тариф'
+                text={translations.ru.appButton.changeTariff}
                 currentClass='secondary white narrow'
                 handler={() => {
                   setDirection(true);
@@ -115,7 +121,7 @@ function Traffic() {
           </>
         )}
         <p className='traffic__tips'>
-          Чтобы не волноваться — можете{' '}
+          {translations.ru.traffic.dontWorry}
           <span
             onClick={() => {
               setDirection(true);
@@ -123,9 +129,9 @@ function Traffic() {
             }}
             className='traffic__link'
           >
-            пополнить баланс
+            {translations.ru.traffic.addBalance}
           </span>
-          , и нажать автосписание по текущему тарифу.
+          {translations.ru.traffic.startAutoCharge}
         </p>
       </div>
     </motion.section>

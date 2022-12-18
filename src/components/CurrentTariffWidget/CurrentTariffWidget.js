@@ -2,6 +2,7 @@ import React from 'react';
 import './CurrentTariffWidget.css';
 import { useSelector } from 'react-redux';
 import { parseTimestamp } from '../../utils/helpers';
+import { translations } from '../../utils/translations/translations';
 
 function CurrentTariffWidget() {
   const currentUser = useSelector((state) => state.currentUser);
@@ -10,10 +11,12 @@ function CurrentTariffWidget() {
       Ваш тариф: {currentUser.tariff}
       <br />
       {currentUser.traffic === 0
-        ? 'Ваш трафик закончился'
+        ? translations.ru.currentTariffWidgetEnd
         : currentUser.tariff === 'NOLIMIT'
-        ? 'Активен до ' + parseTimestamp(currentUser.endActiveDate)
-        : 'Хватит до ' + parseTimestamp(currentUser.endDate)}
+        ? translations.ru.textTips.activeUntil +
+          parseTimestamp(currentUser.endActiveDate)
+        : translations.ru.textTips.enoughTo +
+          parseTimestamp(currentUser.endDate)}
     </span>
   );
 }

@@ -4,6 +4,7 @@ import TariffesTemplate from '../TariffesTemplate/TariffesTemplate';
 import FormLabel from '../FormLabel/FormLabel';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+import { translations } from '../../utils/translations/translations';
 
 function TariffFit({
   handler,
@@ -20,7 +21,7 @@ function TariffFit({
   return (
     <TariffesTemplate
       currentClass='fit'
-      buttonText='Оплата'
+      buttonText={translations.ru.appButton.payment}
       handler={handler}
       error={error}
       setIsHidden={setIsHidden}
@@ -33,10 +34,10 @@ function TariffFit({
           name='package'
           handler={(data) => setValue(data)}
           currentClass='tariff-item-fit'
-          title='5 + 10 ГБ'
+          title={`5 + 10 ${translations.ru.textTips.gbReg.toUpperCase()}`}
           text={null}
-          valueMain={`${prices.Fix_5} ₽`}
-          valueSecondary='разовый платеж'
+          valueMain={prices.Fix_5 + translations.ru.textTips.currency}
+          valueSecondary={translations.ru.tariffes.singlePayment}
           isDiscounted={currentUser.discount ? true : false}
           currentUserDiscount={
             value * 1 === prices.Fix_5 ? currentUser.discount : null
@@ -47,11 +48,15 @@ function TariffFit({
           name='package'
           handler={(data) => setValue(data)}
           currentClass='tariff-item-fit'
-          title='10 + 10 ГБ'
+          title={`10 + 10 ${translations.ru.textTips.gbReg.toUpperCase()}`}
           text={null}
-          valueMain={`${prices.Fix_10} ₽`}
-          valueSecondary='разовый платеж'
-          profitValue={value * 1 === prices.Fix_10 ? 'Выгода 6%' : null}
+          valueMain={prices.Fix_10 + translations.ru.textTips.currency}
+          valueSecondary={translations.ru.tariffes.singlePayment}
+          profitValue={
+            value * 1 === prices.Fix_10
+              ? translations.ru.tariffes.profit + '6%'
+              : null
+          }
           isRecommended={true}
           isDiscounted={true}
           currentUserDiscount={
@@ -63,12 +68,16 @@ function TariffFit({
           name='package'
           handler={(data) => setValue(data)}
           currentClass='tariff-item-fit'
-          title='20 + 10 ГБ'
+          title={`20 + 10 ${translations.ru.textTips.gbReg.toUpperCase()}`}
           text={null}
-          valueMain={`${prices.Fix_20} ₽`}
-          valueSecondary='разовый платеж'
+          valueMain={prices.Fix_20 + translations.ru.textTips.currency}
+          valueSecondary={translations.ru.tariffes.singlePayment}
           isDiscounted={true}
-          profitValue={value * 1 === prices.Fix_20 ? 'Выгода 17%' : null}
+          profitValue={
+            value * 1 === prices.Fix_20
+              ? translations.ru.tariffes.profit + '17%'
+              : null
+          }
           currentUserDiscount={
             value * 1 === prices.Fix_20 ? currentUser.discount : null
           }

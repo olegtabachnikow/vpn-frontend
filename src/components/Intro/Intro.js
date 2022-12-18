@@ -10,6 +10,7 @@ import AppButton from '../AppButton/AppButton';
 import { useSwipeable } from 'react-swipeable';
 import { motion } from 'framer-motion';
 import { setDirection } from '../../redux/actions/actions';
+import { translations } from '../../utils/translations/translations';
 
 const introTextVariants = {
   visible: { opacity: 1, transition: { duration: 0.2 } },
@@ -77,7 +78,7 @@ function Intro() {
         onClick={handleBackButtonClick}
         className={`intro__back-button ${progress < 1 && 'hidden'}`}
       >
-        Назад
+        {translations.ru.backButton.back}
         <span className='intro__back-button-arrow' />
       </button>
       <div className='intro__image-container'>
@@ -112,71 +113,65 @@ function Intro() {
         {(progress === 0 && (
           <>
             <h1 className='intro__title'>
-              Одна установка — <br />
+              {translations.ru.intro.p1TitleBegin} <br />
               <span className='intro__title_colored'>
                 {' '}
-                про VPN можно забыть
+                {translations.ru.intro.p1TitleEnd}
               </span>
             </h1>
-            <p className='intro__text'>
-              Можно забыть о выключении и включении VPN по 10 раз на дню.
-              Instagram, Netflix и YouTube. Авито, Сбер и Госуслуги. Robo
-              работает везде — и на рф, и на зарубежных сайтах, вне зависимости
-              от того где вы находитесь.
-            </p>
+            <p className='intro__text'>{translations.ru.intro.p1Text}</p>
           </>
         )) ||
           (progress === 1 && (
             <>
               <h1 className='intro__title'>
-                Безопасность <br />
-                от
-                <span className='intro__title_colored'> Google</span>
+                {translations.ru.intro.p2TitleBegin}
+                <br />
+                {translations.ru.intro.p2TitleMiddle}
+                <span className='intro__title_colored'>
+                  {' '}
+                  {translations.ru.intro.p2TitleEnd}
+                </span>
               </h1>
-              <p className='intro__text'>
-                Мы не устанавливаем ничего своего вам на телефон. А предлагаем
-                один раз установить надежное приложение от Jigsaw (Google) —
-                Outline.
-              </p>
+              <p className='intro__text'>{translations.ru.intro.p2Text}</p>
             </>
           )) ||
           (progress === 2 && (
             <>
               <h1 className='intro__title'>
-                Вcтроенное <br />
-                приложение <br />
-                <span className='intro__title_colored'> прямо в Telegram</span>
+                {translations.ru.intro.p3TitleBegin} <br />
+                {translations.ru.intro.p3TitleMiddle} <br />
+                <span className='intro__title_colored'>
+                  {' '}
+                  {translations.ru.intro.p3TitleEnd}
+                </span>
               </h1>
-              <p className='intro__text'>
-                Не нужно искать приложения и что-то настраивать. Встроенное
-                приложение в телеграмм всегда под рукой, а алгоритмы robo
-                сообщат о важном прямо в чате.
-              </p>
+              <p className='intro__text'>{translations.ru.intro.p3Text}</p>
             </>
           )) ||
           (progress === 3 && (
             <>
               <h1 className='intro__title'>
-                100% гарантия <br />
-                <span className='intro__title_colored'> возврата </span> всегда
+                {translations.ru.intro.p4TitleBegin}
+                <br />
+                <span className='intro__title_colored'>
+                  {translations.ru.intro.p4TitleMiddle}
+                </span>
+                {translations.ru.intro.p4TitleEnd}
               </h1>
-              <p className='intro__text'>
-                А не первые 7 или 30 дней как у ... но, вероятно, возврат не
-                потребуется. Наши технологии не заблокировали даже в Китае. А мы
-                пошли еще дальше.
-              </p>
+              <p className='intro__text'>{translations.ru.intro.p4Text}</p>
             </>
           )) ||
           (progress === 4 && (
             <>
               <h1 className='intro__title'>
-                Бесплатно <br />
-                <span className='intro__title_colored'> каждый месяц</span>
+                {translations.ru.intro.p5TitleBegin}
+                <br />
+                <span className='intro__title_colored'>
+                  {translations.ru.intro.p5TitleEnd}
+                </span>
               </h1>
-              <p className='intro__text'>
-                До 10 Гб каждый месяц всем пользователям. Без ограничений. Если
-                не хватит — тарифы доступны от 79 рублей.
-              </p>
+              <p className='intro__text'>{translations.ru.intro.p5Text}</p>
             </>
           ))}
       </motion.div>
@@ -189,13 +184,13 @@ function Intro() {
         ))}
       </div>
       <AppButton
-        text='Далее'
+        text={translations.ru.appButton.next}
         currentClass='border-blue secondary blue'
         handler={handleButtonClick}
       />
       <AppButton
         currentClass='primary white bg-blue margin-top'
-        text='Установить VPN'
+        text={translations.ru.appButton.installVpn}
         handler={() => navigate('/instruction')}
       />
     </motion.section>

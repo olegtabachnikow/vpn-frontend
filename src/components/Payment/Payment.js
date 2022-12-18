@@ -11,6 +11,7 @@ import { motion } from 'framer-motion';
 import { directionVariants } from '../../utils/directionOptions';
 import useAnalyticsEventTracker from '../../hooks/useAnanlyticsEventTracker';
 import { useNavigate } from 'react-router-dom';
+import { translations } from '../../utils/translations/translations';
 
 function Payment() {
   const payment = useSelector((state) => state.payment);
@@ -58,7 +59,7 @@ function Payment() {
       <BackButton
         path={-1}
         text=''
-        title='Способы оплаты'
+        title={translations.ru.backButton.paymentOptions}
         currentClass='wide'
       />
       {!currentUser.email && !currentUser.email.length ? (
@@ -69,8 +70,8 @@ function Payment() {
             <FormLabel
               name='method'
               currentClass='form-label__method'
-              title='Банковская карта'
-              text='Мир и другие'
+              title={translations.ru.payment.paymentCardTitle}
+              text={translations.ru.payment.paymentCardText}
               elementValue='card'
               handler={(data) => setMethod(data)}
               defaultChecked={true}
@@ -78,8 +79,8 @@ function Payment() {
             <FormLabel
               name='method'
               currentClass='form-label__method disabled'
-              title='Крипта (в разработке)'
-              text='Биткоин и другие'
+              title={translations.ru.payment.paymentCryptoTitle}
+              text={translations.ru.payment.paymentCryptoText}
               elementValue='crypto'
               handler={(data) => setMethod(data)}
               disabled={true}
@@ -89,9 +90,13 @@ function Payment() {
               whileTap={{ scale: 0.95 }}
             >
               <span className='form-label__title form-label__title_moved'>
-                Оплатить за счет баланса
+                {translations.ru.payment.paymentBalanceTitle}
               </span>
-              <span className='form-label__text-secondary'>{`На вашем балансе ${currentUser.balance} ₽`}</span>
+              <span className='form-label__text-secondary'>
+                {translations.ru.payment.paymentBalanceText +
+                  currentUser.balance +
+                  translations.ru.textTips.currency}
+              </span>
               <input
                 className='form-label__radio-input checkbox'
                 type='checkbox'
@@ -102,19 +107,22 @@ function Payment() {
           </div>
           <div className='payment__button-box'>
             <div className='payment__value'>
-              <span className='payment__value-title'>К оплате</span>
+              <span className='payment__value-title'>
+                {translations.ru.payment.toPay}
+              </span>
               <span className='payment__value-data'>
                 {withBalance
                   ? currentUser.balance > payment
-                    ? 0
-                    : payment - currentUser.balance
-                  : payment}{' '}
-                ₽
+                    ? 0 + translations.ru.textTips.currency
+                    : payment -
+                      currentUser.balance +
+                      translations.ru.textTips.currency
+                  : payment + translations.ru.textTips.currency}
               </span>
             </div>
             <AppButton
               currentClass='primary white bg-dark-blue margin-top'
-              text='Оплатить'
+              text={translations.ru.appButton.pay}
               handler={handlePay}
             />
           </div>

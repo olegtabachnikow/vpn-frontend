@@ -7,6 +7,7 @@ import roboLogo from '../../images/intro_smile_0.svg';
 import { setDirection } from '../../redux/actions/actions';
 import { parseTimestamp } from '../../utils/helpers';
 import PropTypes from 'prop-types';
+import { translations } from '../../utils/translations/translations';
 
 const variants = {
   open: {
@@ -51,25 +52,33 @@ function BurgerMenuNav({ toggleOpen, setIsActive }) {
             <img className='burger-menu-nav__image' src={roboLogo} alt='robo' />
           </div>
           <span className='burger-menu-nav__text'>
-            Тариф: {currentUser.tariff}
+            {translations.ru.textTips.tariff + currentUser.tariff}
           </span>
           <span className='burger-menu-nav__text'>
-            Активен до: {parseTimestamp(currentUser.endDate)}
+            {currentUser.tariff === 'NOLIMIT'
+              ? translations.ru.textTips.activeUntil +
+                parseTimestamp(currentUser.endDate)
+              : translations.ru.textTips.enoughTo +
+                parseTimestamp(currentUser.endDate)}
           </span>
           <span className='burger-menu-nav__text'>
-            Текущий баланс: {currentUser.balance} рублей
+            {translations.ru.textTips.currentBalance +
+              currentUser.balance +
+              translations.ru.textTips.currencyText}
           </span>
         </div>
       </motion.div>
       <motion.div variants={itemVariants} className='burger-item'>
-        <span className='burger__button-title'>Основные разделы</span>
+        <span className='burger__button-title'>
+          {translations.ru.burgerMenu.menuTitle}
+        </span>
       </motion.div>
       <motion.div variants={itemVariants} className='burger-item'>
         <button
           onClick={() => handleClose('/')}
           className='burger__navigate-button'
         >
-          Главное меню
+          {translations.ru.burgerMenu.menuBtn1}
           <span className='burger__button-corner' />
         </button>
       </motion.div>
@@ -78,7 +87,7 @@ function BurgerMenuNav({ toggleOpen, setIsActive }) {
           onClick={() => handleClose('/my-vpn')}
           className='burger__navigate-button'
         >
-          Мой VPN
+          {translations.ru.burgerMenu.menuBtn2}
           <span className='burger__button-corner' />
         </button>
       </motion.div>
@@ -87,15 +96,15 @@ function BurgerMenuNav({ toggleOpen, setIsActive }) {
           onClick={() => handleClose('/help')}
           className='burger__navigate-button'
         >
-          Мне не понятно
+          {translations.ru.burgerMenu.menuBtn3}
           <span className='burger__button-corner' />
         </button>
       </motion.div>
       <motion.div variants={itemVariants} className='burger-item'>
         {currentUser.tariff === 'FREE' ? (
           <span className='burger-menu-nav__support-text'>
-            Ответы на часто задаваемые
-            <br /> вопросы в разделе{' '}
+            {translations.ru.burgerMenu.menuFaqText1}
+            <br /> {translations.ru.burgerMenu.menuFaqText2}
             <span
               onClick={() => {
                 toggleOpen();
@@ -104,13 +113,13 @@ function BurgerMenuNav({ toggleOpen, setIsActive }) {
               }}
               className='burger-menu-nav__link'
             >
-              FAQ.
+              {translations.ru.burgerMenu.menuFaqText3}
             </span>
           </span>
         ) : (
           <span className='burger-menu-nav__support-text'>
-            Вы всегда можете написать нам
-            <br /> на почту{' '}
+            {translations.ru.burgerMenu.menuSupportTip1}
+            <br /> {translations.ru.burgerMenu.menuSupportTip2}
             <span
               onClick={() => {
                 toggleOpen();

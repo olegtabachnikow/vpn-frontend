@@ -6,6 +6,7 @@ import { setUserEmail } from '../../utils/roboApi';
 import PreloaderOnRequest from '../PreloaderOnRequest/PreloaderOnRequest';
 import { useSelector } from 'react-redux';
 import { setCurrentUser } from '../../redux/actions/actions';
+import { translations } from '../../utils/translations/translations';
 
 function PaymentsEmailForm() {
   const [email, setEmail] = React.useState('');
@@ -65,7 +66,9 @@ function PaymentsEmailForm() {
       ) : (
         <>
           <div className='payments-email-form__input-container'>
-            <span className='payments-email-form__input-title'>Ваш e-mail</span>
+            <span className='payments-email-form__input-title'>
+              {translations.ru.payment.enterEmail}
+            </span>
             <input
               onKeyUp={debouncedHandlerMain}
               className='payments-email-form__input'
@@ -82,7 +85,7 @@ function PaymentsEmailForm() {
           </div>
           <div className='payments-email-form__input-container'>
             <span className='payments-email-form__input-title'>
-              Подтвердите e-mail
+              {translations.ru.payment.repeatEmail}
             </span>
             <input
               onKeyUp={debouncedHandlerSecond}
@@ -101,9 +104,7 @@ function PaymentsEmailForm() {
             />
           </div>
           <p className='payments-email-form-text'>
-            Для продолжения оплаты. Не (!) для спама, а для технических
-            моментов, если телеграмму, например, будет плохо — чтобы связаться с
-            вами, такое бывает редко, но бывает.
+            {translations.ru.payment.emailText}
           </p>
         </>
       )}
@@ -118,7 +119,7 @@ function PaymentsEmailForm() {
         type='submit'
         disabled={isEmailEqual ? false : true}
       >
-        Подтвердить
+        {translations.ru.appButton.approve}
       </motion.button>
     </form>
   );

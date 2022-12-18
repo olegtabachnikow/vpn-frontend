@@ -14,6 +14,7 @@ import {
 import { motion } from 'framer-motion';
 import { directionVariants } from '../../utils/directionOptions';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
+import { translations } from '../../utils/translations/translations';
 
 const variants = {
   visible: { opacity: 1, transition: { duration: 0.2 } },
@@ -110,16 +111,22 @@ function Gift() {
       exit={direction ? 'exitToRight' : 'exitToLeft'}
       variants={directionVariants}
     >
-      <BurgerMenu color='#fff' />
+      <BurgerMenu color='var(--white)' />
       <button onClick={handleBackButtonClick} className='gift__back-button'>
         {progress > 0 ? (
-          <span className='gift__back-button-text'>Назад</span>
+          <span className='gift__back-button-text'>
+            {translations.ru.appButton.back}
+          </span>
         ) : (
-          <span className='gift__back-button-text'>Главное меню</span>
+          <span className='gift__back-button-text'>
+            {translations.ru.appButton.mainMenu}
+          </span>
         )}
         <span className='gift__back-button-corner' />
         {progress === 0 ? (
-          <span className='gift__back-button-title'>Подарить VPN</span>
+          <span className='gift__back-button-title'>
+            {translations.ru.gift.giftVpn}
+          </span>
         ) : null}
       </button>
       <motion.div
@@ -131,25 +138,28 @@ function Gift() {
         {progress === 0 && (
           <>
             <h1 className='gift__title'>
-              Подарить <br />
-              VPN друзьям <br />и близким
+              {translations.ru.gift.giftP1Title1}
+              <br />
+              {translations.ru.gift.giftP1Title2}
+              <br />
+              {translations.ru.gift.giftP1Title3}
             </h1>
             <h2 className='gift__subtitle'>
-              Подарить — просто:
-              <br /> подарок просто нужно
-              <br /> будет переслать
-              <br /> в Telegram.
+              {translations.ru.gift.giftP1Subtitle1}
+              <br /> {translations.ru.gift.giftP1Subtitle2}
+              <br /> {translations.ru.gift.giftP1Subtitle3}
+              <br /> {translations.ru.gift.giftP1Subtitle4}
             </h2>
             <AppButton
               currentClass='primary orange'
-              text='Выбрать подарок'
+              text={translations.ru.appButton.selectGift}
               handler={handleClick}
             />
             <span className='gift__explanation'>
-              Выбрав подарок — вы принимаете условия сервиса.{' '}
+              {translations.ru.gift.giftExplanation}
             </span>
             <Popup
-              title='Подробные условия'
+              title={translations.ru.textTips.termsAndConditions}
               currentClass='popup-gift'
               isHidden={isGiftPopupHidden}
               handleHide={setIsGiftPopupHidden}
@@ -157,25 +167,17 @@ function Gift() {
               {
                 <div className='popup-gift__text'>
                   <p className='gift__popup-text'>
-                    1. Чтобы программа действовала — вам нужно поделиться
-                    подарком с другом, а ему просто перейти по ссылке, и
-                    зарегистирироваться будто новый пользователь.{' '}
+                    {translations.ru.gift.giftPopupText1}
                   </p>
                   <p className='gift__popup-text'>
                     {' '}
-                    2. Оплаченный тариф начинает действовать с момента вашей
-                    оплаты его в качестве подарка, а не с момента его активации
-                    со стороны пользователя.{' '}
+                    {translations.ru.gift.giftPopupText2}
                   </p>
                   <p className='gift__popup-text'>
-                    3. Подарок подлежит возврату только в соответствии с общими
-                    условиями возврата. С условиями можно ознакомиться в разделе
-                    — тарифы, подробные условия. Коротко — только в случае, если
-                    нас заблокируют, и robo не сможет предоставить рабочий
-                    доступ к сервису в течение суток.{' '}
+                    {translations.ru.gift.giftPopupText3}
                   </p>
                   <AppButton
-                    text='Понятно'
+                    text={translations.ru.appButton.gotIt}
                     currentClass='secondary white bg-orange border-transparent margin-top'
                     handler={() => setIsGiftPopupHidden(true)}
                   />
@@ -187,12 +189,12 @@ function Gift() {
         {progress === 1 && (
           <>
             <h1 className='gift__title'>
-              Выберите
+              {translations.ru.gift.giftP2Title1}
               <br />
-              тариф
+              {translations.ru.gift.giftP2Title2}
             </h1>
             <form
-              onSubmit={(e) => handleSubmit(e)}
+              onSubmit={handleSubmit}
               id='tariff-form'
               className='gift__form'
             >
@@ -204,9 +206,9 @@ function Gift() {
                   currentUser.giftDiscount > 0 &&
                   'form-label-item-gift_discounted'
                 }`}
-                title='Mесяц NOLIMIT'
+                title={translations.ru.tariffes.nolimitMonth}
                 text={null}
-                valueMain={`${prices.Nolimit_1} ₽`}
+                valueMain={prices.Nolimit_1 + translations.ru.textTips.currency}
                 valueSecondary={`${
                   currentUser.giftDiscount > 0
                     ? Math.floor(
@@ -226,16 +228,18 @@ function Gift() {
                   currentUser.giftDiscount > 0 &&
                   'form-label-item-gift_discounted'
                 }`}
-                title='3 месяца NOLIMIT'
+                title={translations.ru.tariffes.nolimit3Months}
                 text={null}
-                valueMain={`${prices.Nolimit_3}/мес ₽`}
+                valueMain={
+                  prices.Nolimit_3 + translations.ru.textTips.currencyMonth
+                }
                 valueSecondary={`${
                   currentUser.giftDiscount > 0
                     ? Math.floor(
                         (prices.Nolimit_3 / 100) * currentUser.giftDiscount
                       ).toString()
                     : prices.Nolimit_3
-                }/мес ₽`}
+                } ${translations.ru.textTips.currencyMonth}`}
                 isDiscounted={currentUser.giftDiscount > 0}
                 discountValue={`${currentUser.giftDiscount}%`}
               />
@@ -247,16 +251,18 @@ function Gift() {
                   currentUser.giftDiscount > 0 &&
                   'form-label-item-gift_discounted'
                 }`}
-                title='12 месяцев NOLIMIT'
+                title={translations.ru.tariffes.nolimit12Months}
                 text={null}
-                valueMain={`${prices.Nolimit_12}/мес ₽`}
+                valueMain={
+                  prices.Nolimit_12 + translations.ru.textTips.currencyMonth
+                }
                 valueSecondary={`${
                   currentUser.giftDiscount > 0
                     ? Math.floor(
                         (prices.Nolimit_12 / 100) * currentUser.giftDiscount
                       ).toString()
                     : prices.Nolimit_12
-                }/мес ₽`}
+                } ${translations.ru.textTips.currencyMonth}`}
                 isDiscounted={currentUser.giftDiscount > 0}
                 discountValue={`${currentUser.giftDiscount}%`}
               />
@@ -270,47 +276,50 @@ function Gift() {
               form='tariff-form'
               value='submit'
             >
-              Далее
+              {translations.ru.appButton.next}
             </motion.button>
           </>
         )}
         {progress === 2 && (
           <>
             <h1 className='gift__title'>
-              Подарить <br />
-              просто
+              {translations.ru.gift.giftP3Title1}
+              <br />
+              {translations.ru.gift.giftP3Title2}
             </h1>
             <h2 className='gift__subtitle'>
-              1. Выберите подарок.
+              {translations.ru.gift.giftP3Text1}
               <br />
-              2. Оплатите.
+              {translations.ru.gift.giftP3Text2}
               <br />
-              3. Перешлите
+              {translations.ru.gift.giftP3Text3}
               <br />
-              подарок в Telegram <br />
-              от robo.
+              {translations.ru.gift.giftP3Text4} <br />
+              {translations.ru.gift.giftP3Text5}
             </h2>
             <span className='gift__user-selection'>
               {value === '0' && (
                 <span className='gift__user-selection-placeholder'>
-                  Месяц NO LIMIT
+                  {translations.ru.tariffes.nolimitMonth}
                   <div className='gift__user-selection-placeholder-value'>
                     {currentUser.giftDiscount > 0 ? (
                       <span>
                         {Math.floor(
                           (prices.Nolimit_1 / 100) * currentUser.giftDiscount
                         ).toString()}{' '}
-                        ₽
+                        {translations.ru.textTips.currency}
                       </span>
                     ) : (
-                      <span>{prices.Nolimit_1} ₽</span>
+                      <span>
+                        {prices.Nolimit_1 + translations.ru.textTips.currency}
+                      </span>
                     )}
                   </div>
                 </span>
               )}
               {value === '1' && (
                 <span className='gift__user-selection-placeholder'>
-                  3 месяца NO LIMIT
+                  {translations.ru.tariffes.nolimit3Months}
                   <div className='gift__user-selection-placeholder-value'>
                     {currentUser.giftDiscount > 0 ? (
                       <span>
@@ -319,17 +328,20 @@ function Gift() {
                             currentUser.giftDiscount *
                             3
                         ).toString()}{' '}
-                        ₽
+                        {translations.ru.textTips.currency}
                       </span>
                     ) : (
-                      <span>{prices.Nolimit_3} ₽</span>
+                      <span>
+                        {prices.Nolimit_3 * 3 +
+                          translations.ru.textTips.currency}
+                      </span>
                     )}
                   </div>
                 </span>
               )}
               {value === '2' && (
                 <span className='gift__user-selection-placeholder'>
-                  12 месяцев NOLIMIT
+                  {translations.ru.tariffes.nolimit12Months}
                   <div className='gift__user-selection-placeholder-value'>
                     {currentUser.giftDiscount > 0 ? (
                       <span>
@@ -338,10 +350,13 @@ function Gift() {
                             currentUser.giftDiscount *
                             12
                         ).toString()}{' '}
-                        ₽
+                        {translations.ru.textTips.currency}
                       </span>
                     ) : (
-                      <span>{prices.Nolimit_12} ₽</span>
+                      <span>
+                        {prices.Nolimit_12 * 12 +
+                          translations.ru.textTips.currency}
+                      </span>
                     )}
                   </div>
                 </span>
@@ -349,7 +364,7 @@ function Gift() {
             </span>
             <AppButton
               currentClass='primary orange'
-              text='Перейти к оплате'
+              text={translations.ru.appButton.goToPayment}
               handler={handlePaymentSubmit}
             />
           </>

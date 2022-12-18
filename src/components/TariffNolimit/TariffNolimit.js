@@ -3,8 +3,13 @@ import './TariffNolimit.css';
 import TariffesTemplate from '../TariffesTemplate/TariffesTemplate';
 import FormLabel from '../FormLabel/FormLabel';
 import { useSelector } from 'react-redux';
-import { parseTimestamp } from '../../utils/helpers';
+import {
+  parseTimestamp,
+  getProfitValue,
+  getTotalDiscountedValue,
+} from '../../utils/helpers';
 import PropTypes from 'prop-types';
+import { translations } from '../../utils/translations/translations';
 
 function TariffNolimit({ handler, error, value, setValue, setIsHidden }) {
   const currentUser = useSelector((state) => state.currentUser);
@@ -14,26 +19,15 @@ function TariffNolimit({ handler, error, value, setValue, setIsHidden }) {
     let newDate = new Date(date);
     return newDate.setMonth(newDate.getMonth() + count);
   }
-  const getProfitValue = (main, secondary, count) =>
-    main * count - secondary * count;
+
   const isNolimitOneChecked = value * 1 === prices.Nolimit_1;
   const isNolimitThreeChecked = value * 1 === prices.Nolimit_3 * 3;
   const isNolimitYearChecked = value * 1 === prices.Nolimit_12 * 12;
 
-  function getTotalDiscountedValue(plan, months) {
-    if (currentUser.discount) {
-      return Math.round(
-        plan * months - ((plan * months) / 100) * currentUser.discount
-      );
-    } else {
-      return Math.round(plan * months);
-    }
-  }
-
   return (
     <TariffesTemplate
       currentClass='nolimit'
-      buttonText='Оплата'
+      buttonText={translations.ru.appButton.payment}
       handler={handler}
       error={error}
       setIsHidden={setIsHidden}
@@ -46,15 +40,14 @@ function TariffNolimit({ handler, error, value, setValue, setIsHidden }) {
           currentClass={`tariff-item-nolimit ${
             isNolimitOneChecked && 'tariff-plan-checked'
           }`}
-          title='Месяц'
+          title={translations.ru.tariffes.month}
           text={
             isNolimitOneChecked
-              ? `Забудь про ограничения до ${parseTimestamp(
-                  addMonths(currentUser.endDate, 1)
-                )}`
+              ? translations.ru.tariffes.month1and3Text +
+                parseTimestamp(addMonths(currentUser.endDate, 1))
               : null
           }
-          valueMain={`${prices.Nolimit_1} ₽/мес`}
+          valueMain={prices.Nolimit_1 + translations.ru.textTips.currencyMonth}
           isDiscounted={currentUser.discount ? true : false}
           currentUserDiscount={
             isNolimitOneChecked ? currentUser.discount : null
@@ -67,28 +60,29 @@ function TariffNolimit({ handler, error, value, setValue, setIsHidden }) {
           currentClass={`tariff-item-nolimit ${
             isNolimitThreeChecked && 'tariff-plan-checked'
           }`}
-          title='3 месяца'
+          title={translations.ru.tariffes.month3}
           text={
             isNolimitThreeChecked
-              ? `Забудь про ограничения до ${parseTimestamp(
-                  addMonths(currentUser.endDate, 3)
-                )}`
+              ? translations.ru.tariffes.month1and3Text +
+                parseTimestamp(addMonths(currentUser.endDate, 3))
               : null
           }
-          valueMain={`${prices.Nolimit_3} ₽/мес`}
+          valueMain={prices.Nolimit_3 + translations.ru.textTips.currencyMonth}
           valueSecondary={
             isNolimitThreeChecked
-              ? `${getTotalDiscountedValue(prices.Nolimit_3, 3)}₽ всего`
+              ? getTotalDiscountedValue(
+                  prices.Nolimit_3,
+                  3,
+                  currentUser.discount
+                ) + translations.ru.textTips.currencyTotal
               : null
           }
           isDiscounted={true}
           profitValue={
             isNolimitThreeChecked
-              ? `Выгода ${getProfitValue(
-                  prices.Nolimit_1,
-                  prices.Nolimit_3,
-                  3
-                )}₽`
+              ? translations.ru.tariffes.profit +
+                getProfitValue(prices.Nolimit_1, prices.Nolimit_3, 3) +
+                translations.ru.textTips.currency
               : null
           }
           currentUserDiscount={
@@ -102,24 +96,26 @@ function TariffNolimit({ handler, error, value, setValue, setIsHidden }) {
           currentClass={`tariff-item-nolimit ${
             isNolimitYearChecked && 'tariff-plan-checked'
           }`}
-          title='12 месяцев'
+          title={translations.ru.tariffes.month12}
           text={
-            isNolimitYearChecked ? 'Год матрицы без ограничений, Нео' : null
+            isNolimitYearChecked ? translations.ru.tariffes.month12Text : null
           }
-          valueMain={`${prices.Nolimit_12} ₽/мес`}
+          valueMain={prices.Nolimit_12 + translations.ru.textTips.currencyMonth}
           valueSecondary={
             isNolimitYearChecked
-              ? `${getTotalDiscountedValue(prices.Nolimit_12, 12)}₽ всего`
+              ? getTotalDiscountedValue(
+                  prices.Nolimit_12,
+                  12,
+                  currentUser.discount
+                ) + translations.ru.textTips.currencyTotal
               : null
           }
           isDiscounted={true}
           profitValue={
             isNolimitYearChecked
-              ? `Выгода ${getProfitValue(
-                  prices.Nolimit_1,
-                  prices.Nolimit_12,
-                  12
-                )}₽`
+              ? translations.ru.tariffes.profit +
+                getProfitValue(prices.Nolimit_1, prices.Nolimit_12, 12) +
+                translations.ru.textTips.currency
               : null
           }
           currentUserDiscount={

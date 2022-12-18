@@ -9,6 +9,7 @@ import { directionVariants } from '../../utils/directionOptions';
 import { setDirection } from '../../redux/actions/actions';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import { parseTimestamp } from '../../utils/helpers';
+import { translations } from '../../utils/translations/translations';
 
 function Subscription() {
   const navigate = useNavigate();
@@ -16,15 +17,16 @@ function Subscription() {
   const isNolimit = currentUser.tariff === 'NOLIMIT';
   const isFree = currentUser.tariff === 'FREE';
   const direction = useSelector((state) => state.direction);
+  const monthGb = currentUser.extra5gb ? 10 : 5;
 
   function getText() {
     switch (currentUser.tariff) {
       case 'FREE':
-        return 'До 10 Гб каждый месяц бесплатно';
+        return translations.ru.subscription.textFree;
       case 'FIT':
-        return '10 ГБ бесплатно + оплата за ГБ';
+        return translations.ru.subscription.textFit;
       case 'NOLIMIT':
-        return 'Без ограничений';
+        return translations.ru.subscription.textNolimit;
       default:
         return null;
     }
@@ -37,21 +39,25 @@ function Subscription() {
       exit={direction ? 'exitToRight' : 'exitToLeft'}
       variants={directionVariants}
     >
-      <BurgerMenu color='#fff' />
+      <BurgerMenu color='var(--white)' />
       <BackButton
-        text='Назад'
+        text={translations.ru.backButton.back}
         path={-1}
         currentClass='white'
-        title='Мой тариф'
+        title={translations.ru.subscription.myTariff}
       />
       <div className='subscription__content'>
-        <h2 className='subscription__subtitle'>Ваш тариф:</h2>
+        <h2 className='subscription__subtitle'>
+          {translations.ru.subscription.yourTariff}
+        </h2>
         <h1 className='subscription__title'>{currentUser.tariff}</h1>
         <p className='subscription__text'>{getText()}</p>
         <div className={`subscription__widget-box ${isNolimit && 'centered'}`}>
           <div className='subscription__widget'>
             <span className='subscription__widget-text'>
-              {isNolimit ? 'Активен до' : 'Рассчетная дата окончания тарифа'}
+              {isNolimit
+                ? translations.ru.textTips.activeUntil
+                : translations.ru.textTips.tariffEndDate}
             </span>
             <span className='subscription__widget-value'>
               {isNolimit
@@ -65,9 +71,14 @@ function Subscription() {
             }`}
           >
             <span className='subscription__widget-text'>
-              Алгоритм робо думает, что трафика{' '}
-              <b>{!currentUser.trafficMonth && 'не'} хватит</b> до следующих
-              бесплатных {currentUser.extra5gb ? 10 : 5} Гб
+              {translations.ru.subscription.algoRobo}
+              <b>
+                {!currentUser.trafficMonth && translations.ru.textTips.not}
+                {translations.ru.textTips.enough}
+              </b>{' '}
+              {translations.ru.subscription.algoText +
+                monthGb +
+                translations.ru.textTips.gbReg}
             </span>
           </div>
         </div>
@@ -76,20 +87,19 @@ function Subscription() {
         >
           {isFree ? (
             <span className='subscription__widget-text_secondary'>
-              В этом месяце вам начислено{' '}
-              <b>{currentUser.extra5gb ? 10 : 'только 5'} Гб</b> бесплатного
-              трафика. Мы начисляем 10 начиная со второго месяца тем, кто делает
-              хотя бы одну покупку.
+              {translations.ru.subscription.thisMonth}
+              <b>{monthGb + translations.ru.textTips.gbReg}</b>
+              {translations.ru.subscription.thisMonthEnd}
             </span>
           ) : (
             <span className='subscription__widget-text_secondary'>
-              Вам{' '}
+              {translations.ru.subscription.toYou}
               <b>
-                начислено {currentUser.extra5gb ? 10 : 'только 5'} Гб
-                бесплатного трафика.{' '}
+                {translations.ru.subscription.added +
+                  monthGb +
+                  translations.ru.subscription.amountFreeTraff}
               </b>
-              Спасибо, что пользуетесь robo и докупаете Гб, когда не хватает
-              бесплатного трафика.
+              {translations.ru.subscription.restText}
             </span>
           )}
         </div>
@@ -98,7 +108,7 @@ function Subscription() {
         {isNolimit ? (
           <>
             <AppButton
-              text='Продлить тариф'
+              text={translations.ru.appButton.continueTariff}
               handler={() => {
                 setDirection(true);
                 navigate('/tariffes/nolimit');
@@ -106,7 +116,7 @@ function Subscription() {
               currentClass='primary dark-blue margin-bottom wide'
             />
             <AppButton
-              text='Подарить Robo'
+              text={translations.ru.appButton.giftRobo}
               handler={() => {
                 setDirection(true);
                 navigate('/gift');
@@ -117,7 +127,7 @@ function Subscription() {
         ) : (
           <>
             <AppButton
-              text='Пополнить гБ'
+              text={translations.ru.appButton.addGb}
               handler={() => {
                 setDirection(true);
                 currentUser.activeUser
@@ -127,7 +137,7 @@ function Subscription() {
               currentClass='primary dark-blue margin-bottom wide'
             />
             <AppButton
-              text='Мой трафик'
+              text={translations.ru.appButton.myTraffic}
               handler={() => {
                 setDirection(true);
                 navigate('/traffic');

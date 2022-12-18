@@ -12,6 +12,7 @@ import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
 import { directionVariants } from '../../utils/directionOptions';
 import { parseTimestamp } from '../../utils/helpers';
+import { translations } from '../../utils/translations/translations';
 
 function Main() {
   const currentUser = useSelector((state) => state.currentUser);
@@ -31,44 +32,46 @@ function Main() {
           handler={() => navigate('/my-vpn')}
           image={glassesIcon}
           currentClass='btn-my-vpn'
-          title='Мой VPN'
-          text={`Тариф: ${currentUser.tariff}`}
+          title={translations.ru.textTips.myVpn}
+          text={translations.ru.textTips.tariff + currentUser.tariff}
           addText={
             currentUser.tariff === 'NOLIMIT'
-              ? 'Активен до ' + parseTimestamp(currentUser.endActiveDate)
-              : 'Хватит до ' + parseTimestamp(currentUser.endDate)
+              ? translations.ru.textTips.activeUntil +
+                parseTimestamp(currentUser.endActiveDate)
+              : translations.ru.textTips.enoughTo +
+                parseTimestamp(currentUser.endDate)
           }
         />
         <MenuButton
           handler={() => navigate('/help')}
           image={weirdSmileIcon}
           currentClass='btn-not-understand'
-          title='Мне не понятно'
-          text={'Возможности, FAQ, новости'}
+          title={translations.ru.textTips.notUnderstand}
+          text={translations.ru.textTips.notUnderstandText}
           addText={null}
         />
         <MenuButton
           handler={() => navigate('/instruction')}
           image={robotIcon}
           currentClass='btn-robot'
-          title='Ключ доступа к Outline'
-          text={'Инструкция по установке'}
+          title={translations.ru.textTips.instructionBtn}
+          text={translations.ru.textTips.instructionsBtnText}
           addText={null}
         />
         <MenuButton
           handler={() => navigate('/referral')}
           image={loveSmileIcon}
           currentClass='btn-referral'
-          title='Реферальная программа'
-          text={'10+10 Гб'}
+          title={translations.ru.textTips.referral}
+          text={translations.ru.textTips.referralBtnText}
           addText={null}
         />
         <MenuButton
           handler={() => navigate('/gift')}
           image={letterIcon}
           currentClass='btn-gift'
-          title='Подарить VPN'
-          text={'На связи с близкими'}
+          title={translations.ru.textTips.gift}
+          text={translations.ru.textTips.giftBtnText}
           addText={null}
         />
       </div>
@@ -76,8 +79,8 @@ function Main() {
         handler={() => navigate('/tariffes')}
         image={moneyIcon}
         currentClass='btn-tariffes'
-        title='Тарифы'
-        text={'Купить, выбрать тариф'}
+        title={translations.ru.textTips.tariffes}
+        text={translations.ru.textTips.tariffesBtnText}
         addText={null}
       />
     </motion.section>

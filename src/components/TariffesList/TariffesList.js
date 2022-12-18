@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setDirection } from '../../redux/actions/actions';
 import PropTypes from 'prop-types';
+import { translations } from '../../utils/translations/translations';
 
 function TariffesList({ value, setValue, error, handleError }) {
   const [isTariffPopupHidden, setIsTariffPopupHidden] = React.useState(true);
@@ -19,7 +20,7 @@ function TariffesList({ value, setValue, error, handleError }) {
       setDirection(true);
       navigate(`/tariffes/${value}`);
     } else {
-      handleError('Выберите тариф!');
+      handleError(translations.ru.tariffes.errorTariff);
     }
   }
   return (
@@ -32,7 +33,7 @@ function TariffesList({ value, setValue, error, handleError }) {
           handler={(data) => setValue(data)}
           currentClass='tariff-item-free'
           title='FREE'
-          text='До 10 Гб бесплатно каждый месяц.'
+          text={translations.ru.tariffesList.tariffesListFree}
           valueMain={null}
           isDiscounted={false}
         />
@@ -42,9 +43,12 @@ function TariffesList({ value, setValue, error, handleError }) {
           handler={(data) => setValue(data)}
           currentClass='tariff-item-fit'
           title='FIT'
-          text='Не хватает Гб на FREE? Расчитайте 
-      и докупите сколько нужно.'
-          valueMain={`от ${prices.Fix_5} ₽`}
+          text={translations.ru.tariffesList.tariffesListFit}
+          valueMain={
+            translations.ru.textTips.from +
+            prices.Fix_5 +
+            translations.ru.textTips.currency
+          }
           isDiscounted={false}
         />
         <FormLabel
@@ -53,12 +57,16 @@ function TariffesList({ value, setValue, error, handleError }) {
           handler={(data) => setValue(data)}
           currentClass='tariff-item-nolimit'
           title='NOLIMIT'
-          text='Забудьте про ограничения, потребляйте сколько хочется.'
-          valueMain={`от ${prices.Nolimit_12} ₽`}
+          text={translations.ru.tariffesList.tariffesListNolimit}
+          valueMain={
+            translations.ru.textTips.from +
+            prices.Nolimit_12 +
+            translations.ru.textTips.currency
+          }
           isDiscounted={false}
         />
         <Popup
-          title='Подробные условия'
+          title={translations.ru.textTips.termsAndConditions}
           currentClass='popup-tariff'
           isHidden={isTariffPopupHidden}
           handleHide={setIsTariffPopupHidden}
@@ -68,52 +76,32 @@ function TariffesList({ value, setValue, error, handleError }) {
               <div className='tariffes__popup-overlay' />
               <div className='tariffes__popup-container'>
                 <p className='tariffes__popup-text'>
-                  1. Тариф начинает действовать с момента оплаты.{' '}
+                  {translations.ru.tariffesList.tariffesListPopupA1}
                 </p>
                 <p className='tariffes__popup-text'>
-                  2. Гарантия на 100% возврат действует на весь период
-                  пользования robo.{' '}
+                  {translations.ru.tariffesList.tariffesListPopupA2}
                 </p>
                 <p className='tariffes__popup-text'>
-                  3. Гарантия на возврат вступает в силу только в случае, если
-                  мы не смогли предоставить работающий доступ к сервису в
-                  течение суток с момента блокировки нас со стороны
-                  блокираторов. А так же у вас включены уведомление "забота" от
-                  robo. Забота включена по умолчанию, отключить можно только на
-                  безлимитном тарифе.{' '}
+                  {translations.ru.tariffesList.tariffesListPopupA3}
                 </p>
                 <p className='tariffes__popup-text'>
-                  4 Гарантии подлежат средства за неиспользованный период.{' '}
+                  {translations.ru.tariffesList.tariffesListPopupA4}
                 </p>
                 <p className='tariffes__popup-text'>
-                  5. Возврат производится в течение нескольких рабочих дней,
-                  если оплата была с банковской карты. Если с крипты —
-                  необходимо предоставить доп. информацию об адресе возврата.{' '}
+                  {translations.ru.tariffesList.tariffesListPopupA5}
                 </p>
                 <p className='tariffes__popup-text'>
-                  6. Могут быть задержки при возврате, если есть независящие от
-                  robo причины со стороны банка или платежной системы. В этом
-                  случае мы обязуемся предоставить подтверждение подробной
-                  причины в течение 3 рабочих дней.{' '}
+                  {translations.ru.tariffesList.tariffesListPopupA6}
                 </p>
                 <p className='tariffes__popup-text'>
-                  7. Нельзя предоставлять доступ более 1 человеку по тарифу
-                  NOLIMIT (то есть 1 тариф = 1 человек). если сервисом будет
-                  замечено нарушение правила — мы оставляем за собой право
-                  заблокировать доступ такому пользователю без объяснения
-                  причин.{' '}
+                  {translations.ru.tariffesList.tariffesListPopupA7}
                 </p>
                 <p className='tariffes__popup-text'>
-                  8. robo, как и любой впн сервис или интернет провайдер —
-                  собирает общую инфрмацию о пользователе — ip, устройство,
-                  количество трафика. Это нужно для того, чтобы вообще
-                  установить интернет соединение. Понять, какой именно вы трафик
-                  потребляется — невозможно, так как outline использует 256-бит
-                  шифрование. Информацию о логах мы храним не более двух недель.
+                  {translations.ru.tariffesList.tariffesListPopupA8}
                 </p>
               </div>
               <AppButton
-                text='Понятно'
+                text={translations.ru.appButton.gotIt}
                 currentClass='margin-top bg-blue primary white'
                 handler={() => setIsTariffPopupHidden(true)}
               />
@@ -125,13 +113,13 @@ function TariffesList({ value, setValue, error, handleError }) {
         <span className='tariffes__error'>{error}</span>
         <div className='tariffes__button-box'>
           <AppButton
-            text='Выбрать'
+            text={translations.ru.appButton.choose}
             currentClass='primary white bg-blue'
             handler={handleChooseClick}
           />
         </div>
         <span className='tariffes__tips'>
-          Выбрав тариф — пользователь принимает условия сервиса.
+          {translations.ru.tariffesList.tariffesListTips}
         </span>
       </div>
     </>

@@ -18,6 +18,7 @@ import {
 } from '../../redux/actions/actions';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import { setOptions } from '../../utils/roboApi';
+import { translations } from '../../utils/translations/translations';
 
 function Options() {
   const currentUser = useSelector((state) => state.currentUser);
@@ -110,14 +111,14 @@ function Options() {
       exit={direction ? 'exitToRight' : 'exitToLeft'}
       variants={directionVariants}
     >
-      <BurgerMenu color='#fff' />
+      <BurgerMenu color='var(--white)' />
       <Routes>
         <Route
           path='/'
           element={
             <>
               <BackButton
-                text='Мой VPN'
+                text={translations.ru.textTips.myVpn}
                 currentClass='white'
                 path={'/my-vpn'}
                 title='Ручная настройка'
@@ -134,7 +135,9 @@ function Options() {
                   onClick={() => setIsActive({ ...isActive, location: false })}
                   className='options__item'
                 >
-                  <h2 className='options__item-title'>Выбрать локацию</h2>
+                  <h2 className='options__item-title'>
+                    {translations.ru.options.chooseLoc}
+                  </h2>
                   {!isActive.location ? (
                     <p
                       onClick={(e) =>
@@ -142,14 +145,12 @@ function Options() {
                       }
                       className='options__item-button-text'
                     >
-                      Подробнее.
+                      {translations.ru.options.more}
                     </p>
                   ) : (
                     <div className='options__item-content'>
                       <p className='options__item-text'>
-                        Наша сеть серверов работает в 54 странах. Здесь мы
-                        отображаем — во-первых, наиболее быстрые для вас точки.
-                        Во-вторых, наиболее оптимальные для рф, на взгляд robo.
+                        {translations.ru.options.locationText}
                       </p>
                       <div className='options__item-location-box'>
                         <span
@@ -197,7 +198,10 @@ function Options() {
                   onClick={() => setIsActive({ ...isActive, device: false })}
                   className='options__item'
                 >
-                  <h2 className='options__item-title'>Выбрать устройство</h2>
+                  <h2 className='options__item-title'>
+                    {' '}
+                    {translations.ru.options.chooseDevice}
+                  </h2>
                   {!isActive.device ? (
                     <p
                       onClick={(e) =>
@@ -205,18 +209,16 @@ function Options() {
                       }
                       className='options__item-button-text'
                     >
-                      Подробнее.
+                      {translations.ru.options.more}
                     </p>
                   ) : (
                     <div className='options__item-content'>
                       <p className='options__item-text'>
-                        Ваш ключ подходит для всех устройств, вы можете скачать
-                        нужное приложение для дополнительного устройства на
-                        сайте Outline.
+                        {translations.ru.options.chooseDeviceText}
                       </p>
                       <div className='options__item-location-box'>
                         <span className='options__country-item device'>
-                          Когда сохраните настройки — ваш ключ обновится
+                          {translations.ru.options.saveKey}
                         </span>
                       </div>
                     </div>
@@ -241,12 +243,14 @@ function Options() {
                     isSmartPopupOpen && 'with-popup'
                   }`}
                 >
-                  <h2 className='options__item-title'>Умный robo</h2>
+                  <h2 className='options__item-title'>
+                    {translations.ru.options.smart}
+                  </h2>
                   <p
                     onClick={handleSmartPopup}
                     className='options__item-button-text'
                   >
-                    Подробнее.
+                    {translations.ru.options.more}
                   </p>
                   <div
                     onClick={() => setIsSmartActive((state) => !state)}
@@ -263,9 +267,7 @@ function Options() {
                     }`}
                   >
                     <p className='options__popup-text'>
-                      Алгоритмы robo перераспределяют трафик в зависимости от
-                      того, на какой сайт вы хотите попасть. Даже с включенным
-                      впн — доступны и рф сайты. В том числе из-за рубежа.
+                      {translations.ru.options.smartText}
                     </p>
                     <button
                       onClick={handleClose}
@@ -285,13 +287,13 @@ function Options() {
                   }`}
                 >
                   <h2 className='options__item-title communicate'>
-                    Коммуникация с robo в Telegram
+                    {translations.ru.options.care}
                   </h2>
                   <p
                     onClick={handleCarePopup}
                     className='options__item-button-text'
                   >
-                    Подробнее.
+                    {translations.ru.options.more}
                   </p>
                   <div
                     className={`options__popup care ${
@@ -299,9 +301,7 @@ function Options() {
                     }`}
                   >
                     <p className='options__popup-text'>
-                      Robo скажет, если ркн заблокирует ваш сервер и предложит
-                      сразу новый, напомнит об окончании тарифа, поможет с
-                      установкой. И не только.
+                      {translations.ru.options.careText}
                     </p>
                     <button
                       onClick={handleClose}
@@ -341,20 +341,16 @@ function Options() {
                     {isNotFree ? (
                       <>
                         <p className='options__popup-text'>
-                          Внимание! При отключении коммуникации с ботом, мы
-                          будем связываться с вами только в случае блокировки,
-                          чтобы предоставить работающий доступ к сервису. Robo
-                          напишет, что нажать в Telegram, если соединение можно
-                          улучшить или РКН заблокирует именно ваш сервер.
+                          {translations.ru.options.careReminder}
                         </p>
                         <div className='options__popup-button-box'>
                           <AppButton
-                            text='Все равно выключить'
+                            text={translations.ru.appButton.turnOff}
                             currentClass='secondary white small-text narrow'
                             handler={handleDisableCommunicate}
                           />
                           <AppButton
-                            text='Не отключать'
+                            text={translations.ru.appButton.keepOn}
                             currentClass='primary orange narrow small-text'
                             handler={handleClose}
                           />
@@ -362,7 +358,7 @@ function Options() {
                       </>
                     ) : (
                       <p className='options__popup-text'>
-                        Коммуникацию можно отключить только на платных тарифах.
+                        {translations.ru.options.careFreeReminder}
                       </p>
                     )}
                   </div>
@@ -370,7 +366,7 @@ function Options() {
               </div>
               <div className='options__button-box'>
                 <AppButton
-                  text='Сохранить настройки'
+                  text={translations.ru.appButton.saveOpt}
                   currentClass='primary orange'
                   handler={() => {
                     setDirection(true);
@@ -378,7 +374,7 @@ function Options() {
                   }}
                 />
                 <AppButton
-                  text='Автонастройка'
+                  text={translations.ru.appButton.autoOpt}
                   currentClass='primary orange margin-top'
                   handler={() => navigate('/instruction')}
                 />
@@ -391,25 +387,20 @@ function Options() {
           element={
             <>
               <BackButton
-                text='Мой VPN'
+                text={translations.ru.textTips.myVpn}
                 currentClass='white'
                 path={'/my-vpn'}
               />
               {currentCountry === country ? (
                 <div className='options__complete-content no-margin'>
                   <p className='option__complete-text-big'>
-                    Отлично, вы настроили robo под себя! Новые настройки
-                    внесены.{' '}
+                    {translations.ru.options.optSuccess}
                   </p>
                 </div>
               ) : (
                 <div className='options__complete-content'>
-                  {' '}
                   <p className='option__complete-text'>
-                    {' '}
-                    Отлично, вы настроили robo под себя. Ваш ключ доступа —
-                    чтобы новые настройки заработали, вставьте новый ключ в
-                    приложение outline.
+                    {translations.ru.options.optSuccessKey}
                   </p>
                   <CopyToClipboardField
                     currentClass='options'
@@ -420,7 +411,7 @@ function Options() {
               )}
               <div className='options__button-box'>
                 <AppButton
-                  text='Настроить заново'
+                  text={translations.ru.appButton.againOpt}
                   currentClass='primary orange'
                   handler={() => {
                     setDirection(false);
@@ -428,7 +419,7 @@ function Options() {
                   }}
                 />
                 <AppButton
-                  text='Мой VPN'
+                  text={translations.ru.textTips.myVpn}
                   handler={() => {
                     setDirection(true);
                     setCurrentCountry(country);

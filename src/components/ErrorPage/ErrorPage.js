@@ -2,6 +2,7 @@ import React from 'react';
 import './ErrorPage.css';
 import errorRoboImage from '../../images/error-robo.svg';
 import { motion } from 'framer-motion';
+import { translations } from '../../utils/translations/translations';
 
 function ErrorPage() {
   return (
@@ -16,11 +17,16 @@ function ErrorPage() {
         src={errorRoboImage}
         alt='error face'
       />
-      <h1 className='error-page__title'>Упс, скоро поправим!</h1>
+      <h1 className='error-page__title'>
+        {translations.ru.errorPage.errorTitle}
+      </h1>
       <p className='error-page__text'>
-        В приложении тех. работы,
-        <br /> если вы пострадали — <br /> пожалуйста, напишите
-        <br /> нам{' '}
+        {translations.ru.errorPage.errorTextBegin}
+        <br />
+        {translations.ru.errorPage.errorTextMiddle1}
+        <br />
+        {translations.ru.errorPage.errorTextMiddle2}
+        <br /> {translations.ru.errorPage.errorTextMiddle3}
         <span
           onClick={() => window.open('mailto:care@getrobovpn.com')}
           className='error-page__link'

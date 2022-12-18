@@ -105,3 +105,11 @@
   font-weight: 400;
   line-height: 1.6rem;
 }
+@media screen and (max-height: 552px) {
+  .intro__text-container {
+    min-height: auto;
+  }
+  .intro__image-container {
+    margin: 3% auto 5% auto;
+  }
+}

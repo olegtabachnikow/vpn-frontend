@@ -8,6 +8,7 @@ import { directionVariants } from '../../utils/directionOptions';
 import { useSelector } from 'react-redux';
 import { setDirection } from '../../redux/actions/actions';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
+import { translations } from '../../utils/translations/translations';
 
 function MessageUs() {
   const navigate = useNavigate();
@@ -20,19 +21,16 @@ function MessageUs() {
       exit={direction ? 'exitToRight' : 'exitToLeft'}
       variants={directionVariants}
     >
-      <BurgerMenu color='#fff' />
+      <BurgerMenu color='var(--white)' />
       <BackButton
         path='/help'
-        text='Мне не понятно'
+        text={translations.ru.backButton.back}
         currentClass='white'
-        title='Напишите нам'
+        title={translations.ru.textTips.supportText}
       />
-      <p className='message-us__text_main'>
-        Персональная поддержка доступна только на тарифе NOLIMIT. Однако мы рады
-        любому конструктивному фидбеку или предложению.
-      </p>
+      <p className='message-us__text_main'>{translations.ru.messageUs.title}</p>
       <p className='message-us__text_secondary'>
-        Вы всегда можете написать нам на почту{' '}
+        {translations.ru.messageUs.text}
         <span
           onClick={() => window.open('mailto:care@getrobovpn.com')}
           className='message-us__link'
@@ -41,7 +39,7 @@ function MessageUs() {
         </span>
       </p>
       <AppButton
-        text='Все тарифы'
+        text={translations.ru.appButton.allTariffes}
         handler={() => {
           setDirection(true);
           navigate('/tariffes');

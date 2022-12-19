@@ -14,6 +14,7 @@ import { motion } from 'framer-motion';
 import { directionVariants } from '../../utils/directionOptions';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import { parseTimestamp } from '../../utils/helpers';
+import { translations } from '../../utils/translations/translations';
 
 function MyVpn() {
   const navigate = useNavigate();
@@ -31,65 +32,66 @@ function MyVpn() {
       exit={direction ? 'exitToRight' : 'exitToLeft'}
       variants={directionVariants}
     >
-      <BurgerMenu color='#348ff3' />
+      <BurgerMenu color='var(--blue)' />
       <BackButton
         path='/'
-        text='Главное меню'
+        text={translations.ru.appButton.mainMenu}
         currentClass=''
-        title='Мой VPN'
+        title={translations.ru.textTips.myVpn}
       />
       <div className='my-vpn__button-container'>
         <MenuButton
           handler={() => navigate('/balance')}
           image={balanceIcon}
           currentClass='btn-balance'
-          title='Баланс'
-          text={'Пополнить или потратить'}
+          title={translations.ru.textTips.balance}
+          text={translations.ru.textTips.balanceText}
           addText={null}
         />
         <MenuButton
           handler={() => navigate('/referral')}
           image={referralIcon}
           currentClass='btn-referrals'
-          title='Реферальная
-          программа'
-          text={'10+10 Гб'}
+          title={translations.ru.textTips.referral}
+          text={translations.ru.textTips.referralBtnText}
           addText={null}
         />
         <MenuButton
           image={trafficIcon}
           handler={() => navigate('/traffic')}
           currentClass='btn-traffic'
-          title='Трафик'
-          text={'Оставшиеся Гб'}
+          title={translations.ru.textTips.traffic}
+          text={translations.ru.textTips.trafficText}
           addText={null}
         />
         <MenuButton
           image={optionsIcon}
           handler={() => navigate('/options')}
           currentClass='btn-options'
-          title='Настроить'
-          text={'Настроить вручную'}
+          title={translations.ru.textTips.options}
+          text={translations.ru.textTips.optionsText}
           addText={null}
         />
         <MenuButton
           image={supportIcon}
           handler={() => navigate('/support')}
           currentClass='btn-support'
-          title='Саппорт'
-          text={'Напишите нам'}
+          title={translations.ru.textTips.support}
+          text={translations.ru.textTips.supportText}
           addText={null}
         />
       </div>
       <MenuButton
         image={happySmile}
         currentClass='btn-my-tariff'
-        title='Мой тариф'
-        text={`Тариф: ${currentUser.tariff}`}
+        title={translations.ru.subscription.myTariff}
+        text={translations.ru.textTips.tariff + currentUser.tariff}
         addText={
           currentUser.tariff === 'NOLIMIT'
-            ? 'Активен до ' + parseTimestamp(currentUser.endActiveDate)
-            : 'Хватит до ' + parseTimestamp(currentUser.endDate)
+            ? translations.ru.textTips.activeUntil +
+              parseTimestamp(currentUser.endActiveDate)
+            : translations.ru.textTips.enoughTo +
+              parseTimestamp(currentUser.endDate)
         }
         handler={() => navigate('/subscription')}
       />

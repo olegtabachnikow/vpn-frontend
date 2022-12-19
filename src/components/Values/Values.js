@@ -10,6 +10,7 @@ import { directionVariants } from '../../utils/directionOptions';
 import { useSelector } from 'react-redux';
 import { setDirection } from '../../redux/actions/actions';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
+import { translations } from '../../utils/translations/translations';
 
 function Values() {
   const navigate = useNavigate();
@@ -26,97 +27,88 @@ function Values() {
       exit={direction ? 'exitToRight' : 'exitToLeft'}
       variants={directionVariants}
     >
-      <BurgerMenu color='#fff' />
+      <BurgerMenu color='var(--white)' />
       <BackButton
-        text='Назад'
+        text={translations.ru.backButton.back}
         path={-1}
         currentClass='white moved-right'
-        title='Ценности'
+        title={translations.ru.textTips.values}
       />
       <DataList currentClass='data-list-values'>
         <DataItem
-          title='Устойчивость к блокировкам'
+          title={translations.ru.values.title1}
           index={index}
           currentIndex={1}
           setIndex={setIndex}
         >
           <p className='data-item__text'>
-            Мы считаем, свобода главная причина развития человека. А ее
-            ущемление — ведет в противоположную сторону. Поэтому, в первую
-            очередь, задача robo не дать себя заблокировать, и, вместе с тем, —
-            доступ к свободе в интернете. В том числе поэтому мы даем гарантию
-            на <b>100% возврат </b>
-            не на первые 7 или 30 дней, как большинство сервисов. А{' '}
-            <b> на весь период пользования robo</b>.
+            {translations.ru.values.text1Normal1}
+            <b>{translations.ru.values.text1Bold1}</b>
+            {translations.ru.values.text1Normal2}
+            <b>{translations.ru.values.text1Bold2}</b>.
           </p>
         </DataItem>
         <DataItem
-          title='Доступно всем'
+          title={translations.ru.values.title2}
           index={index}
           currentIndex={2}
           setIndex={setIndex}
         >
           <p className='data-item__text'>
-            Исходя из главной для нас ценности — свободы — мы верим, что
-            предоставляя экстра возможности для наших пользователей наперед...
-            это приведет к большему совместному развитию в будущем.{' '}
-            <b> Поэтому мы даем базовый бесплатный трафик всем </b>
-            (10 Гб/мес), и верим, что со временем свободный доступ в интернет
-            станет для наших бесплатных пользователей ценнее любых платных
-            тарифов.
+            {translations.ru.values.text2Normal1}
+            <b>{translations.ru.values.text2Bold}</b>
+            {translations.ru.values.text2Normal2}
           </p>
         </DataItem>
         <DataItem
-          title='Соединение'
+          title={translations.ru.values.title3}
           index={index}
           currentIndex={3}
           setIndex={setIndex}
         >
           <p className='data-item__text'>
-            <b>В идеале мы бы хотели, чтобы вы не замечали, что есть</b> вообще
-            какие-то блокировки или <b>ограничения в интернете</b>. Не замечали,
-            что есть robo. Уже сейчас для этого многое делаем: автоматизация
-            скорости на серверах — не контролируем ничего руками, и как только у
-            нас появляется больше пользователей — сервера сами увеличивают свою
-            мощность.
+            <b>{translations.ru.values.text3Bold1}</b>
+            {translations.ru.values.text3Normal1}
+            <b>{translations.ru.values.text3Bold2}</b>
+            {translations.ru.values.text3Normal2}
           </p>
         </DataItem>
         <DataItem
-          title='Удобство'
+          title={translations.ru.values.title4}
           index={index}
           currentIndex={4}
           setIndex={setIndex}
         >
           <p className='data-item__text'>
-            Это синоним слову сервис для нас.{' '}
-            <b>Мы не хотим, чтобы вы запаривались вообще...</b>и как было
-            сказано, думали об ограничениях и впн. <b>Поэтому</b> многое в robo{' '}
-            <b>автоматизировано</b>. от алгоритов распределения трафика и работы
-            на локальных, и зарубежных ресурсах одновременно (сбер, госуслуги и
-            netflix, instagram) до автоматического подбора лучшей локации и
-            встроенного приложения прямо в телеграм.
+            {translations.ru.values.text4Normal1}
+            <b>{translations.ru.values.text4Bold1}</b>
+            {translations.ru.values.text4Normal2}
+            <b>{translations.ru.values.text4Bold2}</b>
+            {translations.ru.values.text4Normal3}
+            <b>{translations.ru.values.text4Bold3}</b>
+            {translations.ru.values.text4Normal4}
           </p>
         </DataItem>
         <DataItem
-          title='Безопасность'
+          title={translations.ru.values.title5}
           index={index}
           currentIndex={5}
           setIndex={setIndex}
         >
           <p className='data-item__text'>
-            Мы решили выбрать решение, чтоб у вас совсем не было сомнений.
-            Примерно...<b>безопаснее некуда</b>. мы не устанавливаем ничего
-            своего вам на телефон. а предлагаем один раз установить надежное
-            приложение от jigsaw (<b>Google</b>) — outline. Данные в outline
-            зашифрованы так, что <b>всем массонам мира вас не взломать</b> (не
-            то что wi-fi в starbucks). Коммуникация с нами остается лишь на
-            уровне Telegram.
+            {translations.ru.values.text5Normal1}
+            <b>{translations.ru.values.text5Bold1}</b>
+            {translations.ru.values.text5Normal2}
+            <b>{translations.ru.values.text5Bold2}</b>
+            {translations.ru.values.text5Normal3}
+            <b>{translations.ru.values.text5Bold3}</b>
+            {translations.ru.values.text5Normal4}
           </p>
         </DataItem>
       </DataList>
       <div className='values__button-box'>
         <AppButton
-          text='Главное меню'
+          text={translations.ru.appButton.mainMenu}
           currentClass='secondary margin-bottom white'
           handler={() => {
             setDirection(true);
@@ -124,7 +116,7 @@ function Values() {
           }}
         />
         <AppButton
-          text='Выбрать тариф'
+          text={translations.ru.appButton.chooseTariff}
           currentClass='primary orange'
           handler={() => {
             setDirection(true);

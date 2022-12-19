@@ -10,6 +10,7 @@ import { directionVariants } from '../../utils/directionOptions';
 import { useSelector } from 'react-redux';
 import { setDirection } from '../../redux/actions/actions';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
+import { translations } from '../../utils/translations/translations';
 
 function Faq() {
   const [index, setIndex] = React.useState(0);
@@ -26,113 +27,94 @@ function Faq() {
       exit={direction ? 'exitToRight' : 'exitToLeft'}
       variants={directionVariants}
     >
-      <BurgerMenu color='#fff' />
+      <BurgerMenu color='var(--white)' />
       <BackButton
-        text='Назад'
+        text={translations.ru.backButton.back}
         path={-1}
         currentClass='white moved-right'
-        title='FAQ'
+        title={translations.ru.textTips.faq}
       />
       <DataList currentClass='data-list-faq'>
         <DataItem
-          title='А вы кто?'
+          title={translations.ru.faq.title1}
           index={index}
           currentIndex={1}
           setIndex={setIndex}
         >
           <p className='data-item__text'>
-            Мы команда it специалистов с <b>опытом более 30 лет работы</b> в
-            индустрии (сбер, skyeng и др.). До 2022 года мы занимались разными
-            проектами в топовых it компаниях. Но недавно поняли, что стоит
-            делать что-то важное. В чем одноврменно есть большая потребность И в
-            чем мы сильны. Потребность — свобода, а сила — в it. В целях
-            безопасности близких, мы пока не готовы раскрывать информацию об
-            основателях проекта. С точки зрения — пользоваться нами или нет, это
-            мало важная информация, потому что мы безопасно. Почему? Следующий
-            пункт.
+            {translations.ru.faq.text1normal1}
+            <b>{translations.ru.faq.text1bold1}</b>
+            {translations.ru.faq.text1normal2}
           </p>
         </DataItem>
         <DataItem
-          title='Почему вами безопасно пользоваться?'
+          title={translations.ru.faq.title2}
           index={index}
           currentIndex={2}
           setIndex={setIndex}
         >
           <p className='data-item__text'>
-            <b>Мы не устанавливаем ничего своего вам на телефон</b> или любое
-            устройство. А предлагаем один раз установить надежное приложение от
-            jigsaw <b>(google) — outline</b>. Данные в outline зашифрованы так,
-            что всем массонам мира вас не взломать (не то что... wi-fi в
-            starbucks). Коммуникация с нами остается на уровне телеграм. Мы
-            знаем лишь только те данные, которые есть у всех...сотовых
-            операторов, сайтов и даже no-logs vpn. IP, размер гб и тип
-            устройства — без них не возможно подключение к интернету.
+            <b>{translations.ru.faq.text2bold1}</b>
+            {translations.ru.faq.text2normal1}
+            <b>{translations.ru.faq.text2bold2}</b>
+            {translations.ru.faq.text2normal2}
           </p>
         </DataItem>
         <DataItem
-          title='Почему вас не заблокируют?'
+          title={translations.ru.faq.title3}
           index={index}
           currentIndex={3}
           setIndex={setIndex}
         >
           <p className='data-item__text'>
-            Для этого мы используем лучшие мировые технологии, адаптированные
-            под robo. <b>Протокол shadowsocks</b>, который не смогли
-            заблокировать даже в Китае. <b>Так же свои разработки</b> —
-            например, децентрализация users на подсети, разные ip/domains. Ну, и
-            вишенка на торте (которую мы не встречали на рынке) —{' '}
-            <b>мы даем 100% гарантию на возврат</b> в любой момент времени (а не
-            первые 7 или 30 дней как у большинства), если не сможем предоставить
-            вам доступ к сервису в случае блокировки (блокировать пытаться могут
-            всех).
+            {translations.ru.faq.text3normal1}
+            <b>{translations.ru.faq.text3bold1}</b>
+            {translations.ru.faq.text3normal2}
+            <b>{translations.ru.faq.text3bold2}</b>
+            {translations.ru.faq.text3normal3}
+            <b>{translations.ru.faq.text3bold3}</b>
+            {translations.ru.faq.text3normal4}
           </p>
         </DataItem>
         <DataItem
-          title='Как именно работает возврат средств?'
+          title={translations.ru.faq.title4}
           index={index}
           currentIndex={4}
           setIndex={setIndex}
         >
           <p className='data-item__text'>
-            Мы гарантируем 100% возврат только в случае если нас заблокирует ркн
-            и мы не сможем вам предоставить доступ к впн в течение суток. В этом
-            случае, robo сам напишет вам в телеграм и скажет что нажать (прямо
-            из тг), чтобы все сделать.
+            {translations.ru.faq.text4normal1}
             <br />
-            Если у вас есть вопросы по возврату, то можете написать нам на почту{' '}
+            {translations.ru.faq.text4normal2}
             <span
               onClick={() => window.open('mailto:care@getrobovpn.com')}
               className='data-item__link'
             >
-              care@getrobovpn.com.
+              care@getrobovpn.com
             </span>
-            . В теле письма, пож-ста, укажите ваш ID в тг, а в названии названии
-            напишите слово возврат. Ну и вопрос не забудьте, пож-ста :)
+            {translations.ru.faq.text4normal3}
           </p>
         </DataItem>
         <DataItem
-          title='Могу ли я из-за рубежа... зайти на рф сайты?'
+          title={translations.ru.faq.title5}
           index={index}
           currentIndex={5}
           setIndex={setIndex}
         >
           <p className='data-item__text'>
-            Да, можете. Алгоритимы функции <b>умный впн</b> — позволяют вне
-            зависимости от вашего расположения со свлюченным впн заходить
-            одноврменно и на рф, и не на рф сайты. Instagram, netflix и youtube.
-            авито, сбер и госуслуги. Можно забыть о выключении и включении vpn
-            по 10 раз за день.
+            {translations.ru.faq.text5normal1}
+            <b>{translations.ru.faq.text5bold1}</b>
+            {translations.ru.faq.text5normal2}
           </p>
         </DataItem>
         <DataItem
-          title='Чем вы отличаетесь от других сервисов vpn?'
+          title={translations.ru.faq.title6}
           index={index}
           currentIndex={6}
           setIndex={setIndex}
         >
           <p className='data-item__text'>
-            Отличий много, но основных 5. Про них мы написали в разделе — мне не
-            понятно, возможности (
+            {translations.ru.faq.text6}
             <span
               onClick={() => {
                 setDirection(true);
@@ -140,80 +122,68 @@ function Faq() {
               }}
               className='data-item__link'
             >
-              линк
+              {translations.ru.faq.text6link}
             </span>
             ).
           </p>
         </DataItem>
         <DataItem
-          title='Сколько одновременно и какие устройства доступны?'
+          title={translations.ru.faq.title7}
           index={index}
           currentIndex={7}
           setIndex={setIndex}
         >
           <p className='data-item__text'>
-            <b>Сколько угодно</b>, а среди устройств —{' '}
-            <b>IOS, Android, Mac, Windows, Linux и Google Chrome</b>, все их
-            можно скачать на сайте outline. Единственное ограничение:
-            <b>1 пользователь = 1 доступ</b>. Если условие будет нарушено, и вы
-            поделитесь ссылкой с кем-то, то для нас это фрод — мы оставляем за
-            собой права заблокировать доступ без возврата средств с детализацией
-            ситуации вам в директ или с возвратом, без объяснения причин.
+            <b>{translations.ru.faq.text7bold1}</b>
+            {translations.ru.faq.text7normal1}
+            <b>{translations.ru.faq.text7bold2}</b>
+            {translations.ru.faq.text7normal2}
+            <b>{translations.ru.faq.text7bold3}</b>
+            {translations.ru.faq.text7normal3}
           </p>
         </DataItem>
         <DataItem
-          title='Я могу делиться с кем-то своей ссылкой в outline?'
+          title={translations.ru.faq.title8}
           index={index}
           currentIndex={8}
           setIndex={setIndex}
         >
           <p className='data-item__text'>
-            <b>Увы, нет</b>. Для нас это нарушение правил, поскольку так будет
-            не честно, ведь вы заплатили за одного пользователя, а в итоге
-            потбреляют наши услуги двое или больше.
-            <b>
-              Если вам хочется дать доступ близким, вы можете просто поделиться
-              сервисом robo через реферальную программу или кому-то подарить
-              впн, через раздел — подарок.
-            </b>
-            За нарушение правила — оно для нас критическое. Мы оставляем за
-            собой право вернуть вам деньги без объяснения причин, и больше не
-            давать доступ к сервису. Или не возвращать деньги совсем, объяснив
-            причины.
+            <b>{translations.ru.faq.text8bold1}</b>
+            {translations.ru.faq.text8normal1}
+            <b>{translations.ru.faq.text8bold2}</b>
+            {translations.ru.faq.text8normal2}
           </p>
         </DataItem>
         <DataItem
-          title='Как с вами связаться?'
+          title={translations.ru.faq.title9}
           index={index}
           currentIndex={9}
           setIndex={setIndex}
         >
           <p className='data-item__text'>
-            Пока мы в процессе разработки автоматизированной партнерской
-            программы. но в целом готовы уже сейчас договариваться. если вы
-            блоггер или сообщество и разделяете наши ценности —{' '}
+            {translations.ru.faq.text9normal1}
             <span
               className='data-item__link'
               onClick={() => window.open('mailto:collab@getrobovpn.com')}
             >
               collab@getrobovpn.com
             </span>
-            <br />В целом, так как мы data driven проект — мы видим, что
-            работает, а что — нет. Тем не менее, так как недавно запустились,
-            будем рады любому конструктуривному фидбэку или предложению —
+            <br />
+            {translations.ru.faq.text9normal2}
             <span
               className='data-item__link'
               onClick={() => window.open('mailto:care@getrobovpn.com')}
             >
               care@getrobovpn.com
             </span>
-            , по вопросам поддержки — нужно обращаться в чат.
+            {translations.ru.faq.text9normal3}
           </p>
         </DataItem>
       </DataList>
       <div className='faq__button-box'>
         <AppButton
-          text='Главное меню'
+          text={translations.ru.appButton.mainMenu}
           currentClass='secondary margin-bottom white'
           handler={() => {
             setDirection(true);
@@ -221,7 +191,7 @@ function Faq() {
           }}
         />
         <AppButton
-          text='Выбрать тариф'
+          text={translations.ru.appButton.chooseTariff}
           currentClass='primary violet'
           handler={() => {
             setDirection(true);

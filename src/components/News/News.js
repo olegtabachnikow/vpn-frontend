@@ -8,6 +8,7 @@ import { directionVariants } from '../../utils/directionOptions';
 import { useSelector } from 'react-redux';
 import { setDirection } from '../../redux/actions/actions';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
+import { translations } from '../../utils/translations/translations';
 
 function News() {
   const navigate = useNavigate();
@@ -20,24 +21,21 @@ function News() {
       exit={direction ? 'exitToRight' : 'exitToLeft'}
       variants={directionVariants}
     >
-      <BurgerMenu color='#fff' />
+      <BurgerMenu color='var(--white)' />
       <BackButton
-        text='Назад'
+        text={translations.ru.backButton.back}
         path='/help'
         currentClass='white'
-        title='Новости'
+        title={translations.ru.textTips.news}
       />
-      <p className='news__text'>
-        Данный раздел в разработке. Будут полезные лайфхаки про пользования vpn
-        и robo.
-      </p>
+      <p className='news__text'>{translations.ru.news}</p>
       <div className='news__button-box'>
         <AppButton
           handler={() => {
             setDirection(true);
             navigate('/possibilities');
           }}
-          text='Возможности robo'
+          text={translations.ru.textTips.possibilitiesRobo}
           currentClass='primary blue wide'
         />
         <AppButton
@@ -45,7 +43,7 @@ function News() {
             setDirection(true);
             navigate('/values');
           }}
-          text='Ценности robo'
+          text={translations.ru.textTips.valuesRobo}
           currentClass='primary blue margin-top wide'
         />
       </div>

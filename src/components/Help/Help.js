@@ -13,6 +13,7 @@ import { motion } from 'framer-motion';
 import { directionVariants } from '../../utils/directionOptions';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import { parseTimestamp } from '../../utils/helpers';
+import { translations } from '../../utils/translations/translations';
 
 function Help() {
   const navigate = useNavigate();
@@ -26,62 +27,64 @@ function Help() {
       exit={direction ? 'exitToRight' : 'exitToLeft'}
       variants={directionVariants}
     >
-      <BurgerMenu color='#348ff3' />
+      <BurgerMenu color='var(--blue)' />
       <BackButton
         path='/'
-        text='Главное меню'
+        text={translations.ru.appButton.mainMenu}
         currentClass='wide'
-        title='Мне не понятно'
+        title={translations.ru.burgerMenu.menuBtn3}
       />
       <div className='help__content'>
         <MenuButton
           handler={() => navigate('/values')}
           image={valuesIcon}
           currentClass='btn-our-values'
-          title='Наши ценности'
-          text='Зачем robo'
+          title={translations.ru.textTips.ourValues}
+          text={translations.ru.textTips.valuesText}
           addText={null}
         />
         <MenuButton
           handler={() => navigate('/possibilities')}
           image={possibilitiesIcon}
           currentClass='btn-our-possibilities'
-          title='Возможности'
-          text='Топ-5 причин почему именно robo'
+          title={translations.ru.textTips.possibilities}
+          text={translations.ru.textTips.possibilitiesText}
         />
         <div className='help__button-box'>
           <MenuButton
             handler={() => navigate('/news')}
             image={newsIcon}
             currentClass='btn-news'
-            title='Новости'
-            text='Обновления от robo'
+            title={translations.ru.textTips.news}
+            text={translations.ru.textTips.newsText}
           />
           <div className='help__button-news'></div>
           <MenuButton
             handler={() => navigate('/faq')}
             image={faqIcon}
             currentClass='btn-faq'
-            title='FAQ'
-            text='Ответы на вопросы'
+            title={translations.ru.textTips.faq}
+            text={translations.ru.textTips.faqText}
           />
           <MenuButton
             handler={() => navigate('/message-us')}
             image={noResponceIcon}
             currentClass='btn-no-responce'
-            title='Нет ответа?'
-            text='Напишите нам!'
+            title={translations.ru.textTips.noResponce}
+            text={translations.ru.textTips.noResponceText}
           />
         </div>
         <MenuButton
           image={valuesIcon}
           currentClass='btn-my-tariff'
-          title='Мой тариф'
-          text={`Тариф: ${currentUser.tariff}`}
+          title={translations.ru.subscription.myTariff}
+          text={translations.ru.textTips.tariff + currentUser.tariff}
           addText={
             currentUser.tariff === 'NOLIMIT'
-              ? 'Активен до ' + parseTimestamp(currentUser.endActiveDate)
-              : 'Хватит до ' + parseTimestamp(currentUser.endDate)
+              ? translations.ru.textTips.activeUntil +
+                parseTimestamp(currentUser.endActiveDate)
+              : translations.ru.textTips.enoughTo +
+                parseTimestamp(currentUser.endDate)
           }
           handler={() => navigate('/subscription')}
         />

@@ -54,37 +54,39 @@ function Support() {
           </>
         )}
       </div>
-      {!isNoLimit && (
-        <>
-          <AppButton
-            text={translations.ru.appButton.allTariffes}
-            currentClass='primary blue wide'
-            handler={() => {
-              setDirection(true);
-              navigate('/tariffes');
-            }}
-          />
-          <AppButton
-            text={translations.ru.support.faq}
-            currentClass='primary blue wide margin-top'
-            handler={() => {
-              setDirection(true);
-              navigate('/faq');
-            }}
-          />
-        </>
-      )}
-      <AppButton
-        text={
-          isNoLimit
-            ? translations.ru.support.callOperator
-            : translations.ru.support.supportChat
-        }
-        currentClass={`primary blue wide margin-top ${
-          !isNoLimit ? 'support-disabled' : ''
-        }`}
-        handler={() => (window.location.href = 'https://t.me/getrobovpn_bot')}
-      />
+      <div className='support__button-box'>
+        {!isNoLimit && (
+          <>
+            <AppButton
+              text={translations.ru.appButton.allTariffes}
+              currentClass='primary blue wide'
+              handler={() => {
+                setDirection(true);
+                navigate('/tariffes');
+              }}
+            />
+            <AppButton
+              text={translations.ru.support.faq}
+              currentClass='primary blue wide margin-top'
+              handler={() => {
+                setDirection(true);
+                navigate('/faq');
+              }}
+            />
+          </>
+        )}
+        <AppButton
+          text={
+            isNoLimit
+              ? translations.ru.support.callOperator
+              : translations.ru.support.supportChat
+          }
+          currentClass={`primary blue wide margin-top ${
+            !isNoLimit ? 'support-disabled' : ''
+          }`}
+          handler={() => (window.location.href = 'https://t.me/getrobovpn_bot')}
+        />
+      </div>
     </motion.section>
   );
 }

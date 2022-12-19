@@ -34,9 +34,7 @@ function Traffic() {
               {translations.ru.textTips.activeUntil +
                 parseTimestamp(currentUser.endActiveDate)}
             </span>
-            <span className='traffic__main_value nolimit'>
-              {translations.ru.traffic.nolimit}
-            </span>
+            <span className='traffic__main_value nolimit'>NOLIMIT</span>
             <span className='traffic__main_text'>
               {translations.ru.traffic.nolimitTip}
             </span>

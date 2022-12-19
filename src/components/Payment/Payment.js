@@ -59,7 +59,7 @@ function Payment() {
       <BackButton
         path={-1}
         text=''
-        title={translations.ru.backButton.paymentOptions}
+        title={translations.ru.textTips.paymentOptions}
         currentClass='wide'
       />
       {!currentUser.email && !currentUser.email.length ? (

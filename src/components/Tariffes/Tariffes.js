@@ -68,7 +68,7 @@ function Tariffes() {
         {location.pathname === '/tariffes' && (
           <BackButton
             path={-1}
-            text={translations.ru.backButton.back}
+            text={translations.ru.backButton}
             currentClass='wide'
             title={translations.ru.textTips.tariffes}
           />

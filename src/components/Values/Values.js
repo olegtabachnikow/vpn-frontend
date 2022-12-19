@@ -29,7 +29,7 @@ function Values() {
     >
       <BurgerMenu color='var(--white)' />
       <BackButton
-        text={translations.ru.backButton.back}
+        text={translations.ru.backButton}
         path={-1}
         currentClass='white moved-right'
         title={translations.ru.textTips.values}

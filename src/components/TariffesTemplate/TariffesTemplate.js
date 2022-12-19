@@ -22,7 +22,7 @@ function TariffesTemplate({
   return (
     <section className={`tariffes-template ${currentClass}`}>
       <BackButton
-        text={translations.ru.backButton.back}
+        text={translations.ru.backButton}
         title={translations.ru.textTips.tariff + currentClass.toUpperCase()}
         path={-1}
         currentClass='back-button-tariffes-template'

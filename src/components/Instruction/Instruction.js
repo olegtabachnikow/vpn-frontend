@@ -100,7 +100,7 @@ function Instruction() {
       variants={directionVariants}
     >
       <button onClick={handleBackClick} className='instruction__button-top'>
-        {translations.ru.backButton.back}
+        {translations.ru.backButton}
         <span className='instruction__button-corner'></span>
       </button>
       <motion.div

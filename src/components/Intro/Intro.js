@@ -78,7 +78,7 @@ function Intro() {
         onClick={handleBackButtonClick}
         className={`intro__back-button ${progress < 1 && 'hidden'}`}
       >
-        {translations.ru.backButton.back}
+        {translations.ru.backButton}
         <span className='intro__back-button-arrow' />
       </button>
       <div className='intro__image-container'>

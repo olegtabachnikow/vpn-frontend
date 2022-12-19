@@ -23,7 +23,7 @@ function News() {
     >
       <BurgerMenu color='var(--white)' />
       <BackButton
-        text={translations.ru.backButton.back}
+        text={translations.ru.backButton}
         path='/help'
         currentClass='white'
         title={translations.ru.textTips.news}

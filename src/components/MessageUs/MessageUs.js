@@ -24,7 +24,7 @@ function MessageUs() {
       <BurgerMenu color='var(--white)' />
       <BackButton
         path='/help'
-        text={translations.ru.backButton.back}
+        text={translations.ru.backButton}
         currentClass='white'
         title={translations.ru.textTips.supportText}
       />

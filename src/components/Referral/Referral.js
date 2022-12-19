@@ -24,7 +24,7 @@ function Referral() {
     >
       <BurgerMenu color='var(--white)' />
       <BackButton
-        text={translations.ru.backButton.back}
+        text={translations.ru.backButton}
         path={-1}
         currentClass='white'
         title={translations.ru.textTips.referral}

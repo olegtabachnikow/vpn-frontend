@@ -28,7 +28,7 @@ function Support() {
         text={translations.ru.textTips.myVpn}
         path='/my-vpn'
         currentClass='white'
-        title={translations.ru.backButton.support}
+        title={translations.ru.textTips.support}
       />
       <div className='support__text-container'>
         {isNoLimit ? (

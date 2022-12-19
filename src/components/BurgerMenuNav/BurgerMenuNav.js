@@ -78,7 +78,7 @@ function BurgerMenuNav({ toggleOpen, setIsActive }) {
           onClick={() => handleClose('/')}
           className='burger__navigate-button'
         >
-          {translations.ru.burgerMenu.menuBtn1}
+          {translations.ru.appButton.mainMenu}
           <span className='burger__button-corner' />
         </button>
       </motion.div>
@@ -87,7 +87,7 @@ function BurgerMenuNav({ toggleOpen, setIsActive }) {
           onClick={() => handleClose('/my-vpn')}
           className='burger__navigate-button'
         >
-          {translations.ru.burgerMenu.menuBtn2}
+          {translations.ru.textTips.myVpn}
           <span className='burger__button-corner' />
         </button>
       </motion.div>
@@ -96,7 +96,7 @@ function BurgerMenuNav({ toggleOpen, setIsActive }) {
           onClick={() => handleClose('/help')}
           className='burger__navigate-button'
         >
-          {translations.ru.burgerMenu.menuBtn3}
+          {translations.ru.textTips.notUnderstand}
           <span className='burger__button-corner' />
         </button>
       </motion.div>
@@ -113,7 +113,7 @@ function BurgerMenuNav({ toggleOpen, setIsActive }) {
               }}
               className='burger-menu-nav__link'
             >
-              {translations.ru.burgerMenu.menuFaqText3}
+              {translations.ru.textTips.faq}
             </span>
           </span>
         ) : (

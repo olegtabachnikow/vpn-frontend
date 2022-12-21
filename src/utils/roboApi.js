@@ -50,7 +50,6 @@ export function setUserEmail(id, value) {
 }
 
 export function setOptions(id, smart, care, domainId) {
-  console.log(id, smart, care, domainId);
   return fetch(`${API_URL}/link_update`, {
     method: 'POST',
     headers: generateHeaders(),

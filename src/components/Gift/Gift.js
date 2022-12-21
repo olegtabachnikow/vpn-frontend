@@ -15,6 +15,7 @@ import { motion } from 'framer-motion';
 import { directionVariants } from '../../utils/directionOptions';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import { translations } from '../../utils/translations/translations';
+import { getTotalDiscountedValue } from '../../utils/helpers';
 
 const variants = {
   visible: { opacity: 1, transition: { duration: 0.2 } },
@@ -30,6 +31,7 @@ function Gift() {
   const direction = useSelector((state) => state.direction);
   const prices = useSelector((state) => state.prices);
   const navigate = useNavigate();
+  const isGiftDiscounted = currentUser.giftDiscount > 0;
   const handlers = useSwipeable({
     onSwipedLeft: handleSwipeLeft,
     onSwipedRight: handleSwipeRight,
@@ -68,25 +70,33 @@ function Gift() {
     setPaymentUrl('gift-success');
     setDirection(true);
     if (value === '2') {
-      currentUser.giftDiscount > 0
+      isGiftDiscounted
         ? setPayment(
-            Math.floor(
-              ((prices.Nolimit_12 * 12) / 100) * currentUser.giftDiscount
+            getTotalDiscountedValue(
+              prices.Nolimit_12,
+              12,
+              currentUser.giftDiscount
             )
           )
         : setPayment(prices.Nolimit_12 * 12);
     } else if (value === '1') {
-      currentUser.giftDiscount > 0
+      isGiftDiscounted
         ? setPayment(
-            Math.floor(
-              ((prices.Nolimit_3 * 3) / 100) * currentUser.giftDiscount
+            getTotalDiscountedValue(
+              prices.Nolimit_3,
+              3,
+              currentUser.giftDiscount
             )
           )
         : setPayment(prices.Nolimit_3 * 3);
     } else {
-      currentUser.giftDiscount > 0
+      isGiftDiscounted
         ? setPayment(
-            Math.floor((prices.Nolimit_1 / 100) * currentUser.giftDiscount)
+            getTotalDiscountedValue(
+              prices.Nolimit_1,
+              1,
+              currentUser.giftDiscount
+            )
           )
         : setPayment(prices.Nolimit_1);
     }
@@ -203,21 +213,26 @@ function Gift() {
                 name='gift'
                 handler={(data) => setValue(data)}
                 currentClass={`form-label-item-gift ${
-                  currentUser.giftDiscount > 0 &&
-                  'form-label-item-gift_discounted'
+                  isGiftDiscounted && 'form-label-item-gift_discounted'
                 }`}
                 title={translations.ru.tariffes.nolimitMonth}
                 text={null}
-                valueMain={prices.Nolimit_1 + translations.ru.textTips.currency}
-                valueSecondary={`${
-                  currentUser.giftDiscount > 0
-                    ? Math.floor(
-                        (prices.Nolimit_1 / 100) * currentUser.giftDiscount
-                      ).toString()
-                    : prices.Nolimit_1
-                } ₽`}
-                isDiscounted={currentUser.giftDiscount > 0}
-                discountValue={`${currentUser.giftDiscount}%`}
+                valueMain={
+                  isGiftDiscounted
+                    ? prices.Nolimit_1
+                    : prices.Nolimit_1 + translations.ru.textTips.currency
+                }
+                valueSecondary={
+                  isGiftDiscounted
+                    ? getTotalDiscountedValue(
+                        prices.Nolimit_1,
+                        1,
+                        currentUser.giftDiscount
+                      ) + translations.ru.textTips.currency
+                    : prices.Nolimit_1 + translations.ru.textTips.currency
+                }
+                isDiscounted={isGiftDiscounted}
+                currentUserDiscount={currentUser.giftDiscount}
                 defaultChecked={true}
               />
               <FormLabel
@@ -225,46 +240,52 @@ function Gift() {
                 name='gift'
                 handler={(data) => setValue(data)}
                 currentClass={`form-label-item-gift ${
-                  currentUser.giftDiscount > 0 &&
-                  'form-label-item-gift_discounted'
+                  isGiftDiscounted && 'form-label-item-gift_discounted'
                 }`}
                 title={translations.ru.tariffes.nolimit3Months}
                 text={null}
                 valueMain={
-                  prices.Nolimit_3 + translations.ru.textTips.currencyMonth
+                  isGiftDiscounted
+                    ? prices.Nolimit_3
+                    : prices.Nolimit_3 + translations.ru.textTips.currencyMonth
                 }
-                valueSecondary={`${
-                  currentUser.giftDiscount > 0
-                    ? Math.floor(
-                        (prices.Nolimit_3 / 100) * currentUser.giftDiscount
-                      ).toString()
-                    : prices.Nolimit_3
-                } ${translations.ru.textTips.currencyMonth}`}
-                isDiscounted={currentUser.giftDiscount > 0}
-                discountValue={`${currentUser.giftDiscount}%`}
+                valueSecondary={
+                  isGiftDiscounted
+                    ? getTotalDiscountedValue(
+                        prices.Nolimit_3,
+                        1,
+                        currentUser.giftDiscount
+                      ) + translations.ru.textTips.currencyMonth
+                    : prices.Nolimit_3 + translations.ru.textTips.currencyMonth
+                }
+                isDiscounted={isGiftDiscounted}
+                currentUserDiscount={currentUser.giftDiscount}
               />
               <FormLabel
                 elementValue='2'
                 name='gift'
                 handler={(data) => setValue(data)}
                 currentClass={`form-label-item-gift ${
-                  currentUser.giftDiscount > 0 &&
-                  'form-label-item-gift_discounted'
+                  isGiftDiscounted && 'form-label-item-gift_discounted'
                 }`}
                 title={translations.ru.tariffes.nolimit12Months}
                 text={null}
                 valueMain={
-                  prices.Nolimit_12 + translations.ru.textTips.currencyMonth
+                  isGiftDiscounted
+                    ? prices.Nolimit_12
+                    : prices.Nolimit_12 + translations.ru.textTips.currencyMonth
                 }
-                valueSecondary={`${
-                  currentUser.giftDiscount > 0
-                    ? Math.floor(
-                        (prices.Nolimit_12 / 100) * currentUser.giftDiscount
-                      ).toString()
-                    : prices.Nolimit_12
-                } ${translations.ru.textTips.currencyMonth}`}
-                isDiscounted={currentUser.giftDiscount > 0}
-                discountValue={`${currentUser.giftDiscount}%`}
+                valueSecondary={
+                  isGiftDiscounted
+                    ? getTotalDiscountedValue(
+                        prices.Nolimit_12,
+                        1,
+                        currentUser.giftDiscount
+                      ) + translations.ru.textTips.currencyMonth
+                    : prices.Nolimit_12 + translations.ru.textTips.currencyMonth
+                }
+                isDiscounted={isGiftDiscounted}
+                currentUserDiscount={currentUser.giftDiscount}
               />
             </form>
             <motion.button
@@ -294,7 +315,8 @@ function Gift() {
               <br />
               {translations.ru.gift.giftP3Text3}
               <br />
-              {translations.ru.gift.giftP3Text4} <br />
+              {translations.ru.gift.giftP3Text4}
+              <br />
               {translations.ru.gift.giftP3Text5}
             </h2>
             <span className='gift__user-selection'>
@@ -302,18 +324,15 @@ function Gift() {
                 <span className='gift__user-selection-placeholder'>
                   {translations.ru.tariffes.nolimitMonth}
                   <div className='gift__user-selection-placeholder-value'>
-                    {currentUser.giftDiscount > 0 ? (
-                      <span>
-                        {Math.floor(
-                          (prices.Nolimit_1 / 100) * currentUser.giftDiscount
-                        ).toString()}{' '}
-                        {translations.ru.textTips.currency}
-                      </span>
-                    ) : (
-                      <span>
-                        {prices.Nolimit_1 + translations.ru.textTips.currency}
-                      </span>
-                    )}
+                    <span>
+                      {isGiftDiscounted
+                        ? getTotalDiscountedValue(
+                            prices.Nolimit_1,
+                            1,
+                            currentUser.giftDiscount
+                          ) + translations.ru.textTips.currency
+                        : prices.Nolimit_1 + translations.ru.textTips.currency}
+                    </span>
                   </div>
                 </span>
               )}
@@ -321,21 +340,16 @@ function Gift() {
                 <span className='gift__user-selection-placeholder'>
                   {translations.ru.tariffes.nolimit3Months}
                   <div className='gift__user-selection-placeholder-value'>
-                    {currentUser.giftDiscount > 0 ? (
-                      <span>
-                        {Math.floor(
-                          (prices.Nolimit_3 / 100) *
-                            currentUser.giftDiscount *
-                            3
-                        ).toString()}{' '}
-                        {translations.ru.textTips.currency}
-                      </span>
-                    ) : (
-                      <span>
-                        {prices.Nolimit_3 * 3 +
+                    <span>
+                      {isGiftDiscounted
+                        ? getTotalDiscountedValue(
+                            prices.Nolimit_3,
+                            3,
+                            currentUser.giftDiscount
+                          ) + translations.ru.textTips.currency
+                        : prices.Nolimit_3 * 3 +
                           translations.ru.textTips.currency}
-                      </span>
-                    )}
+                    </span>
                   </div>
                 </span>
               )}
@@ -343,21 +357,16 @@ function Gift() {
                 <span className='gift__user-selection-placeholder'>
                   {translations.ru.tariffes.nolimit12Months}
                   <div className='gift__user-selection-placeholder-value'>
-                    {currentUser.giftDiscount > 0 ? (
-                      <span>
-                        {Math.floor(
-                          (prices.Nolimit_12 / 100) *
-                            currentUser.giftDiscount *
-                            12
-                        ).toString()}{' '}
-                        {translations.ru.textTips.currency}
-                      </span>
-                    ) : (
-                      <span>
-                        {prices.Nolimit_12 * 12 +
+                    <span>
+                      {isGiftDiscounted
+                        ? getTotalDiscountedValue(
+                            prices.Nolimit_12,
+                            12,
+                            currentUser.giftDiscount
+                          ) + translations.ru.textTips.currency
+                        : prices.Nolimit_12 * 12 +
                           translations.ru.textTips.currency}
-                      </span>
-                    )}
+                    </span>
                   </div>
                 </span>
               )}

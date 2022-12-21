@@ -88,9 +88,12 @@
 }
 .form-label-item-gift_discounted .form-label__value-main {
   text-decoration: line-through;
+  font-size: 1.2rem;
 }
 .form-label-item-gift_discounted .form-label__value-secondary {
   display: block;
+  font-size: 1.6rem;
+  font-weight: 700;
 }
 .form-label.tariff-item-fit {
   width: 100%;
@@ -197,6 +200,7 @@
   border-radius: 16px;
   padding: 16px;
 }
+
 .form-label__radio-input.checkbox {
   position: absolute;
   right: 0;
@@ -212,6 +216,12 @@
   justify-content: flex-end;
   padding-right: 10px;
   box-sizing: border-box;
+}
+.form-label-item-gift_discounted .form-label-discount {
+  color: var(--orange);
+}
+.form-label-item-gift_discounted .form-label__value-main_default {
+  display: none;
 }
 @media screen and (max-height: 552px) {
   .tariffes__content-fit {

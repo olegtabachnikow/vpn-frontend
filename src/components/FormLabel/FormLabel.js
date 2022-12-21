@@ -70,7 +70,9 @@ function FormLabel({
                     {parseInt(valueMain)}
                   </span>
                   <br />
-                  <span>{valueDiscounted + '₽/мес'}</span>
+                  <span className='form-label__value-main_default'>
+                    {valueDiscounted + '₽/мес'}
+                  </span>
                 </>
               ) : (
                 valueMain

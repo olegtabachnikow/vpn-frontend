@@ -37,6 +37,12 @@ const setCurrentCountryAction = (payload) => {
     payload,
   };
 };
+const setNextTariffAction = (payload) => {
+  return {
+    type: 'TARIFF/SET',
+    payload,
+  };
+};
 export const {
   setCurrentUser,
   setPayment,
@@ -44,6 +50,7 @@ export const {
   setDirection,
   setCurrentCountry,
   setPaymentUrl,
+  setNextTariff,
 } = bindActionCreators(
   {
     setCurrentUser: setCurrentUserAction,
@@ -52,6 +59,7 @@ export const {
     setDirection: setDirectionAction,
     setCurrentCountry: setCurrentCountryAction,
     setPaymentUrl: setPaymentUrlAction,
+    setNextTariff: setNextTariffAction,
   },
   dispatch
 );

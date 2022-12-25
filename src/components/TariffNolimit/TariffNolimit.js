@@ -35,6 +35,7 @@ function TariffNolimit({ handler, error, value, setValue, setIsHidden }) {
       <div className='tariffes__content-nolimit'>
         <FormLabel
           elementValue={prices.Nolimit_1}
+          tariffName='Nolimit_1'
           name='package'
           handler={(data) => setValue(data)}
           currentClass={`tariff-item-nolimit ${
@@ -55,6 +56,7 @@ function TariffNolimit({ handler, error, value, setValue, setIsHidden }) {
         />
         <FormLabel
           elementValue={prices.Nolimit_3}
+          tariffName='Nolimit_3'
           name='package'
           handler={(data) => setValue((data * 3).toString())}
           currentClass={`tariff-item-nolimit ${
@@ -91,6 +93,7 @@ function TariffNolimit({ handler, error, value, setValue, setIsHidden }) {
         />
         <FormLabel
           elementValue={prices.Nolimit_12}
+          tariffName='Nolimit_12'
           name='package'
           handler={(data) => setValue((data * 12).toString())}
           currentClass={`tariff-item-nolimit ${

@@ -8,6 +8,7 @@ import FormLabel from '../FormLabel/FormLabel';
 import { useNavigate } from 'react-router-dom';
 import {
   setDirection,
+  setNextTariff,
   setPayment,
   setPaymentUrl,
 } from '../../redux/actions/actions';
@@ -79,6 +80,7 @@ function Gift() {
             )
           )
         : setPayment(prices.Nolimit_12 * 12);
+      setNextTariff('Nolimit_12');
     } else if (value === '1') {
       isGiftDiscounted
         ? setPayment(
@@ -89,6 +91,7 @@ function Gift() {
             )
           )
         : setPayment(prices.Nolimit_3 * 3);
+      setNextTariff('Nolimit_3');
     } else {
       isGiftDiscounted
         ? setPayment(
@@ -99,6 +102,7 @@ function Gift() {
             )
           )
         : setPayment(prices.Nolimit_1);
+      setNextTariff('Nolimit_1');
     }
     setIsFaded(true);
     navigate('/payment');

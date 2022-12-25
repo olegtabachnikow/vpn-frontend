@@ -18,6 +18,7 @@ function Payment() {
   const currentUser = useSelector((state) => state.currentUser);
   const direction = useSelector((state) => state.direction);
   const paymentUrl = useSelector((state) => state.paymentUrl);
+  const nextTariff = useSelector((state) => state.nextTariff);
   const [withBalance, setWithBalance] = React.useState(false);
   const [method, setMethod] = React.useState('');
   const navigate = useNavigate();
@@ -27,25 +28,26 @@ function Payment() {
     const balanceInUse = withBalance ? 1 : 0;
     gaEventTracker('click', 'payment button click');
     if (withBalance && currentUser.balance > payment) {
-      payWithBalance(currentUser.userId, payment.toString())
+      payWithBalance(currentUser.userId, payment.toString(), nextTariff)
         .then((res) => {
           setCurrentUser(res);
           navigate(paymentUrl);
           setPaymentUrl('success');
         })
-        .catch((err) => console.log(err));
+        .catch(() => navigate('/error'));
     } else {
       getPaymentLink(
         currentUser.userId,
         payment.toString(),
         paymentUrl,
-        balanceInUse
+        balanceInUse,
+        nextTariff
       )
         .then((res) => {
           window.location.href = res;
           setPaymentUrl('success');
         })
-        .catch((err) => console.log(err));
+        .catch(() => navigate('/error'));
     }
   }
   return (

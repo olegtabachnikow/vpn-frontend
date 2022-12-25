@@ -14,26 +14,27 @@ export function getPrices() {
     headers: generateHeaders(),
   }).then(checkResponse);
 }
-export function getPaymentLink(id, amount, path, withBalance) {
+export function getPaymentLink(id, amount, path, withBalance, tariff) {
   return fetch(`${API_URL}/payment`, {
     method: 'POST',
     headers: generateHeaders(),
     body: JSON.stringify({
       user_id: id,
       amount,
-      desc: 'test',
+      desc: tariff,
       path,
       withBalance,
     }),
   }).then(checkResponse);
 }
-export function payWithBalance(id, amount) {
+export function payWithBalance(id, amount, tariff) {
   return fetch(`${API_URL}/payment_balance`, {
     method: 'POST',
     headers: generateHeaders(),
     body: JSON.stringify({
       user_id: id,
       amount,
+      desc: tariff,
     }),
   }).then(checkResponse);
 }

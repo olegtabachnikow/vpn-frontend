@@ -7,6 +7,7 @@ export const reducer = combineReducers({
   direction: currentDirectionReducer,
   currentCountry: currentCountryReducer,
   paymentUrl: paymentUrlReducer,
+  nextTariff: nextTariffPlanReducer,
 });
 
 function currentUserReducer(state = {}, action) {
@@ -55,6 +56,15 @@ function pricesReducer(state = {}, action) {
 function currentDirectionReducer(state = true, action) {
   switch (action.type) {
     case 'DIRECTION/SET':
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
+function nextTariffPlanReducer(state = '', action) {
+  switch (action.type) {
+    case 'TARIFF/SET':
       return action.payload;
     default:
       return state;

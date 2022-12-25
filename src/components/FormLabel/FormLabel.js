@@ -3,6 +3,7 @@ import './FormLabel.css';
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 import FormLabelDiscount from '../FormLabelDiscount/FormLabelDiscount';
+import { setNextTariff } from '../../redux/actions/actions';
 
 function FormLabel({
   elementValue,
@@ -19,6 +20,7 @@ function FormLabel({
   disabled,
   currentUserDiscount,
   isRecommended,
+  tariffName,
 }) {
   const [discountItems, setDiscountItems] = React.useState([]);
   const valueDiscounted = Math.round(
@@ -40,7 +42,10 @@ function FormLabel({
       whileTap={{ scale: 0.95 }}
     >
       <input
-        onChange={(e) => handler(e.target.value)}
+        onChange={(e) => {
+          tariffName && setNextTariff(tariffName);
+          handler(e.target.value);
+        }}
         className='form-label__radio-input'
         type='radio'
         name={name}
@@ -112,5 +117,6 @@ FormLabel.propTypes = {
   currentUserDiscount: PropTypes.number,
   isDiscounted: PropTypes.bool,
   isRecommended: PropTypes.bool,
+  tariffName: PropTypes.string,
 };
 export default FormLabel;

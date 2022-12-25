@@ -31,6 +31,7 @@ function TariffFit({
       <div className='tariffes__content-fit'>
         <FormLabel
           elementValue={prices.Fix_5}
+          tariffName='Fix_5'
           name='package'
           handler={(data) => setValue(data)}
           currentClass='tariff-item-fit'
@@ -45,6 +46,7 @@ function TariffFit({
         />
         <FormLabel
           elementValue={prices.Fix_10}
+          tariffName='Fix_10'
           name='package'
           handler={(data) => setValue(data)}
           currentClass='tariff-item-fit'
@@ -65,6 +67,7 @@ function TariffFit({
         />
         <FormLabel
           elementValue={prices.Fix_20}
+          tariffName='Fix_20'
           name='package'
           handler={(data) => setValue(data)}
           currentClass='tariff-item-fit'

@@ -18,10 +18,11 @@ function RoboApiProvider({ children }) {
       return parseInt(data.replace('/', ''));
     }
   };
-  const userPayedFor = () => queryParams.get('path');
+
+  const getNavPage = () => queryParams.get('path');
 
   function getUser(id = 294899214) {
-    const pathAfterPay = userPayedFor();
+    const navPage = getNavPage();
     getCurrentUser(id)
       .then((res) => {
         setCurrentUser(res);
@@ -30,7 +31,7 @@ function RoboApiProvider({ children }) {
         if (!res.activeUser) {
           navigate('/intro');
         } else {
-          pathAfterPay ? navigate(pathAfterPay) : navigate('/');
+          navPage ? navigate(navPage) : navigate('/');
         }
         console.log(res);
       })
@@ -39,6 +40,7 @@ function RoboApiProvider({ children }) {
         navigate('/error');
       });
   }
+
   React.useEffect(() => {
     getUser(userId());
   }, []);

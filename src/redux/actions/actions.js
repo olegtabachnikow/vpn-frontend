@@ -43,6 +43,12 @@ const setNextTariffAction = (payload) => {
     payload,
   };
 };
+const setRedirectAction = (payload) => {
+  return {
+    type: 'REDIRECT/SET',
+    payload,
+  };
+};
 export const {
   setCurrentUser,
   setPayment,
@@ -51,6 +57,7 @@ export const {
   setCurrentCountry,
   setPaymentUrl,
   setNextTariff,
+  setRedirect,
 } = bindActionCreators(
   {
     setCurrentUser: setCurrentUserAction,
@@ -60,6 +67,7 @@ export const {
     setCurrentCountry: setCurrentCountryAction,
     setPaymentUrl: setPaymentUrlAction,
     setNextTariff: setNextTariffAction,
+    setRedirect: setRedirectAction,
   },
   dispatch
 );

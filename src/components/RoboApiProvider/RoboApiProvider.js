@@ -3,6 +3,7 @@ import {
   setCurrentUser,
   setPrices,
   setCurrentCountry,
+  setRedirect,
 } from '../../redux/actions/actions';
 import { getCurrentUser, getPrices } from '../../utils/roboApi';
 import { useNavigate } from 'react-router-dom';
@@ -31,7 +32,10 @@ function RoboApiProvider({ children }) {
         if (!res.activeUser) {
           navigate('/intro');
         } else {
-          navPage ? navigate(navPage) : navigate('/');
+          if (navPage) {
+            navigate(navPage);
+            setRedirect(true);
+          } else navigate('/');
         }
         console.log(res);
       })

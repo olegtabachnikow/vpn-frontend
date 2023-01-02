@@ -53,3 +53,9 @@
     overflow: hidden;
   }
 }
+@media (orientation: landscape) {
+  .app {
+    max-width: 400px;
+    max-height: 720px;
+  }
+}

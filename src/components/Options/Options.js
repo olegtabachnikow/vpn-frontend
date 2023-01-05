@@ -167,7 +167,7 @@ function Options() {
                             country === 1 && 'active'
                           }`}
                         >
-                          Cypress
+                          Israel
                         </span>
                       </div>
                     </div>
@@ -177,7 +177,7 @@ function Options() {
                       isActive.location && 'hidden'
                     }`}
                   >
-                    {country === 0 ? 'Finland' : 'Cypress'}
+                    {country === 0 ? 'Finland' : 'Israel'}
                   </span>
                   <div
                     className='options__item-arrow-wrapper'
@@ -407,6 +407,9 @@ function Options() {
                     data={currentUser.link}
                     gaCategory='options'
                   />
+                  <p className='options__complete-tips'>
+                    {translations.ru.options.optionsTips}
+                  </p>
                 </div>
               )}
               <div className='options__button-box'>

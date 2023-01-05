@@ -232,3 +232,7 @@
 .options__complete-content.no-margin {
   margin-top: 0;
 }
+.options__complete-tips {
+  font-size: 1.4rem;
+  color: var(--white);
+}

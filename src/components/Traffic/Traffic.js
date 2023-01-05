@@ -43,7 +43,8 @@ function Traffic() {
           <div className='traffic__main-content'>
             <span className='traffic__main_text'>
               {translations.ru.textTips.enoughTo +
-                parseTimestamp(currentUser.endDate)}
+                parseTimestamp(currentUser.endDate) +
+                translations.ru.textTips.trafficUpdateDate}
             </span>
             <span className='traffic__main_value'>
               {currentUser.traffic + translations.ru.textTips.gb}

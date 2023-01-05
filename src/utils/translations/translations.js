@@ -78,6 +78,7 @@ export const translations = {
       valuesRobo: 'Ценности robo',
       possibilitiesRobo: 'Возможности robo',
       paymentOptions: 'Способы оплаты',
+      trafficUpdateDate: ' (дата обновления гб)',
     },
     burgerMenu: {
       menuTitle: 'Основные разделы',
@@ -306,7 +307,7 @@ export const translations = {
       supportFreeText2: 'Надеемся, на понимание.',
       supportNolimitText:
         'Здесь вы можете позвать оператора службы Заботы в телеграм чат с robo. Напишите все вопросы, мы ответим в течение суток.',
-      supportToFaq: 'Возможно, вам поможет раздел',
+      supportToFaq: 'Возможно, вам поможет раздел ',
       faq: 'FAQ',
       callOperator: 'Позвать оператора',
       supportChat: 'Саппорт чат',
@@ -358,6 +359,8 @@ export const translations = {
         'Отлично, вы настроили robo под себя! Новые настройки внесены.',
       optSuccessKey:
         'Отлично, вы настроили robo под себя. Ваш ключ доступа — чтобы новые настройки заработали, вставьте новый ключ в приложение outline.',
+      optionsTips:
+        'При смене локации прогнозное потребление в разделе "Тариф" будет считаться корректно через 2-5 дней.',
     },
     values: {
       title1: 'Устойчивость к блокировкам',

@@ -61,7 +61,7 @@ function Traffic() {
               {translations.ru.traffic.averagePerDay}
             </span>
             <span className='traffic__outlook-element-value'>
-              {currentUser.trafficPerDay + translations.ru.textTips.gb}
+              {currentUser.trafficMean + translations.ru.textTips.gb}
             </span>
           </div>
           <div className='traffic__outlook-element'>

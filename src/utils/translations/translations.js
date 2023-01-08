@@ -78,7 +78,7 @@ export const translations = {
       valuesRobo: 'Ценности robo',
       possibilitiesRobo: 'Возможности robo',
       paymentOptions: 'Способы оплаты',
-      trafficUpdateDate: 'Дата обновления гб: ',
+      trafficUpdateDate: ' (дата обновления Гб)',
     },
     burgerMenu: {
       menuTitle: 'Основные разделы',
@@ -335,6 +335,7 @@ export const translations = {
       dontWorry: 'Чтобы не волноваться — можете ',
       addBalance: 'пополнить баланс',
       startAutoCharge: ', и нажать автосписание по текущему тарифу.',
+      enoughTo: 'Осталось до ',
     },
     options: {
       chooseLoc: 'Выбрать локацию',

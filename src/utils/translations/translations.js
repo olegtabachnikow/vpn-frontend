@@ -78,7 +78,7 @@ export const translations = {
       valuesRobo: 'Ценности robo',
       possibilitiesRobo: 'Возможности robo',
       paymentOptions: 'Способы оплаты',
-      trafficUpdateDate: ' (дата обновления гб)',
+      trafficUpdateDate: 'Дата обновления гб: ',
     },
     burgerMenu: {
       menuTitle: 'Основные разделы',

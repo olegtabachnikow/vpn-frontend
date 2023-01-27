@@ -22,7 +22,7 @@ function RoboApiProvider({ children }) {
 
   const getNavPage = () => queryParams.get('path');
 
-  function getUser(id = 294899214) {
+  function getUser(id = 64190794) {
     const navPage = getNavPage();
     getCurrentUser(id)
       .then((res) => {

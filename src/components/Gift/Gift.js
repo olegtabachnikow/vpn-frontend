@@ -190,6 +190,9 @@ function Gift() {
                   <p className='gift__popup-text'>
                     {translations.ru.gift.giftPopupText3}
                   </p>
+                  <p className='gift__popup-text'>
+                    {translations.ru.gift.giftPopupText4}
+                  </p>
                   <AppButton
                     text={translations.ru.appButton.gotIt}
                     currentClass='secondary white bg-orange border-transparent margin-top'

@@ -78,7 +78,7 @@ function Subscription() {
               </b>{' '}
               {translations.ru.subscription.algoText +
                 monthGb +
-                translations.ru.textTips.gbReg}
+                translations.ru.textTips.gb}
             </span>
           </div>
         </div>
@@ -88,7 +88,7 @@ function Subscription() {
           {isFree ? (
             <span className='subscription__widget-text_secondary'>
               {translations.ru.subscription.thisMonth}
-              <b>{monthGb + translations.ru.textTips.gbReg}</b>
+              <b>{monthGb + translations.ru.textTips.gb}</b>
               {translations.ru.subscription.thisMonthEnd}
             </span>
           ) : (

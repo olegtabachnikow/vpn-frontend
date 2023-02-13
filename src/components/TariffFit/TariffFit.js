@@ -35,7 +35,7 @@ function TariffFit({
           name='package'
           handler={(data) => setValue(data)}
           currentClass='tariff-item-fit'
-          title={`5 + 10 ${translations.ru.textTips.gbReg.toUpperCase()}`}
+          title={`5 + 10 ${translations.ru.textTips.gb.toUpperCase()}`}
           text={null}
           valueMain={prices.Fix_5 + translations.ru.textTips.currency}
           valueSecondary={translations.ru.tariffes.singlePayment}
@@ -50,7 +50,7 @@ function TariffFit({
           name='package'
           handler={(data) => setValue(data)}
           currentClass='tariff-item-fit'
-          title={`10 + 10 ${translations.ru.textTips.gbReg.toUpperCase()}`}
+          title={`10 + 10 ${translations.ru.textTips.gb.toUpperCase()}`}
           text={null}
           valueMain={prices.Fix_10 + translations.ru.textTips.currency}
           valueSecondary={translations.ru.tariffes.singlePayment}
@@ -71,7 +71,7 @@ function TariffFit({
           name='package'
           handler={(data) => setValue(data)}
           currentClass='tariff-item-fit'
-          title={`20 + 10 ${translations.ru.textTips.gbReg.toUpperCase()}`}
+          title={`20 + 10 ${translations.ru.textTips.gb.toUpperCase()}`}
           text={null}
           valueMain={prices.Fix_20 + translations.ru.textTips.currency}
           valueSecondary={translations.ru.tariffes.singlePayment}

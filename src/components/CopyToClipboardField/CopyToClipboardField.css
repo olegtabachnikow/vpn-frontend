@@ -48,6 +48,17 @@
   font-family: 'Actay Wide', sans-serif;
   text-align: start;
 }
+.copy-to-clipboard__key-input {
+  width: 250px;
+  height: 100%;
+  resize: none;
+  font-size: 1.4rem;
+  color: var(--blue);
+  border: none;
+  outline: none;
+  caret-color: transparent;
+  cursor: default;
+}
 .referral__copy-to-clipboard .copy-to-clipboard__copy-icon {
   width: 18px;
   height: 18px;

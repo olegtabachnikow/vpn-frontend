@@ -24,7 +24,7 @@ function TariffFree({ setIsHidden, setIsFreeInfoHidden }) {
         <div className='tariffes__free-widgets'>
           <div className='tariffes__free-widget_small'>
             <h2 className='tariffes__free-widget-title'>
-              {5 + translations.ru.textTips.gbReg}
+              {5 + translations.ru.textTips.gb}
             </h2>
             <span className='tariffes__free-widget-text'>
               {translations.ru.tariffes.freeWidgettext1}
@@ -32,7 +32,7 @@ function TariffFree({ setIsHidden, setIsFreeInfoHidden }) {
           </div>
           <div className='tariffes__free-widget_small'>
             <h2 className='tariffes__free-widget-title'>
-              {5 + translations.ru.textTips.gbReg}
+              {5 + translations.ru.textTips.gb}
             </h2>
             <span className='tariffes__free-widget-text'>
               {translations.ru.tariffes.freeWidgettext2}

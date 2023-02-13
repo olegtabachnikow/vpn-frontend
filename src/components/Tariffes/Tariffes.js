@@ -171,7 +171,7 @@ function Tariffes() {
           <p className='tariffes__free-widget-info-text'>
             {translations.ru.tariffes.tariffPopupTextFreeT1}
             <span className='tariffes__free-widget-info-text_bold'>
-              {currentUser.extra5gb ? 10 : 5 + translations.ru.textTips.gbReg}
+              {currentUser.extra5gb ? 10 : 5 + translations.ru.textTips.gb}
             </span>
           </p>
           <p className='tariffes__free-widget-info-text'>

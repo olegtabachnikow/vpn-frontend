@@ -6,11 +6,17 @@ import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 import useAnalyticsEventTracker from '../../hooks/useAnanlyticsEventTracker';
 import { translations } from '../../utils/translations/translations';
-
+import platform from 'platform-detect/os.mjs';
 function CopyToClipboardField({ currentClass, data, gaAction }) {
   const [isCopied, setIsCopied] = React.useState(false);
+  const copyToClipboardRef = React.useRef(null);
   const gaEventTracker = useAnalyticsEventTracker('CopyLink');
   function copyToClipboard(e) {
+    if (platform.android) {
+      console.log(copyToClipboardRef);
+      copyToClipboardRef.current.select();
+      return;
+    }
     e.stopPropagation();
     gaEventTracker(gaAction, 'Key_copied');
     setIsCopied(true);
@@ -26,7 +32,16 @@ function CopyToClipboardField({ currentClass, data, gaAction }) {
       className={`copy-to-clipboard ${currentClass} ${isCopied && 'high'}`}
       whileTap={{ scale: 0.98 }}
     >
-      <span className='copy-to-clipboard__key'>{data}</span>
+      {platform.android ? (
+        <textarea
+          ref={copyToClipboardRef}
+          className='copy-to-clipboard__key-input'
+          value={data}
+          contentEditable={false}
+        />
+      ) : (
+        <span className='copy-to-clipboard__key'>{data}</span>
+      )}
       <img className='copy-to-clipboard__copy-icon' src={copyIcon} alt='copy' />
       {isCopied && (
         <div className={`copy-to-clipboard__popup ${currentClass}`}>
